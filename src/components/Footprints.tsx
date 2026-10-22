@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 /** One flat footprint (sole + heel), pointing up. Colour comes from `fill`. */
 export function FootprintShape({ x = 0, y = 0, angle = 0, scale = 1, fill = "currentColor", flip = false }: {
-  x?: number; y?: number; angle?: number; scale?: number; fill?: string; flip?: boolean;
+  x?: number | undefined; y?: number | undefined; angle?: number | undefined; scale?: number | undefined; fill?: string | undefined; flip?: boolean | undefined;
 }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${angle}) scale(${flip ? -scale : scale} ${scale})`}>
