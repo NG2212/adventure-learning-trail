@@ -131,3 +131,9 @@ L&D-authorized content CRUD with validated slug, Markdown/frontmatter and fixed 
 ### Privacy in Admin views
 
 No per-person scores or levels, onboarding comfort, rankings, leaderboards or streaks. Adventure content levels are labels only and may appear in the directory. Manager view hides names, named manager filters, employee table/drawers and admin names on every tab; aggregates remain available. A real manager account must receive only team-limited aggregates from L&D, not employee data hidden with CSS or client flags. Overview footer: "Analytics are for L&D; managers receive aggregates only."
+
+## Admin preview of scheduled adventures
+
+- Adventure bodies for scheduled (not yet open) waves are stored and delivered to admins only. Non-admin readers receive title, promise, labels and the opens-on date, never the body, until the wave opens.
+- The admin directory exposes a Preview action that renders the full adventure page in read-only preview mode (no completion, no analytics events recorded).
+- Server must enforce this: the body endpoint checks the admin role when the adventure's wave is not yet open. (The mockup gates it client-side with `person.isAdmin` only.)
