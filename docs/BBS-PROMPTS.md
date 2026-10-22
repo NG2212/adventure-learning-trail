@@ -63,7 +63,7 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 
 **Build:** Header with icon, title, walkaway, label chips and itinerary toggle. Body split at each `## ` heading into steps; left rail lists steps (all clickable, current highlighted); Back/Next buttons at the bottom. Markdown tables render as bordered tables; every fenced code block renders as a Prompt window (stone panel, "Prompt" label, 15px text, Copy button that shows "Copied"). The final step shows "Mark this adventure complete"; clicking records the completion and opens a celebration (lime glow disc, footprints stepping in, new count, new title if a threshold was crossed, Share → share card preview, Back to my itinerary). Unknown slug → not found.
 
-**Accept:** the Meeting Sponge page has 10 steps, one table, three Prompt windows; completing it again is not possible once done.
+**Accept:** the Meeting Sponge page has 9 steps, one table, two Prompt windows; completing it again is not possible once done.
 
 ## 10. Progress (`/progress`)
 
