@@ -80,7 +80,7 @@ function Onboarding() {
 
   if (done) return <Results answers={answers as OnboardingAnswers} onRestart={() => { setAnswers({}); setStep(0); }} />;
 
-  const q = QUESTIONS[step];
+  const q = QUESTIONS[step]!;
   return (
     <div className="mx-auto max-w-2xl px-5 py-12">
       <div className="flex items-center gap-2" aria-label={`Question ${step + 1} of ${QUESTIONS.length}`}>
