@@ -145,7 +145,7 @@ function AdventurePage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
       <header className="flex flex-col gap-5 rounded-3xl bg-primary-soft p-6 sm:flex-row sm:items-center sm:p-8">
-        <AdventureIcon name={adventure.icon} active={adventure.isOpen} size="lg" />
+        <AdventureIcon adventure={adventure} size="xl" />
         <div className="flex-1">
           <div className="mb-2 flex gap-2">
             {done && <Chip tone="success">Done</Chip>}
@@ -178,7 +178,7 @@ function AdventurePage() {
           </ol>
         </nav>
 
-        <article className="min-w-0">
+        <article className="min-w-0 rounded-3xl bg-card p-6 shadow-soft sm:p-8">
           <p className="text-sm font-medium text-muted-foreground">Step {current + 1} of {steps.length}</p>
           <h2 className="mt-1 mb-4 text-2xl sm:text-3xl">{step.title}</h2>
           <div className="max-w-3xl">

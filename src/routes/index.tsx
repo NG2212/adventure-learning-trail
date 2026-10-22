@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { store } from "@/store";
 import { FootprintShape, trail } from "@/components/Footprints";
 import { Wordmark } from "@/components/AppShell";
+import { MondayLogo } from "@/components/MondayLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,7 +40,8 @@ function SignIn() {
         )}
       </svg>
       <div className="relative mx-auto w-full max-w-6xl px-6 py-20">
-        <p className="text-lg"><Wordmark inverted /></p>
+        <MondayLogo inverted className="text-xl" />
+        <p className="mt-4 text-lg"><Wordmark inverted /></p>
         <h1 className="mt-6 text-6xl font-bold leading-none sm:text-8xl">AI Adventure</h1>
         <p className="mt-6 max-w-xl text-xl font-semibold sm:text-2xl">Pick a path. Build something real. Keep it.</p>
         <button

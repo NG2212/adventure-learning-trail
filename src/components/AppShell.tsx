@@ -2,7 +2,8 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { store, useStoreState } from "@/store";
 import { titleFor } from "@/lib/titles";
-import { Footprint } from "./Footprints";
+import { Footprint, FootprintShape } from "./Footprints";
+import { MondayLogo } from "./MondayLogo";
 
 const NAV = [
   { to: "/itinerary", label: "My itinerary" },
@@ -28,7 +29,7 @@ export function AppHeader() {
     <>
       <header className="border-b bg-background">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-5 py-4">
-          <Link to="/welcome" className="text-lg"><Wordmark /></Link>
+          <Link to="/welcome" className="flex items-center gap-3 text-lg"><MondayLogo className="text-base" /><span aria-hidden className="h-5 w-px bg-border" /><Wordmark /></Link>
           <nav className="order-3 flex w-full gap-1 overflow-x-auto md:order-none md:w-auto">
             {NAV.filter((n) => n.to !== "/admin" || state.person.isAdmin).map((n) => (
               <Link
@@ -81,7 +82,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
   const isSignIn = pathname === "/";
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className={isSignIn ? "flex min-h-screen flex-col" : "relative isolate flex min-h-screen flex-col bg-surface"}>
+      {!isSignIn && <FootprintBackdrop />}
       {!isSignIn && <AppHeader />}
       <main className="flex-1">{children}</main>
       {isSignIn ? (
@@ -101,6 +103,26 @@ export function PageHeading({ title, subtitle, children }: { title: string; subt
         {subtitle && <p className="mt-2 max-w-2xl text-muted-foreground">{subtitle}</p>}
       </div>
       {children}
+    </div>
+  );
+}
+
+/** Sparse, faint footprints in the accent colours, fixed behind signed-in pages. */
+const PRINTS = [
+  { x: 6, y: 18, a: 20, c: "var(--color-primary)" }, { x: 9, y: 24, a: 30, c: "var(--color-primary)", f: true },
+  { x: 92, y: 30, a: -25, c: "var(--color-coral)" }, { x: 95, y: 36, a: -15, c: "var(--color-coral)", f: true },
+  { x: 4, y: 70, a: 10, c: "var(--color-lime)" }, { x: 7, y: 76, a: 25, c: "var(--color-lime)", f: true },
+  { x: 90, y: 80, a: -35, c: "var(--color-primary)" }, { x: 94, y: 86, a: -20, c: "var(--color-primary)", f: true },
+  { x: 50, y: 96, a: 80, c: "var(--color-coral)" },
+];
+function FootprintBackdrop() {
+  return (
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 opacity-[0.08]">
+      {PRINTS.map((p, i) => (
+        <svg key={i} viewBox="-10 -16 20 33" className="absolute h-9 w-6" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
+          <FootprintShape angle={p.a} fill={p.c} flip={p.f} />
+        </svg>
+      ))}
     </div>
   );
 }

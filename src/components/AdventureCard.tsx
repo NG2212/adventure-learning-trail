@@ -11,8 +11,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
 
   const content = (
     <>
-      <div className="flex items-start justify-between gap-3">
-        <AdventureIcon name={adventure.icon} active={adventure.isOpen} />
+      <div className="flex justify-end">
         {done ? (
           <Chip tone="success">Done</Chip>
         ) : adventure.isOpen && adventure.body ? (
@@ -23,9 +22,10 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
           <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>
         )}
       </div>
-      <h3 className="mt-4 text-lg">{adventure.title}</h3>
-      <p className="mt-1 flex-1 text-sm text-muted-foreground">{adventure.walkaway}</p>
-      <LabelChips adventure={adventure} className="mt-4" />
+      <AdventureIcon adventure={adventure} size="xl" className="mx-auto -mt-2" />
+      <h3 className="mt-4 text-center text-lg">{adventure.title}</h3>
+      <p className="mt-1 flex-1 text-center text-sm text-muted-foreground">{adventure.walkaway}</p>
+      <LabelChips adventure={adventure} className="mt-4 justify-center" />
     </>
   );
 

@@ -98,3 +98,7 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 - The comfort answer is used only at recommendation time and never stored as a level or shown back.
 - Onboarding answers are not persisted.
 - Share cards are generated only when the person chooses to share.
+
+## Disc state (derived, no new fields)
+
+The icon disc state on every surface is derived on the client from existing data: `done` if a completion exists for the person and adventure; else `itinerary` if the slug is in the person's itinerary; else `open` if the adventure's wave is open; else `later`. No new entity fields are needed.

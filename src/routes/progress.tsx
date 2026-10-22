@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ADVENTURES, TOTAL_ADVENTURES } from "@/content/adventures";
 import { useStoreState } from "@/store";
 import { nextTitle, titleFor, TITLES } from "@/lib/titles";
-import { AdventureIcon } from "@/components/AdventureIcon";
+import { AdventureIcon, Disc } from "@/components/AdventureIcon";
 import { Footprint } from "@/components/Footprints";
 import { ShareCard } from "@/components/ShareCard";
 import { PageHeading } from "@/components/AppShell";
@@ -63,7 +63,7 @@ function Progress() {
             const has = earned.has(a.slug);
             const content = (
               <>
-                <AdventureIcon name={a.icon} active={has} outline={!has} size="lg" />
+                <AdventureIcon adventure={a} size="lg" />
                 <span className={cn("text-xs font-medium", !has && "text-muted-foreground")}>{a.title}</span>
               </>
             );
@@ -75,7 +75,7 @@ function Progress() {
           })}
           {Array.from({ length: placeholders }, (_, i) => (
             <div key={i} className="flex flex-col items-center gap-2 text-center">
-              <AdventureIcon name="map-pin" outline size="lg" />
+              <Disc name="map-pin" state="later" size="lg" />
               <span className="text-xs text-muted-foreground">To be announced</span>
             </div>
           ))}

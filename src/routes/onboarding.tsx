@@ -135,7 +135,7 @@ function Results({ answers, onRestart }: { answers: OnboardingAnswers; onRestart
       <div className="mt-8 grid gap-4">
         {recs.map(({ adventure, why }) => (
           <div key={adventure.slug} className="flex flex-col gap-4 rounded-3xl border bg-card p-6 shadow-soft sm:flex-row sm:items-start">
-            <AdventureIcon name={adventure.icon} active={adventure.isOpen} />
+            <AdventureIcon adventure={adventure} />
             <div className="flex-1">
               <h2 className="text-lg">{adventure.title}</h2>
               <p className="text-sm text-muted-foreground">{adventure.walkaway}</p>

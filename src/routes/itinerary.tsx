@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, X } from "lucide-react";
 import { getAdventure, WAVES, type Adventure } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
@@ -79,20 +79,25 @@ function Stop({ adventure, status, index, total }: { adventure: Adventure; statu
     "flex flex-col gap-4 rounded-3xl border bg-card p-5 shadow-soft sm:flex-row sm:items-center",
     status === "next" && "border-lime bg-lime/25 ring-4 ring-lime",
   );
+  const navigate = useNavigate();
+  const open = () => navigate({ to: "/adventures/$slug", params: { slug: adventure.slug } });
   return (
-    <div className={card}>
-      <AdventureIcon name={adventure.icon} active={status !== "later" || adventure.isOpen} />
+    <div
+      className={cn(card, "cursor-pointer transition hover:border-primary/40")}
+      role="link"
+      tabIndex={0}
+      aria-label={`Open ${adventure.title}`}
+      onClick={open}
+      onKeyDown={(e) => { if (e.key === "Enter") open(); }}
+    >
+      <AdventureIcon adventure={adventure} />
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap gap-2">
           {status === "done" && <Chip tone="success">Done</Chip>}
           {status === "next" && <Chip tone="lime">Next up</Chip>}
           {status === "later" && <Chip tone="neutral">{adventure.isOpen ? "Later" : WAVES[adventure.wave]?.label}</Chip>}
         </div>
-        {adventure.isOpen ? (
-          <Link to="/adventures/$slug" params={{ slug: adventure.slug }} className="text-lg font-bold hover:text-primary">{adventure.title}</Link>
-        ) : (
-          <p className="text-lg font-bold">{adventure.title}</p>
-        )}
+        <p className="text-lg font-bold">{adventure.title}</p>
         <LabelChips adventure={adventure} className="mt-2" />
       </div>
       <div className="flex gap-1 sm:flex-col">
@@ -106,7 +111,7 @@ function Stop({ adventure, status, index, total }: { adventure: Adventure; statu
 
 function IconBtn({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean; children: React.ReactNode }) {
   return (
-    <button aria-label={label} title={label} disabled={disabled} onClick={onClick} className="rounded-full border bg-background p-2 hover:border-primary disabled:opacity-30">
+    <button aria-label={label} title={label} disabled={disabled} onClick={(e) => { e.stopPropagation(); onClick(); }} onKeyDown={(e) => e.stopPropagation()} className="rounded-full border bg-background p-2 hover:border-primary disabled:opacity-30">
       {children}
     </button>
   );

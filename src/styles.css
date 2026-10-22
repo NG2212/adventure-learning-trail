@@ -40,6 +40,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-stone: var(--stone);
+  --color-surface: var(--surface);
   --color-info: var(--info);
   --color-coral: var(--coral);
   --color-success: var(--success);
@@ -73,6 +74,7 @@
   --input: #e3d9cf;
   --ring: #9450fd;
   --stone: #e3d9cf;
+  --surface: #fbf9f6;
   --info: #1e77fd;
   --coral: #ff644d;
   --success: #06a24b;
