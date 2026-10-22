@@ -44,11 +44,17 @@ export function Disc({ name, art, state, size = "md", className }: { name: IconN
     </span>
   );
   if (art) {
-    // Badge art is purple by design. open = art inset inside a thin purple ring on a white disc;
-    // itinerary/done = art as-is; later = desaturated at ~45% opacity.
+    // Badge art is purple by design. itinerary/done = art as-is; later = desaturated at ~45% opacity;
+    // open = the #disc-open SVG filter (DiscFilters) swaps purple<->white, plus a thin purple ring.
     return (
-      <div className={cn("relative shrink-0 rounded-full", BOX[size], state === "open" && "bg-card p-[12%] ring-[1.5px] ring-primary ring-inset", className)}>
-        <img src={art} alt="" aria-hidden draggable={false} className={cn("size-full select-none", state === "later" && "opacity-45 grayscale")} />
+      <div className={cn("relative shrink-0 rounded-full", BOX[size], state === "open" && "ring-[1.5px] ring-primary ring-inset", className)}>
+        <img
+          src={art}
+          alt=""
+          aria-hidden
+          draggable={false}
+          className={cn("size-full select-none", state === "later" && "opacity-45 grayscale", state === "open" && "[filter:url(#disc-open)]")}
+        />
         {check}
       </div>
     );
@@ -90,5 +96,22 @@ export function DiscLegend({ className }: { className?: string }) {
         </span>
       ))}
     </div>
+  );
+}
+
+/**
+ * Mount once (AppShell). Maps luminance so the badge's purple disc becomes white and its white glyph
+ * becomes brand purple (#9450FD); the lime accent, being light, also turns purple. Alpha is untouched.
+ */
+export function DiscFilters() {
+  return (
+    <svg aria-hidden width="0" height="0" className="absolute">
+      <filter id="disc-open" colorInterpolationFilters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="-0.154 -0.518 -0.052 0 1.304  -0.252 -0.846 -0.085 0 1.497  -0.003 -0.010 -0.001 0 1.006  0 0 0 1 0"
+        />
+      </filter>
+    </svg>
   );
 }
