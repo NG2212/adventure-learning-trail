@@ -1,0 +1,246 @@
+import { useState } from "react";
+import { ArrowUpDown, Bell, Search } from "lucide-react";
+import { toast } from "sonner";
+import { store, useStoreState } from "@/store";
+import type { AdminFilters, AdminPerson } from "@/store/adminTypes";
+import { Disc } from "@/components/AdventureIcon";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
+import {
+  AdminFiltersBar,
+  CsvButton,
+  downloadCsv,
+  duration,
+  Section,
+  tableClass,
+  useAdminView,
+} from "./AdminCommon";
+export function AdminEmployees() {
+  useStoreState();
+  const { managerView } = useAdminView();
+  const [filters, setFilters] = useState<AdminFilters>({});
+  const [selected, setSelected] = useState<string | null>(null);
+  const [sort, setSort] = useState({ key: "name", ascending: true });
+  const people = store.listPeople(filters),
+    all = store.listPeople();
+  const manager = (p: AdminPerson) => all.find((x) => x.id === p.managerId)?.name ?? "—";
+  const fields = [
+    ["name", "Name"],
+    ["email", "Email"],
+    ["org", "Org"],
+    ["team", "Team"],
+    ["manager", "Manager"],
+    ["profession", "Profession"],
+    ["title", "Title"],
+    ["completed", "Completed"],
+    ["itinerary", "In itinerary"],
+    ["lastActiveAt", "Last active"],
+    ["estimatedMinutes", "Estimated time"],
+  ];
+  const value = (p: AdminPerson, key: string): string | number =>
+    key === "completed"
+      ? p.completions.length
+      : key === "itinerary"
+        ? p.itinerary.length
+        : key === "manager"
+          ? manager(p)
+          : key === "estimatedMinutes"
+            ? p.estimatedMinutes
+            : String(p[key as keyof AdminPerson] ?? "");
+  const sorted = [...people].sort((a, b) => {
+    const x = value(a, sort.key),
+      y = value(b, sort.key);
+    return (
+      (typeof x === "number" && typeof y === "number"
+        ? x - y
+        : String(x).localeCompare(String(y))) * (sort.ascending ? 1 : -1)
+    );
+  });
+  const person = all.find((p) => p.id === selected);
+  if (managerView)
+    return (
+      <div className="border-y py-8">
+        <h2 className="text-xl">Employee details are private to L&D</h2>
+        <p className="mt-2 text-muted-foreground">Managers receive team aggregates only.</p>
+      </div>
+    );
+  return (
+    <>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="relative w-full max-w-md">
+          <Search className="absolute top-3 left-3 size-4 text-muted-foreground" />
+          <Input
+            aria-label="Search employees"
+            placeholder="Search name or email"
+            className="pl-9"
+            value={filters.search ?? ""}
+            onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+          />
+        </div>
+        <CsvButton
+          onClick={() =>
+            downloadCsv(
+              "employees.csv",
+              fields.map((f) => f[1] ?? ""),
+              sorted.map((p) => fields.map((f) => value(p, f[0] ?? "name"))),
+            )
+          }
+        />
+      </div>
+      <AdminFiltersBar filters={filters} onChange={setFilters} employees />
+      <p className="mb-3 text-sm text-muted-foreground">{people.length} employees</p>
+      <div className="overflow-x-auto border bg-card">
+        <table className={tableClass}>
+          <thead>
+            <tr>
+              {fields.map(([key, label]) => (
+                <th key={key}>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-auto p-0 text-xs"
+                    onClick={() =>
+                      setSort({
+                        key: key ?? "name",
+                        ascending: sort.key === key ? !sort.ascending : true,
+                      })
+                    }
+                  >
+                    {label}
+                    <ArrowUpDown className="size-3" />
+                  </Button>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((p) => (
+              <tr
+                key={p.id}
+                className="cursor-pointer hover:bg-primary-soft/40"
+                tabIndex={0}
+                aria-label={`View ${p.name}`}
+                onClick={() => setSelected(p.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") setSelected(p.id);
+                }}
+              >
+                <td className="whitespace-nowrap font-semibold">
+                  {p.name}
+                  {p.isManager && (
+                    <span className="ml-2 text-xs font-normal text-primary">Managers</span>
+                  )}
+                </td>
+                <td>{p.email}</td>
+                <td>{p.org}</td>
+                <td>{p.team}</td>
+                <td>{manager(p)}</td>
+                <td>{p.profession}</td>
+                <td>{p.title}</td>
+                <td>{p.completions.length}</td>
+                <td>{p.itinerary.length}</td>
+                <td className="whitespace-nowrap">
+                  {p.lastActiveAt?.slice(0, 10) ?? "Never active"}
+                </td>
+                <td>{duration(p.estimatedMinutes)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {!people.length && (
+          <p className="p-8 text-center text-muted-foreground">No employees match these filters.</p>
+        )}
+      </div>
+      <Sheet
+        open={Boolean(person)}
+        onOpenChange={(open) => {
+          if (!open) setSelected(null);
+        }}
+      >
+        <SheetContent className="w-full overflow-y-auto sm:max-w-2xl">
+          {person && (
+            <>
+              <SheetHeader>
+                <SheetTitle>{person.name}</SheetTitle>
+                <SheetDescription>
+                  {person.email} · {person.org} / {person.team}
+                </SheetDescription>
+              </SheetHeader>
+              <div className="mt-6 flex flex-wrap gap-4 text-sm">
+                <span>{person.title}</span>
+                <span>{person.completions.length} completed</span>
+                <span>{duration(person.estimatedMinutes)} estimated</span>
+                <span>Joined {person.joinedAt}</span>
+              </div>
+              <Section title="Earned badges">
+                <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
+                  {store.listAdminAdventures().map((a) => {
+                    const earned = person.completions.some((c) => c.slug === a.slug);
+                    return (
+                      <div key={a.slug} className="flex flex-col items-center gap-2 text-center">
+                        <Disc
+                          name={a.icon}
+                          art={a.iconAsset}
+                          state={earned ? "done" : "later"}
+                          size="md"
+                        />
+                        <p className="text-xs">{a.title}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Section>
+              <Section title="Itinerary">
+                <ol className="space-y-3">
+                  {person.itinerary.map((slug, i) => {
+                    const a = store.listAdminAdventures().find((x) => x.slug === slug);
+                    return (
+                      a && (
+                        <li key={slug} className="flex items-center gap-3">
+                          <span className="text-xs text-muted-foreground">{i + 1}</span>
+                          <Disc name={a.icon} art={a.iconAsset} state="itinerary" size="sm" />
+                          <span className="text-sm">{a.title}</span>
+                        </li>
+                      )
+                    );
+                  })}
+                </ol>
+                {!person.itinerary.length && (
+                  <p className="text-sm text-muted-foreground">No itinerary stops.</p>
+                )}
+              </Section>
+              <Section title="Activity timeline">
+                <ol className="space-y-4 border-l pl-4">
+                  {store.getPersonActivity(person.id).map((e) => (
+                    <li key={e.id} className="text-sm">
+                      <p>
+                        <span className="font-medium capitalize">{e.kind}</span> ·{" "}
+                        {store.listAdminAdventures().find((a) => a.slug === e.slug)?.title}
+                      </p>
+                      <time className="text-xs text-muted-foreground">
+                        {e.at.slice(0, 10)} · {e.at.slice(11, 16)}
+                      </time>
+                    </li>
+                  ))}
+                </ol>
+              </Section>
+              <Button
+                onClick={() => toast("Nudge drafted: new adventures for Product opened this week")}
+              >
+                <Bell className="size-4" />
+                Send a nudge
+              </Button>
+            </>
+          )}
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+}

@@ -1,0 +1,176 @@
+import { useState } from "react";
+import { store, useStoreState } from "@/store";
+import type { AdminFilters, GroupMetric } from "@/store/adminTypes";
+import { Disc } from "@/components/AdventureIcon";
+import {
+  AdminFiltersBar,
+  Section,
+  Bars,
+  CsvButton,
+  downloadCsv,
+  number,
+  percent,
+  duration,
+  tableClass,
+  useAdminView,
+} from "./AdminCommon";
+export function AdminOverview() {
+  useStoreState();
+  const [filters, setFilters] = useState<AdminFilters>({ days: 60 });
+  const { managerView } = useAdminView();
+  const a = store.getAggregates(managerView ? { ...filters, managerId: "" } : filters);
+  const top = [...a.adventures].sort((x, y) => y.completions - x.completions).slice(0, 10);
+  const kpis = [
+    [
+      "Active employees",
+      `${a.active} / ${a.total}`,
+      `${percent(a.activePercent)} of filtered employees`,
+    ],
+    ["Adventures completed", number(a.completions), "In selected date range"],
+    ["Avg completed / active employee", number(a.average), "Completions ÷ active employees"],
+    ["Completion rate", percent(a.completionRate), `${a.completions} completed / ${a.opens} opens`],
+    ["Itinerary adds", number(a.adds), "Add events in selected date range"],
+    [
+      "Estimated time on platform",
+      duration(a.estimatedMinutes),
+      `${duration(a.medianMinutes)} median / active person · estimated`,
+    ],
+  ];
+  const groupTable = (title: string, rows: GroupMetric[]) => (
+    <Section
+      title={title}
+      action={
+        <CsvButton
+          onClick={() =>
+            downloadCsv(
+              `${title}.csv`,
+              ["Group", "Employees", "Active %", "Completions", "Avg per person"],
+              rows.map((r) => [r.name, r.total, r.activePercent, r.completions, r.average]),
+            )
+          }
+        />
+      }
+    >
+      <div className="overflow-x-auto">
+        <table className={tableClass}>
+          <thead>
+            <tr>
+              <th>{title.endsWith("org") ? "Org" : "Profession"}</th>
+              <th>Employees</th>
+              <th>Active %</th>
+              <th>Completions</th>
+              <th>Avg / person</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.name}>
+                <td className="font-medium">{r.name}</td>
+                <td>{r.total}</td>
+                <td>{percent(r.activePercent)}</td>
+                <td>{r.completions}</td>
+                <td>{number(r.average)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Section>
+  );
+  return (
+    <>
+      <AdminFiltersBar filters={filters} onChange={setFilters} />
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
+        {kpis.map(([label, value, detail]) => (
+          <div key={label} className="rounded-lg border bg-card p-4">
+            <p className="min-h-10 text-xs font-medium text-muted-foreground">{label}</p>
+            <p className="mt-2 text-2xl font-bold tabular-nums" data-kpi={label}>
+              {value}
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground">{detail}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 grid gap-x-10 lg:grid-cols-2">
+        <Section title="Completions per week">
+          <div className="flex h-44 items-end gap-2">
+            {a.weekly.map((w) => (
+              <div key={w.name} className="flex min-w-0 flex-1 flex-col items-center gap-2">
+                <span className="text-xs">{w.value}</span>
+                <svg
+                  viewBox="0 0 40 120"
+                  className="h-28 w-full"
+                  aria-label={`${w.name}: ${w.value} completions`}
+                >
+                  <rect
+                    x="4"
+                    y={120 - (w.value / Math.max(1, ...a.weekly.map((x) => x.value))) * 120}
+                    width="32"
+                    height={(w.value / Math.max(1, ...a.weekly.map((x) => x.value))) * 120}
+                    rx="3"
+                    fill="var(--color-primary)"
+                  />
+                </svg>
+                <span className="text-[10px] text-muted-foreground">{w.name}</span>
+              </div>
+            ))}
+          </div>
+        </Section>
+        <Section title="Top 10 adventures by completions">
+          <Bars
+            data={top.map((x) => ({ name: x.title, value: x.completions, secondary: x.opens }))}
+          />
+        </Section>
+        <Section title="Completions by category">
+          <Bars data={a.categories} color="coral" />
+        </Section>
+        <Section title="Distribution of titles">
+          <Bars data={a.titles} color="info" />
+        </Section>
+        <Section
+          title="Badge distribution"
+          action={
+            <CsvButton
+              onClick={() =>
+                downloadCsv(
+                  "badges.csv",
+                  ["Adventure", "People earned"],
+                  a.adventures.map((x) => [x.title, x.badgeCount]),
+                )
+              }
+            />
+          }
+        >
+          <div className="max-h-96 space-y-3 overflow-y-auto pr-2">
+            {[...a.adventures]
+              .sort((x, y) => y.badgeCount - x.badgeCount)
+              .map((x) => {
+                const art = store.listAdminAdventures().find((ad) => ad.slug === x.slug);
+                return (
+                  <div key={x.slug} className="flex items-center gap-3 border-b pb-2">
+                    {art && (
+                      <Disc
+                        name={art.icon}
+                        art={art.iconAsset}
+                        state={x.badgeCount ? "done" : "later"}
+                        size="sm"
+                      />
+                    )}
+                    <span className="flex-1 text-sm">{x.title}</span>
+                    <span className="text-sm tabular-nums">{x.badgeCount}</span>
+                  </div>
+                );
+              })}
+          </div>
+        </Section>
+        <div className="min-w-0">
+          {groupTable("Activity by org", a.orgs)}
+          {groupTable("Activity by profession", a.professions)}
+        </div>
+      </div>
+      <p className="mt-6 border-t pt-4 text-xs text-muted-foreground">
+        Analytics are for L&D; managers receive aggregates only.
+      </p>
+    </>
+  );
+}

@@ -106,3 +106,28 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 The icon disc state on every surface is derived on the client from existing data: `done` if a completion exists for the person and adventure; else `itinerary` if the slug is in the person's itinerary; else `open` if the adventure's wave is open; else `later`. No new entity fields are needed.
 
 **Adventure `iconAsset` (optional):** path/URL of the adventure's badge art (512px PNG, transparent outside the circle). When absent, the client renders the glyph named by `icon`. Disc state treatments are applied by the client on top of the art; no other new fields.
+
+## Admin analytics and mock contract
+
+Admin currently uses deterministic seeded in-memory analytics: 140 employees and 60 days of activity, fixed reference date 2026-10-22. Admin edits, drafts, waves, announcements and added admins last only for the browser session; they never mutate source Markdown or a backend. Real authorization remains a rebuild requirement, not the client-side demo flag.
+
+### Identity fields from Monday's identity source
+
+Extend Person with email, profession, org, team, managerId, isManager, joinedAt and lastActiveAt. **Org, team and manager must come from Monday's identity source**, with stable identifiers and manager references to employees in that source. Do not infer reporting relationships from names. Titles remain derived from lifetime completions; employee levels, scores and onboarding comfort are never stored or exposed.
+
+### Queries and metric events
+
+- `listPeople(filters)`: employee dimension filters, case-insensitive name/email search, lifetime title filter, inactive >30 days or never active; return current itinerary/completion counts and estimated lifetime session time. Support sorting/pagination in the real build.
+- `getPersonActivity(personId, filters)`: authorized L&D-only dated event timeline of opens, adds and completions.
+- `getAggregates(filters)`: employee dimensions + wave + date bounds; never return employee names in manager reports. Active distinct employees requires `adventure_opened`. Active % denominator includes every matching employee. Completion counts require unique `adventure_completed` person/adventure records. Average completed / active = completed events divided by distinct active employees. Rate = completed events / open events; repeat opens count and this is not a matched funnel. Adds require `itinerary_added`; removals must also be logged for reconstructing itineraries.
+- Weekly buckets, adventure counts, category counts and org/profession tables join events to employee and adventure dimensions; tables use all employees in each group as denominator for average per person and active %. Titles use lifetime completion count; badges use distinct person/adventure completions in range. Real build must decide whether dimension attribution is event-time or current; mock uses current labels/waves.
+- Estimated time requires session events (`session_started`, `session_ended` or activity heartbeats) with sessionId, personId, adventureSlug, startedAt/endedAt and estimated duration. Sum per active employee within the filtered period/wave, then total and median of those sums. Explicitly label all time estimates; use zero-safe divisions and include zero-minute active employees in median. Never claim this measures learning quality.
+- Org/team/manager/profession/last-active attributes require identity synchronization and login/activity events. CSV uses the identical filter/query result as the visible table; employee exports are L&D-only. Manager reports include aggregates only, produced by L&D.
+
+### Admin write operations
+
+L&D-authorized content CRUD with validated slug, Markdown/frontmatter and fixed label lists; new records default to Draft. Upload parses and validates Markdown, never executes embedded content. Set status Open/Scheduled/Draft, assign wave, edit wave dates; validate scheduling. Announcement text/date edits with date-order validation. Add/remove admins through explicit permissions administration and audit logs in the real build; the mock only edits a name list. Draft nudge currently emits a toast; real delivery needs a separate authorized messaging service and audit event. All writes must enforce L&D permissions server-side in the rebuild, including direct URLs, exports and individual employee reads.
+
+### Privacy in Admin views
+
+No per-person scores or levels, onboarding comfort, rankings, leaderboards or streaks. Adventure content levels are labels only and may appear in the directory. Manager view hides names, named manager filters, employee table/drawers and admin names on every tab; aggregates remain available. A real manager account must receive only team-limited aggregates from L&D, not employee data hidden with CSS or client flags. Overview footer: "Analytics are for L&D; managers receive aggregates only."
