@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { titleFor } from "@/lib/titles";
 import { recommend } from "@/lib/recommend";
 import { ADVENTURES, CATEGORIES, getAdventure, matchesProfession, toAdventure } from "@/content/adventures";
-import { toSteps } from "@/lib/adventureSteps";
+import { parseAdventure, toSteps } from "@/lib/adventureSteps";
+import { pickWhatsNext } from "@/lib/whatsNext";
 import { createLocalStore } from "@/store/localStore";
 
 describe("titles", () => {
@@ -44,7 +45,24 @@ describe("adventure steps", () => {
     expect(titles).toContain("Step 1: Spot the slop");
     expect(titles).toContain("Step 4: Compare the two versions");
     expect(titles.some((t) => t.startsWith("Prompt"))).toBe(false);
-    expect(steps.at(-1)?.body).toContain("(/adventures/board-of-advisors)");
+    expect(parseAdventure(getAdventure("de-slop")!.body, ADVENTURES).related?.body).toContain("(/adventures/board-of-advisors)");
+  });
+});
+
+describe("what's next", () => {
+  const all = ["board-of-advisors", "your-ai-identity", "skills-when-how-and-how-well"];
+  it("picks the next undone itinerary adventure", () => {
+    expect(pickWhatsNext("board-of-advisors", all, ["de-slop"], ADVENTURES, "Product Manager")?.adventure.slug).toBe("your-ai-identity");
+  });
+  it("falls back to an open, undone adventure when the itinerary is used up", () => {
+    const r = pickWhatsNext("board-of-advisors", [], ["de-slop"], ADVENTURES, "Product Manager");
+    expect(r?.reason).toBe("suggested");
+    expect(r?.adventure.isOpen).toBe(true);
+    expect(["de-slop", "board-of-advisors"]).not.toContain(r?.adventure.slug);
+  });
+  it("returns null when nothing open is left", () => {
+    const open = ADVENTURES.filter((a) => a.isOpen).map((a) => a.slug);
+    expect(pickWhatsNext("x", [], open, ADVENTURES, "Product Manager")).toBeNull();
   });
 });
 
