@@ -7,13 +7,29 @@ What the frontend mockup implies for a real backend. The mockup's `AdventureStor
 | Entity | Fields | Notes |
 | --- | --- | --- |
 | Person | id, name, firstName, role, isAdmin | From company SSO ("Continue with your monday account"). |
-| Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, outcome, wave, slot, next[], body (Markdown) | Authored as Markdown + frontmatter; editable by admins. |
+| Adventure | slug, icon, title, walkaway (promise), category, levels[], professions[], audience[], tool, effort, outcome, wave (W1-W4), slot, next[], body (Markdown, optional) | Authored as Markdown + frontmatter; editable by admins. Extra authoring fields (emoji, pattern, source) and HTML-comment design notes are stored but never shown. See label values below. |
 | Wave | number, opensOn (date) | W1 open, W2 23 Nov, W3 7 Dec, W4 4 Jan. Adventure is open when today ≥ opensOn. |
 | ItineraryItem | personId, adventureSlug, position | Ordered list per person. |
 | Completion | personId, adventureSlug, completedAt | Unique per (person, adventure). Each completion = one badge. |
 | Title | name, threshold | First Steps 1 · Day Tripper 3 · Frequent Flyer 11 · Globetrotter 20. Derived from completion count, not stored per person. |
 | Announcement | id, text, linkTo, activeFrom, activeTo | One active at a time. |
 | AnnouncementDismissal | personId, announcementId | |
+
+## Label values (enumerations)
+
+| Field | Allowed values |
+| --- | --- |
+| category | Work smarter with AI, Create with AI, Set up your AI, Automate and delegate, Lead with AI |
+| levels | Foundations, Intermediate, Advanced |
+| professions | Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text allowed (filters as "Other") |
+| audience | Managers |
+| tool | Any AI tool, Claude, Agentic coding tool |
+| effort | Quick win, Moderate, Ambitious |
+| outcome | Build something, Learn something, Work differently |
+| wave | W1 (open), W2 (23 Nov), W3 (7 Dec), W4 (4 Jan) |
+| icon | sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance |
+
+Filter semantics: "Everyone" matches every profession filter; the "Managers" filter reads `audience`.
 
 ## Reads and writes per screen
 
@@ -42,13 +58,16 @@ Input: role, AI use today, weekly tools, goal, learning style, comfort. Output: 
 
 | Signal | Rule | Points |
 | --- | --- | --- |
-| Role | in adventure.professions | +3 |
+| Role | named in adventure.professions (Managers: in audience) | +3 |
+| Role | adventure is for "Everyone" (only when not named) | +1 |
 | Goal | maps to category (faster → Work smarter, creating → Create, setup → Set up, automating → Automate and delegate, leading → Lead) | +3 |
 | Comfort | maps to level (new → Foundations, some → Intermediate, daily → Advanced) | +2 |
 | Weekly tools | maps to tool (office → Any AI tool, Claude → Claude, coding → Agentic coding tool); "Any AI tool" always matches | +1 |
 | AI use today | maps to category | +1 |
 | Learning style | maps to effort (one sitting → Quick win, steady → Moderate, big → Ambitious) | +1 |
 | Open now | wave is open | +1 |
+
+Seed for the demo person: completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well`.
 
 Return top 4 when at least 4 score above 0, else top 3. The "why" line never references comfort or level.
 
