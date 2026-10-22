@@ -75,7 +75,7 @@ function Progress() {
           })}
           {Array.from({ length: placeholders }, (_, i) => (
             <div key={i} className="flex flex-col items-center gap-2 text-center">
-              <AdventureIcon name="pin" outline size="lg" />
+              <AdventureIcon name="map-pin" outline size="lg" />
               <span className="text-xs text-muted-foreground">To be announced</span>
             </div>
           ))}
