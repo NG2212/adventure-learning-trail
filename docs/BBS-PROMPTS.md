@@ -123,3 +123,15 @@ Rail items are all clickable; Back/Next at the bottom. The final step of an open
 - Sign-in is not enforced on other routes; it only records that the sample user signed in.
 - The comfort answer only nudges level matching and is never shown or stored.
 - Coming-soon cards can still be added to an itinerary.
+
+## Design fixes (client review 1)
+
+**Logo:** one `MondayLogo` component, shown left of the "AI Adventure" wordmark in the header and above the wordmark on sign-in. Until the official SVG arrives it is a "monday.com" text wordmark in Poppins SemiBold (white on purple, #242424 on light); swapping in the SVG is a change to that component only.
+
+**Icons:** Lucide icons, stroke 1.75, 58% of the disc, centred. Mapping from frontmatter `icon:`: sponge→Eraser, masks→Drama, robot→Bot, scale→Scale, compass→Compass, book→BookOpen, toolbox→Wrench, magnifier→Search, document→FileText, chat→MessageSquare, palette→Palette, calendar→CalendarCheck, id-card→IdCard, map-pin→MapPin, brain→Brain, briefcase→Briefcase, gauge→Gauge, layers→Layers, shield→ShieldCheck, clock→Clock, terminal→Terminal, newspaper→Newspaper, chart→BarChart3, loop→Repeat, network→Network, people→Users, balance→Scale. Unknown names fall back to the category glyph. On cards the disc is large and centred at the top with the title below; on the adventure page it sits left of the title.
+
+**Disc state (one meaning per colour, everywhere: cards, itinerary, progress badges, What's next):** white disc + purple icon + thin purple ring = open, not in itinerary; solid purple + white icon = in my itinerary; solid purple + small lime check badge = done; faded stone + muted icon = opens later. Priority: done > itinerary > open/later. A legend line "Open · In my itinerary · Done · Opens later" sits under the filters on /adventures. No other purple-vs-stone styling carries meaning.
+
+**Itinerary:** the whole stop card opens the adventure; reorder and remove buttons stop propagation.
+
+**Backgrounds:** signed-in pages use a warm surface #FBF9F6 with a sparse fixed pattern of small footprints in the accent colours at ~8% opacity. The adventure reading column sits on a white card. Sign-in is unchanged.
