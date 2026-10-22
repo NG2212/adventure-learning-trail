@@ -31,7 +31,7 @@ function sections(md: string, level: number): { preamble: string; sections: Adve
       if (!fence) fence = marker[1];
       else if (marker[1][0] === fence[0] && marker[1].length >= fence.length) fence = undefined;
     }
-    const hit = !fence && line.match(heading);
+    const hit = fence ? null : line.match(heading);
     if (hit?.[1]) out.push({ heading: hit[1].trim(), body: "" });
     else {
       const section = out.at(-1);
