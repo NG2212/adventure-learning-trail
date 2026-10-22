@@ -5,7 +5,8 @@
  * input (OnboardingAnswers) and output (Recommendation[]) so screens don't change.
  *
  * Scoring per adventure (higher is better):
- *   +3  role matches one of the adventure's professions
+ *   +3  role is named in the adventure's professions ("Managers" checks audience)
+ *   +1  adventure is for "Everyone" (instead of the +3 above)
  *   +3  goal maps to the adventure's category
  *   +2  comfort maps to one of the adventure's levels (comfort is never shown back)
  *   +1  tools used map to the adventure's "works with" tool
@@ -63,7 +64,9 @@ const STYLE_TO_EFFORT: Record<OnboardingAnswers["learningStyle"], Effort> = {
 export function scoreAdventure(a: Adventure, ans: OnboardingAnswers): { score: number; why: string } {
   let score = 0;
   const reasons: string[] = [];
-  if (a.professions.includes(ans.role)) { score += 3; reasons.push(`made for ${ans.role} work`); }
+  const named = ans.role === "Managers" ? a.audience.includes("Managers") : a.professions.includes(ans.role);
+  if (named) { score += 3; reasons.push(ans.role === "Managers" ? "made for people who manage a team" : `made for ${ans.role} work`); }
+  else if (a.professions.includes("Everyone")) score += 1;
   if (a.category === GOAL_TO_CATEGORY[ans.goal]) { score += 3; reasons.push(`matches your goal to ${a.category.toLowerCase()}`); }
   if (a.levels.includes(COMFORT_TO_LEVEL[ans.comfort])) score += 2; // never surfaced in the "why"
   if (a.tool === TOOLS_TO_TOOL[ans.weeklyTools] || a.tool === "Any AI tool") { score += 1; reasons.push(`works with ${a.tool === "Any AI tool" ? "the tools you already use" : a.tool}`); }

@@ -10,6 +10,7 @@ export const CATEGORIES = [
   "Lead with AI",
 ] as const;
 export const LEVELS = ["Foundations", "Intermediate", "Advanced"] as const;
+/** Profession filter chips. "Managers" matches the adventure's `audience`, not `professions`. */
 export const PROFESSIONS = [
   "Customer Facing", "Marketing", "Engineering", "Product", "Design", "HR", "Finance", "Other", "Managers",
 ] as const;
@@ -22,9 +23,21 @@ export type Profession = (typeof PROFESSIONS)[number];
 export type Tool = (typeof TOOLS)[number];
 export type Effort = (typeof EFFORTS)[number];
 
-export type IconName =
-  | "sponge" | "masks" | "toolbox" | "compass" | "chat" | "chart"
-  | "document" | "calendar" | "robot" | "pin" | "lightbulb" | "shield";
+export const ICON_NAMES = [
+  "sponge", "masks", "robot", "scale", "compass", "book", "toolbox", "magnifier", "document",
+  "chat", "palette", "calendar", "id-card", "map-pin", "brain", "briefcase", "gauge", "layers",
+  "shield", "clock", "terminal", "newspaper", "chart", "loop", "network", "people", "balance",
+] as const;
+export type IconName = (typeof ICON_NAMES)[number];
+
+/** Default glyph per category, used when `icon:` is missing or unknown. */
+export const CATEGORY_ICON: Record<Category, IconName> = {
+  "Work smarter with AI": "compass",
+  "Create with AI": "palette",
+  "Set up your AI": "toolbox",
+  "Automate and delegate": "robot",
+  "Lead with AI": "people",
+};
 
 /** Waves: W1 open now, later waves open on a fixed date. */
 export const WAVES: Record<number, { label: string; opensOn: string | null }> = {
@@ -34,7 +47,7 @@ export const WAVES: Record<number, { label: string; opensOn: string | null }> = 
   4: { label: "Opens 4 Jan", opensOn: "4 Jan" },
 };
 
-/** Total adventures planned for the programme (30 per the brief). */
+/** Total adventures planned for the programme. */
 export const TOTAL_ADVENTURES = 30;
 
 export interface Adventure {
@@ -44,7 +57,8 @@ export interface Adventure {
   walkaway: string;
   category: Category;
   levels: Level[];
-  professions: Profession[];
+  /** Raw values from content: "Everyone", enumerated professions, or free text (e.g. "Advanced users"). */
+  professions: string[];
   audience: string[];
   tool: Tool;
   effort: Effort;
@@ -56,19 +70,11 @@ export interface Adventure {
   isOpen: boolean;
 }
 
-const CATEGORY_ICON: Record<Category, IconName> = {
-  "Work smarter with AI": "lightbulb",
-  "Create with AI": "document",
-  "Set up your AI": "toolbox",
-  "Automate and delegate": "robot",
-  "Lead with AI": "compass",
-};
-
-/** Raw frontmatter as written in the Markdown files. */
+/** Raw frontmatter as written in the Markdown files. Extra fields (emoji, pattern, source) are ignored. */
 interface Frontmatter {
-  slug?: string; emoji?: string; icon?: IconName; title?: string; walkaway?: string;
-  category?: Category; levels?: Level[]; professions?: Profession[]; audience?: string[];
-  tool?: Tool; effort?: Effort; outcome?: string; wave?: number; slot?: number; next?: string[];
+  slug?: string; icon?: string; title?: string; walkaway?: string;
+  category?: Category; levels?: Level[]; professions?: string[]; audience?: string[];
+  tool?: Tool; effort?: Effort; outcome?: string; wave?: number | string; slot?: number; next?: string[];
 }
 
 function splitFrontmatter(raw: string): { data: Frontmatter; body: string } {
@@ -77,14 +83,23 @@ function splitFrontmatter(raw: string): { data: Frontmatter; body: string } {
   return { data: (parseYaml(match[1] ?? "") ?? {}) as Frontmatter, body: (match[2] ?? "").trim() };
 }
 
-function toAdventure(raw: string): Adventure {
+/** "W2" or 2 -> 2. */
+export function parseWave(w: number | string | undefined): number {
+  const n = Number(String(w ?? 1).replace(/^W/i, ""));
+  return Number.isFinite(n) && n > 0 ? n : 1;
+}
+
+function isIconName(x: unknown): x is IconName {
+  return typeof x === "string" && (ICON_NAMES as readonly string[]).includes(x);
+}
+
+export function toAdventure(raw: string): Adventure {
   const { data, body } = splitFrontmatter(raw);
   const category = data.category ?? "Work smarter with AI";
-  const wave = Number(data.wave ?? 1);
-  // `emoji` is intentionally ignored in the UI.
+  const wave = parseWave(data.wave);
   return {
     slug: String(data.slug),
-    icon: data.icon ?? CATEGORY_ICON[category],
+    icon: isIconName(data.icon) ? data.icon : CATEGORY_ICON[category],
     title: String(data.title),
     walkaway: String(data.walkaway ?? ""),
     category,
@@ -102,6 +117,19 @@ function toAdventure(raw: string): Adventure {
   };
 }
 
+/**
+ * Does an adventure match a profession chip?
+ * - "Everyone" matches every chip.
+ * - "Managers" matches when audience includes "Managers".
+ * - "Other" also matches free-text values outside the enumeration (e.g. "Advanced users").
+ */
+export function matchesProfession(a: Adventure, chip: Profession): boolean {
+  if (chip === "Managers") return a.audience.includes("Managers") || a.professions.includes("Managers");
+  if (a.professions.includes("Everyone") || a.professions.includes(chip)) return true;
+  if (chip === "Other") return a.professions.some((p) => !(PROFESSIONS as readonly string[]).includes(p));
+  return false;
+}
+
 const files = import.meta.glob("./adventures/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
 
 export const ADVENTURES: Adventure[] = Object.values(files)
@@ -112,8 +140,14 @@ export function getAdventure(slug: string): Adventure | undefined {
   return ADVENTURES.find((a) => a.slug === slug);
 }
 
-/** Body to render: the real Markdown when open, a short notice otherwise. */
+/**
+ * Body to render:
+ * - open with a body: the real Markdown
+ * - open without a body: a short "Content coming" page
+ * - not open: "This adventure opens on <date>"
+ */
 export function adventureBody(a: Adventure): string {
   if (a.isOpen && a.body) return a.body;
+  if (a.isOpen) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
   return `## This adventure opens on ${WAVES[a.wave]?.opensOn ?? "a later date"}\n\n${a.walkaway}`;
 }

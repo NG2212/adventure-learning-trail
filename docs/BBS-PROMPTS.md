@@ -13,13 +13,26 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 
 ## 1. Content index
 
-**Build:** Adventures are Markdown files with YAML frontmatter (slug, emoji, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, outcome, wave, slot, next[]). At startup, parse all files into an index sorted by wave then slot. `emoji` is ignored in the UI. Icon = `icon:` or a fallback per category. Wave 1 is open; wave 2 opens 23 Nov, wave 3 opens 7 Dec, wave 4 opens 4 Jan. Non-open adventures render the body "This adventure opens on <date>" plus the walkaway.
+**Build:** 30 adventures, one Markdown file each, YAML frontmatter: slug, icon, title, walkaway (the one-line promise), category, levels[], professions[], audience[], tool, effort, outcome, wave (`W1`-`W4`), slot, next[]. Extra fields (`emoji`, `pattern`, `source`) are ignored. At startup, parse all files into an index sorted by wave then slot.
 
-**Accept:** adding a file makes it appear in the grid, progress badges and onboarding pool with no code change.
+Label values:
+- category: Work smarter with AI · Create with AI · Set up your AI · Automate and delegate · Lead with AI
+- levels: Foundations · Intermediate · Advanced
+- professions: Everyone (matches every profession filter), Customer Facing, Marketing, Engineering, Product, Design, HR, Finance, or free text (e.g. "Advanced users"), which matches the "Other" chip
+- audience: Managers (matched by the "Managers" chip under Profession)
+- tool ("Works with"): Any AI tool · Claude · Agentic coding tool
+- effort: Quick win · Moderate · Ambitious
+- outcome: Build something · Learn something · Work differently
+- wave: W1 open now · W2 opens 23 Nov · W3 opens 7 Dec · W4 opens 4 Jan
+- icon: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown or missing → the category's default glyph (Work smarter: compass, Create: palette, Set up: toolbox, Automate: robot, Lead: people). Glyphs are flat SVG, one or two colours.
+
+Bodies: `de-slop` and `board-of-advisors` have full bodies. Other W1 adventures render a short "Content coming" page from the promise; W2-W4 render "This adventure opens on <date>" plus the promise.
+
+**Accept:** /adventures shows 30 cards; adding a file makes it appear in the grid, progress badges and onboarding pool with no code change.
 
 ## 2. Store
 
-**Build:** One interface: getPerson, getItinerary, addToItinerary, removeFromItinerary, reorderItinerary(slug, up|down), markComplete(slug) → {count, newTitle, alreadyDone}, getCompletions, getTitle, dismissAnnouncement (plus signIn, isSignedIn, isAnnouncementDismissed, subscribe, getSnapshot for the UI). One localStorage implementation. Seed: Noa Levi, Product Manager, admin; 1 completed adventure; 3 in itinerary.
+**Build:** One interface: getPerson, getItinerary, addToItinerary, removeFromItinerary, reorderItinerary(slug, up|down), markComplete(slug) → {count, newTitle, alreadyDone}, getCompletions, getTitle, dismissAnnouncement (plus signIn, isSignedIn, isAnnouncementDismissed, subscribe, getSnapshot for the UI). One localStorage implementation. Seed: Noa Levi, Product Manager, admin; completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well` in that order (Board of Advisors is Next up). Progress shows 1 of 30, First Steps.
 
 **Accept:** refresh keeps changes; clearing storage restores the seed; marking an adventure complete twice does not double count.
 
@@ -51,7 +64,9 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 
 **Build:** Toggle-chip filter rows: Category, Level, Profession, Works with, Effort, Status (Open / Coming soon / Done). Chips within a row are OR, rows are AND. Card grid grouped by the five categories. Card: icon disc (purple open, stone not), status chip, title, walkaway, label chips, itinerary toggle. Coming-soon cards show "Opens 23 Nov" style text and do not navigate; their itinerary toggle still works. Empty-filter state shows footprints and "Clear filters".
 
-**Accept:** filtering "Status: Done" shows only the seeded completion.
+Profession chips: an adventure for "Everyone" matches every chip; "Managers" matches `audience: [Managers]`; "Other" also matches free-text professions.
+
+**Accept:** filtering "Status: Done" shows only De-Slop Your Work; "Status: Coming soon" shows 19.
 
 ## 8. My itinerary (`/itinerary`)
 
@@ -61,13 +76,20 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 
 ## 9. Adventure page (`/adventures/:slug`)
 
-**Build:** Header with icon, title, walkaway, label chips and itinerary toggle. Body split at each `## ` heading into steps; left rail lists steps (all clickable, current highlighted); Back/Next buttons at the bottom. Markdown tables render as bordered tables; every fenced code block renders as a Prompt window (stone panel, "Prompt" label, 15px text, Copy button that shows "Copied"). The final step shows "Mark this adventure complete"; clicking records the completion and opens a celebration (lime glow disc, footprints stepping in, new count, new title if a threshold was crossed, Share → share card preview, Back to my itinerary). Unknown slug → not found.
+**Build:** Header with icon, title, walkaway, label chips and itinerary toggle. Body rules:
+- HTML comments (design notes) are stripped and never rendered. The `# ` title and tagline before the first `## ` are dropped (the header covers them).
+- Each `## ` heading is a rail step. Inside "Core task", each `### Step N` is its own step, indented in the rail; text before the first `### Step` stays as a "Core task" step only if non-empty.
+- `### Prompt N:` headings and their fenced blocks stay inside their step. Every fenced block is a Prompt window (stone panel, "Prompt" label, 15px text, Copy → "Copied").
+- Blockquotes starting with "**In Claude:**" render as a small purple-tinted callout; other blockquotes as a stone example box.
+- Tables render as bordered tables.
+- In "Where to next", bold names matching an adventure title (case-insensitive, optional trailing colon) become links to that adventure.
+Rail items are all clickable; Back/Next at the bottom. The final step of an open adventure shows "Mark this adventure complete" → celebration (lime glow, footprints, new count, new title if crossed, Share → share card). Unknown slug → not found.
 
-**Accept:** the Meeting Sponge page has 9 steps, one table, two Prompt windows; completing it again is not possible once done.
+**Accept:** /adventures/de-slop has 12 steps including "Step 1: Spot the slop" … "Step 4: Compare the two versions", no design notes, In Claude callouts, and Where to next links to Your AI Identity, Board of Advisors and Skills. /adventures/board-of-advisors has 11 steps.
 
 ## 10. Progress (`/progress`)
 
-**Build:** "Adventures completed: N of 30". Four titles on a horizontal line (First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20) with current highlighted yellow and "Next title: X at T completed (k to go)". Badge grid of 30: real adventures in full colour when earned, faint dashed outline when not; remaining planned slots as "To be announced" outlines. Share card preview (purple panel: name, title, count, footprints).
+**Build:** "Adventures completed: N of 30". Four titles on a horizontal line (First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20) with current highlighted yellow and "Next title: X at T completed (k to go)". Badge grid of all 30 adventures: full colour when earned, faint dashed outline when not. Share card preview (purple panel: name, title, count, footprints).
 
 **Accept:** no comparison with other people anywhere.
 
@@ -81,7 +103,10 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 
 - Onboarding questions are single choice (simplest version).
 - Before any completion the title shows "Ready to set off".
-- "N of 30" uses a fixed planned total of 30; badge slots beyond the seeded adventures show as "To be announced".
+- "N of 30" uses a fixed planned total of 30 (now equal to the content count).
+- Free-text professions ("Advanced users", "People with sophisticated AI systems", "advanced Claude Code users") match the "Other" chip.
+- In recommendations, a named profession scores +3 and "Everyone" scores +1, so specific adventures rank above general ones.
+- Adventure `next:` slugs are kept but not used for links; Where to next links come from title matches (some `next` slugs are provisional).
 - "Next up" skips stops that are not open yet.
 - Sign-in is not enforced on other routes; it only records that the sample user signed in.
 - The comfort answer only nudges level matching and is never shown or stored.

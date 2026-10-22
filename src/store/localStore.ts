@@ -1,14 +1,14 @@
 import { titleFor } from "@/lib/titles";
 import type { AdventureStore, StoreState } from "./types";
 
-const STORAGE_KEY = "ai-adventure-state-v1";
+const STORAGE_KEY = "ai-adventure-state-v2";
 
 /** Seed: Noa has completed 1 adventure and has 3 in her itinerary. */
 export const SEED_STATE: StoreState = {
   signedIn: false,
   person: { id: "noa-levi", name: "Noa Levi", firstName: "Noa", role: "Product Manager", isAdmin: true },
-  itinerary: ["meeting-sponge", "two-faced-pitch", "weekly-chart"],
-  completions: [{ slug: "meeting-sponge", completedAt: "2026-10-15" }],
+  itinerary: ["board-of-advisors", "your-ai-identity", "skills-when-how-and-how-well"],
+  completions: [{ slug: "de-slop", completedAt: "2026-10-15" }],
   announcementDismissed: false,
 };
 
