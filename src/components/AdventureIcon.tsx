@@ -68,7 +68,7 @@ export function AdventureIcon({ adventure, size = "md", className }: { adventure
 export function DiscLegend({ className }: { className?: string }) {
   const items: [DiscState, string][] = [["open", "Open"], ["itinerary", "In my itinerary"], ["done", "Done"], ["later", "Opens later"]];
   return (
-    <p className={cn("flex flex-wrap items-center gap-x-2 gap-y-2 text-xs text-muted-foreground", className)}>
+    <div className={cn("flex flex-wrap items-center gap-x-2 gap-y-2 text-xs text-muted-foreground", className)}>
       {items.map(([s, label], i) => (
         <span key={s} className="inline-flex items-center gap-1.5">
           {i > 0 && <span aria-hidden className="mr-1">·</span>}
@@ -76,6 +76,6 @@ export function DiscLegend({ className }: { className?: string }) {
           {label}
         </span>
       ))}
-    </p>
+    </div>
   );
 }
