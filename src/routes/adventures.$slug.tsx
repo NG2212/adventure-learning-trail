@@ -236,7 +236,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           </nav>
         )}
         <div className="min-w-0">
-          <article aria-label="Adventure section" className="bg-card p-6 sm:p-8">
+          <article aria-label="Adventure section" className="adventure-step-content bg-card p-6 sm:p-8">
             {step?.title && <h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl">{step.title}</h2>}
             <div className="max-w-3xl">
               <StepBody body={step?.body ?? ""} goFurther={step?.goFurther ?? false} />

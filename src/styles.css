@@ -111,6 +111,11 @@
   top: var(--app-header-height, 0px);
 }
 
+/* Short steps still need enough document height to align their heading. */
+.adventure-step-content {
+  min-height: calc(100dvh - var(--app-header-height, 0px));
+}
+
 @media (min-width: 768px) {
   .adventure-step-rail {
     top: calc(var(--app-header-height, 0px) + 16px);
