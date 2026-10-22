@@ -141,3 +141,39 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 **Assets:** `src/assets/icons/<slug>.png`, one per adventure (30 files), 512x512, transparent outside the circle. Each is a purple disc (#9450FD) with a white glyph and one lime accent, cut from five 3x2 generated sheets in reading order: sheet 1 your-ai-identity, understanding-ai-agents, de-slop, use-case-discovery, board-of-advisors, hard-conversations; sheet 2 claude-in-your-docs-sheets-and-slides, skills-when-how-and-how-well, your-own-chief-of-staff, creating-apps-with-ai-done-right, making-decisions-with-ai, research-done-right; sheet 3 build-a-personal-brain-for-your-ai, automation-done-right, managing-with-ai, personalising-claude-code, voice-of-customers-and-employees, your-ai-taste-test; sheet 4 token-smartness, designing-with-ai-results-you-actually-like, planning-with-ai, advanced-skill-patterns, audit-and-improve-your-ai-system, your-team-s-ai-blueprint; sheet 5 the-daily-dispatch, ai-as-your-tutor, redesign-your-week-with-ai, the-loop, agent-teams-and-orchestration, build-your-professional-partner. Adventures are matched to art by slug at startup; a slug without a PNG falls back to the Lucide glyph for its `icon:`.
 
 **State treatments on the art (same disc-state rule):** in my itinerary = art as-is; done = art as-is + small lime check badge; open, not in itinerary = an SVG colour-matrix filter that swaps purple and white (white disc, purple glyph; the lime accent also turns purple) plus a thin purple ring; opens later = art greyscale at 45% opacity. The legend uses the same art treatments.
+
+## 11a. Admin data and shared shell
+
+**Build:** `/admin` redirects to `/admin/overview`; five routed tabs share the existing app header and a Programme admin heading. Admin nav and area are visible only for the demo admin. One Manager view switch applies across all tabs: hide employee tab, employee drawers, names in manager filters and the admin list. This is presentation-only demo privacy, not real authorization. Default is L&D view. Reuse existing colours, badge art, form controls and toast system.
+
+**Mock data:** deterministic seeded generator (`20261022`) with a fixed reference date, 22 Oct 2026. Exactly 140 employees, 28 managers from that list, eight professions and orgs, 2–4 teams per org. Employee: id, name, email, profession, org, team, managerId, isManager (Managers tag), joinedAt, lastActiveAt (null = never), derived title, completions with timestamps, ordered itinerary, estimatedMinutes. Exactly 21 never active; approximately 20% have no completions, most have 1–4, a small tail has 8–12. Almost all completions are W1; a rare later-wave completion represents mock early access. Names and activity are invented except Noa's requested seed: Stay Original completed; Board of Advisors → Your AI Identity → Skills itinerary. Store reads reflect Noa's current local completion/itinerary state.
+
+Activity is a timestamped event ledger: id, personId, slug, kind (opened / added / completed), at; estimated sessions: personId, at, estimatedMinutes. No personal level, score, onboarding answer or comfort field exists. Admin reads (`listPeople`, `getPersonActivity`, `getAggregates`, directory/waves/announcement/admin reads) and every write go through AdventureStore. Admin writes remain in-memory for this session; refresh restores deterministic data. Never call external services.
+
+## 11b. Admin Overview (`/admin/overview`)
+
+**Build:** org, team, manager, profession, wave and last 7/30/60-day filters. Manager view omits named manager options. Six KPI tiles; weekly completion bars, top 10 adventure bars (completed and opens), five category bars, title distribution including Not started, sorted badge distribution with art, org and profession tables. CSV exports for group and badge tables use the currently displayed data, generated client-side. Empty results show zeros safely. Footer: "Analytics are for L&D; managers receive aggregates only."
+
+**Aggregate definitions:** apply employee org/team/manager/profession filters to the population; apply date and wave filters to events. Active = distinct employees with an open event in range; active % = active / all matching employees, including never active. Completed = completion events (unique person/adventure); average = completed / active. Completion rate = completed / open events, not a conversion funnel; repeat opens count. Adds = add events. Estimated time = estimated session minutes for active employees in range; median = median summed minutes per active employee, including zeros. Under a wave filter, session time is attributed to that wave's adventures. Title distribution uses lifetime completion-derived titles within the filtered population (not a score or personal level). Badge distribution counts distinct employees completing each adventure in the selected range. Weekly buckets cover the chosen interval; the final bucket may be partial. Group tables use matching employees for their active % and average completion denominators. Zero denominators yield zero. Wave/category attribution uses current directory labels in this mock.
+
+**Accept:** default shows 140 employees; choosing Product changes totals; Manager view shows aggregates and no employee names. CSV agrees with each displayed table.
+
+## 11c. Admin Employees (`/admin/employees`)
+
+**Build:** search name/email, org/team/manager/profession/title filters, inactive-for-30+-days checkbox (includes never active). Sort every table column; name, email, org, team, manager, profession, derived title, completed count, itinerary count, last active, estimated time. Export filtered and sorted rows. Row click/Enter opens a drawer with all badge art (earned highlighted), ordered itinerary and dated opens/adds/completions. Send a nudge displays only "Nudge drafted: new adventures for Product opened this week"; no message is sent. Manager mode hides the entire table and any open drawer.
+
+**Accept:** searching Noa finds Noa Levi; her drawer reads First Steps, one completion and three stops.
+
+## 11d. Admin Adventures (`/admin/adventures`)
+
+**Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
+
+**Accept:** Add adventure saves a Draft visible in the directory with zero opens/completions; refresh returns to 30. No files or real content are published.
+
+## 11e. Admin Waves & announcements (`/admin/waves`)
+
+**Build:** four wave sections, dates and each assigned adventure with a wave dropdown. Save date edits in the mock store. Announcement text, show-from and show-until controls; validate date order. Saving updates the global banner when the reference date is within the interval (existing dismissal still applies). No drag operation required.
+
+## 11f. Admin Settings (`/admin/settings`)
+
+**Build:** names of current L&D admins; choose an employee to Add admin (mock list only, no permissions change). Hide names and this editor in Manager view. Read-only thresholds: First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20, with note that these are configurable in the real build.
