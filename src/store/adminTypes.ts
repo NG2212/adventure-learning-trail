@@ -18,7 +18,7 @@ export interface AdminPerson {
  title: string; completions: Completion[]; itinerary: string[]; estimatedMinutes: number;
 }
 export interface ActivityEvent { id: string; personId: string; slug: string; kind: 'opened' | 'added' | 'completed'; at: string; }
-export interface AdminSession { personId: string; at: string; estimatedMinutes: number; }
+export interface AdminSession { personId: string; slug: string; at: string; estimatedMinutes: number; }
 export interface AdminFilters { org?: string; team?: string; managerId?: string; profession?: string; wave?: string; days?: number; title?: string; inactive?: boolean; search?: string; }
 export interface AdventureMetric { slug: string; title: string; opens: number; completions: number; rate: number; badgeCount: number; }
 export interface GroupMetric { name: string; total: number; active: number; activePercent: number; completions: number; average: number; }

@@ -44,14 +44,14 @@ export function generateAdminDataset(seed = 20261022) {
    addEvent(person.id,a.slug,'opened',iso(ago+1.2));
    addEvent(person.id,a.slug,'added',iso(ago+0.8));
    addEvent(person.id,a.slug,'completed',at);
-   sessions.push({personId:person.id,at,estimatedMinutes:12+Math.floor(rng()*43)});
+   sessions.push({personId:person.id,slug:a.slug,at,estimatedMinutes:12+Math.floor(rng()*43)});
   });
   for(let k=0;k<3+Math.floor(rng()*8);k++) {
    const a = ADVENTURES[Math.floor(rng()*(rng()<0.85?open.length:ADVENTURES.length))];
    if (!a) continue;
    const at = iso(Math.pow(rng(),2)*59);
    addEvent(person.id,a.slug,'opened',at);
-   sessions.push({personId:person.id,at,estimatedMinutes:4+Math.floor(rng()*29)});
+   sessions.push({personId:person.id,slug:a.slug,at,estimatedMinutes:4+Math.floor(rng()*29)});
   }
   person.itinerary = ADVENTURES.filter(a=>!person.completions.some(c=>c.slug===a.slug)).slice(offset%8,(offset%8)+2+Math.floor(rng()*3)).map(a=>a.slug);
   person.itinerary.forEach(slug=>addEvent(person.id,slug,'added',iso(Math.pow(rng(),2)*58)));
@@ -67,7 +67,7 @@ export function generateAdminDataset(seed = 20261022) {
   addEvent(noa.id,'de-slop','completed','2026-10-15T09:32:00Z');
   noa.itinerary.forEach(slug=>addEvent(noa.id,slug,'added','2026-10-16T11:00:00Z'));
   addEvent(noa.id,'board-of-advisors','opened',noa.lastActiveAt);
-  sessions.push({personId:noa.id,at:'2026-10-15T09:00:00Z',estimatedMinutes:32},{personId:noa.id,at:noa.lastActiveAt,estimatedMinutes:15});
+  sessions.push({personId:noa.id,slug:'de-slop',at:'2026-10-15T09:00:00Z',estimatedMinutes:32},{personId:noa.id,slug:'board-of-advisors',at:noa.lastActiveAt,estimatedMinutes:15});
  }
  return { people, events, sessions };
 }
@@ -94,8 +94,7 @@ export function createAdminMock(getState: () => StoreState, notify: () => void):
   getAggregates(f={}) {
    const people=matchingPeople(f),events=filteredEvents(f),opens=events.filter(e=>e.kind==='opened'),done=events.filter(e=>e.kind==='completed');
    const active=new Set(opens.map(e=>e.personId));
-   const ids=new Set(people.map(p=>p.id));
-   const minutes = people.filter(p=>active.has(p.id)).map(p=>data.sessions.filter(s=>s.personId===p.id&&Date.parse(s.at)>=epoch-(f.days??60)*day&&Date.parse(s.at)<=epoch&&(!f.wave||opens.some(e=>e.personId===p.id&&e.at===s.at))).reduce((sum,s)=>sum+s.estimatedMinutes,0)).sort((a,b)=>a-b);
+   const minutes = people.filter(p=>active.has(p.id)).map(p=>data.sessions.filter(s=>s.personId===p.id&&Date.parse(s.at)>=epoch-(f.days??60)*day&&Date.parse(s.at)<=epoch&&(!f.wave||adventures.find(a=>a.slug===s.slug)?.wave===Number(f.wave))).reduce((sum,s)=>sum+s.estimatedMinutes,0)).sort((a,b)=>a-b);
    const group=(names:string[],field:'org'|'profession'):GroupMetric[]=>names.map(name=>{const ps=people.filter(p=>p[field]===name),gs=new Set(ps.map(p=>p.id)),completed=done.filter(e=>gs.has(e.personId)).length,act=ps.filter(p=>active.has(p.id)).length;return {name,total:ps.length,active:act,activePercent:ps.length?act/ps.length*100:0,completions:completed,average:ps.length?completed/ps.length:0};});
    const metricAdventures=adventures.filter(a=>!f.wave||a.wave===Number(f.wave)).map(a=>{const o=opens.filter(e=>e.slug===a.slug).length,c=done.filter(e=>e.slug===a.slug).length;return {slug:a.slug,title:a.title,opens:o,completions:c,rate:o?c/o*100:0,badgeCount:new Set(done.filter(e=>e.slug===a.slug).map(e=>e.personId)).size};});
    const weeks=Math.ceil((f.days??60)/7);

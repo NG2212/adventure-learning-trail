@@ -14,7 +14,7 @@ export function AdminEmployees(){
  const people=store.listPeople(filters),all=store.listPeople();
  const manager=(p:AdminPerson)=>all.find(x=>x.id===p.managerId)?.name??'—';
  const fields=[['name','Name'],['email','Email'],['org','Org'],['team','Team'],['manager','Manager'],['profession','Profession'],['title','Title'],['completed','Completed'],['itinerary','In itinerary'],['lastActiveAt','Last active'],['estimatedMinutes','Estimated time']];
- const value=(p:AdminPerson,key:string):string|number=>key==='completed'?p.completions.length:key==='itinerary'?p.itinerary.length:key==='manager'?manager(p):String(p[key as keyof AdminPerson]??'');
+ const value=(p:AdminPerson,key:string):string|number=>key==='completed'?p.completions.length:key==='itinerary'?p.itinerary.length:key==='manager'?manager(p):key==='estimatedMinutes'?p.estimatedMinutes:String(p[key as keyof AdminPerson]??'');
  const sorted=[...people].sort((a,b)=>{const x=value(a,sort.key),y=value(b,sort.key);return (typeof x==='number'&&typeof y==='number'?x-y:String(x).localeCompare(String(y)))*(sort.ascending?1:-1);});
  const person=all.find(p=>p.id===selected);
  if(managerView)return <div className="border-y py-8"><h2 className="text-xl">Employee details are private to L&D</h2><p className="mt-2 text-muted-foreground">Managers receive team aggregates only.</p></div>;

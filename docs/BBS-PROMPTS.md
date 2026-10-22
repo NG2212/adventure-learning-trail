@@ -104,7 +104,7 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 
 ## 11. Admin (`/admin`)
 
-**Build:** "Coming soon" placeholder listing: Adventure directory (labels and waves), Add or edit an adventure (Markdown + labels form), Analytics and CSV export.
+**Build:** five routed Admin tabs with deterministic activity data, filtering and exports, employee drawers, a session-only adventure editor, waves/announcements and settings. See sections 11a–11f below.
 
 ---
 
