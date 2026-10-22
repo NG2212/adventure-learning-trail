@@ -1,7 +1,7 @@
 ---
 slug: de-slop
-emoji: 🧽
 icon: sponge
+emoji: 🧽
 title: "Stay Original with AI"
 walkaway: "Original, creative work with AI: one real piece remade with your thinking in it, and your standards saved where your AI reads them"
 category: Work smarter with AI
@@ -42,7 +42,7 @@ Open items
 
 The AI industry has a name for low-quality AI output: slop. Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
 
-At work, slop is the long, smooth, generic document sent with little real thought, so the reader has to do the thinking instead.
+At work, slop is output that is generic and unoriginal, often too long or simply uninteresting, sent with little real thought, so the reader has to do the thinking instead. It can be a document, an email, a deck, a message, a plan.
 
 This adventure keeps the speed of AI and puts your own thinking back in charge, on one real piece of your work.
 
@@ -76,7 +76,7 @@ Good pieces to work on: a customer follow-up, a QBR summary, release notes, an i
 
 ## Step 2: See it in real work
 
-### Prompt 1: Tell slop from intentional work
+### Prompt: Tell slop from intentional work
 
 **What this does:** the AI writes two versions of a piece you produce often, you guess which one is slop, then it grades both and a recent piece of yours.
 
@@ -98,18 +98,20 @@ Reveal, then grade both in a table: question, yes or no, the line that shows it.
 Finally, ask for a recent piece of mine and grade it the same way, without rewriting it.
 ```
 
-Save the AI's assessment of your piece. You will compare against it at the end of Step 3.
+Save the AI's assessment of your piece. You will compare against it at the end of Step 3, with the Compare prompt.
 
 ## Step 3: Remake one piece without it
 
-Take a real work item you are about to produce, or the piece you checked in Step 2, and do it again the intentional way: think first, look at several directions, then check before you send.
+Take a real work item you are about to produce, or the piece you checked in Step 2, and do it again the intentional way.
 
-### Prompt 2: Think first, then directions
+**Think first, without AI.** Close the chat. On paper or in a note, write what you want this piece to achieve, what you believe about it, what worries you, and who will read it. Messy is fine. This is the thinking that slop skips, and it is the input for everything that follows.
 
-**What this does:** the AI interviews you, writes a short brief for your approval, and offers three directions before it drafts.
+### Prompt: Turn your thinking into a brief and directions
+
+**What this does:** the AI interviews you about what you wrote down, turns it into a short brief for your approval, and offers three directions before it drafts anything.
 
 ```
-Help me do one piece of work the intentional way: my thinking first, then options, then a draft. Ask one question at a time.
+Help me do one piece of work the intentional way: my own thinking first, then options, then a draft. I have already written down my thoughts; I will paste or dictate them. Ask one question at a time about anything missing.
 
 1. What is this piece, and what should it achieve?
 2. What is my view, and how confident am I (as a percentage)? If I am under 70% sure, argue the strongest alternative first.
@@ -123,7 +125,7 @@ Then give me three genuinely different directions, each with a title, the core i
 
 When a draft misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three". Specific feedback gets a better draft than "make it better".
 
-### Prompt 3: Check before you send
+### Prompt: Check before you send
 
 **What this does:** checks your draft on the six questions and shows you the problems to fix.
 
@@ -138,7 +140,7 @@ Check this draft before I send it. Answer each question yes or no, with one line
 Show the problems only. Rewrite only if I ask.
 ```
 
-### Prompt 4: Compare
+### Prompt: Compare
 
 **What this does:** compares your original and your remake and names the change that mattered most.
 
@@ -150,7 +152,7 @@ You are done when the remake passes the name test.
 
 ## Step 4: Make it a habit
 
-### Prompt 5: Your standards
+### Prompt: Your standards
 
 **What this does:** the AI learns your taste from real examples and writes one page of standards for your work.
 

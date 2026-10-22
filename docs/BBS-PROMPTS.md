@@ -24,9 +24,9 @@ Label values:
 - effort: Quick win · Moderate · Ambitious
 - outcome: Build something · Learn something · Work differently
 - wave: W1 open now · W2 opens 23 Nov · W3 opens 7 Dec · W4 opens 4 Jan
-- icon: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown or missing → the category's default glyph (Work smarter: compass, Create: palette, Set up: toolbox, Automate: robot, Lead: people). Glyphs are flat SVG, one or two colours.
+- icon: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown or missing → the category's default glyph (Work smarter: compass, Create: palette, Set up: toolbox, Automate: robot, Lead: people). Discs use badge PNG art with Lucide fallback (see Badge art below).
 
-Bodies: `de-slop`, `board-of-advisors`, `skills-when-how-and-how-well` and `your-own-chief-of-staff` have full bodies (all in the v2 structure: The trail, Before you start, Step 1-4, Go further, Proof of work, Related adventures). Other W1 adventures render a short "Content coming" page from the promise; W2-W4 render "This adventure opens on <date>" plus the promise.
+Bodies: `de-slop`, `board-of-advisors`, `skills-when-how-and-how-well` and `your-own-chief-of-staff` have full bodies (all in the revised structure: The trail, Before you start, Step 1-4, Go further, Proof of work, Related adventures). Other W1 adventures render a short "Content coming" page from the promise; W2-W4 render "This adventure opens on <date>" plus the promise.
 
 **Accept:** /adventures shows 30 cards; adding a file makes it appear in the grid, progress badges and onboarding pool with no code change.
 
@@ -76,25 +76,22 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 
 ## 9. Adventure page (`/adventures/:slug`)
 
-**Build:** Header with icon, title, walkaway, label chips and itinerary toggle. Body rules:
-- HTML comments (design notes) are stripped and never rendered. The `# ` title and tagline before the first `## ` are dropped (the header covers them).
-- Each `## ` heading is a rail step. Inside "Core task", each `### Step N` is its own step, indented in the rail; text before the first `### Step` stays as a "Core task" step only if non-empty.
-- `### Prompt N:` headings and their fenced blocks stay inside their step. Every fenced block is a Prompt window (stone panel, "Prompt" label, 15px text, Copy → "Copied").
-- Paragraphs or blockquotes starting with a bold tool label ("**In Claude:**", "**In Claude Cowork:**", "**In Claude Code:**", "**In monday agents:**", "**In other AI tools:**") render as a small purple-tinted callout; other blockquotes as a stone example box.
-- Tables render as bordered tables.
-- `## The trail` (numbered list) is a rail step, and its items also show as a compact numbered list in a stone panel at the top of the `Step 1` section.
-- Newer files use top-level `## Step N:` sections (with `### Prompt N:` inside); older files nest `### Step N` under `## Core task`.
-- `## Go further`: each `### ` sub-heading or bold-led paragraph is a collapsible card, collapsed by default. Bold labels ending in a colon ("**What this does:**") stay inside the card.
-- `<details><summary>...</summary>...</details>` renders as a collapsible with the summary as its label; fenced blocks inside are still Prompt windows with Copy.
-- Older headings (`## Layers`, `## Side quest`, `## Shape of the adventure`) remain ordinary steps.
-- "Related adventures" (older files: "Where to next") is the last rail step, a small link list; the What's next panel follows it. Bold names matching an adventure title (case-insensitive, optional trailing colon) become links.
-Rail items are all clickable; Back/Next at the bottom. The final step of an open adventure shows "Mark this adventure complete" → celebration (lime glow, footprints, new count, new title if crossed, Share → share card). Unknown slug → not found.
+**Build:** Persistent page head with disc, title, promise, label chips and itinerary toggle. Below it, render Why this adventure as paragraphs, The trail as a compact numbered list in a stone panel, and Before you start as its authored short lines. These sections appear once, above the rail, never inside a step.
 
-**Accept:** /adventures/de-slop rail: Why this adventure, The trail, Before you start, Step 1-4, Go further, Proof of work, Related adventures; the trail list sits atop Step 1; the Slop Audit is a collapsible holding a Prompt window; no design notes. /adventures/board-of-advisors has 11 steps.
+- Strip HTML design comments; drop the Markdown title/tagline before the first section.
+- The rail contains only `## Step N: …` sections, in file order, plus a final Go further item when authored. Use the complete heading verbatim: no separate renderer numbering. Four core steps plus Go further = five items. Clicking the rail or Next/Back switches only these sections.
+- `### Prompt: <name>` titles the next Prompt window, without added numbering. Keep **What this does:** above the window. Every fenced block is a Prompt window with Copy; untitled fences use “Prompt”. Older numbered prompt headings still supply a name without their number.
+- Bold-led Claude, Claude Cowork, Claude Code, monday agents and other AI tools paragraphs/blockquotes remain small tool callouts. Tables remain tables; HTML details remain collapsible with nested Prompt windows.
+- Go further consists of collapsed cards for sub-headings or bold-led paragraphs. Labels ending in a colon are not card headings; fenced text and nested details do not split cards.
+- Proof of work appears beneath the last **core** step (Step 4 in these files), highlighted and followed by Mark this adventure complete, before Next. It is not a rail item and does not move to Go further. Completing opens the existing celebration; repeating completion is idempotent.
+- Footer beneath the reading section: computed What's next, then Related adventures (older title: Where to next) as a small link list. Neither enters the rail. Matching bold adventure titles become links.
+- No trail injection in any step. Older Core task / nested Step headings are supported; bodies without numbered steps show a single reading page, retaining older headings and proof/footer without a rail.
+
+**Accept:** All four full-content adventures show the three head sections once, Step 1–4 + Go further in the rail, named Prompt windows, proof and completion under Step 4, and What's next followed by related links below. Stay Original's Step 3 keeps the think-without-AI instruction before the first prompt. No design notes leak.
 
 ## 9a. What's next panel
 
-**Build:** On the last step of every adventure page, and inside the completion celebration, show a "What's next" panel chosen by rule: (1) the first itinerary adventure not done and not the current one, labelled "Next in your itinerary"; (2) else one open, undone adventure picked by the onboarding scoring using the person's role (neutral defaults for other answers; ties fall back to lowest slot), labelled "Suggested for you"; (3) else "Browse all adventures". Never static text.
+**Build:** In the footer beneath the steps on every adventure page, and inside the completion celebration, show a "What's next" panel chosen by rule: (1) the first itinerary adventure not done and not the current one, labelled "Next in your itinerary"; (2) else one open, undone adventure picked by the onboarding scoring using the person's role (neutral defaults for other answers; ties fall back to lowest slot), labelled "Suggested for you"; (3) else "Browse all adventures". Never static text.
 
 **Accept:** As Noa, /adventures/board-of-advisors ends with What's next = Your AI Identity; after marking it complete, the celebration shows Your AI Identity too.
 

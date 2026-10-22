@@ -85,7 +85,7 @@ Every skill also has a direction. Knowing yours shapes the whole design:
 
 A sample of finished work shows the AI the result. How you get there (what you check, what you leave out, what went wrong last time) is something only you know, so the AI interviews you before it writes anything.
 
-### Prompt 1: Write the skill brief
+### Prompt: Write the skill brief
 
 **What this does:** the AI interviews you about one recurring task and writes a one-page skill brief for your approval.
 
@@ -107,7 +107,7 @@ If the brief sounds generic, say exactly what is missing: "enterprise customers 
 
 ## Step 3: Build and install it
 
-Every good skill has these parts. Prompt 2 builds all of them.
+Every good skill has these parts. The next prompt builds all of them.
 
 | Part | What goes there |
 | --- | --- |
@@ -119,9 +119,9 @@ Every good skill has these parts. Prompt 2 builds all of them.
 | **Verification** | What to check before showing the result, and what to do when information is missing |
 | **Gotchas** | The mistakes this task invites, written as clear rules. Often the most valuable part. |
 
-### Prompt 2: Write the skill file
+### Prompt: Write the skill file
 
-**What this does:** in the same chat, turns the skill brief you approved in Prompt 1 into a complete skill file ready to save, plus three test requests.
+**What this does:** in the same chat, turns the skill brief you approved in Step 2 into a complete skill file ready to save, plus three test requests.
 
 ```
 Use the skill brief I approved in this chat. First check Claude's current documentation for the skill file format (SKILL.md) and follow it. Then write the complete skill file:
@@ -154,7 +154,7 @@ Test in a fresh chat, so Claude works from the skill alone. When a test disappoi
 | **Missing format** | Structure, length and tone change from run to run | Add a literal template |
 | **Wrong gotchas** | The skill fails exactly where it matters most | Turn the last real failure into a rule |
 
-### Prompt 3: Test and improve once
+### Prompt: Test and improve once
 
 **What this does:** runs the skill on two real requests, reviews each run against the five failure modes, and proposes one improved version.
 

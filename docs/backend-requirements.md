@@ -53,7 +53,7 @@ Computed by the platform, never authored text. Reads: own itinerary, own complet
 2. Else one open adventure the person has not done, chosen by the recommendation scoring (role from the profile; other answers neutral, since onboarding answers are not stored). Ties and zero scores fall back to the first open adventure by slot.
 3. Else a link to All adventures.
 
-The Markdown "Related adventures" section (older files: "Where to next") is the last step, a small link list under the file's own heading; the panel follows it.
+The adventure footer shows the computed panel first, then Markdown "Related adventures" (older files: "Where to next") as a small link list under the file's own heading. Neither is a rail step. Page-head sections, numbered steps, optional Go further, and Proof of work are derived from the Markdown; no new layout fields are required.
 
 ## Events to log
 

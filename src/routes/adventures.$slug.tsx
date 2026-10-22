@@ -12,8 +12,9 @@ import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
 import { Celebration } from "@/components/Celebration";
 import { cn } from "@/lib/utils";
-import { parseAdventure, splitDetails, splitGoFurther } from "@/lib/adventureSteps";
+import { parseAdventure, splitDetails, splitGoFurther, splitPromptWindows } from "@/lib/adventureSteps";
 import { WhatsNextPanel } from "@/components/WhatsNext";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/adventures/$slug")({
   loader: ({ params }) => {
@@ -40,6 +41,8 @@ export const Route = createFileRoute("/adventures/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -105,7 +108,11 @@ function Md({ text }: { text: string }) {
     <>
       {splitDetails(text).map((seg, i) =>
         seg.kind === "md" ? (
-          <ReactMarkdown key={i} remarkPlugins={[remarkGfm]} components={MD}>{seg.text}</ReactMarkdown>
+          <div key={i}>
+             {splitPromptWindows(seg.text).map((part, j) => part.kind === "prompt"
+               ? <PromptWindow key={j} title={part.title} text={part.text} />
+               : <ReactMarkdown key={j} remarkPlugins={[remarkGfm]} components={MD}>{part.text}</ReactMarkdown>)}
+           </div>
         ) : (
           <Collapsible key={i} title={seg.summary}><Md text={seg.text} /></Collapsible>
         ),
@@ -139,21 +146,24 @@ function StepBody({ body, goFurther }: { body: string; goFurther?: boolean }) {
 
 function AdventurePage() {
   const { slug } = Route.useLoaderData();
-  const adventure = getAdventure(slug)!;
+  const adventure = getAdventure(slug);
+  if (!adventure) throw notFound();
+  return <AdventureContent key={slug} adventure={adventure} />;
+}
+
+function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typeof getAdventure>> }) {
+  const slug = adventure.slug;
   const { completions } = useStoreState();
-  const { steps, trail } = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
+  const parsed = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
+  const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const [current, setCurrent] = useState(0);
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
-  const step = steps[current] ?? steps[0] ?? { title: "", body: "", isSubstep: false };
-  const isLast = current === steps.length - 1;
+  const step = steps[current] ?? steps[0];
+  const showProof = current === lastCoreStep;
 
-  // Block bodies: effects must return nothing (newer browsers make scrollTo return a Promise,
-  // which React would then try to call as a cleanup -> "destroy is not a function").
   useEffect(() => {
-    setCurrent(0);
-  }, [slug]);
-  useEffect(() => {
+    // Keep the persistent introduction visible and never return scrollTo's value as effect cleanup.
     window.scrollTo({ top: 0 });
   }, [current]);
 
@@ -161,7 +171,7 @@ function AdventurePage() {
     <div className="mx-auto max-w-6xl px-5 py-10">
       <header className="flex flex-col gap-5 rounded-3xl bg-primary-soft p-6 sm:flex-row sm:items-center sm:p-8">
         <AdventureIcon adventure={adventure} size="xl" />
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <div className="mb-2 flex gap-2">
             {done && <Chip tone="success">Done</Chip>}
             {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
@@ -170,83 +180,73 @@ function AdventurePage() {
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
           <LabelChips adventure={adventure} className="mt-4" />
         </div>
-        <ItineraryToggle slug={adventure.slug} className="self-start bg-background" />
+        <ItineraryToggle slug={slug} className="self-start bg-background" />
       </header>
 
-      <div className="mt-10 grid gap-10 md:grid-cols-[240px_1fr]">
-        <nav aria-label="Steps" className="md:sticky md:top-6 md:self-start">
-          <ol className="flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
-            {steps.map((s, i) => (
-              <li key={`${i}-${s.title}`}>
-                <button
-                  onClick={() => setCurrent(i)}
-                  className={cn(
-                    "w-full whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
-                    s.isSubstep && "md:pl-8",
-                    i === current ? "bg-primary-soft font-semibold text-primary md:border-primary md:bg-transparent" : "text-muted-foreground hover:text-foreground md:border-transparent",
-                  )}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ol>
-        </nav>
+      {introduction.length > 0 && (
+        <div aria-label="Adventure introduction" className="mt-8 space-y-6 bg-card px-6 py-6 sm:px-8">
+          {introduction.map((section) => (
+            <section key={section.heading} className={cn("max-w-3xl", /^the trail$/i.test(section.heading) && "rounded-2xl bg-stone px-5 py-4")}>
+              <h2 className="mb-2 text-xl">{section.heading}</h2>
+              <Md text={section.body} />
+            </section>
+          ))}
+        </div>
+      )}
 
-        <article className="min-w-0 rounded-3xl bg-card p-6 shadow-soft sm:p-8">
-          <p className="text-sm font-medium text-muted-foreground">Step {current + 1} of {steps.length}</p>
-          <h2 className="mt-1 mb-4 text-2xl sm:text-3xl">{step.title}</h2>
-          <div className="max-w-3xl">
-            {/^step 1\b/i.test(step.title) && trail.length > 0 && (
-              <div className="mb-6 rounded-2xl bg-stone p-5">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">The trail</p>
-                <ol className="list-decimal space-y-1 pl-5 text-sm">
-                  {trail.map((t, i) => <li key={i}><ReactMarkdown components={{ p: ({ children }) => <>{children}</> }}>{t}</ReactMarkdown></li>)}
-                </ol>
+      <div className={cn("mt-8 grid grid-cols-[minmax(0,1fr)] gap-8", hasNumberedSteps && "md:grid-cols-[240px_minmax(0,1fr)]")}>
+        {hasNumberedSteps && (
+          <nav aria-label="Steps" className="min-w-0 md:sticky md:top-6 md:self-start">
+            <ol className="flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
+              {steps.map((s, i) => (
+                <li key={`${i}-${s.title}`}>
+                  <Button variant="ghost" onClick={() => setCurrent(i)} aria-current={i === current ? "step" : undefined}
+                    className={cn("h-auto w-full justify-start whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
+                      i === current ? "bg-primary-soft font-semibold text-primary md:border-primary md:bg-transparent" : "text-muted-foreground hover:text-foreground md:border-transparent")}>
+                    {s.title}
+                  </Button>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+        <div className="min-w-0">
+          <article aria-label="Adventure section" className="bg-card p-6 sm:p-8">
+            {step?.title && <h2 className="mb-4 text-2xl sm:text-3xl">{step.title}</h2>}
+            <div className="max-w-3xl">
+              <StepBody body={step?.body ?? ""} goFurther={step?.goFurther ?? false} />
+            </div>
+
+            {showProof && (
+              <div className="mt-8">
+                {proof && <section aria-label="Proof of work" className="rounded-2xl border-l-4 border-primary bg-primary-soft p-5">
+                  <h2 className="text-xl">Proof of work</h2>
+                  <Md text={proof.body} />
+                </section>}
+                {adventure.isOpen && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
+                  onClick={() => setCelebration(store.markComplete(slug))}>
+                  {done && <Check className="size-4" />}
+                  Mark this adventure complete
+                </Button>}
+                {done && adventure.isOpen && <p className="mt-2 flex items-center gap-2 text-sm text-success"><Check className="size-4" />You completed this adventure. Badge earned.</p>}
               </div>
             )}
-            <StepBody body={step.body} goFurther={step.goFurther ?? false} />
-          </div>
 
-          {isLast && adventure.isOpen && (
-            <div className="mt-10 rounded-3xl bg-muted p-6">
-              {done ? (
-                <p className="flex items-center gap-2 font-semibold text-success"><Check className="size-5" /> You completed this adventure. Badge earned.</p>
-              ) : (
-                <>
-                  <p className="font-semibold">Done the proof of work?</p>
-                  <button
-                    onClick={() => setCelebration(store.markComplete(slug))}
-                    className="mt-3 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground"
-                  >
-                    Mark this adventure complete
-                  </button>
-                </>
-              )}
+            <div className="mt-8 flex justify-between gap-3 border-t pt-6">
+              {current > 0 ? <Button variant="outline" onClick={() => setCurrent(current - 1)} className="rounded-full px-5"><ArrowLeft />Back</Button>
+                : <Button variant="ghost" asChild><Link to="/adventures"><ArrowLeft />All adventures</Link></Button>}
+              {current < steps.length - 1 && <Button onClick={() => setCurrent(current + 1)} className="rounded-full px-5">Next<ArrowRight /></Button>}
             </div>
-          )}
-
-          {isLast && (
-            <div className="mt-10 max-w-3xl">
-              <WhatsNextPanel currentSlug={slug} />
-            </div>
-          )}
-
-          <div className="mt-10 flex justify-between border-t pt-6">
-            {current > 0 ? (
-              <button onClick={() => setCurrent(current - 1)} className="inline-flex items-center gap-1.5 rounded-full border px-5 py-2.5 font-semibold">
-                <ArrowLeft className="size-4" /> Back
-              </button>
-            ) : <Link to="/adventures" className="inline-flex items-center gap-1.5 px-2 py-2.5 text-sm font-semibold text-muted-foreground"><ArrowLeft className="size-4" /> All adventures</Link>}
-            {!isLast && (
-              <button onClick={() => setCurrent(current + 1)} className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 font-semibold text-primary-foreground">
-                Next <ArrowRight className="size-4" />
-              </button>
-            )}
-          </div>
-        </article>
+          </article>
+          <footer aria-label="Adventure next destinations" className="mt-8 bg-card p-6 sm:p-8">
+            <WhatsNextPanel currentSlug={slug} />
+            {related && <section className="mt-6 max-w-3xl border-t pt-5 text-sm">
+              <h2 className="text-lg">{related.heading}</h2>
+              <Md text={related.body} />
+            </section>}
+          </footer>
+        </div>
       </div>
-
       <Celebration result={celebration} adventureTitle={adventure.title} slug={slug} onClose={() => setCelebration(null)} />
     </div>
   );
