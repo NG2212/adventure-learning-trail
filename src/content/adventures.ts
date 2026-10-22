@@ -64,32 +64,39 @@ const CATEGORY_ICON: Record<Category, IconName> = {
   "Lead with AI": "compass",
 };
 
-function splitFrontmatter(raw: string): { data: Record<string, unknown>; body: string } {
+/** Raw frontmatter as written in the Markdown files. */
+interface Frontmatter {
+  slug?: string; emoji?: string; icon?: IconName; title?: string; walkaway?: string;
+  category?: Category; levels?: Level[]; professions?: Profession[]; audience?: string[];
+  tool?: Tool; effort?: Effort; outcome?: string; wave?: number; slot?: number; next?: string[];
+}
+
+function splitFrontmatter(raw: string): { data: Frontmatter; body: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, body: raw };
-  return { data: (parseYaml(match[1]) ?? {}) as Record<string, unknown>, body: match[2].trim() };
+  return { data: (parseYaml(match[1] ?? "") ?? {}) as Frontmatter, body: (match[2] ?? "").trim() };
 }
 
 function toAdventure(raw: string): Adventure {
   const { data, body } = splitFrontmatter(raw);
-  const category = data.category as Category;
+  const category = data.category ?? "Work smarter with AI";
   const wave = Number(data.wave ?? 1);
   // `emoji` is intentionally ignored in the UI.
   return {
     slug: String(data.slug),
-    icon: (data.icon as IconName) ?? CATEGORY_ICON[category] ?? "pin",
+    icon: data.icon ?? CATEGORY_ICON[category],
     title: String(data.title),
     walkaway: String(data.walkaway ?? ""),
     category,
-    levels: (data.levels as Level[]) ?? [],
-    professions: (data.professions as Profession[]) ?? [],
-    audience: (data.audience as string[]) ?? [],
-    tool: (data.tool as Tool) ?? "Any AI tool",
-    effort: (data.effort as Effort) ?? "Moderate",
+    levels: data.levels ?? [],
+    professions: data.professions ?? [],
+    audience: data.audience ?? [],
+    tool: data.tool ?? "Any AI tool",
+    effort: data.effort ?? "Moderate",
     outcome: String(data.outcome ?? ""),
     wave,
     slot: Number(data.slot ?? 0),
-    next: (data.next as string[]) ?? [],
+    next: data.next ?? [],
     body,
     isOpen: wave === 1,
   };
