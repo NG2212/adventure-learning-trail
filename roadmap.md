@@ -3,3 +3,7 @@
 - [x] Update documentation and parser regression tests; verify all four pages and the single-page fallback.
 - [x] Align step changes beneath the sticky header and keep desktop/mobile rails visible.
 - [x] Update scrolling documentation and verify rail plus Next/Back on desktop and mobile.
+- [ ] Seed 140 employees and 60 days of deterministic activity; add Admin store reads and session-only writes.
+- [ ] Build Overview and Employees with filters, aggregates, CSV exports and employee drawer; enforce Manager privacy.
+- [ ] Build adventure directory/editor, waves/announcements and settings mock tabs.
+- [ ] Document Admin data and metrics; test rules and verify the requested Admin flows.
