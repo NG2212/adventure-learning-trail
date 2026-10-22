@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/adventures/$slug")({
   validateSearch: (search: Record<string, unknown>): { preview?: boolean } =>
-    search.preview === true || search.preview === "1" || search.preview === "true" ? { preview: true } : {},
+    [true, "1", "true"].includes(search["preview"] as never) ? { preview: true } : {},
   loader: ({ params }) => {
     const adventure = getAdventure(params.slug);
     if (!adventure) throw notFound();
