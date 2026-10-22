@@ -6,9 +6,10 @@ import { useStoreState } from "@/store";
 import { titleFor } from "@/lib/titles";
 import { FootprintShape, trail } from "./Footprints";
 import { ShareCard } from "./ShareCard";
+import { WhatsNextPanel } from "./WhatsNext";
 
 /** Completion celebration: lime glow, footprints stepping in, count, new title. */
-export function Celebration({ result, adventureTitle, onClose }: { result: CompletionResult | null; adventureTitle: string; onClose: () => void }) {
+export function Celebration({ result, adventureTitle, slug, onClose }: { result: CompletionResult | null; adventureTitle: string; slug: string; onClose: () => void }) {
   const [sharing, setSharing] = useState(false);
   const { person } = useStoreState();
   if (!result) return null;
@@ -44,6 +45,7 @@ export function Celebration({ result, adventureTitle, onClose }: { result: Compl
             {result.newTitle && (
               <p className="mx-auto rounded-full bg-sunny px-4 py-1.5 text-sm font-semibold">New title: {result.newTitle}</p>
             )}
+            <WhatsNextPanel currentSlug={slug} onNavigate={onClose} />
             <div className="mt-2 flex flex-wrap justify-center gap-3">
               <button onClick={() => setSharing(true)} className="rounded-full bg-primary px-5 py-2.5 font-semibold text-primary-foreground">Share</button>
               <Link to="/itinerary" className="rounded-full border border-primary px-5 py-2.5 font-semibold text-primary">Back to my itinerary</Link>

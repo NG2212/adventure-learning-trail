@@ -88,3 +88,14 @@ export function recommend(adventures: Adventure[], ans: OnboardingAnswers): Reco
 function capitalise(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
+/**
+ * Answers used when no onboarding answers exist (they are never stored).
+ * Only the person's role is known; the other answers are neutral defaults.
+ */
+export function defaultAnswersFor(role: string): OnboardingAnswers {
+  const r = role.toLowerCase();
+  const PROFS: Profession[] = ["Customer Facing", "Marketing", "Engineering", "Product", "Design", "HR", "Finance"];
+  const hit = PROFS.find((p) => r.includes(p.toLowerCase()));
+  return { role: hit ?? "Other", aiUseToday: "writing", weeklyTools: "office", goal: "productivity", learningStyle: "steady", comfort: "some" };
+}

@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 import { ADVENTURES, adventureBody, getAdventure, WAVES } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
@@ -12,7 +12,8 @@ import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
 import { Celebration } from "@/components/Celebration";
 import { cn } from "@/lib/utils";
-import { toSteps } from "@/lib/adventureSteps";
+import { parseAdventure, splitDetails, splitGoFurther } from "@/lib/adventureSteps";
+import { WhatsNextPanel } from "@/components/WhatsNext";
 
 export const Route = createFileRoute("/adventures/$slug")({
   loader: ({ params }) => {
@@ -80,15 +81,52 @@ const MD: Components = {
   td: ({ children }) => <td className="border-t px-4 py-3">{children}</td>,
 };
 
+function Md({ text }: { text: string }) {
+  return (
+    <>
+      {splitDetails(text).map((seg, i) =>
+        seg.kind === "md" ? (
+          <ReactMarkdown key={i} remarkPlugins={[remarkGfm]} components={MD}>{seg.text}</ReactMarkdown>
+        ) : (
+          <Collapsible key={i} title={seg.summary}><Md text={seg.text} /></Collapsible>
+        ),
+      )}
+    </>
+  );
+}
+
+function Collapsible({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <details className="group my-4 rounded-2xl border bg-background">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-semibold">
+        {title}
+        <ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="border-t px-5 pb-3">{children}</div>
+    </details>
+  );
+}
+
+function StepBody({ body, goFurther }: { body: string; goFurther?: boolean }) {
+  if (!goFurther) return <Md text={body} />;
+  const { intro, cards } = splitGoFurther(body);
+  return (
+    <>
+      {intro && <Md text={intro} />}
+      {cards.map((c, i) => <Collapsible key={i} title={c.title}><Md text={c.body} /></Collapsible>)}
+    </>
+  );
+}
+
 function AdventurePage() {
   const { slug } = Route.useLoaderData();
   const adventure = getAdventure(slug)!;
   const { completions } = useStoreState();
-  const steps = useMemo(() => toSteps(adventureBody(adventure), ADVENTURES), [adventure]);
+  const { steps, trail, related } = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
   const [current, setCurrent] = useState(0);
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
-  const step = steps[current] ?? steps[0] ?? { title: "", body: "" };
+  const step = steps[current] ?? steps[0] ?? { title: "", body: "", isSubstep: false };
   const isLast = current === steps.length - 1;
 
   useEffect(() => setCurrent(0), [slug]);
@@ -134,7 +172,15 @@ function AdventurePage() {
           <p className="text-sm font-medium text-muted-foreground">Step {current + 1} of {steps.length}</p>
           <h2 className="mt-1 mb-4 text-2xl sm:text-3xl">{step.title}</h2>
           <div className="max-w-3xl">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} components={MD}>{step.body}</ReactMarkdown>
+            {current === 0 && trail.length > 0 && (
+              <div className="mb-6 rounded-2xl bg-stone p-5">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">The trail</p>
+                <ol className="list-decimal space-y-1 pl-5 text-sm">
+                  {trail.map((t, i) => <li key={i}><ReactMarkdown components={{ p: ({ children }) => <>{children}</> }}>{t}</ReactMarkdown></li>)}
+                </ol>
+              </div>
+            )}
+            <StepBody body={step.body} goFurther={step.goFurther ?? false} />
           </div>
 
           {isLast && adventure.isOpen && (
@@ -155,6 +201,18 @@ function AdventurePage() {
             </div>
           )}
 
+          {isLast && (
+            <div className="mt-10 max-w-3xl">
+              <WhatsNextPanel currentSlug={slug} />
+              {related && (
+                <div className="mt-6 text-sm">
+                  <h3 className="mb-1 text-base font-semibold">{related.heading}</h3>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={MD}>{related.body}</ReactMarkdown>
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="mt-10 flex justify-between border-t pt-6">
             {current > 0 ? (
               <button onClick={() => setCurrent(current - 1)} className="inline-flex items-center gap-1.5 rounded-full border px-5 py-2.5 font-semibold">
@@ -170,7 +228,7 @@ function AdventurePage() {
         </article>
       </div>
 
-      <Celebration result={celebration} adventureTitle={adventure.title} onClose={() => setCelebration(null)} />
+      <Celebration result={celebration} adventureTitle={adventure.title} slug={slug} onClose={() => setCelebration(null)} />
     </div>
   );
 }
