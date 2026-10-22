@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { FileUp, Pencil, Plus, Save } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Eye, FileUp, Pencil, Plus, Save } from "lucide-react";
 import { parse as parseYaml } from "yaml";
 import { toast } from "sonner";
 import { store, useStoreState } from "@/store";
@@ -11,6 +12,7 @@ import {
   EFFORTS,
   ICON_NAMES,
   toAdventure,
+  getAdventure,
 } from "@/content/adventures";
 import type { AdminAdventure, AdminStatus } from "@/store/adminTypes";
 import { Disc } from "@/components/AdventureIcon";
@@ -255,6 +257,14 @@ export function AdminAdventures() {
                       <Pencil className="size-3" />
                       Edit
                     </Button>
+                    {getAdventure(a.slug) && (
+                      <Button variant="ghost" size="sm" asChild>
+                        <Link to="/adventures/$slug" params={{ slug: a.slug }} search={{ preview: true }}>
+                          <Eye className="size-3" />
+                          Preview
+                        </Link>
+                      </Button>
+                    )}
                   </td>
                 </tr>
               );

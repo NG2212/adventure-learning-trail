@@ -152,12 +152,12 @@ export function getAdventure(slug: string): Adventure | undefined {
 
 /**
  * Body to render:
- * - open with a body: the real Markdown
+ * - open with a body, or an admin preview of a scheduled one: the real Markdown
  * - open without a body: a short "Content coming" page
- * - not open: "This adventure opens on <date>"
+ * - not open: "This adventure opens on <date>" (the body stays loaded for admin preview)
  */
-export function adventureBody(a: Adventure): string {
-  if (a.isOpen && a.body) return a.body;
+export function adventureBody(a: Adventure, adminPreview = false): string {
+  if ((a.isOpen || adminPreview) && a.body) return a.body;
   if (a.isOpen) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
   return `## This adventure opens on ${WAVES[a.wave]?.opensOn ?? "a later date"}\n\n${a.walkaway}`;
 }

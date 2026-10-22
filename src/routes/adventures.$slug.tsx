@@ -17,6 +17,8 @@ import { WhatsNextPanel } from "@/components/WhatsNext";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/adventures/$slug")({
+  validateSearch: (search: Record<string, unknown>): { preview?: boolean } =>
+    search.preview === true || search.preview === "1" || search.preview === "true" ? { preview: true } : {},
   loader: ({ params }) => {
     const adventure = getAdventure(params.slug);
     if (!adventure) throw notFound();
@@ -153,8 +155,11 @@ function AdventurePage() {
 
 function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typeof getAdventure>> }) {
   const slug = adventure.slug;
-  const { completions } = useStoreState();
-  const parsed = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
+  const { completions, person } = useStoreState();
+  const { preview: previewRequested } = Route.useSearch();
+  // Admin-only preview of a scheduled adventure; everyone else sees the opens-on page.
+  const preview = !adventure.isOpen && !!previewRequested && person.isAdmin;
+  const parsed = useMemo(() => parseAdventure(adventureBody(adventure, preview), ADVENTURES), [adventure, preview]);
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const [current, setCurrent] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -205,6 +210,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           <div className="mb-2 flex gap-2">
             {done && <Chip tone="success">Done</Chip>}
             {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
+            {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>
           <h1 className="text-3xl sm:text-4xl">{adventure.title}</h1>
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
