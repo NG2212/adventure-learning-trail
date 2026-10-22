@@ -15,6 +15,12 @@ import { Route as ItineraryRouteImport } from './routes/itinerary'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAdventuresRouteImport } from './routes/admin.adventures'
+import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
+import { Route as AdminOverviewRouteImport } from './routes/admin.overview'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminWavesRouteImport } from './routes/admin.waves'
 import { Route as AdventuresIndexRouteImport } from './routes/adventures.index'
 import { Route as AdventuresSlugRouteImport } from './routes/adventures.$slug'
 
@@ -48,6 +54,36 @@ const WelcomeRoute = WelcomeRouteImport.update({
   path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAdventuresRoute = AdminAdventuresRouteImport.update({
+  id: '/adventures',
+  path: '/adventures',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOverviewRoute = AdminOverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWavesRoute = AdminWavesRouteImport.update({
+  id: '/waves',
+  path: '/waves',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdventuresIndexRoute = AdventuresIndexRouteImport.update({
   id: '/adventures/',
   path: '/adventures/',
@@ -61,33 +97,50 @@ const AdventuresSlugRoute = AdventuresSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/itinerary': typeof ItineraryRoute
   '/onboarding': typeof OnboardingRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
+  '/admin/adventures': typeof AdminAdventuresRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/overview': typeof AdminOverviewRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/waves': typeof AdminWavesRoute
   '/adventures/$slug': typeof AdventuresSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/adventures/': typeof AdventuresIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/itinerary': typeof ItineraryRoute
   '/onboarding': typeof OnboardingRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
+  '/admin/adventures': typeof AdminAdventuresRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/overview': typeof AdminOverviewRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/waves': typeof AdminWavesRoute
   '/adventures/$slug': typeof AdventuresSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/adventures': typeof AdventuresIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/itinerary': typeof ItineraryRoute
   '/onboarding': typeof OnboardingRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
+  '/admin/adventures': typeof AdminAdventuresRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/overview': typeof AdminOverviewRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/waves': typeof AdminWavesRoute
   '/adventures/$slug': typeof AdventuresSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/adventures/': typeof AdventuresIndexRoute
 }
 export interface FileRouteTypes {
@@ -99,17 +152,28 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/progress'
     | '/welcome'
+    | '/admin/adventures'
+    | '/admin/employees'
+    | '/admin/overview'
+    | '/admin/settings'
+    | '/admin/waves'
     | '/adventures/$slug'
+    | '/admin/'
     | '/adventures/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/admin'
     | '/itinerary'
     | '/onboarding'
     | '/progress'
     | '/welcome'
+    | '/admin/adventures'
+    | '/admin/employees'
+    | '/admin/overview'
+    | '/admin/settings'
+    | '/admin/waves'
     | '/adventures/$slug'
+    | '/admin'
     | '/adventures'
   id:
     | '__root__'
@@ -119,13 +183,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/progress'
     | '/welcome'
+    | '/admin/adventures'
+    | '/admin/employees'
+    | '/admin/overview'
+    | '/admin/settings'
+    | '/admin/waves'
     | '/adventures/$slug'
+    | '/admin/'
     | '/adventures/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ItineraryRoute: typeof ItineraryRoute
   OnboardingRoute: typeof OnboardingRoute
   ProgressRoute: typeof ProgressRoute
@@ -178,6 +248,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/adventures': {
+      id: '/admin/adventures'
+      path: '/adventures'
+      fullPath: '/admin/adventures'
+      preLoaderRoute: typeof AdminAdventuresRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/overview': {
+      id: '/admin/overview'
+      path: '/overview'
+      fullPath: '/admin/overview'
+      preLoaderRoute: typeof AdminOverviewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/waves': {
+      id: '/admin/waves'
+      path: '/waves'
+      fullPath: '/admin/waves'
+      preLoaderRoute: typeof AdminWavesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/adventures/': {
       id: '/adventures/'
       path: '/adventures'
@@ -195,9 +307,29 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminAdventuresRoute: typeof AdminAdventuresRoute
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminOverviewRoute: typeof AdminOverviewRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminWavesRoute: typeof AdminWavesRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAdventuresRoute: AdminAdventuresRoute,
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminOverviewRoute: AdminOverviewRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminWavesRoute: AdminWavesRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   ItineraryRoute: ItineraryRoute,
   OnboardingRoute: OnboardingRoute,
   ProgressRoute: ProgressRoute,

@@ -6,6 +6,7 @@ import { titleFor } from "@/lib/titles";
 import { Footprint, FootprintShape } from "./Footprints";
 import { MondayLogo } from "./MondayLogo";
 import { DiscFilters } from "./AdventureIcon";
+import { ADMIN_TODAY } from '@/store/adminTypes';
 
 const NAV = [
   { to: "/itinerary", label: "My itinerary" },
@@ -28,6 +29,8 @@ export function AppHeader() {
   const state = useStoreState();
   const count = state.completions.length;
   const title = titleFor(count);
+  const announcement = store.getAdminAnnouncement();
+  const announcementVisible = ADMIN_TODAY >= announcement.showFrom && ADMIN_TODAY <= announcement.showUntil;
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -68,11 +71,11 @@ export function AppHeader() {
           </div>
         </div>
       </header>
-      {!state.announcementDismissed && (
+      {!state.announcementDismissed && announcementVisible && (
         <div className="bg-primary-soft">
           <div className="mx-auto flex max-w-6xl items-center gap-3 px-5 py-2.5 text-sm">
             <span className="size-2 rounded-full bg-lime ring-2 ring-primary" />
-            <span>New on Monday: two new adventures opened.</span>
+            <span>{announcement.text}</span>
             <Link to="/adventures" className="font-semibold text-primary underline-offset-4 hover:underline">See them</Link>
             <button aria-label="Dismiss announcement" onClick={() => store.dismissAnnouncement()} className="ml-auto rounded-full p-1 hover:bg-background">
               <X className="size-4" />
