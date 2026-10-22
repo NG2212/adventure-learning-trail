@@ -1,5 +1,6 @@
 import { titleFor } from "@/lib/titles";
 import type { AdventureStore, StoreState } from "./types";
+import { createAdminMock } from './adminMock';
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
@@ -40,6 +41,10 @@ export function createLocalStore(): AdventureStore {
   }
 
   return {
+    ...createAdminMock(read, () => {
+      state = { ...read() };
+      listeners.forEach((listener) => listener());
+    }),
     getPerson: () => read().person,
     isSignedIn: () => read().signedIn,
     signIn: () => write({ ...read(), signedIn: true }),

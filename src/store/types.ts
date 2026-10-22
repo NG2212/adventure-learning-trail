@@ -1,4 +1,5 @@
 import type { TitleName } from "@/lib/titles";
+import type { AdminReadsWrites } from './adminTypes';
 
 export interface Person {
   id: string;
@@ -31,7 +32,7 @@ export interface CompletionResult {
  * The single data-layer contract. Every read and write in the UI goes through
  * this interface so the localStorage implementation can be swapped for an API.
  */
-export interface AdventureStore {
+export interface AdventureStore extends AdminReadsWrites {
   getPerson(): Person;
   isSignedIn(): boolean;
   signIn(): void;
