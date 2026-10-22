@@ -180,7 +180,7 @@ function AdventurePage() {
                 </ol>
               </div>
             )}
-            <StepBody body={step.body} goFurther={step.goFurther} />
+            <StepBody body={step.body} goFurther={step.goFurther ?? false} />
           </div>
 
           {isLast && adventure.isOpen && (
