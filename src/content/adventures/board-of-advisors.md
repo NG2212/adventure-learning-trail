@@ -77,7 +77,7 @@ A **devil's advocate** is an optional extra member who argues against your plan.
 | Attacks everything equally | Attacks your weakest assumption and names where the plan fails |
 | Leaves you with fewer options | Agrees when you bring new information, and ends with "here is what I would actually do" |
 
-### Prompt 1: Your board members
+### Prompt: Your board members
 
 **What this does:** interviews you, proposes board members and waits while you edit the list.
 
@@ -95,7 +95,7 @@ Edit the list, then continue in this chat.
 
 Evidence makes sharper personas: paste call notes, survey verbatims or a monday feedback board when the AI asks about a member, and use Kremer for internal customer data. Profiles of real colleagues cover work behaviour only.
 
-### Prompt 2: Your board instructions
+### Prompt: Your board instructions
 
 **What this does:** profiles each member, then writes the board's standing instructions.
 
@@ -117,7 +117,7 @@ Wait for my approval.
 
 ## Step 3: Convene it on real work
 
-### Prompt 3: Convene the board
+### Prompt: Convene the board
 
 **What this does:** gathers context, runs one session and stops at the summary so you judge it first.
 
@@ -135,7 +135,7 @@ Personas change how your work is framed; facts still get verified. Check any num
 
 General feedback such as "not quite right" gives the AI little to work with. Say exactly what was wrong: "The RevOps lead would ask about data accuracy first." "They agreed too fast; show me the real disagreement."
 
-### Prompt 4: A sharper board
+### Prompt: A sharper board
 
 **What this does:** turns your feedback into updated board instructions.
 
@@ -176,7 +176,7 @@ If this tool runs everything in one chat, say so and stop.
 | --- | --- | --- |
 | **Echo** | The summary turns disagreement into agreement | Ask for word-for-word answers and quotes |
 | **Shared context** | A sub-agent sees another member's answer and agrees | Give each sub-agent only its profile, the work and the question |
-| **Many members, one voice** | Thin profiles give near-identical answers | Add evidence to the profiles with Prompt 2: Your board instructions |
+| **Many members, one voice** | Thin profiles give near-identical answers | Add evidence to the profiles with the Your board instructions |
 
 ## Proof of work
 

@@ -46,7 +46,7 @@ Much of a busy week is the same preparation again and again: checking what chang
 
 In this adventure you design that assistant around the tasks you repeat, give it your context and tools, prove one job by hand, then put it on a schedule.
 
-Already have an assistant like this? Prompt 1 improves it, starting from its current instructions.
+Already have an assistant like this? The first prompt improves it, starting from its current instructions.
 
 ## The trail
 
@@ -73,7 +73,7 @@ Start from your week. A good job passes three checks:
 
 Typical jobs at Monday: a morning briefing on your boards, preparation before a QBR or a renewal call, a weekly status from a team board, a summary of release updates.
 
-### Prompt 1: Three jobs for your chief of staff
+### Prompt: Three jobs for your chief of staff
 
 **What this does:** the AI interviews you about your week, proposes three jobs with their sources, output, timing and approval line, and helps you pick two.
 
@@ -91,15 +91,15 @@ Then propose three jobs. For each job give:
 Help me pick one scheduled job and one on-demand job. Stop and wait.
 ```
 
-Many people pick a morning briefing (scheduled) and meeting prep (on demand); this page uses those two as the example. Keep the chat open for Prompt 2.
+Many people pick a morning briefing (scheduled) and meeting prep (on demand); this page uses those two as the example. Keep the chat open for the next prompt.
 
 ## Step 2: Give it your context and your tools
 
 Your chief of staff is as good as what it can see. Give it three kinds of context: who you are (your AI Identity, if you built one in the Your AI Identity adventure), where your work lives (the monday boards, Drive folders and Slack channels it may read), and internal data such as account history, through Kremer. Connect your tools so it reads each source itself.
 
-### Prompt 2: Standing instructions
+### Prompt: Standing instructions
 
-**What this does:** turns the two jobs you picked in Prompt 1 into the standing instructions your chief of staff follows every time it runs.
+**What this does:** turns the two jobs you picked in Step 1 into the standing instructions your chief of staff follows every time it runs.
 
 ```
 Write standing instructions for my chief of staff, based on the two jobs I picked earlier in this chat. If they are missing, ask for them.
@@ -122,7 +122,7 @@ Keep it to one page. Ask me to approve it.
 
 A scheduled job runs alone, so prove it by hand first, in the chief of staff you set up in Step 2.
 
-### Prompt 3: Run the scheduled job now
+### Prompt: Run the scheduled job now
 
 **What this does:** runs your scheduled job once, now, with the source of each line.
 
@@ -132,7 +132,7 @@ Run my scheduled job now, for today, exactly as your standing instructions descr
 
 Read the output as you would on a busy morning. When something is off, say exactly what: "the renewal on my Renewals board is missing", "one line per meeting, please; I got a paragraph", "you listed a meeting I already declined". Specific feedback gets a better result than "make it better".
 
-Ask it to write every fix into the standing instructions. Scheduled runs start fresh and remember only those instructions. Run Prompt 3 again on a second day. You are ready to schedule when you would read the output every morning as it is.
+Ask it to write every fix into the standing instructions. Scheduled runs start fresh and remember only those instructions. Run the Run the scheduled job now prompt again on a second day. You are ready to schedule when you would read the output every morning as it is.
 
 ## Step 4: Put it on a schedule and add an on-demand job
 
@@ -140,9 +140,9 @@ Schedule the job for the moment you would read it, for example before your morni
 
 **In Claude Cowork:** in the Chief of Staff project, ask Claude to run the scheduled job every weekday at that time, check that it appears under Scheduled, and set its permissions to match the approval boundary in your standing instructions.
 
-**In monday agents:** run the agent from a recurring automation on your board. A daily calendar reminder to run Prompt 3 yourself also works, in any AI tool.
+**In monday agents:** run the agent from a recurring automation on your board. A daily calendar reminder to run the Run the scheduled job now prompt yourself also works, in any AI tool.
 
-### Prompt 4: Prep me for my next meeting
+### Prompt: Prep me for my next meeting
 
 **What this does:** prepares you for one meeting from the board and your last conversation with the attendees.
 
