@@ -1,133 +1,181 @@
 ---
 slug: de-slop
-icon: sponge
 emoji: 🧽
-title: "De-Slop Your Work"
-walkaway: "A trained eye for slop, one important piece of work remade with intention, and your standards saved in your AI"
+icon: sponge
+title: "Stay Original with AI"
+walkaway: "Original, creative work with AI: one real piece remade with your thinking in it, and your standards saved where your AI reads them"
 category: Work smarter with AI
 levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone]
-audience: [Managers]
+audience: []
 tool: Any AI tool
 effort: Moderate
 outcome: Work differently
-pattern: SPOT + AUD
+pattern: SPOT + BUILD
 wave: W1
-next: [your-ai-identity, board-of-advisors, skills]
 slot: 5
-source: "Adapted from de-slop/lab-de-slop.md and the De-Slop Playbook (de-slop/article-draft.md, Oct 2026); Slop Audit verbatim from de-slop/slop-audit-prompt.md; skill layer from de-slop/skill/de-slop/. Never edit the de-slop/ originals from this engagement."
+next: [board-of-advisors, skills-when-how-and-how-well]
+source: "Adapted from de-slop/lab-de-slop.md and the De-Slop Playbook (de-slop/article-draft.md, Oct 2026); Slop Audit verbatim from de-slop/slop-audit-prompt.md (collapsed, Go further only); skill item adapted from de-slop/skill/de-slop/. Never edit the de-slop/ originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
-Adaptation note (2026-10-10, factory rewrite of the Oct 8 draft)
-- Kept: definition of slop, the six-question slop test ending in the name test, the Slop Audit (verbatim), kickoff, directions, pre-send check, compare, taste prompt, team standard prompt.
-- Cut: the De-Slop I / II split (one adventure), "download the skill" layer, the board layer (Board of Advisors owns it; linked in Where to next), the Stanford "less trustworthy" wording (article wording used: less creative, capable and reliable).
-- Added for Monday: Step 1 spot drill on an AI-made sample for your profession + six-question test on your own recent piece; Monday artifact table; verification routine layer (Glean 2026 + CHI 2025, both already in the article) with monday boards and Kremer as sources of truth; skill layer rebuilt as build-or-upgrade with an interview builder prompt; manager side quest kept at artifact level.
-- Design-notes row: layers = taste file, verification routine, De-Slop skill or upgraded skills with intervention points, manager team standard. Slop Score stays personal (stated in Step 2 and Proof of work).
-- Ending line: the article's "Disciplined, high-quality work is your job security" was softened to the quality-mechanism line in the hook. After the July 2026 layoffs, "job security" reads as a threat. Nufar to confirm.
+v2 rewrite (2026-10-22), after Nufar's review of v1 (~4,700 words, "so long and so much text")
+- Structure from de-slop-v2-outline.md and the four decisions there: title "Stay Original with AI"; audit out of the core; standard model sentence; one-line prerequisite.
+- Kept from v1: the six-question test (reworded for non-native readers, plain consequences, name test last), the spot drill, kickoff + directions (merged into one prompt, three directions), pre-send check, compare, taste prompt, team check, skill builder.
+- Cut: HBR/Stanford, Glean and CHI statistics (Merriam-Webster definition only); "Shape of the adventure" table; Layers; the verification routine layer; the Your AI Identity link; Managers tag; the profession table (one sentence of Monday examples instead).
+- Slop Audit moved to Go further, collapsed in a <details> block, canonical text verbatim. Its score stays in the person's chat.
+- Proof of work tied to the trail: the remade piece, the change that mattered, one habit learned.
 
 Open items
-- Keren Q2 (how skills are added on Monday's Claude Enterprise) affects the Layer 3 "In Claude" line. Written for Customize → Skills with personal upload.
-- next: slugs for Your AI Identity, Board of Advisors and Skills are provisional until those files exist.
+- Keren Q2 (how skills are added on Monday's Claude Enterprise) affects the Customize → Skills line in Go further.
+- next: slugs board-of-advisors and skills-when-how-and-how-well are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 -->
 
-# 🧽 De-Slop Your Work
+# 🧽 Stay Original with AI
 
-**Spot slop in a second, hold your own work to a bar you're proud of, and teach your AI that bar so it holds even on your busiest day.**
+**How to produce original, creative work when AI writes the first draft.**
 
 ## Why this adventure
 
-AI made first drafts free. It also made it easy to send long, smooth, generic work that nobody really thought through, and that the reader then has to untangle. In 2025 research from BetterUp Labs and the Stanford Social Media Lab, published in Harvard Business Review, 40% of US desk workers said they had received this "workslop" in the past month. Each case took close to two hours to deal with, and about half of the recipients saw the sender as less creative, capable and reliable.
+The AI industry has a name for low-quality AI output: slop. Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
 
-**Slop** is work where the person who should have done the thinking skipped it, partially or altogether, and the cost landed on whoever receives it. It costs the reader time, and it usually fails at its job too: the follow-up that doesn't move the deal, the update nobody finishes.
+At work, slop is the long, smooth, generic document sent with little real thought, so the reader has to do the thinking instead.
 
-This adventure keeps all the speed and puts you back in charge of the thinking. You'll train your eye, score your own habits, remake one piece of real work the intentional way, and save your standards where your AI reads them. If you already hold a high bar, the layers are your mastery pass: a verification routine and a skill that applies your bar at the right moments without you asking. The bigger prize is using AI as a quality mechanism: the thing that helps you think more sharply, see more directions and produce work you could never have produced alone.
+This adventure keeps the speed of AI and puts your own thinking back in charge, on one real piece of your work.
 
-## The six-question slop test
+## The trail
 
-Run any output, yours or a colleague's, through six questions. Six yeses: AI-assisted work at its best. Two or more noes: slop, whoever typed it.
-
-| Question | The tell on the page | What a "no" tells you |
-| --- | --- | --- |
-| **1. Ownership.** Could the sender defend every sentence without rereading it? | Confident claims nobody checked; phrases the sender would never say out loud | Nobody on the sending side owns this piece |
-| **2. Read-through.** Did the sender read all of it before it went out? | The same point made twice; a leftover "Great question!"; two sections that disagree | The reading cost moved to you |
-| **3. Fingerprint.** Is there anything only this person or team could have contributed: a point of view, a customer story, a decision, real data? | No names, numbers or opinions; it would fit any company | It could have come from anyone with the same prompt |
-| **4. Compression.** Is this the shortest or most effective form that still does the job? | Five paragraphs where three sentences would do; the ask arrives at the end | The distilling was left to the reader |
-| **5. Reader cost.** Does it save the reader time? | The reader finishes and still asks "so what do you need from me?" | It made the sender faster and everyone else slower |
-| **6. The name test.** Would the sender proudly put their name on it, in capital letters? | You'd hesitate to sign it | It needs another pass before it goes anywhere |
+1. **Understand what slop is**, so you know what to look for.
+2. **See it in real work**, because the test matters most on your own work.
+3. **Remake one piece without it**, to practise the intentional way on real work.
+4. **Make it a habit**, so your AI holds your standard on your busiest day.
 
 ## Before you start
 
-Have one piece of real work in mind: something you sent recently with AI's help, or something you're about to write, that carries your name to an audience you care about.
+Use a strong model for this adventure, for example Opus, with extended thinking on.
 
-| If you work in | A good piece to remake |
-| --- | --- |
-| Customer Facing | A customer follow-up after a call, a QBR summary, a renewal email |
-| Marketing | A launch announcement, a campaign brief, a landing page section |
-| Product | Release notes, a launch note, a decision memo for leadership |
-| Engineering | An incident write-up, a design doc, a PR description |
-| Design | A design review summary, the rationale behind a design decision |
-| HR | A policy announcement, a guide for managers, an internal comms piece |
-| Finance | Forecast commentary, a budget request narrative |
-| Managers, any function | A team update, a leadership or board-meeting update, feedback you need to give |
+You will work on one real piece of your own: something you recently produced with AI, or are about to.
 
-Load your AI Identity if you have one; the more your AI knows you, the sharper the audit and the remake.
+## Step 1: Understand what slop is
 
-## Shape of the adventure
+These six questions test how much thinking went into any output created with AI. Work that passes all six is what high-quality AI-assisted work looks like.
 
-| Move | Job | Output |
+| Question | How can you tell? | What it means when the answer is no |
 | --- | --- | --- |
-| **1. Spot** | Catch the tells in a sample from your profession, then in your own recent work | A trained eye and your piece's slop test |
-| **2. Audit** | An honest interview about your AI habits | Your Slop Score, two fixes, one standing instruction |
-| **3. Remake** | Redo one real piece: kickoff, directions, pre-send check | The remade piece |
-| **4. Compare** | Judge the original against the remake | What changed, and the change that mattered |
+| **1. Could the writer defend every sentence without reading it again?** | Confident, unverified claims | There is no clear owner of the work. |
+| **2. Did the writer read all of it before sending?** | The same point made twice; a leftover "Great question!" | The reader pays the price instead of the writer. |
+| **3. Is there something only this person or team could add?** A point of view, a customer story, a decision, real data. | Generic wording that would fit any company | Anyone with the same prompt could have produced it. |
+| **4. Is this the shortest form that still does the job?** | Five paragraphs where three sentences would do | The burden of extracting the core content was left to the reader. |
+| **5. Was it worth the reader's time?** Did it give more value than the time it took to read and review? | The reader finishes and still asks "What do you need from me?" | The writer saved time and the reader lost more. |
+| **6. Would the writer proudly put their name on it?** | You would hesitate to sign it | It needs more work before anyone sees it. |
 
-Use a strong model with high reasoning effort for the audit and the kickoff: you want a sharp, thorough interviewer.
+Good pieces to work on: a customer follow-up, a QBR summary, release notes, an incident write-up, forecast commentary or a team update.
 
-## Core task
+## Step 2: See it in real work
 
-### Step 1: Spot the slop
+### Prompt 1: Tell slop from intentional work
 
-Start with a sample, where it's safe to be critical, then turn the same eye on your own work. Open a new chat in any AI tool and paste the prompt.
-
-### Prompt 1: A slop-spotting drill for your profession
-
-**What this does:** the AI writes two versions of a piece you produce often, one slop and one intentional, and asks you to tell them apart before it shows the tells. Then it runs the same test on a piece of yours.
+**What this does:** the AI writes two versions of a piece you produce often, you guess which one is slop, then it grades both and a recent piece of yours.
 
 ```
-I want to train my eye for slop. Slop means: work where the person who should have done the thinking skipped it, partially or altogether, and the cost landed on whoever receives it.
+Help me recognise slop: low-quality AI content where the writer skipped the thinking.
 
-Use what you already know about me. Ask only for gaps, one question at a time: what I do at work, and which piece of writing I produce most often.
+Use what you know about me. Ask only for what is missing: my job and the piece I produce most often.
 
-Then write two short versions of that piece for a realistic situation in my job, labelled A and B in random order. One is slop: smooth, long, generic, no point of view, no real specifics, like a one-line request whose answer got forwarded unread. Make it plausible, the kind of thing sent every day. The other is intentional: short, specific, with a clear view, a decision or real-looking data, and an obvious next step for the reader. Do not say which is which. Stop and ask me which is slop and why. Wait for my answer.
+Write two short versions of that piece, A and B in random order: one slop (long, smooth, generic), one intentional (short, specific, clear view, clear next step). Ask me which is which, and wait.
 
-Then reveal, and grade the slop version on the six-question slop test:
-1. Ownership: could the sender defend every sentence without rereading?
-2. Read-through: did the sender read all of it?
-3. Fingerprint: is there anything only this person or team could have contributed (a point of view, a customer story, a decision, real data)?
-4. Compression: is this the shortest or most effective form that still does the job?
-5. Reader cost: does it save the reader time?
-6. Name test: would the sender proudly put their name on it, in capital letters?
+Reveal, then grade both in a table: question, yes or no, the line that shows it.
+1. Could the writer defend every sentence?
+2. Did the writer read all of it?
+3. Does it hold something only this person could add?
+4. Is it the shortest form that works?
+5. Was it worth the reader's time?
+6. Would the writer proudly sign it?
 
-Output a table: question, yes or no, the exact line that gives it away. Then name any tells I missed.
-
-Finally, ask me to paste a recent piece of my own work and run the same table on it, honestly. Two or more noes means slop, whoever typed it. Do not rewrite it.
+Finally, ask for a recent piece of mine and grade it the same way, without rewriting it.
 ```
 
-Your own piece's table is the baseline for Step 4. Keep that chat open.
+Save the AI's assessment of your piece. You will compare against it at the end of Step 3.
 
-### Step 2: Take the Slop Audit
+## Step 3: Remake one piece without it
 
-**Your Slop Score stays in your chat. It's a mirror for you, and it never reaches the platform.**
+Take a real work item you are about to produce, or the piece you checked in Step 2, and do it again the intentional way: think first, look at several directions, then check before you send.
 
-### Prompt 2: The Slop Audit
+### Prompt 2: Think first, then directions
 
-**What this does:** an interview across 12 intentional habits in five stages, anchored in your real recent work, that ends with a Slop Score from 0 to 100, a stage-by-stage breakdown, your two highest-leverage fixes and a standing instruction to support them. Answer by voice if you can; longer, messier answers give a sharper audit. The AI will tend to take your word for it; the prompt pushes it to ask for examples instead.
+**What this does:** the AI interviews you, writes a short brief for your approval, and offers three directions before it drafts.
 
-> **In Claude:** run it in a fresh chat with memory on, or inside the Project that holds your recent work, so the audit can check your answers against what you actually did.
+```
+Help me do one piece of work the intentional way: my thinking first, then options, then a draft. Ask one question at a time.
+
+1. What is this piece, and what should it achieve?
+2. What is my view, and how confident am I (as a percentage)? If I am under 70% sure, argue the strongest alternative first.
+3. Who is the reader, and what should they feel and do afterwards?
+4. What does good look like: length, tone, format, things to avoid?
+
+Write a short brief from my answers. Stop and wait for my approval.
+
+Then give me three genuinely different directions, each with a title, the core idea in two sentences, and the reader it suits best. Draft only after I pick or combine them.
+```
+
+When a draft misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three". Specific feedback gets a better draft than "make it better".
+
+### Prompt 3: Check before you send
+
+**What this does:** checks your draft on the six questions and shows you the problems to fix.
+
+```
+Check this draft before I send it. Answer each question yes or no, with one line of evidence.
+1. Could I defend every sentence? List claims to verify.
+2. Does it read as if someone read it all? Point out repeats and leftover AI phrases.
+3. Does it hold something only I or my team could add? Quote the generic sentences.
+4. Is it the shortest form that works?
+5. Is it worth the reader's time?
+6. Would I proudly put my name on it? If no, name the one change that would get it there.
+Show the problems only. Rewrite only if I ask.
+```
+
+### Prompt 4: Compare
+
+**What this does:** compares your original and your remake and names the change that mattered most.
+
+```
+I will paste an earlier assessment of my original piece, then my remake. Grade the remake on the same six questions (defend every sentence, read it all, something only I could add, shortest form, worth the reader's time, proud to sign it). Show both side by side in one table, then name the change that mattered most.
+```
+
+You are done when the remake passes the name test.
+
+## Step 4: Make it a habit
+
+### Prompt 5: Your standards
+
+**What this does:** the AI learns your taste from real examples and writes one page of standards for your work.
+
+```
+Learn my taste. I will share examples in batches: work I am proud of (mine or by others) and work I dislike. Wait until I say I have finished.
+
+Then:
+1. Describe what my good examples share: voice, structure, length, openings and closings.
+2. Describe what my disliked examples share.
+3. Ask me three to five questions about anything unclear, one at a time.
+4. Write my standards: one page of concrete rules, each with a short example, in these sections: Voice, Structure, Length, Things I always avoid, What makes my work mine.
+
+Write the rules so any AI can follow them.
+```
+
+Save the page where your AI reads it in every chat. Then ask for a short piece you write often and check it against the page.
+
+**In Claude:** paste it into Settings → Instructions for Claude, or into the instructions of the project you use for this kind of work.
+
+## Go further
+
+**Take the full Slop Audit.** Do this to find which of your AI habits most need work: a longer interview about 12 habits that ends with a score and your two biggest fixes. The score is only for you and stays in your chat.
+
+<details>
+<summary>The full Slop Audit prompt</summary>
 
 ```
 You are running a Slop Audit: an honest, friendly interview about my AI working habits. The goal is to find out where my AI use has drifted from intention and quality toward speed and "good enough," give me a score, and help me fix the two habits that matter most.
@@ -182,146 +230,43 @@ THE REPORT (after all 12)
 Then ask whether I want to set a reminder to retake the audit in 30 days and compare scores.
 ```
 
-Save the standing instruction; it goes into your taste file in Layer 1. Keep your two fixes in view: Step 3 is where you practise them.
+</details>
 
-### Step 3: Remake one piece the intentional way
+**Build a check your team shares.** Do this when your team produces the same piece again and again, such as release notes or the weekly team update. One shared definition of good raises every draft.
 
-Take the piece from Step 1. If you chose one you're about to write, first get it the way you usually would, and keep that as your original. Before you open your AI, step away from the screen and think: what you're really trying to achieve, what you believe, what worries you. Then open a new chat.
-
-### Prompt 3: Kickoff interview and directions
-
-**What this does:** the AI interviews you so the work starts from your thinking and a clear target, writes a one-page brief, waits for your approval, then gives you six genuinely different directions before anyone drafts a word.
+**What this does:** writes a team definition of good and a shared check for one recurring piece.
 
 ```
-Before we do any work on this piece, interview me so we start from my thinking and a clear target. Ask one question at a time and wait for my answer. I may answer by voice, messily; your job is to find the structure.
+Help me create a quality check for one piece of work my team produces often. Interview me one question at a time: what the piece is and who reads it, what our best examples share, what makes a weak one weak, and what only our team can add (data, customer context, decisions).
 
-1. Ask me to brain-dump everything about this task: the goal, my current thinking, open questions and worries. Then reflect back the three or four ideas that are most clearly mine, and anything that sounds contradictory.
-2. Ask for my current view, my confidence in it as a percentage, and how hard I want you to challenge it. If I'm under 70% sure, argue the strongest alternative before building on my view. Even if I'm sure, list the main counterarguments briefly.
-3. Ask about the audience, the feeling and next action I want from them, and my non-negotiable standards (length, tone, format, things to avoid).
-4. Ask where I want to step in before the work is finished (the directions, the outline, the first section) and which people should see it at each point.
-
-Write a one-page brief: goal, my view and confidence, definition of good, checkpoints, reviewers. Stop and wait for my approval.
-
-Once I approve, give me six genuinely different directions, differing in approach, angle or structure, including one unconventional and one deliberately simple. For each: a title, the core idea in two sentences, the audience it lands best with. Do not recommend one. After I react, help me combine the parts I like into one direction, then draft only up to my first checkpoint.
+Then write:
+1. A one-page team definition of good, with a short strong and a short weak example.
+2. Instructions for a shared check that reviews any draft against that definition and returns Ready, Ready after cuts, or Needs another pass, with the main reason. The check comments on the draft only, never on its writer.
 ```
 
-Work through your checkpoints. When the AI misses, say exactly what's wrong: "too formal for this customer", "the ask is buried in paragraph three", "this number isn't ours". "Make it better" teaches it nothing. When you have a draft you like, run the check below in the same chat.
+Pin the definition of good on your team's monday board. **In Claude:** put the check into a shared project for your team.
 
-### Prompt 4: The pre-send check
+**Make the habit automatic with a skill.** Do this when you want the intentional way on busy days too, without having to remember it.
 
-**What this does:** shows you the problems before anything leaves your hands, without rewriting the piece for you.
-
-```
-Before I send this, run a slop check against my own standards. Answer briefly:
-1. Read budget: how long would this take to read carefully? Is that reasonable for this reader? If not, show me a version at half the length or less that keeps everything that matters.
-2. Fingerprint: list what in this piece could only have come from me or my team (a unique point of view or idea, a decision, real data, a customer story). If the list is short, say so plainly.
-3. Generic content: quote any sentences that could appear in anyone's document on this topic, and tell me which to cut or replace with something specific.
-4. Format: is this the most effective format for this reader? If another format (a shorter message, a table, a one-page summary, a visual) would serve them better, say which and why.
-5. Ownership: list any claims I should verify before I can stand behind them.
-6. The name test: would you advise me to put my name on this, in capital letters, today? If not, name the single change that would get it there.
-Do not rewrite the whole thing unless I ask. I want to see the problems first.
-```
-
-Fix what it found, read the whole thing yourself, and send it when it passes your name test.
-
-### Step 4: Compare the two versions
-
-### Prompt 5: Original against remake
-
-**What this does:** scores the remake on the same six questions as your original, side by side, and names the change that mattered most, so you know which habit to keep. Paste it into your Step 1 chat, where the test and your original's table already live, followed by the remake. If you remade a different piece, paste its original first.
+**What this does:** asks when the skill should run, then writes it for your approval.
 
 ```
-Here is my remake of the piece I pasted earlier. Run the same six-question slop test on it, with a yes or no and one line of evidence for each question, and show the original and the remake side by side in one table. Then, in three sentences: what changed between the versions, which change mattered most, and which habit produced it.
+Help me build a skill for high-quality work. The skill should:
+- On substantial work, first ask about my view, the reader and what good looks like, then offer three directions before drafting.
+- Before handing over a draft, check six questions: Could I defend every sentence? Did I read it all? Does it hold something only I could add? Is it the shortest form? Is it worth the reader's time? Would I proudly sign it?
+
+Interview me one question at a time: which work it runs on, which quick tasks it skips, the phrases I use. Then write the complete skill: name, a description of when to use it, steps, three test requests. Wait for my approval.
 ```
 
-**You're done with the core when** you have your Slop Score, a remade piece that passed your name test, and the comparison. Say it out loud: "My remake passes the name test."
-
-## Layers
-
-Each layer stands alone. Pick the one that closes your biggest gap from the audit.
-
-### Layer 1: Teach your AI your taste
-
-A taste file lets every draft start closer to your standard. Gather three to five pieces of your own best work, a few by others that you admire, and a few you dislike (generic AI copy you've received counts).
-
-```
-I want you to learn my taste so you can help me produce work I am proud of. You will write my taste file: a one-page set of concrete rules, each with a short example, that any AI can follow to write and judge work the way I would. Its sections: Voice, Structure, Length (default per format and per audience), Visual language, Hard noes, Signature moves (what makes my work recognisably mine), and Mold log (the formats I keep reusing for recurring work).
-
-I will share examples in batches: my own best work, work by others I admire, and work I dislike. Wait until I say I have finished. Then:
-1. Describe what my good examples share: voice, structure, length, rhythm, vocabulary, visual choices, openings and closings.
-2. Describe what my disliked examples share and what exactly I seem to react against.
-3. Ask me three to five questions about anything ambiguous or contradictory, one at a time.
-4. Ask me to paste my standing instruction from my Slop Audit, if I have one, and fold it in.
-5. Write the taste file. Under one page.
-Then ask whether I want it worded for my profile instructions, a project, or a skill.
-```
-
-Save it where your AI reads it every time, then open a fresh chat and ask for a short piece you write often. If it still sounds like everyone else, tell the AI which rule it ignored and tighten that rule.
-
-> **In Claude:** paste it into Settings → Instructions for Claude to apply it to every chat, or add it to the Project you use for this kind of work.
-
-### Layer 2: A verification routine before you send
-
-Trust is where checking quietly stops. Glean's Work AI Index 2026 found that 69% of AI users admitted to shipping AI-assisted work they hadn't verified, didn't fully understand or couldn't defend. A Carnegie Mellon and Microsoft Research study (CHI 2025) found that the more people trusted the AI, the less critical thinking they applied to its output. A routine keeps the check from depending on how tired you are.
-
-```
-Help me build a personal verification routine: a short checklist I run on AI-assisted work before it leaves my hands, built around the mistakes that would actually hurt in my job.
-
-Use what you know about me. Interview me one question at a time:
-1. What I send most often and to whom.
-2. The last time something wrong went out, from me or a colleague, and what it was (a number, a commitment, a name, a date, a claim about what shipped).
-3. My sources of truth for each kind of fact: for example a monday board, our CRM, a dashboard, the release log, a policy page.
-4. What an AI is most likely to invent or smooth over in my kind of work.
-
-Then write my verification routine: five to eight checks, each naming what to check, where the truth lives, and what to do when it can't be confirmed.
-
-Finally, run it on a draft I paste. List every checkable claim in a table: claim, type, source of truth, status (verified against a source I gave you / unverified / cannot verify here). Never mark a claim verified without naming the source. Stop and wait for me to confirm the unverified ones.
-```
-
-Where your facts live in internal systems, reach them through Monday's sanctioned data path (Kremer) and your monday boards, then add the routine to your taste file so it travels with you.
-
-### Layer 3: Build a De-Slop skill, or upgrade the skills you have
-
-Habits fade on busy days; a skill fires at the right moment without being asked. Build a new De-Slop skill, or upgrade a skill you already use so your quality bar is built into it at the points where you'd want to step in.
-
-```
-Help me build a skill that applies my quality bar at the right moments. Slop, for this skill: work where the person who should have done the thinking skipped it, partially or altogether, and the cost landed on whoever receives it.
-
-First ask which I want:
-A) A new De-Slop skill that offers a short kickoff interview on substantial work (my view, my confidence, the definition of good, my checkpoints), gives several directions before drafting, and runs a pre-send check (read budget, fingerprint, generic lines, format, claims to verify, name test) ending in a verdict of Ready, Ready after cuts, or Needs another pass.
-B) An upgrade to an existing skill I'll paste. Add intervention points: where it should stop and wait for me (the plan, the outline, the first section), when to read my taste file, and a pre-send check before it hands over the result.
-
-Then interview me one question at a time: the work this should fire on and the quick tasks where it must stay silent; the exact phrases I'd use; where I want to step in; my taste file and verification routine, if I have them; the last time AI output let me down.
-
-Produce the complete skill: a name, a description written as a trigger (what it does and when to use it), concrete steps with the stop-and-wait points, the pre-send check, a gotchas section, one worked example written in full, and three real test requests. Walk me through it for approval. Do not say it is installed until I confirm.
-```
-
-Add the skill, close and reopen your AI tool so it picks up the change, then run the three test requests on real work. If it fires on a quick reply, tighten the description.
-
-> **In Claude:** add it under Customize → Skills. In Claude Code, skills live in the `.claude/skills/` folder, which is hidden: on Mac press `Cmd+Shift+.` in Finder; on Windows choose View → Show → Hidden items in File Explorer.
-
-## Side quest: Set your team's standard
-
-Built for managers; anyone who owns a recurring team artifact can run it. The new capability: building a check other people use. Pick one thing your team produces again and again (customer follow-ups, release notes, the weekly team update, design reviews, incident write-ups). The standard applies to the work itself.
-
-```
-Help me create a team standard for one recurring piece of work my team produces. Interview me one question at a time: what the artifact is and who receives it, what our best examples look like and why, what makes a weak one weak, the most a reader will happily read, and the details only our team can add (data, customer context, decisions). If my answers are general, ask for a real recent example.
-
-Then write two things:
-1. A one-page team definition of good, with a short good example and a short weak example.
-2. Instructions for a shared check that reviews any draft of this artifact against that definition and returns Ready, Ready after cuts, or Needs another pass, with the single most important reason. The check judges the draft only and never comments on the person who wrote it.
-```
-
-Set the check up where your team works, share it, and pin the definition of good where the work lives, such as the team's monday board. Then agree on one sentence anyone can use when they receive slop, for example: "Can you send me your own take in five sentences? I'll read the full version if I need it."
-
-> **In Claude:** make the check a shared Project for your team, or a skill you share with your team from Customize → Skills.
+Add the skill, then close and reopen your AI tool so it finds the skill. Try the three test requests on real work. **In Claude:** add it under Customize → Skills.
 
 ## Proof of work
 
-In "what I built", name the piece you remade, the one specific change that mattered most, and one thing you learned about your own habits. Your Slop Score stays with you. For example: "Remade my QBR summary for a retail account: two pages became eight lines that lead with the renewal risk. Learned that my drafts bury the ask."
+In "what I built", name the piece you remade, the one change that mattered most, and one thing you learned about your own habits.
 
-## Where to next
+For example: "Remade my QBR summary: two pages became eight lines that open with the renewal risk. I learned that my drafts put the request at the end."
 
-- **Your AI Identity**: if the drill or your taste file still came out generic, your AI doesn't know you yet. Standing instructions fix that, and every adventure gets sharper.
-- **Build Your Board of Advisors**: habit 6 in the audit. Choose the reviewers your work really needs and stress-test your next important piece before it ships.
-- **Skills: When, How and How Well**: if Layer 3 made you want the full craft of scoping, building and testing skills, start there.
+## Related adventures
+
+- **Build Your Board of Advisors**: stress-test your most important work from several angles before it goes out.
+- **Skills: When, How and How Well**: learn to build and test skills like the one in Go further.

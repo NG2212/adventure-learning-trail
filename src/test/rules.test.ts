@@ -32,7 +32,8 @@ describe("content", () => {
   it("Everyone matches any profession chip; Managers matches audience", () => {
     const deSlop = getAdventure("de-slop")!;
     expect(matchesProfession(deSlop, "Finance")).toBe(true);
-    expect(matchesProfession(deSlop, "Managers")).toBe(true);
+    expect(matchesProfession(deSlop, "Managers")).toBe(false); // audience is empty
+    expect(matchesProfession(getAdventure("board-of-advisors")!, "Managers")).toBe(true);
     expect(matchesProfession(getAdventure("the-loop")!, "Finance")).toBe(false);
   });
 });
@@ -42,8 +43,7 @@ describe("adventure steps", () => {
     const steps = toSteps(getAdventure("de-slop")!.body, ADVENTURES);
     const titles = steps.map((s) => s.title);
     expect(steps.some((s) => s.body.includes("DESIGN NOTES"))).toBe(false);
-    expect(titles).toContain("Step 1: Spot the slop");
-    expect(titles).toContain("Step 4: Compare the two versions");
+    expect(titles).toEqual(["Why this adventure", "The trail", "Before you start", "Step 1: Understand what slop is", "Step 2: See it in real work", "Step 3: Remake one piece without it", "Step 4: Make it a habit", "Go further", "Proof of work", "Related adventures"]);
     expect(titles.some((t) => t.startsWith("Prompt"))).toBe(false);
     expect(parseAdventure(getAdventure("de-slop")!.body, ADVENTURES).related?.body).toContain("(/adventures/board-of-advisors)");
   });

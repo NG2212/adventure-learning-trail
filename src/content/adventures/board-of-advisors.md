@@ -227,5 +227,5 @@ Your board's members + one thing it caught that you would have missed + what you
 ## Where to next
 
 - **Making Decisions with AI:** if the board kept surfacing a perspective you tend to dismiss, turn that into personal rules for how AI should challenge you.
-- **De-Slop Your Work:** the board tested the substance; De-Slop makes sure the deliverable itself is sharp before it leaves your hands.
+- **Stay Original with AI:** the board tested the substance; Stay Original makes sure the deliverable itself is sharp before it leaves your hands.
 - **Hard Conversations:** when the board points to a conversation you need to have with a customer or colleague, rehearse it there.

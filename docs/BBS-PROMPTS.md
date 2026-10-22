@@ -66,7 +66,7 @@ Bodies: `de-slop` and `board-of-advisors` have full bodies. Other W1 adventures 
 
 Profession chips: an adventure for "Everyone" matches every chip; "Managers" matches `audience: [Managers]`; "Other" also matches free-text professions.
 
-**Accept:** filtering "Status: Done" shows only De-Slop Your Work; "Status: Coming soon" shows 19.
+**Accept:** filtering "Status: Done" shows only Stay Original with AI; "Status: Coming soon" shows 19.
 
 ## 8. My itinerary (`/itinerary`)
 
@@ -82,14 +82,15 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - `### Prompt N:` headings and their fenced blocks stay inside their step. Every fenced block is a Prompt window (stone panel, "Prompt" label, 15px text, Copy → "Copied").
 - Blockquotes starting with "**In Claude:**" render as a small purple-tinted callout; other blockquotes as a stone example box.
 - Tables render as bordered tables.
-- `## The trail` (numbered list) is not a step: it shows as a compact numbered list in a stone panel at the top of the first step, and its items name the rail entries for `Step N:` headings that match item N.
-- `## Go further`: each `### ` sub-heading or bold-led paragraph is a collapsible card, collapsed by default.
+- `## The trail` (numbered list) is a rail step, and its items also show as a compact numbered list in a stone panel at the top of the `Step 1` section.
+- Newer files use top-level `## Step N:` sections (with `### Prompt N:` inside); older files nest `### Step N` under `## Core task`.
+- `## Go further`: each `### ` sub-heading or bold-led paragraph is a collapsible card, collapsed by default. Bold labels ending in a colon ("**What this does:**") stay inside the card.
 - `<details><summary>...</summary>...</details>` renders as a collapsible with the summary as its label; fenced blocks inside are still Prompt windows with Copy.
 - Older headings (`## Layers`, `## Side quest`, `## Shape of the adventure`) remain ordinary steps.
-- "Related adventures" (older files: "Where to next") is not a step: it renders as a small link list below the What's next panel, under the file's heading. Bold names matching an adventure title (case-insensitive, optional trailing colon) become links.
+- "Related adventures" (older files: "Where to next") is the last rail step, a small link list; the What's next panel follows it. Bold names matching an adventure title (case-insensitive, optional trailing colon) become links.
 Rail items are all clickable; Back/Next at the bottom. The final step of an open adventure shows "Mark this adventure complete" → celebration (lime glow, footprints, new count, new title if crossed, Share → share card). Unknown slug → not found.
 
-**Accept:** /adventures/de-slop has 12 steps including "Step 1: Spot the slop" … "Step 4: Compare the two versions", no design notes, In Claude callouts, and Where to next links to Your AI Identity, Board of Advisors and Skills. /adventures/board-of-advisors has 11 steps.
+**Accept:** /adventures/de-slop rail: Why this adventure, The trail, Before you start, Step 1-4, Go further, Proof of work, Related adventures; the trail list sits atop Step 1; the Slop Audit is a collapsible holding a Prompt window; no design notes. /adventures/board-of-advisors has 11 steps.
 
 ## 9a. What's next panel
 

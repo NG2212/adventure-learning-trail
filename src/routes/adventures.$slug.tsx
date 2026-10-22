@@ -122,7 +122,7 @@ function AdventurePage() {
   const { slug } = Route.useLoaderData();
   const adventure = getAdventure(slug)!;
   const { completions } = useStoreState();
-  const { steps, trail, related } = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
+  const { steps, trail } = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
   const [current, setCurrent] = useState(0);
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
@@ -172,7 +172,7 @@ function AdventurePage() {
           <p className="text-sm font-medium text-muted-foreground">Step {current + 1} of {steps.length}</p>
           <h2 className="mt-1 mb-4 text-2xl sm:text-3xl">{step.title}</h2>
           <div className="max-w-3xl">
-            {current === 0 && trail.length > 0 && (
+            {/^step 1\b/i.test(step.title) && trail.length > 0 && (
               <div className="mb-6 rounded-2xl bg-stone p-5">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground/70">The trail</p>
                 <ol className="list-decimal space-y-1 pl-5 text-sm">
@@ -204,12 +204,6 @@ function AdventurePage() {
           {isLast && (
             <div className="mt-10 max-w-3xl">
               <WhatsNextPanel currentSlug={slug} />
-              {related && (
-                <div className="mt-6 text-sm">
-                  <h3 className="mb-1 text-base font-semibold">{related.heading}</h3>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={MD}>{related.body}</ReactMarkdown>
-                </div>
-              )}
             </div>
           )}
 
