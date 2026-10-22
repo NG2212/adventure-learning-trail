@@ -117,12 +117,12 @@ const PRINTS = [
 ];
 function FootprintBackdrop() {
   return (
-    <svg aria-hidden className="pointer-events-none fixed inset-0 -z-10 size-full opacity-[0.08]" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 opacity-[0.08]">
       {PRINTS.map((p, i) => (
-        <svg key={i} x={p.x - 2} y={p.y - 3} width="4" height="6" viewBox="-10 -16 20 33" preserveAspectRatio="xMidYMid meet" overflow="visible">
+        <svg key={i} viewBox="-10 -16 20 33" className="absolute h-9 w-6" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
           <FootprintShape angle={p.a} fill={p.c} flip={p.f} />
         </svg>
       ))}
-    </svg>
+    </div>
   );
 }
