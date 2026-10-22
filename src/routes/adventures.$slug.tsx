@@ -194,9 +194,9 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         </div>
       )}
 
-      <div className={cn("mt-8 grid gap-8", hasNumberedSteps && "md:grid-cols-[240px_1fr]")}>
+      <div className={cn("mt-8 grid grid-cols-[minmax(0,1fr)] gap-8", hasNumberedSteps && "md:grid-cols-[240px_minmax(0,1fr)]")}>
         {hasNumberedSteps && (
-          <nav aria-label="Steps" className="md:sticky md:top-6 md:self-start">
+          <nav aria-label="Steps" className="min-w-0 md:sticky md:top-6 md:self-start">
             <ol className="flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
               {steps.map((s, i) => (
                 <li key={`${i}-${s.title}`}>
