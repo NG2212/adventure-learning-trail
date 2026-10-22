@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { titleFor } from "@/lib/titles";
 import { recommend } from "@/lib/recommend";
 import { ADVENTURES, CATEGORIES, getAdventure, matchesProfession, toAdventure } from "@/content/adventures";
-import { parseAdventure, toSteps } from "@/lib/adventureSteps";
+import { parseAdventure, splitPromptWindows, splitGoFurther } from "@/lib/adventureSteps";
 import { pickWhatsNext } from "@/lib/whatsNext";
 import { createLocalStore } from "@/store/localStore";
 
@@ -39,13 +39,56 @@ describe("content", () => {
 });
 
 describe("adventure steps", () => {
-  it("drops design notes, splits Core task by ### Step, links Where to next", () => {
-    const steps = toSteps(getAdventure("de-slop")!.body, ADVENTURES);
-    const titles = steps.map((s) => s.title);
-    expect(steps.some((s) => s.body.includes("DESIGN NOTES"))).toBe(false);
-    expect(titles).toEqual(["Why this adventure", "The trail", "Before you start", "Step 1: Understand what slop is", "Step 2: See it in real work", "Step 3: Remake one piece without it", "Step 4: Make it a habit", "Go further", "Proof of work", "Related adventures"]);
-    expect(titles.some((t) => t.startsWith("Prompt"))).toBe(false);
-    expect(parseAdventure(getAdventure("de-slop")!.body, ADVENTURES).related?.body).toContain("(/adventures/board-of-advisors)");
+  const slugs = ["de-slop", "board-of-advisors", "skills-when-how-and-how-well", "your-own-chief-of-staff"];
+  it.each(slugs)("%s has four core steps plus Go further, excluding head/proof/footer", (slug) => {
+    const adventure = getAdventure(slug);
+    if (!adventure) throw new Error("Missing adventure");
+    const parsed = parseAdventure(adventure.body, ADVENTURES);
+    expect(parsed.steps).toHaveLength(5);
+    expect(parsed.steps.slice(0, 4).map((s) => Number(s.title.match(/^Step (\d+):/)?.[1]))).toEqual([1, 2, 3, 4]);
+    expect(parsed.steps[4]?.goFurther).toBe(true);
+    expect(parsed.lastCoreStep).toBe(3);
+    expect(parsed.introduction.map((s) => s.heading)).toEqual(["Why this adventure", "The trail", "Before you start"]);
+    expect(parsed.trail).toHaveLength(4);
+    expect(parsed.proof?.body.length).toBeGreaterThan(0);
+    expect(parsed.related?.body).toContain("(/adventures/");
+    expect(parsed.steps.every((s) => !/## (The trail|Proof of work|Related adventures)|DESIGN NOTES/.test(s.body))).toBe(true);
+  });
+  it("keeps proof at the last core step when Go further follows", () => {
+    const parsed = parseAdventure("## Step 1: One\nFirst\n## Step 2: Two\nSecond\n## Go further\nExtra\n## Proof of work\nEvidence");
+    expect(parsed.lastCoreStep).toBe(1);
+    expect(parsed.steps[parsed.lastCoreStep]?.title).toBe("Step 2: Two");
+    expect(parsed.proof?.body).toBe("Evidence");
+  });
+  it("uses named prompt windows and keeps explanatory lines above them", () => {
+    const parts = splitPromptWindows("### Prompt: My name\n\n**What this does:** explains\n\n```\n## Literal heading\n### Prompt: Not a title\n```\n");
+    expect(parts).toEqual([{ kind: "md", text: "**What this does:** explains" }, { kind: "prompt", title: "My name", text: "## Literal heading\n### Prompt: Not a title" }]);
+  });
+  it("keeps old numbered prompt names without the number", () => {
+    expect(splitPromptWindows("### Prompt 2: Legacy\n```\nText\n```")[0]).toEqual({ kind: "prompt", title: "Legacy", text: "Text" });
+  });
+  it("ignores section headings inside prompt fences", () => {
+    const parsed = parseAdventure("## Step 1: Actual\n```\n## Step 9: Literal\n```\n## Proof of work\nDone");
+    expect(parsed.steps).toHaveLength(1);
+    expect(parsed.steps[0]?.body).toContain("## Step 9: Literal");
+  });
+  it("shows no-step placeholder bodies on a single page with proof and footer separated", () => {
+    const parsed = parseAdventure("## Content coming\nSoon\n## Proof of work\nEvidence\n## Related adventures\nLinks");
+    expect(parsed.hasNumberedSteps).toBe(false);
+    expect(parsed.steps).toHaveLength(1);
+    expect(parsed.steps[0]?.body).toBe("Soon");
+    expect(parsed.proof?.body).toBe("Evidence");
+    expect(parsed.related?.body).toBe("Links");
+  });
+  it("supports legacy Core task nested steps without promoting prompt headings", () => {
+    const parsed = parseAdventure("## Core task\nIntro\n### Step 1: First\n### Prompt 1: Name\n```\nLiteral\n```\n### Step 2: Second\nWork");
+    expect(parsed.steps.map((s) => s.title)).toEqual(["Step 1: First", "Step 2: Second"]);
+    expect(parsed.steps[0]?.body).toContain("### Prompt 1: Name");
+  });
+  it("does not split Go further at bold text or headings inside fences/details", () => {
+    const parsed = splitGoFurther("**One.** Intro\n\n<details>\n<summary>More</summary>\n```\n**Not a card**\n### Not a heading\n```\n</details>\n\n**Two.** Body");
+    expect(parsed.cards.map((c) => c.title)).toEqual(["One", "Two"]);
+    expect(parsed.cards[0]?.body).toContain("</details>");
   });
 });
 
