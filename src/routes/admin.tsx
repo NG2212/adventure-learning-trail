@@ -6,6 +6,8 @@ import { Chip } from "@/components/LabelChips";
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Admin · AI Adventure" },
       { name: "description", content: "Admin tools for the AI Adventure programme (coming soon)." },
       { property: "og:title", content: "Admin · AI Adventure" },

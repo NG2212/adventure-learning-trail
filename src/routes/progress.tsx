@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/progress")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Progress · AI Adventure" },
       { name: "description", content: "Your adventures completed, titles and badges." },
       { property: "og:title", content: "Progress · AI Adventure" },

@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Suggest an itinerary · AI Adventure" },
       { name: "description", content: "Six questions to get a suggested AI Adventure itinerary." },
       { property: "og:title", content: "Suggest an itinerary · AI Adventure" },

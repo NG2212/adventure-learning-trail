@@ -16,6 +16,8 @@ export const Route = createFileRoute("/adventures/")({
   }),
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "All adventures · AI Adventure" },
       { name: "description", content: "Every AI Adventure destination, grouped by category." },
       { property: "og:title", content: "All adventures · AI Adventure" },
