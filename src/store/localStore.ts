@@ -1,0 +1,86 @@
+import { titleFor } from "@/lib/titles";
+import type { AdventureStore, StoreState } from "./types";
+
+const STORAGE_KEY = "ai-adventure-state-v1";
+
+/** Seed: Noa has completed 1 adventure and has 3 in her itinerary. */
+export const SEED_STATE: StoreState = {
+  signedIn: false,
+  person: { id: "noa-levi", name: "Noa Levi", firstName: "Noa", role: "Product Manager", isAdmin: true },
+  itinerary: ["meeting-sponge", "two-faced-pitch", "weekly-chart"],
+  completions: [{ slug: "meeting-sponge", completedAt: "2026-10-15" }],
+  announcementDismissed: false,
+};
+
+export function createLocalStore(): AdventureStore {
+  let state: StoreState = SEED_STATE;
+  let loaded = false;
+  const listeners = new Set<() => void>();
+
+  function load() {
+    if (loaded || typeof window === "undefined") return;
+    loaded = true;
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (raw) state = { ...SEED_STATE, ...JSON.parse(raw) };
+    } catch {
+      /* ignore corrupt storage */
+    }
+  }
+
+  function read(): StoreState {
+    load();
+    return state;
+  }
+
+  function write(next: StoreState) {
+    state = next;
+    if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    listeners.forEach((l) => l());
+  }
+
+  return {
+    getPerson: () => read().person,
+    isSignedIn: () => read().signedIn,
+    signIn: () => write({ ...read(), signedIn: true }),
+    getItinerary: () => read().itinerary,
+    addToItinerary(slug) {
+      const s = read();
+      if (!s.itinerary.includes(slug)) write({ ...s, itinerary: [...s.itinerary, slug] });
+    },
+    removeFromItinerary(slug) {
+      const s = read();
+      write({ ...s, itinerary: s.itinerary.filter((x) => x !== slug) });
+    },
+    reorderItinerary(slug, direction) {
+      const s = read();
+      const list = [...s.itinerary];
+      const i = list.indexOf(slug);
+      const j = direction === "up" ? i - 1 : i + 1;
+      if (i < 0 || j < 0 || j >= list.length) return;
+      [list[i], list[j]] = [list[j], list[i]];
+      write({ ...s, itinerary: list });
+    },
+    markComplete(slug) {
+      const s = read();
+      const before = s.completions.length;
+      if (s.completions.some((c) => c.slug === slug)) {
+        return { count: before, newTitle: null, alreadyDone: true };
+      }
+      const completions = [...s.completions, { slug, completedAt: new Date().toISOString().slice(0, 10) }];
+      write({ ...s, completions });
+      const prevTitle = titleFor(before);
+      const title = titleFor(completions.length);
+      return { count: completions.length, newTitle: title !== prevTitle ? title : null, alreadyDone: false };
+    },
+    getCompletions: () => read().completions,
+    getTitle: () => titleFor(read().completions.length),
+    isAnnouncementDismissed: () => read().announcementDismissed,
+    dismissAnnouncement: () => write({ ...read(), announcementDismissed: true }),
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => listeners.delete(listener);
+    },
+    getSnapshot: read,
+  };
+}
