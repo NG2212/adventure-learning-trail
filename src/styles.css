@@ -1,0 +1,106 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * AI Adventure design system.
+ * Brand colours are given by the client as hex values and kept as-is.
+ * Purple carries the visual language; stone for panels; blue/coral/green for
+ * labels and states; lime/pink/yellow only for next-up, celebrations, progress.
+ */
+
+@theme inline {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-stone: var(--stone);
+  --color-info: var(--info);
+  --color-coral: var(--coral);
+  --color-success: var(--success);
+  --color-lime: var(--lime);
+  --color-pink: var(--pink);
+  --color-sunny: var(--sunny);
+  --shadow-soft: 0 1px 2px rgb(36 36 36 / 0.04), 0 8px 24px -12px rgb(36 36 36 / 0.12);
+  --shadow-glow: 0 0 0 8px color-mix(in oklab, var(--lime) 35%, transparent), 0 0 80px 20px color-mix(in oklab, var(--lime) 45%, transparent);
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: #ffffff;
+  --foreground: #242424;
+  --card: #ffffff;
+  --card-foreground: #242424;
+  --popover: #ffffff;
+  --popover-foreground: #242424;
+  --primary: #9450fd;
+  --primary-foreground: #ffffff;
+  --primary-soft: #f1e8ff;
+  --secondary: #e3d9cf;
+  --secondary-foreground: #242424;
+  --muted: #f6f2ee;
+  --muted-foreground: #6b6560;
+  --accent: #f1e8ff;
+  --accent-foreground: #242424;
+  --destructive: #ff644d;
+  --destructive-foreground: #ffffff;
+  --border: #ece6df;
+  --input: #e3d9cf;
+  --ring: #9450fd;
+  --stone: #e3d9cf;
+  --info: #1e77fd;
+  --coral: #ff644d;
+  --success: #06a24b;
+  --lime: #d8f81e;
+  --pink: #f07fff;
+  --sunny: #fbd54d;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes step-in {
+  0% { opacity: 0; transform: translateY(8px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@utility animate-step {
+  animation: step-in 0.4s ease-out both;
+}
