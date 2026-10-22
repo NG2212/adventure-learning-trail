@@ -26,7 +26,7 @@ Label values:
 - wave: W1 open now · W2 opens 23 Nov · W3 opens 7 Dec · W4 opens 4 Jan
 - icon: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown or missing → the category's default glyph (Work smarter: compass, Create: palette, Set up: toolbox, Automate: robot, Lead: people). Glyphs are flat SVG, one or two colours.
 
-Bodies: `de-slop` and `board-of-advisors` have full bodies. Other W1 adventures render a short "Content coming" page from the promise; W2-W4 render "This adventure opens on <date>" plus the promise.
+Bodies: `de-slop`, `board-of-advisors`, `skills-when-how-and-how-well` and `your-own-chief-of-staff` have full bodies (all in the v2 structure: The trail, Before you start, Step 1-4, Go further, Proof of work, Related adventures). Other W1 adventures render a short "Content coming" page from the promise; W2-W4 render "This adventure opens on <date>" plus the promise.
 
 **Accept:** /adventures shows 30 cards; adding a file makes it appear in the grid, progress badges and onboarding pool with no code change.
 
@@ -62,7 +62,7 @@ Bodies: `de-slop` and `board-of-advisors` have full bodies. Other W1 adventures 
 
 ## 7. All adventures (`/adventures`)
 
-**Build:** Toggle-chip filter rows: Category, Level, Profession, Works with, Effort, Status (Open / Coming soon / Done). Chips within a row are OR, rows are AND. Card grid grouped by the five categories. Card: icon disc (purple open, stone not), status chip, title, walkaway, label chips, itinerary toggle. Coming-soon cards show "Opens 23 Nov" style text and do not navigate; their itinerary toggle still works. Empty-filter state shows footprints and "Clear filters".
+**Build:** Toggle-chip filter rows: Category, Level, Profession, Works with, Effort, Status (Open / Coming soon / Done). Chips within a row are OR, rows are AND. Card grid grouped by the five categories. Card: icon disc (purple open, stone not), status chip (Done; Ready = open with full body; Content coming = open without body; Opens <date>), title, walkaway, label chips, itinerary toggle. Coming-soon cards show "Opens 23 Nov" style text and do not navigate; their itinerary toggle still works. Empty-filter state shows footprints and "Clear filters".
 
 Profession chips: an adventure for "Everyone" matches every chip; "Managers" matches `audience: [Managers]`; "Other" also matches free-text professions.
 
@@ -80,7 +80,7 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - HTML comments (design notes) are stripped and never rendered. The `# ` title and tagline before the first `## ` are dropped (the header covers them).
 - Each `## ` heading is a rail step. Inside "Core task", each `### Step N` is its own step, indented in the rail; text before the first `### Step` stays as a "Core task" step only if non-empty.
 - `### Prompt N:` headings and their fenced blocks stay inside their step. Every fenced block is a Prompt window (stone panel, "Prompt" label, 15px text, Copy → "Copied").
-- Blockquotes starting with "**In Claude:**" render as a small purple-tinted callout; other blockquotes as a stone example box.
+- Paragraphs or blockquotes starting with a bold tool label ("**In Claude:**", "**In Claude Cowork:**", "**In Claude Code:**", "**In monday agents:**", "**In other AI tools:**") render as a small purple-tinted callout; other blockquotes as a stone example box.
 - Tables render as bordered tables.
 - `## The trail` (numbered list) is a rail step, and its items also show as a compact numbered list in a stone panel at the top of the `Step 1` section.
 - Newer files use top-level `## Step N:` sections (with `### Prompt N:` inside); older files nest `### Step N` under `## Core task`.
