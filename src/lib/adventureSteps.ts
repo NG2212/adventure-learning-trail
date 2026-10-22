@@ -33,7 +33,7 @@ export function parseAdventure(markdown: string, titles: { title: string; slug: 
   const steps: AdventureStep[] = [];
   let trail: string[] = [];
   let related: ParsedAdventure["related"] = null;
-  const chunks = stripComments(markdown).split(/^## /m).slice(1);
+  const chunks = stripComments(markdown.replace(/\r\n?/g, "\n")).split(/^## /m).slice(1);
 
   // First pass: the trail.
   for (const chunk of chunks) {
