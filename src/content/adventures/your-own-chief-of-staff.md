@@ -78,7 +78,7 @@ Typical jobs at Monday: a morning briefing on your boards, preparation before a 
 **What this does:** the AI interviews you about your week, proposes three jobs with their sources, output, timing and approval line, and helps you pick two.
 
 ```
-Help me design a personal chief of staff: an AI assistant that does my recurring preparation work. Use what you know about me; ask only for what is missing, one question at a time. If I already have such an assistant, ask me to paste its instructions and build on them.
+Help me design a personal chief of staff: an AI tool that does my recurring preparation work. Use what you know about me; ask only for what is missing, one question at a time. If I already have such an assistant, ask me to paste its instructions and build on them.
 
 Ask about my week: the meetings I prepare for, the information I gather again and again, the accounts or projects I track, the updates I write, what I already automate, and where a mistake would be costly. If I answer vaguely, ask for a recent example.
 
