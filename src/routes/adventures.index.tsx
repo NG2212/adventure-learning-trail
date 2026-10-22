@@ -5,6 +5,7 @@ import {
 } from "@/content/adventures";
 import { useStoreState } from "@/store";
 import { AdventureCard } from "@/components/AdventureCard";
+import { DiscLegend } from "@/components/AdventureIcon";
 import { PageHeading } from "@/components/AppShell";
 import { FootprintPair } from "@/components/Footprints";
 import { cn } from "@/lib/utils";
@@ -88,6 +89,7 @@ function AllAdventures() {
           <button onClick={() => setFilters(EMPTY)} className="text-sm font-semibold text-primary">Clear filters</button>
         )}
       </div>
+      <DiscLegend className="mt-4" />
 
       {visible.length === 0 ? (
         <div className="mt-16 flex flex-col items-center text-center">
