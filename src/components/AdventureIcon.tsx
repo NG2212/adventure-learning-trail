@@ -36,7 +36,7 @@ export function useDiscState(a: Pick<Adventure, "slug" | "isOpen">): DiscState {
 
 const BOX = { xs: "size-5", sm: "size-10", md: "size-16", lg: "size-20", xl: "size-24" } as const;
 
-export function Disc({ name, state, size = "md", className }: { name: IconName; state: DiscState; size?: keyof typeof BOX; className?: string }) {
+export function Disc({ name, state, size = "md", className }: { name: IconName; state: DiscState; size?: keyof typeof BOX; className?: string | undefined }) {
   const Icon = ICONS[name] ?? MapPin;
   return (
     <div
@@ -60,7 +60,7 @@ export function Disc({ name, state, size = "md", className }: { name: IconName; 
 }
 
 /** Adventure disc whose state is derived from itinerary + completions + wave. */
-export function AdventureIcon({ adventure, size = "md", className }: { adventure: Adventure; size?: keyof typeof BOX; className?: string }) {
+export function AdventureIcon({ adventure, size = "md", className }: { adventure: Adventure; size?: keyof typeof BOX; className?: string | undefined }) {
   const state = useDiscState(adventure);
   return <Disc name={adventure.icon} state={state} size={size} className={className} />;
 }
