@@ -126,7 +126,7 @@ Rail items are all clickable; Back/Next at the bottom. The final step of an open
 
 ## Design fixes (client review 1)
 
-**Logo:** one `MondayLogo` component, shown left of the "AI Adventure" wordmark in the header and above the wordmark on sign-in. Until the official SVG arrives it is a "monday.com" text wordmark in Poppins SemiBold (white on purple, #242424 on light); swapping in the SVG is a change to that component only.
+**Logo:** one `MondayLogo` component, shown left of the "AI Adventure" wordmark in the header and above the wordmark on sign-in. It renders `src/assets/monday-logo.svg` at ~22px high: as-is on light surfaces; on the purple sign-in the wordmark is white while the three marks keep their colours. The favicon uses the three marks.
 
 **Icons:** Lucide icons, stroke 1.75, 58% of the disc, centred. Mapping from frontmatter `icon:`: sponge→Eraser, masks→Drama, robot→Bot, scale→Scale, compass→Compass, book→BookOpen, toolbox→Wrench, magnifier→Search, document→FileText, chat→MessageSquare, palette→Palette, calendar→CalendarCheck, id-card→IdCard, map-pin→MapPin, brain→Brain, briefcase→Briefcase, gauge→Gauge, layers→Layers, shield→ShieldCheck, clock→Clock, terminal→Terminal, newspaper→Newspaper, chart→BarChart3, loop→Repeat, network→Network, people→Users, balance→Scale. Unknown names fall back to the category glyph. On cards the disc is large and centred at the top with the title below; on the adventure page it sits left of the title.
 
@@ -135,3 +135,5 @@ Rail items are all clickable; Back/Next at the bottom. The final step of an open
 **Itinerary:** the whole stop card opens the adventure; reorder and remove buttons stop propagation.
 
 **Backgrounds:** signed-in pages use a warm surface #FBF9F6 with a sparse fixed pattern of small footprints in the accent colours at ~8% opacity. The adventure reading column sits on a white card. Sign-in is unchanged.
+
+**Adventure links:** slugs match case-insensitively; a mis-cased link (e.g. /adventures/De-Slop) redirects to the canonical lowercase URL, and an unknown slug shows a friendly "We couldn't find that adventure" page with a link to All adventures. Every page resolves on a direct load or refresh.

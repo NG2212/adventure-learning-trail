@@ -29,7 +29,7 @@ export function AppHeader() {
     <>
       <header className="border-b bg-background">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-5 py-4">
-          <Link to="/welcome" className="flex items-center gap-3 text-lg"><MondayLogo className="text-base" /><span aria-hidden className="h-5 w-px bg-border" /><Wordmark /></Link>
+          <Link to="/welcome" className="flex items-center gap-3 text-lg"><MondayLogo /><span aria-hidden className="h-5 w-px bg-border" /><Wordmark /></Link>
           <nav className="order-3 flex w-full gap-1 overflow-x-auto md:order-none md:w-auto">
             {NAV.filter((n) => n.to !== "/admin" || state.person.isAdmin).map((n) => (
               <Link
