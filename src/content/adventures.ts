@@ -95,6 +95,12 @@ function isIconName(x: unknown): x is IconName {
   return typeof x === "string" && (ICON_NAMES as readonly string[]).includes(x);
 }
 
+/** Badge art per slug: src/assets/icons/<slug>.png. */
+const ICON_ASSETS = import.meta.glob("/src/assets/icons/*.png", { eager: true, import: "default" }) as Record<string, string>;
+export function iconAssetFor(slug: string): string | undefined {
+  return ICON_ASSETS[`/src/assets/icons/${slug}.png`];
+}
+
 export function toAdventure(raw: string): Adventure {
   const { data, body } = splitFrontmatter(raw);
   const category = data.category ?? "Work smarter with AI";
@@ -116,6 +122,7 @@ export function toAdventure(raw: string): Adventure {
     next: data.next ?? [],
     body,
     isOpen: wave === 1,
+    iconAsset: iconAssetFor(String(data.slug)),
   };
 }
 
