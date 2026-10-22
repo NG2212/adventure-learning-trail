@@ -10,8 +10,8 @@ import { FootprintPair } from "@/components/Footprints";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/adventures/")({
-  validateSearch: (s: Record<string, unknown>): { build?: boolean } => ({
-    build: s.build === true || s.build === "true" ? true : undefined,
+  validateSearch: (s: Record<string, unknown>): { build?: boolean | undefined } => ({
+    build: s["build"] === true || s["build"] === "true" ? true : undefined,
   }),
   head: () => ({
     meta: [

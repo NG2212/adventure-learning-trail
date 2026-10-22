@@ -42,7 +42,7 @@ function toSteps(markdown: string) {
     .slice(1)
     .map((chunk) => {
       const [title, ...rest] = chunk.split("\n");
-      return { title: title.trim(), body: rest.join("\n").trim() };
+      return { title: (title ?? "").trim(), body: rest.join("\n").trim() };
     });
 }
 
@@ -77,7 +77,7 @@ function AdventurePage() {
   const [current, setCurrent] = useState(0);
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
-  const step = steps[current];
+  const step = steps[current] ?? steps[0] ?? { title: "", body: "" };
   const isLast = current === steps.length - 1;
 
   useEffect(() => setCurrent(0), [slug]);

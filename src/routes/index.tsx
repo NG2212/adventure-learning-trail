@@ -33,7 +33,7 @@ function SignIn() {
     <section className="relative flex min-h-[calc(100vh-52px)] items-center overflow-hidden bg-primary text-primary-foreground">
       <svg viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full" aria-hidden>
         {TRAILS.flatMap((t, ti) =>
-          trail(t.from[0], t.from[1], t.heading, t.count, 72, t.bend).map((p, i) => (
+          trail(t.from[0] ?? 0, t.from[1] ?? 0, t.heading, t.count, 72, t.bend).map((p, i) => (
             <FootprintShape key={`${ti}-${i}`} {...p} scale={1.9} fill={t.fill} />
           )),
         )}
