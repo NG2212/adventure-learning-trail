@@ -1,7 +1,7 @@
 ---
 slug: de-slop
-icon: sponge
 emoji: 🧽
+icon: sponge
 title: "Stay Original with AI"
 walkaway: "Original, creative work with AI: one real piece remade with your thinking in it, and your standards saved where your AI reads them"
 category: Work smarter with AI
