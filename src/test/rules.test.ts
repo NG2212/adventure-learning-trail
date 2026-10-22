@@ -32,7 +32,8 @@ describe("content", () => {
   it("Everyone matches any profession chip; Managers matches audience", () => {
     const deSlop = getAdventure("de-slop")!;
     expect(matchesProfession(deSlop, "Finance")).toBe(true);
-    expect(matchesProfession(deSlop, "Managers")).toBe(true);
+    expect(matchesProfession(deSlop, "Managers")).toBe(false); // audience is empty
+    expect(matchesProfession(getAdventure("board-of-advisors")!, "Managers")).toBe(true);
     expect(matchesProfession(getAdventure("the-loop")!, "Finance")).toBe(false);
   });
 });
