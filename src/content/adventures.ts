@@ -53,6 +53,8 @@ export const TOTAL_ADVENTURES = 30;
 export interface Adventure {
   slug: string;
   icon: IconName;
+  /** Optional badge art (512px PNG, transparent outside the circle); falls back to the Lucide glyph for `icon`. */
+  iconAsset?: string | undefined;
   title: string;
   walkaway: string;
   category: Category;
