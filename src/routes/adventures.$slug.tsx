@@ -148,8 +148,14 @@ function AdventurePage() {
   const step = steps[current] ?? steps[0] ?? { title: "", body: "", isSubstep: false };
   const isLast = current === steps.length - 1;
 
-  useEffect(() => setCurrent(0), [slug]);
-  useEffect(() => window.scrollTo({ top: 0 }), [current]);
+  // Block bodies: effects must return nothing (newer browsers make scrollTo return a Promise,
+  // which React would then try to call as a cleanup -> "destroy is not a function").
+  useEffect(() => {
+    setCurrent(0);
+  }, [slug]);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [current]);
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
