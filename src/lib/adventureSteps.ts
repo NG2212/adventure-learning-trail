@@ -6,10 +6,10 @@
  * - Each `## ` heading is a step.
  * - Inside "Core task", each `### Step N` is its own step (shown indented in the rail);
  *   `### Prompt N:` headings stay inside the step they belong to.
- * - `## The trail` is not a step: its numbered items show in a stone panel at the top of the
- *   first step, and name `Step N:` rail items when the heading matches the Nth trail item.
- * - `## Related adventures` (older files: `## Where to next`) is not a step: it renders as a small
- *   link list below the "What's next" panel. Bold names matching an adventure title become links.
+ * - `## The trail` is a step; its numbered items also show in a stone panel at the top of the
+ *   first `Step 1` section.
+ * - `## Related adventures` (older files: `## Where to next`) is a step: bold names matching an
+ *   adventure title become links. The "What's next" panel follows the last step.
  * - `## Go further` is marked so the page renders its parts as collapsible cards.
  */
 export interface AdventureStep {
@@ -27,18 +27,6 @@ export interface ParsedAdventure {
 
 export function stripComments(md: string): string {
   return md.replace(/<!--[\s\S]*?-->/g, "");
-}
-
-const norm = (s: string) => s.toLowerCase().replace(/[*_`]/g, "").replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
-
-/** If `Step N: X` matches trail item N (X equal to, or contained in, the item or vice versa), use the trail item. */
-function trailName(title: string, trail: string[]): string {
-  const m = title.match(/^Step\s+(\d+)\s*:?\s*(.*)$/i);
-  if (!m) return title;
-  const item = trail[Number(m[1]) - 1];
-  if (!item) return title;
-  const a = norm(m[2] ?? ""), b = norm(item);
-  return a && (a === b || a.includes(b) || b.includes(a)) ? item.replace(/\*\*/g, "") : title;
 }
 
 export function parseAdventure(markdown: string, titles: { title: string; slug: string }[] = []): ParsedAdventure {
@@ -60,9 +48,9 @@ export function parseAdventure(markdown: string, titles: { title: string; slug: 
     const title = rawTitle.trim();
     const body = rest.join("\n").trim();
 
-    if (/^the trail$/i.test(title)) continue;
     if (/^(related adventures|where to next)$/i.test(title)) {
       related = { heading: title, body: linkAdventureTitles(body, titles) };
+      steps.push({ title, body: related.body, isSubstep: false });
       continue;
     }
     if (/^core task$/i.test(title)) {
@@ -70,11 +58,11 @@ export function parseAdventure(markdown: string, titles: { title: string; slug: 
       if (preamble.trim()) steps.push({ title, body: preamble.trim(), isSubstep: false });
       for (const part of parts) {
         const [stepTitle = "", ...stepBody] = part.split("\n");
-        steps.push({ title: trailName(stepTitle.trim(), trail), body: stepBody.join("\n").trim(), isSubstep: true });
+        steps.push({ title: stepTitle.trim(), body: stepBody.join("\n").trim(), isSubstep: true });
       }
       continue;
     }
-    steps.push({ title: trailName(title, trail), body, isSubstep: false, goFurther: /^go further$/i.test(title) });
+    steps.push({ title, body, isSubstep: false, goFurther: /^go further$/i.test(title) });
   }
   return { steps, trail, related };
 }
@@ -113,7 +101,8 @@ export function splitGoFurther(md: string): { intro: string; cards: { title: str
   const cards: { title: string; body: string }[] = [];
   for (const p of paras) {
     const h = p.match(/^###\s+(.+?)\s*(?:\n([\s\S]*))?$/);
-    const b = p.match(/^\*\*([^*]+?)\*\*:?\s*([\s\S]*)$/);
+    // Card titles are bold-led paragraphs whose bold text does not end in ":" ("**What this does:**" is a label).
+    const b = p.match(/^\*\*([^*]*?[^:*])\*\*\s*([\s\S]*)$/);
     if (h) cards.push({ title: (h[1] ?? "").trim(), body: (h[2] ?? "").trim() });
     else if (b) cards.push({ title: (b[1] ?? "").replace(/[:.]$/, "").trim(), body: (b[2] ?? "").trim() });
     else if (cards.length) cards[cards.length - 1]!.body += `\n\n${p}`;
