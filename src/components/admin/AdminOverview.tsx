@@ -14,6 +14,6 @@ export function AdminOverview(){
  <Section title="Top 10 adventures by completions"><Bars data={top.map(x=>({name:x.title,value:x.completions,secondary:x.opens}))}/></Section>
  <Section title="Completions by category"><Bars data={a.categories} color="coral"/></Section><Section title="Distribution of titles"><Bars data={a.titles} color="info"/></Section>
  <Section title="Badge distribution" action={<CsvButton onClick={()=>downloadCsv('badges.csv',['Adventure','People earned'],a.adventures.map(x=>[x.title,x.badgeCount]))}/>}><div className="max-h-96 space-y-3 overflow-y-auto pr-2">{[...a.adventures].sort((x,y)=>y.badgeCount-x.badgeCount).map(x=>{const art=store.listAdminAdventures().find(ad=>ad.slug===x.slug);return <div key={x.slug} className="flex items-center gap-3 border-b pb-2">{art&&<Disc name={art.icon} art={art.iconAsset} state={x.badgeCount?'done':'later'} size="sm"/>}<span className="flex-1 text-sm">{x.title}</span><span className="text-sm tabular-nums">{x.badgeCount}</span></div>;})}</div></Section>
- <div>{groupTable('Activity by org',a.orgs)}{groupTable('Activity by profession',a.professions)}</div></div>
+ <div className="min-w-0">{groupTable('Activity by org',a.orgs)}{groupTable('Activity by profession',a.professions)}</div></div>
  <p className="mt-6 border-t pt-4 text-xs text-muted-foreground">Analytics are for L&D; managers receive aggregates only.</p></>;
 }
