@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
@@ -19,8 +19,17 @@ export const Route = createFileRoute("/adventures/$slug")({
   loader: ({ params }) => {
     const adventure = getAdventure(params.slug);
     if (!adventure) throw notFound();
+    // Canonicalise mis-cased links (e.g. /adventures/De-Slop) instead of 404ing.
+    if (adventure.slug !== params.slug) throw redirect({ to: "/adventures/$slug", params: { slug: adventure.slug }, replace: true });
     return { slug: adventure.slug };
   },
+  notFoundComponent: () => (
+    <div className="mx-auto max-w-xl px-5 py-20 text-center">
+      <h1 className="text-3xl">We couldn't find that adventure</h1>
+      <p className="mt-2 text-muted-foreground">The link may be mistyped, or the adventure may have a new name.</p>
+      <Link to="/adventures" className="mt-6 inline-block rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground">See all adventures</Link>
+    </div>
+  ),
   head: ({ loaderData }) => {
     const a = loaderData ? getAdventure(loaderData.slug) : undefined;
     const title = a ? `${a.title} · AI Adventure` : "Adventure · AI Adventure";

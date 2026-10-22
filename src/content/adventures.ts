@@ -137,7 +137,8 @@ export const ADVENTURES: Adventure[] = Object.values(files)
   .sort((a, b) => a.wave - b.wave || a.slot - b.slot);
 
 export function getAdventure(slug: string): Adventure | undefined {
-  return ADVENTURES.find((a) => a.slug === slug);
+  const key = normalizeSlug(slug);
+  return ADVENTURES.find((a) => a.slug === key);
 }
 
 /**
@@ -150,4 +151,9 @@ export function adventureBody(a: Adventure): string {
   if (a.isOpen && a.body) return a.body;
   if (a.isOpen) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
   return `## This adventure opens on ${WAVES[a.wave]?.opensOn ?? "a later date"}\n\n${a.walkaway}`;
+}
+
+/** Shared links may arrive with capitals, spaces, underscores or a trailing slash; adventure slugs are lowercase-hyphenated. */
+export function normalizeSlug(slug: string): string {
+  return decodeURIComponent(slug).trim().toLowerCase().replace(/[\s_]+/g, "-").replace(/\/+$/, "");
 }
