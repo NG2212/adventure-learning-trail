@@ -3,7 +3,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { adventureBody, getAdventure, WAVES } from "@/content/adventures";
+import { ADVENTURES, adventureBody, getAdventure, WAVES } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
@@ -12,6 +12,7 @@ import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
 import { Celebration } from "@/components/Celebration";
 import { cn } from "@/lib/utils";
+import { toSteps } from "@/lib/adventureSteps";
 
 export const Route = createFileRoute("/adventures/$slug")({
   loader: ({ params }) => {
@@ -35,15 +36,12 @@ export const Route = createFileRoute("/adventures/$slug")({
   component: AdventurePage,
 });
 
-/** Split Markdown into steps at each `## ` heading. Text before the first heading is dropped. */
-function toSteps(markdown: string) {
-  return markdown
-    .split(/^## /m)
-    .slice(1)
-    .map((chunk) => {
-      const [title, ...rest] = chunk.split("\n");
-      return { title: (title ?? "").trim(), body: rest.join("\n").trim() };
-    });
+/** Plain text of a hast node (for detecting "In Claude:" callouts). */
+type HastLike = { type: string; value?: string; children?: HastLike[] };
+function hastText(n: HastLike | undefined): string {
+  if (!n) return "";
+  if (n.type === "text") return n.value ?? "";
+  return (n.children ?? []).map(hastText).join("");
 }
 
 /** Markdown renderers: fenced code -> Prompt window; tables -> clean tables. */
@@ -58,7 +56,20 @@ const MD: Components = {
   p: ({ children }) => <p className="my-3 leading-relaxed">{children}</p>,
   ul: ({ children }) => <ul className="my-3 list-disc space-y-1.5 pl-6">{children}</ul>,
   ol: ({ children }) => <ol className="my-3 list-decimal space-y-1.5 pl-6">{children}</ol>,
-  a: ({ children, href }) => <a href={href} className="font-semibold text-primary underline underline-offset-4">{children}</a>,
+  a: ({ children, href }) => {
+    const cls = "font-semibold text-primary underline underline-offset-4";
+    const internal = href?.match(/^\/adventures\/([\w-]+)$/);
+    if (internal?.[1]) return <Link to="/adventures/$slug" params={{ slug: internal[1] }} className={cls}>{children}</Link>;
+    return <a href={href} className={cls}>{children}</a>;
+  },
+  blockquote: ({ node, children }) => {
+    const isClaudeTip = hastText(node as HastLike).trim().startsWith("In Claude:");
+    return isClaudeTip ? (
+      <aside className="my-4 rounded-2xl border-l-4 border-primary bg-primary-soft px-4 py-1 text-sm">{children}</aside>
+    ) : (
+      <blockquote className="my-5 rounded-2xl bg-muted px-5 py-2">{children}</blockquote>
+    );
+  },
   table: ({ children }) => (
     <div className="my-5 overflow-x-auto rounded-2xl border">
       <table className="w-full text-left text-sm">{children}</table>
@@ -73,7 +84,7 @@ function AdventurePage() {
   const { slug } = Route.useLoaderData();
   const adventure = getAdventure(slug)!;
   const { completions } = useStoreState();
-  const steps = useMemo(() => toSteps(adventureBody(adventure)), [adventure]);
+  const steps = useMemo(() => toSteps(adventureBody(adventure), ADVENTURES), [adventure]);
   const [current, setCurrent] = useState(0);
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
@@ -103,11 +114,12 @@ function AdventurePage() {
         <nav aria-label="Steps" className="md:sticky md:top-6 md:self-start">
           <ol className="flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
             {steps.map((s, i) => (
-              <li key={s.title}>
+              <li key={`${i}-${s.title}`}>
                 <button
                   onClick={() => setCurrent(i)}
                   className={cn(
                     "w-full whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
+                    s.isSubstep && "md:pl-8",
                     i === current ? "bg-primary-soft font-semibold text-primary md:border-primary md:bg-transparent" : "text-muted-foreground hover:text-foreground md:border-transparent",
                   )}
                 >
