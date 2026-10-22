@@ -4,6 +4,7 @@ import { store, useStoreState } from "@/store";
 import { titleFor } from "@/lib/titles";
 import { Footprint, FootprintShape } from "./Footprints";
 import { MondayLogo } from "./MondayLogo";
+import { DiscFilters } from "./AdventureIcon";
 
 const NAV = [
   { to: "/itinerary", label: "My itinerary" },
@@ -83,6 +84,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const isSignIn = pathname === "/";
   return (
     <div className={isSignIn ? "flex min-h-screen flex-col" : "relative isolate flex min-h-screen flex-col bg-surface"}>
+      <DiscFilters />
       {!isSignIn && <FootprintBackdrop />}
       {!isSignIn && <AppHeader />}
       <main className="flex-1">{children}</main>
