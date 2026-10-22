@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -157,14 +157,44 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
   const parsed = useMemo(() => parseAdventure(adventureBody(adventure), ADVENTURES), [adventure]);
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const [current, setCurrent] = useState(0);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const railRef = useRef<HTMLElement>(null);
+  const shouldScroll = useRef(false);
+  const selectStep = (index: number) => {
+    if (index === current) return;
+    shouldScroll.current = true;
+    setCurrent(index);
+  };
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
   const done = completions.some((c) => c.slug === slug);
   const step = steps[current] ?? steps[0];
   const showProof = current === lastCoreStep;
 
   useEffect(() => {
-    // Keep the persistent introduction visible and never return scrollTo's value as effect cleanup.
-    window.scrollTo({ top: 0 });
+    // Initial loads retain the page head; only reader-initiated step changes scroll.
+    if (!shouldScroll.current) return;
+    shouldScroll.current = false;
+    const frame = requestAnimationFrame(() => {
+      const heading = headingRef.current;
+      if (!heading) return;
+      const headerHeight = document.querySelector("[data-app-header]")?.getBoundingClientRect().height ?? 0;
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+      const railHeight = mobile ? railRef.current?.getBoundingClientRect().height ?? 0 : 0;
+      const top = window.scrollY + heading.getBoundingClientRect().top - headerHeight - railHeight - 16;
+      window.scrollTo({ top, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+      if (mobile) {
+        const active = railRef.current?.querySelector<HTMLElement>('[aria-current="step"]');
+        const strip = active?.closest("ol");
+        if (active && strip) {
+          const itemBounds = active.getBoundingClientRect();
+          const stripBounds = strip.getBoundingClientRect();
+          if (itemBounds.left < stripBounds.left || itemBounds.right > stripBounds.right) {
+            strip.scrollTo({ left: active.offsetLeft - strip.offsetLeft, behavior: "smooth" });
+          }
+        }
+      }
+    });
+    return () => cancelAnimationFrame(frame);
   }, [current]);
 
   return (
@@ -196,14 +226,15 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
 
       <div className={cn("mt-8 grid grid-cols-[minmax(0,1fr)] gap-8", hasNumberedSteps && "md:grid-cols-[240px_minmax(0,1fr)]")}>
         {hasNumberedSteps && (
-          <nav aria-label="Steps" className="min-w-0 md:sticky md:top-6 md:self-start">
-            <ol className="flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
+          <nav ref={railRef} aria-label="Steps" className="adventure-step-rail sticky z-30 -mx-5 min-w-0 self-start border-b bg-surface px-5 py-2 md:mx-0 md:border-b-0 md:bg-transparent md:p-0">
+            <ol className="relative flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
               {steps.map((s, i) => (
                 <li key={`${i}-${s.title}`}>
-                  <Button variant="ghost" onClick={() => setCurrent(i)} aria-current={i === current ? "step" : undefined}
+                  <Button variant="ghost" onClick={() => selectStep(i)} aria-label={s.title} aria-current={i === current ? "step" : undefined}
                     className={cn("h-auto w-full justify-start whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
                       i === current ? "bg-primary-soft font-semibold text-primary md:border-primary md:bg-transparent" : "text-muted-foreground hover:text-foreground md:border-transparent")}>
-                    {s.title}
+                    <span className="md:hidden">{s.title.match(/^Step\s+\d+/i)?.[0] ?? s.title}</span>
+                    <span className="hidden md:inline">{s.title}</span>
                   </Button>
                 </li>
               ))}
@@ -211,8 +242,8 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           </nav>
         )}
         <div className="min-w-0">
-          <article aria-label="Adventure section" className="bg-card p-6 sm:p-8">
-            {step?.title && <h2 className="mb-4 text-2xl sm:text-3xl">{step.title}</h2>}
+          <article aria-label="Adventure section" className="adventure-step-content bg-card p-6 sm:p-8">
+            {step?.title && <h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl">{step.title}</h2>}
             <div className="max-w-3xl">
               <StepBody body={step?.body ?? ""} goFurther={step?.goFurther ?? false} />
             </div>
@@ -233,9 +264,9 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
             )}
 
             <div className="mt-8 flex justify-between gap-3 border-t pt-6">
-              {current > 0 ? <Button variant="outline" onClick={() => setCurrent(current - 1)} className="rounded-full px-5"><ArrowLeft />Back</Button>
+              {current > 0 ? <Button variant="outline" onClick={() => selectStep(current - 1)} className="rounded-full px-5"><ArrowLeft />Back</Button>
                 : <Button variant="ghost" asChild><Link to="/adventures"><ArrowLeft />All adventures</Link></Button>}
-              {current < steps.length - 1 && <Button onClick={() => setCurrent(current + 1)} className="rounded-full px-5">Next<ArrowRight /></Button>}
+              {current < steps.length - 1 && <Button onClick={() => selectStep(current + 1)} className="rounded-full px-5">Next<ArrowRight /></Button>}
             </div>
           </article>
           <footer aria-label="Adventure next destinations" className="mt-8 bg-card p-6 sm:p-8">

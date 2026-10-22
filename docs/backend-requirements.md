@@ -55,6 +55,8 @@ Computed by the platform, never authored text. Reads: own itinerary, own complet
 
 The adventure footer shows the computed panel first, then Markdown "Related adventures" (older files: "Where to next") as a small link list under the file's own heading. Neither is a rail step. Page-head sections, numbered steps, optional Go further, and Proof of work are derived from the Markdown; no new layout fields are required.
 
+Step switching and sticky header/rail offsets are presentation-only: rail and Next/Back align the new heading below the visible header and mobile strip. No scrolling state is persisted and no additional reads, writes or entity fields are needed.
+
 ## Events to log
 
 - `adventure_opened` (personId, slug, at)

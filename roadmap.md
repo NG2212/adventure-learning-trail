@@ -1,3 +1,5 @@
 - [x] Replace the four revised adventure sources, preserving slugs and icon identities.
 - [x] Separate introduction, numbered steps, optional Go further, proof of work, and footer; title prompt windows.
 - [x] Update documentation and parser regression tests; verify all four pages and the single-page fallback.
+- [x] Align step changes beneath the sticky header and keep desktop/mobile rails visible.
+- [x] Update scrolling documentation and verify rail plus Next/Back on desktop and mobile.

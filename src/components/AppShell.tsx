@@ -1,4 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { store, useStoreState } from "@/store";
 import { titleFor } from "@/lib/titles";
@@ -23,11 +24,26 @@ export function Wordmark({ inverted = false }: { inverted?: boolean }) {
 }
 
 export function AppHeader() {
+  const headerRef = useRef<HTMLDivElement>(null);
   const state = useStoreState();
   const count = state.completions.length;
   const title = titleFor(count);
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const updateHeight = () => {
+      document.documentElement.style.setProperty("--app-header-height", `${header.getBoundingClientRect().height}px`);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(header);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--app-header-height");
+    };
+  }, []);
   return (
-    <>
+    <div ref={headerRef} data-app-header className="sticky top-0 z-40 shrink-0 bg-background">
       <header className="border-b bg-background">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-5 py-4">
           <Link to="/welcome" className="flex items-center gap-3 text-lg"><MondayLogo /><span aria-hidden className="h-5 w-px bg-border" /><Wordmark /></Link>
@@ -64,7 +80,7 @@ export function AppHeader() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

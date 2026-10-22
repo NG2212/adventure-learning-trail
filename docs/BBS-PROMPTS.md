@@ -80,6 +80,7 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 
 - Strip HTML design comments; drop the Markdown title/tagline before the first section.
 - The rail contains only `## Step N: …` sections, in file order, plus a final Go further item when authored. Use the complete heading verbatim: no separate renderer numbering. Four core steps plus Go further = five items. Clicking the rail or Next/Back switches only these sections.
+- Keep the global header sticky and measure its actual height (including the announcement). Desktop rail sticks below it; mobile rail is a compact horizontal strip directly beneath it, with full heading names retained as accessible labels. Rail and Next/Back smoothly align the new step heading below the header (and mobile strip), with a small reading gap, never at the page top. Initial loads show the page head; respect reduced-motion preferences.
 - `### Prompt: <name>` titles the next Prompt window, without added numbering. Keep **What this does:** above the window. Every fenced block is a Prompt window with Copy; untitled fences use “Prompt”. Older numbered prompt headings still supply a name without their number.
 - Bold-led Claude, Claude Cowork, Claude Code, monday agents and other AI tools paragraphs/blockquotes remain small tool callouts. Tables remain tables; HTML details remain collapsible with nested Prompt windows.
 - Go further consists of collapsed cards for sub-headings or bold-led paragraphs. Labels ending in a colon are not card headings; fenced text and nested details do not split cards.
