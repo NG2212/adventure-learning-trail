@@ -102,3 +102,5 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 ## Disc state (derived, no new fields)
 
 The icon disc state on every surface is derived on the client from existing data: `done` if a completion exists for the person and adventure; else `itinerary` if the slug is in the person's itinerary; else `open` if the adventure's wave is open; else `later`. No new entity fields are needed.
+
+**Adventure `iconAsset` (optional):** path/URL of the adventure's badge art (512px PNG, transparent outside the circle). When absent, the client renders the glyph named by `icon`. Disc state treatments are applied by the client on top of the art; no other new fields.
