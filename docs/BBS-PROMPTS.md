@@ -5,7 +5,7 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 - Palette: purple #9450FD (~70%), white #FFFFFF, near-black #242424 text, stone #E3D9CF panels; blue #1E77FD, coral #FF644D, green #06A24B for labels and states only; lime #D8F81E, pink #F07FFF, yellow #FBD54D only for "next up", celebrations and progress.
 - Poppins everywhere. Rounded corners 16-24px, subtle shadows, no gradients (except a faint lime glow on celebrations), no emojis, no stock imagery.
 - Motif: flat footprints (sole + heel shape) in accent colours.
-- No time estimates, streaks, leaderboards or rankings. Titles describe distance travelled, never ability.
+- No adventure-duration estimates, streaks, leaderboards or rankings. Admin session-time analytics are explicitly labelled estimated. Titles describe distance travelled, never ability.
 - Footer on every page: "AI Adventure · Built for monday.com by Nufar Gaspar".
 - All reads/writes go through one store interface (see `docs/backend-requirements.md`).
 
@@ -148,7 +148,7 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 
 **Mock data:** deterministic seeded generator (`20261022`) with a fixed reference date, 22 Oct 2026. Exactly 140 employees, 28 managers from that list, eight professions and orgs, 2–4 teams per org. Employee: id, name, email, profession, org, team, managerId, isManager (Managers tag), joinedAt, lastActiveAt (null = never), derived title, completions with timestamps, ordered itinerary, estimatedMinutes. Exactly 21 never active; approximately 20% have no completions, most have 1–4, a small tail has 8–12. Almost all completions are W1; a rare later-wave completion represents mock early access. Names and activity are invented except Noa's requested seed: Stay Original completed; Board of Advisors → Your AI Identity → Skills itinerary. Store reads reflect Noa's current local completion/itinerary state.
 
-Activity is a timestamped event ledger: id, personId, slug, kind (opened / added / completed), at; estimated sessions: personId, at, estimatedMinutes. No personal level, score, onboarding answer or comfort field exists. Admin reads (`listPeople`, `getPersonActivity`, `getAggregates`, directory/waves/announcement/admin reads) and every write go through AdventureStore. Admin writes remain in-memory for this session; refresh restores deterministic data. Never call external services.
+Activity is a timestamped event ledger: id, personId, slug, kind (opened / added / completed), at; estimated sessions: personId, slug, at, estimatedMinutes. No personal level, score, onboarding answer or comfort field exists. Admin reads (`listPeople`, `getPersonActivity`, `getAggregates`, directory/waves/announcement/admin reads) and every write go through AdventureStore. Admin writes remain in-memory for this session; refresh restores deterministic data. Never call external services.
 
 ## 11b. Admin Overview (`/admin/overview`)
 

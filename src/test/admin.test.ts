@@ -92,4 +92,18 @@ describe("Admin mock rules", () => {
     expect(store.listAdminAdventures().find((x) => x.slug === "new-draft")?.status).toBe("Draft");
     expect(createLocalStore().listAdminAdventures()).toHaveLength(30);
   });
+  it("attributes estimated session time to the filtered adventure wave", () => {
+    const store = createAdminMock(() => SEED_STATE, () => {});
+    const data = generateAdminDataset();
+    const wave = 1;
+    const ids = new Set(store.listPeople().filter(p => store.getPersonActivity(p.id, { wave: String(wave) }).some(e => e.kind === 'opened')).map(p => p.id));
+    const expected = data.sessions.filter(s => ids.has(s.personId) && ADVENTURES.find(a => a.slug === s.slug)?.wave === wave).reduce((sum, s) => sum + s.estimatedMinutes, 0);
+    expect(store.getAggregates({ wave: '1' }).estimatedMinutes).toBe(expected);
+  });
+  it("uses completion events for averages and add events for itinerary adds", () => {
+    const store = createAdminMock(() => SEED_STATE, () => {});
+    const a = store.getAggregates();
+    expect(a.average).toBe(a.completions / a.active);
+    expect(a.adds).toBe(generateAdminDataset().events.filter(e => e.kind === 'added').length);
+  });
 });
