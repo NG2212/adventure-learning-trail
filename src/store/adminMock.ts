@@ -21,15 +21,17 @@ export function generateAdminDataset(seed = 20261022) {
  // Noa is an employee in Product; the 28 team leads all come from the employee list.
  const noa = people[0];
  if (noa) Object.assign(noa, { org: 'Product', team: 'Work Management', profession: 'Product', managerId: 'employee-11', isManager: false });
- if (people[28]) people[28].isManager = true;
+ if (people[27]) people[27].isManager = true;
+ if (people[28]) Object.assign(people[28], {isManager:true,org:'Sales & CS',team:'Enterprise Sales',profession:'Customer Facing',managerId:'employee-28'});
+ people.forEach(p=>{if(p.managerId==='employee-0')p.managerId='employee-28';});
  const events: ActivityEvent[] = [], sessions: AdminSession[] = [];
  const open = ADVENTURES.filter(a => a.isOpen);
  const addEvent = (personId: string, slug: string, kind: ActivityEvent['kind'], at: string) => events.push({ id: `event-${events.length}`, personId, slug, kind, at });
  people.forEach((person, i) => {
   if (i === 0) return;
-  if (i % 7 === 0 || i === 139) return; // 21 people never active
-  const count = i % 5 === 0 ? 0 : i % 23 === 0 ? 8 + Math.floor(rng()*5) : 1 + Math.floor(rng()*4);
-  const choices = [...open].sort(() => 0); // preserve slot order; seeded rotation below
+  if (i % 7 === 0 || i === 138 || i === 139) return; // 21 people never active
+  const count = i % 20 === 0 ? 0 : i % 23 === 0 ? 8 + Math.floor(rng()*5) : 1 + Math.floor(rng()*4);
+  const choices = [...open];
   const offset = Math.floor(rng()*choices.length);
   const completed = Array.from({length: count},(_,k) => choices[(offset+k)%choices.length] ?? ADVENTURES[0]).filter(a => a !== undefined);
   // At most one completion per employee/adventure; rare 12th completion is an early-access later-wave adventure.
