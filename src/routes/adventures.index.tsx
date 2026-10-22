@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ADVENTURES, CATEGORIES, EFFORTS, LEVELS, PROFESSIONS, TOOLS, type Adventure,
+  ADVENTURES, CATEGORIES, EFFORTS, LEVELS, PROFESSIONS, TOOLS, matchesProfession, type Adventure, type Profession,
 } from "@/content/adventures";
 import { useStoreState } from "@/store";
 import { AdventureCard } from "@/components/AdventureCard";
@@ -43,7 +43,7 @@ function matches(a: Adventure, f: Filters, doneSlugs: string[]) {
   const status = doneSlugs.includes(a.slug) ? "Done" : a.isOpen ? "Open" : "Coming soon";
   const any = (sel: string[], vals: string[]) => sel.length === 0 || sel.some((s) => vals.includes(s));
   return (
-    any(f.category, [a.category]) && any(f.level, a.levels) && any(f.profession, a.professions) &&
+    any(f.category, [a.category]) && any(f.level, a.levels) && (f.profession.length === 0 || f.profession.some((p) => matchesProfession(a, p as Profession))) &&
     any(f.tool, [a.tool]) && any(f.effort, [a.effort]) && any(f.status, [status])
   );
 }
