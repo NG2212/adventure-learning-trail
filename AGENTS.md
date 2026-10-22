@@ -1,10 +1,6 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# AGENTS
+
+- All app data reads/writes go through the `AdventureStore` interface in `src/store/`; the localStorage implementation is swappable. Why: the mockup is a spec for a rebuild on another platform.
+- Adventures are Markdown files in `src/content/adventures/`, indexed from frontmatter at startup; `## ` headings become steps and fenced code becomes Prompt windows. Why: content-driven, no code change to add an adventure.
+- Recommendation scoring lives only in `src/lib/recommend.ts`. Why: the real build replaces it with an AI call.
+- Keep `docs/BBS-PROMPTS.md` and `docs/backend-requirements.md` updated with every feature change. Why: they are client deliverables.

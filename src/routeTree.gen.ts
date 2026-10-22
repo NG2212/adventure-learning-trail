@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ItineraryRouteImport } from './routes/itinerary'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as AdventuresIndexRouteImport } from './routes/adventures.index'
+import { Route as AdventuresSlugRouteImport } from './routes/adventures.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ItineraryRoute = ItineraryRouteImport.update({
+  id: '/itinerary',
+  path: '/itinerary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdventuresIndexRoute = AdventuresIndexRouteImport.update({
+  id: '/adventures/',
+  path: '/adventures/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdventuresSlugRoute = AdventuresSlugRouteImport.update({
+  id: '/adventures/$slug',
+  path: '/adventures/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/itinerary': typeof ItineraryRoute
+  '/onboarding': typeof OnboardingRoute
+  '/progress': typeof ProgressRoute
+  '/welcome': typeof WelcomeRoute
+  '/adventures/$slug': typeof AdventuresSlugRoute
+  '/adventures/': typeof AdventuresIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/itinerary': typeof ItineraryRoute
+  '/onboarding': typeof OnboardingRoute
+  '/progress': typeof ProgressRoute
+  '/welcome': typeof WelcomeRoute
+  '/adventures/$slug': typeof AdventuresSlugRoute
+  '/adventures': typeof AdventuresIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/itinerary': typeof ItineraryRoute
+  '/onboarding': typeof OnboardingRoute
+  '/progress': typeof ProgressRoute
+  '/welcome': typeof WelcomeRoute
+  '/adventures/$slug': typeof AdventuresSlugRoute
+  '/adventures/': typeof AdventuresIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/itinerary'
+    | '/onboarding'
+    | '/progress'
+    | '/welcome'
+    | '/adventures/$slug'
+    | '/adventures/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/itinerary'
+    | '/onboarding'
+    | '/progress'
+    | '/welcome'
+    | '/adventures/$slug'
+    | '/adventures'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/itinerary'
+    | '/onboarding'
+    | '/progress'
+    | '/welcome'
+    | '/adventures/$slug'
+    | '/adventures/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  ItineraryRoute: typeof ItineraryRoute
+  OnboardingRoute: typeof OnboardingRoute
+  ProgressRoute: typeof ProgressRoute
+  WelcomeRoute: typeof WelcomeRoute
+  AdventuresSlugRoute: typeof AdventuresSlugRoute
+  AdventuresIndexRoute: typeof AdventuresIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/itinerary': {
+      id: '/itinerary'
+      path: '/itinerary'
+      fullPath: '/itinerary'
+      preLoaderRoute: typeof ItineraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adventures/': {
+      id: '/adventures/'
+      path: '/adventures'
+      fullPath: '/adventures/'
+      preLoaderRoute: typeof AdventuresIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adventures/$slug': {
+      id: '/adventures/$slug'
+      path: '/adventures/$slug'
+      fullPath: '/adventures/$slug'
+      preLoaderRoute: typeof AdventuresSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  ItineraryRoute: ItineraryRoute,
+  OnboardingRoute: OnboardingRoute,
+  ProgressRoute: ProgressRoute,
+  WelcomeRoute: WelcomeRoute,
+  AdventuresSlugRoute: AdventuresSlugRoute,
+  AdventuresIndexRoute: AdventuresIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
