@@ -1,13 +1,19 @@
 import { titleFor } from "@/lib/titles";
 import type { AdventureStore, StoreState } from "./types";
-import { createAdminMock } from './adminMock';
+import { createAdminMock } from "./adminMock";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
 /** Seed: Noa has completed 1 adventure and has 3 in her itinerary. */
 export const SEED_STATE: StoreState = {
   signedIn: false,
-  person: { id: "noa-levi", name: "Noa Levi", firstName: "Noa", role: "Product Manager", isAdmin: true },
+  person: {
+    id: "noa-levi",
+    name: "Noa Levi",
+    firstName: "Noa",
+    role: "Product Manager",
+    isAdmin: true,
+  },
   itinerary: ["board-of-advisors", "your-ai-identity", "skills-when-how-and-how-well"],
   completions: [{ slug: "de-slop", completedAt: "2026-10-15" }],
   announcementDismissed: false,
@@ -36,7 +42,8 @@ export function createLocalStore(): AdventureStore {
 
   function write(next: StoreState) {
     state = next;
-    if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    if (typeof window !== "undefined")
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     listeners.forEach((l) => l());
   }
 
@@ -72,11 +79,18 @@ export function createLocalStore(): AdventureStore {
       if (s.completions.some((c) => c.slug === slug)) {
         return { count: before, newTitle: null, alreadyDone: true };
       }
-      const completions = [...s.completions, { slug, completedAt: new Date().toISOString().slice(0, 10) }];
+      const completions = [
+        ...s.completions,
+        { slug, completedAt: new Date().toISOString().slice(0, 10) },
+      ];
       write({ ...s, completions });
       const prevTitle = titleFor(before);
       const title = titleFor(completions.length);
-      return { count: completions.length, newTitle: title !== prevTitle ? title : null, alreadyDone: false };
+      return {
+        count: completions.length,
+        newTitle: title !== prevTitle ? title : null,
+        alreadyDone: false,
+      };
     },
     getCompletions: () => read().completions,
     getTitle: () => titleFor(read().completions.length),

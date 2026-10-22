@@ -1,5 +1,5 @@
 import type { TitleName } from "@/lib/titles";
-import type { AdminReadsWrites } from './adminTypes';
+import type { AdminReadsWrites } from "./adminTypes";
 
 export interface Person {
   id: string;
