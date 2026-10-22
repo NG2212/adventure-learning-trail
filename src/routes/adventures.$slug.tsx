@@ -185,7 +185,13 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
       if (mobile) {
         const active = railRef.current?.querySelector<HTMLElement>('[aria-current="step"]');
         const strip = active?.closest("ol");
-        if (active && strip) strip.scrollTo({ left: active.offsetLeft - strip.offsetLeft, behavior: "smooth" });
+        if (active && strip) {
+          const itemBounds = active.getBoundingClientRect();
+          const stripBounds = strip.getBoundingClientRect();
+          if (itemBounds.left < stripBounds.left || itemBounds.right > stripBounds.right) {
+            strip.scrollTo({ left: active.offsetLeft - strip.offsetLeft, behavior: "smooth" });
+          }
+        }
       }
     });
     return () => cancelAnimationFrame(frame);
