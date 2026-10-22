@@ -15,8 +15,10 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
         <AdventureIcon name={adventure.icon} active={adventure.isOpen} />
         {done ? (
           <Chip tone="success">Done</Chip>
+        ) : adventure.isOpen && adventure.body ? (
+          <Chip tone="primary">Ready</Chip>
         ) : adventure.isOpen ? (
-          <Chip tone="primary">Open</Chip>
+          <Chip tone="neutral">Content coming</Chip>
         ) : (
           <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>
         )}

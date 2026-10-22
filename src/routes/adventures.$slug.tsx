@@ -45,6 +45,11 @@ function hastText(n: HastLike | undefined): string {
   return (n.children ?? []).map(hastText).join("");
 }
 
+/** "In Claude:", "In Claude Cowork:", "In monday agents:" etc. render as small tool callouts. */
+function isToolCallout(text: string): boolean {
+  return /^In (Claude|Claude Cowork|Claude Code|monday agents|other AI tools)\s*:/i.test(text.trim());
+}
+
 /** Markdown renderers: fenced code -> Prompt window; tables -> clean tables. */
 const MD: Components = {
   pre: ({ node }) => {
@@ -54,7 +59,12 @@ const MD: Components = {
   },
   code: ({ children }) => <code className="rounded bg-muted px-1.5 py-0.5 text-[0.9em]">{children}</code>,
   h3: ({ children }) => <h3 className="mt-8 mb-2 text-xl">{children}</h3>,
-  p: ({ children }) => <p className="my-3 leading-relaxed">{children}</p>,
+  p: ({ node, children }) =>
+    isToolCallout(hastText(node as HastLike)) ? (
+      <aside className="my-4 rounded-2xl border-l-4 border-primary bg-primary-soft px-4 py-3 text-sm leading-relaxed">{children}</aside>
+    ) : (
+      <p className="my-3 leading-relaxed">{children}</p>
+    ),
   ul: ({ children }) => <ul className="my-3 list-disc space-y-1.5 pl-6">{children}</ul>,
   ol: ({ children }) => <ol className="my-3 list-decimal space-y-1.5 pl-6">{children}</ol>,
   a: ({ children, href }) => {
@@ -64,7 +74,7 @@ const MD: Components = {
     return <a href={href} className={cls}>{children}</a>;
   },
   blockquote: ({ node, children }) => {
-    const isClaudeTip = hastText(node as HastLike).trim().startsWith("In Claude:");
+    const isClaudeTip = isToolCallout(hastText(node as HastLike));
     return isClaudeTip ? (
       <aside className="my-4 rounded-2xl border-l-4 border-primary bg-primary-soft px-4 py-1 text-sm">{children}</aside>
     ) : (
