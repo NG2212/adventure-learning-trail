@@ -41,9 +41,19 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 | Onboarding | adventure index | addToItinerary (per card or all). Answers are not stored. |
 | All adventures | adventure index, waves, own completions, own itinerary | addToItinerary, removeFromItinerary |
 | My itinerary | own itinerary, adventures, own completions | reorderItinerary, removeFromItinerary |
-| Adventure page | adventure (body only if open), own completion, own itinerary | add/remove itinerary, markComplete |
+| Adventure page | adventure (body only if open), own completion, own itinerary, What's next (see below) | add/remove itinerary, markComplete |
 | Progress | own completion count, titles, adventures, planned total (30) | — |
 | Admin | adventure directory, waves, aggregates | create/edit adventure, export CSV |
+
+### What's next (adventure page end and completion celebration)
+
+Computed by the platform, never authored text. Reads: own itinerary, own completions, open adventures, person's role.
+
+1. The first adventure in the person's itinerary that is not done and is not the current one.
+2. Else one open adventure the person has not done, chosen by the recommendation scoring (role from the profile; other answers neutral, since onboarding answers are not stored). Ties and zero scores fall back to the first open adventure by slot.
+3. Else a link to All adventures.
+
+The Markdown "Related adventures" section (older files: "Where to next") renders as a small link list below the panel, under the file's own heading.
 
 ## Events to log
 
@@ -76,12 +86,15 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 - List adventures with labels and wave.
 - Create/edit an adventure from Markdown plus a labels form; validate frontmatter against the fixed label vocabularies.
 - Assign adventures to waves and set wave dates.
-- Programme analytics: counts of opens, itinerary adds, completions per adventure and per wave; CSV export of aggregates.
+- Per-employee view for L&D admins: email, last login, adventures opened, adventures completed, current itinerary.
+- Aggregates by profession, level and wave (opens, itinerary adds, completions), plus per adventure; CSV export.
+- Team reports for managers: aggregates only for their team, produced by L&D (managers have no direct per-employee access).
 
 ## Privacy rules
 
-- No per-person scores, no rankings, no leaderboards, no streaks.
+- No scores, no rankings, no leaderboards, no streaks, for anyone (employees, managers or admins).
+- Per-employee completion and engagement data is visible to L&D admins only.
+- Managers receive only team-level aggregates, produced by L&D.
 - The comfort answer is used only at recommendation time and never stored as a level or shown back.
 - Onboarding answers are not persisted.
-- Analytics and CSV exports are aggregate only; no per-person views.
 - Share cards are generated only when the person chooses to share.

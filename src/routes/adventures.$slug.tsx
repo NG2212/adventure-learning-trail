@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -95,7 +95,7 @@ function Md({ text }: { text: string }) {
   );
 }
 
-function Collapsible({ title, children }: { title: string; children: React.ReactNode }) {
+function Collapsible({ title, children }: { title: string; children: ReactNode }) {
   return (
     <details className="group my-4 rounded-2xl border bg-background">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-semibold">

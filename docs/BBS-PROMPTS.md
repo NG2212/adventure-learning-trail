@@ -82,10 +82,20 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - `### Prompt N:` headings and their fenced blocks stay inside their step. Every fenced block is a Prompt window (stone panel, "Prompt" label, 15px text, Copy → "Copied").
 - Blockquotes starting with "**In Claude:**" render as a small purple-tinted callout; other blockquotes as a stone example box.
 - Tables render as bordered tables.
-- In "Where to next", bold names matching an adventure title (case-insensitive, optional trailing colon) become links to that adventure.
+- `## The trail` (numbered list) is not a step: it shows as a compact numbered list in a stone panel at the top of the first step, and its items name the rail entries for `Step N:` headings that match item N.
+- `## Go further`: each `### ` sub-heading or bold-led paragraph is a collapsible card, collapsed by default.
+- `<details><summary>...</summary>...</details>` renders as a collapsible with the summary as its label; fenced blocks inside are still Prompt windows with Copy.
+- Older headings (`## Layers`, `## Side quest`, `## Shape of the adventure`) remain ordinary steps.
+- "Related adventures" (older files: "Where to next") is not a step: it renders as a small link list below the What's next panel, under the file's heading. Bold names matching an adventure title (case-insensitive, optional trailing colon) become links.
 Rail items are all clickable; Back/Next at the bottom. The final step of an open adventure shows "Mark this adventure complete" → celebration (lime glow, footprints, new count, new title if crossed, Share → share card). Unknown slug → not found.
 
 **Accept:** /adventures/de-slop has 12 steps including "Step 1: Spot the slop" … "Step 4: Compare the two versions", no design notes, In Claude callouts, and Where to next links to Your AI Identity, Board of Advisors and Skills. /adventures/board-of-advisors has 11 steps.
+
+## 9a. What's next panel
+
+**Build:** On the last step of every adventure page, and inside the completion celebration, show a "What's next" panel chosen by rule: (1) the first itinerary adventure not done and not the current one, labelled "Next in your itinerary"; (2) else one open, undone adventure picked by the onboarding scoring using the person's role (neutral defaults for other answers; ties fall back to lowest slot), labelled "Suggested for you"; (3) else "Browse all adventures". Never static text.
+
+**Accept:** As Noa, /adventures/board-of-advisors ends with What's next = Your AI Identity; after marking it complete, the celebration shows Your AI Identity too.
 
 ## 10. Progress (`/progress`)
 
@@ -106,7 +116,8 @@ Rail items are all clickable; Back/Next at the bottom. The final step of an open
 - "N of 30" uses a fixed planned total of 30 (now equal to the content count).
 - Free-text professions ("Advanced users", "People with sophisticated AI systems", "advanced Claude Code users") match the "Other" chip.
 - In recommendations, a named profession scores +3 and "Everyone" scores +1, so specific adventures rank above general ones.
-- Adventure `next:` slugs are kept but not used for links; Where to next links come from title matches (some `next` slugs are provisional).
+- Adventure `next:` slugs are kept but not used; What's next is computed, and Related adventures links come from title matches.
+- The What's next fallback scores with the profile role only, because onboarding answers are not stored.
 - "Next up" skips stops that are not open yet.
 - Sign-in is not enforced on other routes; it only records that the sample user signed in.
 - The comfort answer only nudges level matching and is never shown or stored.
