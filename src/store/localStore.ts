@@ -58,7 +58,7 @@ export function createLocalStore(): AdventureStore {
       const i = list.indexOf(slug);
       const j = direction === "up" ? i - 1 : i + 1;
       if (i < 0 || j < 0 || j >= list.length) return;
-      [list[i], list[j]] = [list[j], list[i]];
+      list.splice(j, 0, list.splice(i, 1)[0] as string);
       write({ ...s, itinerary: list });
     },
     markComplete(slug) {
