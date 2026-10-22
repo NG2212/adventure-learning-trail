@@ -1,3 +1,3 @@
-- [ ] Replace the four revised adventure sources, preserving slugs and icon identities.
-- [ ] Separate introduction, numbered steps, optional Go further, proof of work, and footer; title prompt windows.
-- [ ] Update documentation and parser regression tests; verify all four pages and the single-page fallback.
+- [x] Replace the four revised adventure sources, preserving slugs and icon identities.
+- [x] Separate introduction, numbered steps, optional Go further, proof of work, and footer; title prompt windows.
+- [x] Update documentation and parser regression tests; verify all four pages and the single-page fallback.
