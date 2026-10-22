@@ -34,7 +34,7 @@ describe("content", () => {
     expect(matchesProfession(deSlop, "Finance")).toBe(true);
     expect(matchesProfession(deSlop, "Managers")).toBe(false); // audience is empty
     expect(matchesProfession(getAdventure("board-of-advisors")!, "Managers")).toBe(true);
-    expect(matchesProfession(getAdventure("the-loop")!, "Finance")).toBe(false);
+    expect(matchesProfession(getAdventure("personalising-claude-code")!, "Finance")).toBe(false);
   });
 });
 
