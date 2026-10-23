@@ -66,6 +66,8 @@ function AllAdventures() {
     <div className="mx-auto max-w-6xl px-5 py-12">
       <PageHeading
         title="All adventures"
+        subtitle={build ? "Build your own itinerary: add the destinations that fit your work. You can reorder them later." : "Every destination, grouped by category."}
+      />
       <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
         Every adventure works best on a strong model, for example Opus, with extended thinking on.
       </p>
