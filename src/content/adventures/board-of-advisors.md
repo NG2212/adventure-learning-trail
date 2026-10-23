@@ -16,6 +16,7 @@ wave: W1
 slot: 11
 next: [de-slop, hard-conversations]
 source: "Adapted from Executive Catch-Up Project 5 (Strategic Advisor: Steps 3-5 and 6) and its reference card, and the board-of-advisors skill synthesis rules; Step 1 discovery interview adapted from the Summer Adventure lab Where To Next."
+review: ready
 ---
 
 <!--
