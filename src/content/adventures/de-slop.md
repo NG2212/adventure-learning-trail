@@ -33,6 +33,7 @@ Open items
 - next: slugs board-of-advisors and skills-when-how-and-how-well are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 - 23 Oct: do-this line on every prompt
+- 23 Oct: Step 3 prompt now plans and executes; Compare prompt removed
 -->
 
 # 🧽 Stay Original with AI
@@ -41,7 +42,7 @@ Open items
 
 ## Why this adventure
 
-Low-quality AI output has a name: slop. Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
+Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
 
 At work, slop is output that is generic and unoriginal, often too long or uninteresting, sent with little real thought, so the reader has to do the thinking instead. It can be a document, an email, a deck, a message, a plan.
 
@@ -56,7 +57,7 @@ This adventure keeps the speed of AI and puts your own thinking back in charge.
 
 ## Before you start
 
-Have one real piece of your own work: something you recently produced with AI, or are about to. Good choices: a customer follow-up, QBR summary, release notes or an incident write-up.
+Have one real piece of your own work, recently produced with AI. Good choices: a customer follow-up, QBR summary, release notes or an incident write-up.
 
 ## Step 1: Understand what slop is
 
@@ -97,8 +98,6 @@ Reveal, then grade both in a table: question, yes or no, the line that shows it.
 Finally, ask for a recent piece of mine and grade it the same way, without rewriting it.
 ```
 
-Save the AI's assessment of your piece for Step 3.
-
 ## Step 3: Remake one piece without it
 
 Choose a real piece of work that needs creativity, judgment or originality. It can be something you are about to produce, or the piece you checked in Step 2.
@@ -113,14 +112,14 @@ Choose a real piece of work that needs creativity, judgment or originality. It c
 
 Messy is fine: this is the thinking that slop skips.
 
-### Prompt: Turn your thinking into a brief and directions
+### Prompt: From your thinking to a plan and a draft
 
-**What this does:** the AI interviews you about your thoughts, then writes a brief and agrees a direction before drafting.
+**What this does:** the AI interviews you about your thoughts, agrees a brief and a concrete plan, then writes the piece.
 
 Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me do one piece of work the intentional way: my own thinking first, then a direction, then a draft. Before you start, ask me to brain dump or paste all my thoughts on this piece. Then ask one question at a time about anything missing.
+Help me do one piece of work the intentional way, starting from my own thinking. Before you start, ask me to brain dump or paste all my thoughts on this piece. Then ask one question at a time about anything missing.
 
 1. What is this piece, and what should it achieve?
 2. What is my view, and how confident am I (as a percentage)? If I am under 70% sure, argue the strongest alternative first.
@@ -129,19 +128,23 @@ Help me do one piece of work the intentional way: my own thinking first, then a 
 
 Write a short brief from my answers. Stop and wait for my approval.
 
-If my thoughts show a clear direction, work with it, and suggest one alternative only if you think it is clearly stronger. If I am undecided, give me two or three genuinely different directions, each with a title and the core idea in two sentences. Draft only after I choose.
+If my thoughts show a clear direction, work with it, and suggest one alternative only if you think it is clearly stronger. If I am undecided, give me two or three genuinely different directions, each with a title and the core idea in two sentences.
+
+After I choose, write a concrete plan for the piece itself: its structure (the sections or beats in order), the key points in each, what it draws on (my own thinking, which facts, which sources), length, tone and format. Stop and wait for my approval.
+
+After I approve, write the full piece according to the plan.
 ```
 
-When a draft misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three".
+When the piece misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three".
 
 ### Prompt: Check before you send
 
-**What this does:** checks your draft on the six questions and lists what to fix.
+**What this does:** checks the piece the AI just wrote on the six questions and lists what to fix.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Check this draft before I send it. Answer each question yes or no, with one line of evidence.
+Check the piece you just wrote before I send it. Answer each question yes or no, with one line of evidence.
 1. Could I defend every sentence? List claims to verify.
 2. Does it read as if someone read it all? Point out repeats and leftover AI phrases.
 3. Does it hold something only I or my team could add? Quote the generic sentences.
@@ -151,17 +154,7 @@ Check this draft before I send it. Answer each question yes or no, with one line
 Show the problems only. Rewrite only if I ask.
 ```
 
-### Prompt: Compare
-
-**What this does:** compares the two versions and names the change that mattered most.
-
-Stay in the same chat and paste the prompt below.
-
-```
-I will paste an earlier assessment of my original piece, then my remake. Grade the remake on the same six questions (defend every sentence, read it all, something only I could add, shortest form, worth the reader's time, proud to sign it). Show both side by side in one table, then name the change that mattered most.
-```
-
-You are done when the remake passes the name test.
+You are done when the piece passes the name test.
 
 ## Step 4: Make it a habit
 
@@ -283,7 +276,7 @@ Add the skill, close and reopen your AI tool, and try the three test requests. *
 
 ## Proof of work
 
-In "what I built", name the piece you remade, the change that mattered most, and one thing you learned about your habits.
+In "what I built", name the piece you remade, what your own thinking added, and one thing you learned about your habits.
 
 For example: "Remade my QBR summary: two pages became eight lines that open with the renewal risk. I learned that I put the request at the end."
 
