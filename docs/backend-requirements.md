@@ -33,6 +33,9 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 
 ## Reads and writes per screen
 
+- Mock-store `demoOpenAll: true` temporarily makes all waves openable for everyone; set false to restore schedule gating, retaining wave data/card hints and read-only admin preview.
+- Mock-store `showReviewState: true` shows temporary top-left diagonal Ready/Draft stamps on cards and page heads; exact optional Markdown `review: ready` means Ready, missing/other values mean Draft; set false to hide all stamps without changing chips.
+
 | Screen | Reads | Writes |
 | --- | --- | --- |
 | Sign-in | — | Start SSO session |

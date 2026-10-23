@@ -1,8 +1,14 @@
 import { titleFor } from "@/lib/titles";
-import type { AdventureStore, StoreState } from "./types";
+import type { AdventureStore, DemoSettings, StoreState } from "./types";
 import { createAdminMock } from "./adminMock";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
+
+/** Temporary review settings: flip either flag here, without resetting browser storage. */
+export const MOCK_SETTINGS: Readonly<DemoSettings> = {
+  demoOpenAll: true,
+  showReviewState: true,
+};
 
 /** Seed: Noa has completed 1 adventure and has 3 in her itinerary. */
 export const SEED_STATE: StoreState = {
@@ -19,7 +25,7 @@ export const SEED_STATE: StoreState = {
   announcementDismissed: false,
 };
 
-export function createLocalStore(): AdventureStore {
+export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTINGS): AdventureStore {
   let state: StoreState = SEED_STATE;
   let loaded = false;
   const listeners = new Set<() => void>();
@@ -48,6 +54,7 @@ export function createLocalStore(): AdventureStore {
   }
 
   return {
+    getDemoSettings: () => settings,
     ...createAdminMock(read, () => {
       state = { ...read() };
       listeners.forEach((listener) => listener());

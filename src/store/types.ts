@@ -28,11 +28,17 @@ export interface CompletionResult {
   alreadyDone: boolean;
 }
 
+export interface DemoSettings {
+  demoOpenAll: boolean;
+  showReviewState: boolean;
+}
+
 /**
  * The single data-layer contract. Every read and write in the UI goes through
  * this interface so the localStorage implementation can be swapped for an API.
  */
 export interface AdventureStore extends AdminReadsWrites {
+  getDemoSettings(): Readonly<DemoSettings>;
   getPerson(): Person;
   isSignedIn(): boolean;
   signIn(): void;
