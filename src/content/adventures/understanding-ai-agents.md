@@ -33,6 +33,7 @@ Open items
 - next: slug automation-done-right is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 23 Oct: one-chat flow for Steps 1-4
+23 Oct: source table in Step 2, memory line, rewrite rationale in Step 3
 -->
 
 # 🤖 Understanding AI Agents
@@ -87,23 +88,32 @@ As it works, watch for four things:
 
 ## Step 2: See where the agent gets its answers
 
-Behind every answer, the agent decides where to look: the web, its own general knowledge, your files and instructions, or what it remembers from before. Those decisions make results personal and useful, and they are where results go wrong. This step makes them visible.
+Every answer comes from one of four sources, and each one fails in its own way.
+
+| Source | What it is | Where it lets you down |
+| --- | --- | --- |
+| General knowledge | What the model learned in training, up to a cutoff date | Out of date, generic |
+| The web | A search it runs now | Only when it searches, and only what it finds |
+| Your files and instructions | Documents, boards, project files and standing instructions it reads when told | A file it never opened |
+| Memory | What it kept from earlier chats with you | A stale fact, a preference you changed |
 
 ### Prompt: Show me where your answers come from
 
-**What this does:** for three tasks of yours, the agent says which source it would use for each part, and where that choice could fail.
+**What this does:** for three tasks of yours, the agent names the source for each part and where it could fail.
 
 Stay in the chat from Step 1 and paste the prompt below.
 
 ```
 I want to see where your answers come from. Ask me for three tasks I do often, each of a different kind (research, analysing a monday board, writing for a customer, an action across tools). Wait for all three; do not pick them for me.
 
-For each task, show a table with four rows: from the web, from your general knowledge, from my files and instructions, from memory. In each row: what you would take from that source, and how it could let me down (out of date, generic, a file you never opened).
+For each task, show a table with one row per source: the web, your general knowledge, my files and instructions, memory. In each row: what you would take from it, and how it could let me down.
 
 Then look at the task from earlier in this chat: which parts came from which source, and which may be out of date?
+
+If you keep memory across chats, tell me what you remember about me from before this chat, and where each item came from.
 ```
 
-Agents lean on general knowledge, which stops at a cutoff date, and open your files only when told to. Insist on the right source:
+Insist on the right source:
 
 | Your task depends on | Ask for |
 | --- | --- |
@@ -129,7 +139,7 @@ Your wording sets how much the agent does. "Make sure the team is ready" invites
 
 ### Prompt: Sharpen my goal and plan
 
-**What this does:** the agent asks you for the task and the five parts, rewrites the goal for your approval, then shows its plan before it does anything.
+**What this does:** the agent asks you for the five parts, rewrites the goal and says why, then shows its plan before it acts.
 
 Come back to the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
 
@@ -138,12 +148,12 @@ This is a new task. Focus on this task only: put the earlier tasks in this chat 
 
 I want to hand you a task. Ask me for it, then ask me, one question at a time, for five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done). Skip a part I already covered. Do not choose the task, do not narrow it, and do not decide what good means.
 
-Then rewrite the goal in five short lines. Stop and wait for my approval.
+Then rewrite the goal in five short lines. Under each line, add one short line: what I gave you, what you changed, and why. Stop and wait for my approval.
 
 After I approve, write your plan: the steps, the source for each step, and the points where you will stop for my decision. Stop and wait. Run the plan only after I approve it.
 ```
 
-Correct any wrong assumption in the plan before you approve it. You are done when the result needs only small edits.
+Correct any wrong assumption before you approve the plan.
 
 ## Step 4: Write your rules for any agent
 
