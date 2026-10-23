@@ -57,8 +57,6 @@ Claude for Google Workspace removes that step. It opens in a side panel next to 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have three real files you are working on this week: a Sheet, a Doc and a Slides deck.
 
 ## Step 1: Analyse a Sheet

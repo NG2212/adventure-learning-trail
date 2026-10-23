@@ -56,8 +56,6 @@ In this adventure you do this on one real question from your work, and save the 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Bring one real question you need answered for a decision at work.
 
 ## Step 1: Frame the question

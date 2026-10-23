@@ -40,6 +40,8 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 | Welcome | person | — |
 | Onboarding | adventure index | addToItinerary (per card or all). Answers are not stored. |
 | All adventures | adventure index, waves, own completions, own itinerary | addToItinerary, removeFromItinerary |
+
+Catalogue page note (must survive the Big Brain Studio port): a single quiet helper line sits under the page intro, above the filters — "Every adventure works best on a strong model, for example Opus, with extended thinking on." Platform copy, not per-adventure content.
 | My itinerary | own itinerary, adventures, own completions | reorderItinerary, removeFromItinerary |
 | Adventure page | adventure (body only if open), own completion, own itinerary, What's next (see below) | add/remove itinerary, markComplete |
 | Progress | own completion count, titles, adventures, planned total (30) | — |

@@ -60,8 +60,6 @@ In this adventure you audit your own system, fix what fights itself, and prove t
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 You need an AI system you have used for a while: custom instructions, a project, skills, a monday agent or a Claude Code setup.
 
 ## Step 1: Learn what changed

@@ -53,8 +53,6 @@ Here you watch an agent work on one of your real tasks and explain itself as it 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Pick one real task with several steps, such as preparing for a QBR or writing release notes from a monday board, and work in an AI tool with web search and your connectors.
 
 ## Step 1: Watch the loop

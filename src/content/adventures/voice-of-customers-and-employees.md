@@ -58,8 +58,6 @@ Here you run the full method on one real set of feedback and finish with a synth
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have one real set of feedback ready, ideally a few dozen items or more: a survey export, tickets, interview notes, engagement comments or a monday feedback board.
 
 ## Step 1: Decide what the feedback should answer

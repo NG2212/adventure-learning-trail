@@ -55,8 +55,6 @@ Monday already gives the AI the brand: its design systems in Claude Design and i
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Choose one real visual you need soon: a design review deck, a launch one-pager, a Slack announcement image, a QBR deck cover or an event invitation.
 
 ## Step 1: Start from Monday's brand

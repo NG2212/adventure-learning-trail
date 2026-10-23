@@ -54,8 +54,6 @@ New to this? Steps 1 to 3 give you a working partner. Already have one? Bring it
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have two or three documents your work runs on: a framework, your KPI definitions, an example of excellent work. If you set up standing instructions in Your AI Identity, your partner builds on them.
 
 ## Step 1: Decide what your partner should do

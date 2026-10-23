@@ -56,8 +56,6 @@ In this adventure you set up that second kind of tutor, for a topic you need at 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Pick a professional topic you need for a real piece of work in the coming weeks.
 
 ## Step 1: Decide what you want to be able to do

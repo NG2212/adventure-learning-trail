@@ -57,8 +57,6 @@ New to skills? Start with **Skills: When, How and How Well**. Already build skil
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have at least two working skills in Claude, and one workflow you repeat where they disappoint you.
 
 ## Step 1: Map the skills you have

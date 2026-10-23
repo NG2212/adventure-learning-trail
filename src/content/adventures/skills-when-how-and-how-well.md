@@ -55,8 +55,6 @@ Built skills before? Aim for this level: a skill a teammate could start with one
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have in mind one task you repeat with AI and would like done your way every time.
 
 ## Step 1: Decide whether this task deserves a skill

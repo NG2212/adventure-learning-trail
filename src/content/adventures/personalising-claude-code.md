@@ -62,8 +62,6 @@ Already have a tuned setup? The bar: an instructions file short enough that you 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Open Claude Code in a real repository you work in every week, on a new branch, so every change to the setup is a diff you can review.
 
 ## Step 1: See what your setup loads today

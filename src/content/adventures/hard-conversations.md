@@ -54,8 +54,6 @@ This complements your HR partner and your manager. They know the people, the his
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Pick one real conversation you have coming up.
 
 ## Step 1: Get the facts straight

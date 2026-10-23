@@ -58,8 +58,6 @@ In this adventure you apply all five to one real app. Already build apps often? 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 You will build one real app or dashboard that you or your team would use every week.
 
 ## Step 1: Plan the app and let the tool grill you

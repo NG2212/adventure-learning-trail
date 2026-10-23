@@ -57,8 +57,6 @@ The fix is in how you ask. You take one real decision, see how AI flatters you w
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 You will work on one real work decision you are weighing now.
 
 ## Step 1: Write down your decision and your view

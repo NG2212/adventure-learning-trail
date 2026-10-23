@@ -54,8 +54,6 @@ Here you build a board of advisors: a small group of AI personas, each one a per
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have one real decision or deliverable ready: a feature brief, a QBR plan, a launch note, a quarterly plan or a board update.
 
 ## Step 1: Decide who should review your work

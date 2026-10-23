@@ -56,8 +56,6 @@ Good topics at Monday: competitor moves in work management, what changed on your
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have the sources for your topic available to connect: the monday boards, Slack channels or mail you would want it to read.
 
 ## Step 1: Scope your dispatch

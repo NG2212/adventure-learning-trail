@@ -57,8 +57,6 @@ Here you review what you already run, then design, test and switch on one automa
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have the monday boards, mail and Slack channels your automations read from available to connect.
 
 ## Step 1: Review what you already run

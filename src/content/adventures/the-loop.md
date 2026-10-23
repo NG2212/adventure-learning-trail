@@ -56,8 +56,6 @@ Set up well, a loop returns finished, checked work. Set up loosely, it burns tok
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 You need Claude Code, Cursor or Codex, and a scratch folder or a new branch where mistakes are cheap.
 
 ## Step 1: Pick an assignment that fits a loop

@@ -57,8 +57,6 @@ Joined Monday's managers training? This is the Team OS idea, in a version you re
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Work in the AI tool or project that knows most about your team, and have your team's main monday board open.
 
 ## Step 1: Look at your team as a whole

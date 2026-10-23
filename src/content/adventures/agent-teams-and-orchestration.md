@@ -58,8 +58,6 @@ This adventure assumes you already run more than one agent or sub-agent. If you 
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Open Claude Code, Cursor or Codex in the folder where this work lives: a repository, or a working folder with the inputs.
 
 ## Step 1: Map the agents you already run and pick one piece of work

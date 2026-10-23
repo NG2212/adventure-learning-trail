@@ -58,8 +58,6 @@ Here the AI interviews you and writes both; you save them and test the differenc
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have two or three recent pieces of your own writing ready, for example a Slack message, a customer email or a board update.
 
 ## Step 1: See what your AI knows about you today

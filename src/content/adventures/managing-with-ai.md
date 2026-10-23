@@ -55,8 +55,6 @@ In this adventure you choose where AI helps you most, set clear rules for inform
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Know which monday boards your team works from; your routines will read them.
 
 ## Step 1: Choose what AI should help you manage

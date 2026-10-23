@@ -56,8 +56,6 @@ In this adventure you build one real plan: a quarter, a project or a roadmap. AI
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Pick one real plan you owe soon, and have the monday boards behind it available to connect.
 
 ## Step 1: Decide what the plan must answer
