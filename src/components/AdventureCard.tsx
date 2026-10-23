@@ -5,6 +5,7 @@ import { AdventureIcon } from "./AdventureIcon";
 import { Chip, LabelChips } from "./LabelChips";
 import { ItineraryToggle } from "./ItineraryToggle";
 import { ReviewStamp } from "./ReviewStamp";
+import { AdventureRating } from "./AdventureRating";
 
 export function AdventureCard({ adventure, highlightAdd = false }: { adventure: Adventure; highlightAdd?: boolean }) {
   const { completions } = useStoreState();
@@ -27,7 +28,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
       <AdventureIcon adventure={adventure} size="xl" className="mx-auto -mt-2" />
       <h3 className="mt-4 text-center text-lg">{adventure.title}</h3>
       <p className="mt-1 flex-1 text-center text-sm text-muted-foreground">{adventure.walkaway}</p>
-      <LabelChips adventure={adventure} className="mt-4 justify-center" />
+      <LabelChips adventure={adventure} className="mt-4 justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} />
     </>
   );
 

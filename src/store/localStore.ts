@@ -6,10 +6,11 @@ import { ADVENTURES } from "@/content/adventures";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
-/** Temporary review settings: flip either flag here, without resetting browser storage. */
+/** Mock settings: change here without resetting employee browser storage. */
 export const MOCK_SETTINGS: Readonly<DemoSettings> = {
   demoOpenAll: true,
   showReviewState: true,
+  ratingDisplayMinimum: 5,
 };
 
 /** Seed: Noa has completed 1 adventure and has 3 in her itinerary. */
@@ -63,12 +64,19 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     listeners.forEach((l) => l());
   }
 
-  return {
-    getDemoSettings: () => settings,
-    ...createAdminMock(read, () => {
+  const admin = createAdminMock(read, () => {
       state = { ...read() };
       listeners.forEach((listener) => listener());
-    }),
+    });
+
+  return {
+    getDemoSettings: () => settings,
+    ...admin,
+    getAdventureRating(slug) {
+      const summary = admin.getRatingSummaries({ slug })[0];
+      if (!summary || summary.ratingCount === 0 || summary.ratingCount < settings.ratingDisplayMinimum) return undefined;
+      return { averageRating: summary.averageRating, ratingCount: summary.ratingCount };
+    },
     getPerson: () => read().person,
     isSignedIn: () => read().signedIn,
     signIn: () => write({ ...read(), signedIn: true }),

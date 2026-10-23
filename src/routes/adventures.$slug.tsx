@@ -7,6 +7,7 @@ import { ADVENTURES, adventureBody, canOpenAdventure, getAdventure, WAVES } from
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
+import { AdventureRating } from "@/components/AdventureRating";
 import { AdventureTrail } from "@/components/AdventureTrail";
 import { ReviewStamp } from "@/components/ReviewStamp";
 import { Chip, LabelChips } from "@/components/LabelChips";
@@ -222,6 +223,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
             {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>
           <h1 className="text-3xl sm:text-4xl">{adventure.title}</h1>
+          <AdventureRating slug={slug} className="mt-2" />
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
           <LabelChips adventure={adventure} className="mt-4" />
         </div>

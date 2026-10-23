@@ -14,3 +14,5 @@
 - [x] Add completion dialog, authored guidance, footprint rating and editable own proof card.
 - [x] Add L&D proof listing/CSV, drawer entries, directory ratings and Most loved panel.
 - [x] Document entry/privacy rules, test them and verify completion/editing/admin screenshots.
+- [ ] Add thresholded employee rating summaries and shared card/page display.
+- [ ] Document rating setting, test threshold rules and verify catalogue/page screenshots plus itinerary/home coverage.

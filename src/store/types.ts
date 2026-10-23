@@ -44,6 +44,12 @@ export interface CompletionResult {
 export interface DemoSettings {
   demoOpenAll: boolean;
   showReviewState: boolean;
+  ratingDisplayMinimum: number;
+}
+
+export interface AdventureRating {
+  averageRating: number;
+  ratingCount: number;
 }
 
 /**
@@ -52,6 +58,7 @@ export interface DemoSettings {
  */
 export interface AdventureStore extends AdminReadsWrites {
   getDemoSettings(): Readonly<DemoSettings>;
+  getAdventureRating(slug: string): AdventureRating | undefined;
   getPerson(): Person;
   isSignedIn(): boolean;
   signIn(): void;
