@@ -10,3 +10,7 @@
 - [x] Add the shared visual trail panel and document it; verify desktop/phone screenshots and unchanged rail/content.
 - [x] Add mock demo access and review-stamp flags while preserving wave hints and admin preview.
 - [x] Document flags and verify catalog/page screenshots, scheduled access and regression tests.
+- [ ] Add proof entry store contract, deterministic seed entries and rating calculations.
+- [ ] Add completion dialog, authored guidance, footprint rating and editable own proof card.
+- [ ] Add L&D proof listing/CSV, drawer entries, directory ratings and Most loved panel.
+- [ ] Document entry/privacy rules, test them and verify completion/editing/admin screenshots.
