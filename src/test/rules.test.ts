@@ -39,17 +39,25 @@ describe("content", () => {
 });
 
 describe("adventure steps", () => {
-  const slugs = ["de-slop", "board-of-advisors", "skills-when-how-and-how-well", "your-own-chief-of-staff"];
-  it.each(slugs)("%s has four core steps plus Go further, excluding head/proof/footer", (slug) => {
+  // Core step count per adventure: the rail is the Step sections plus Go further.
+  const cases: { slug: string; coreSteps: number }[] = [
+    { slug: "de-slop", coreSteps: 5 },
+    { slug: "board-of-advisors", coreSteps: 4 },
+    { slug: "skills-when-how-and-how-well", coreSteps: 4 },
+    { slug: "your-own-chief-of-staff", coreSteps: 4 },
+  ];
+  it.each(cases)("$slug has $coreSteps core steps plus Go further, excluding head/proof/footer", ({ slug, coreSteps }) => {
     const adventure = getAdventure(slug);
     if (!adventure) throw new Error("Missing adventure");
     const parsed = parseAdventure(adventure.body, ADVENTURES);
-    expect(parsed.steps).toHaveLength(5);
-    expect(parsed.steps.slice(0, 4).map((s) => Number(s.title.match(/^Step (\d+):/)?.[1]))).toEqual([1, 2, 3, 4]);
-    expect(parsed.steps[4]?.goFurther).toBe(true);
-    expect(parsed.lastCoreStep).toBe(3);
+    expect(parsed.steps).toHaveLength(coreSteps + 1);
+    expect(parsed.steps.slice(0, coreSteps).map((s) => Number(s.title.match(/^Step (\d+):/)?.[1]))).toEqual(
+      Array.from({ length: coreSteps }, (_, i) => i + 1),
+    );
+    expect(parsed.steps[coreSteps]?.goFurther).toBe(true);
+    expect(parsed.lastCoreStep).toBe(coreSteps - 1);
     expect(parsed.introduction.map((s) => s.heading)).toEqual(["Why this adventure", "The trail", "Before you start"]);
-    expect(parsed.trail).toHaveLength(4);
+    expect(parsed.trail).toHaveLength(coreSteps);
     expect(parsed.proof?.body.length).toBeGreaterThan(0);
     expect(parsed.related?.body).toContain("(/adventures/");
     expect(parsed.steps.every((s) => !/## (The trail|Proof of work|Related adventures)|DESIGN NOTES/.test(s.body))).toBe(true);

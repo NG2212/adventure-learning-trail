@@ -87,11 +87,11 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - `### Prompt: <name>` titles the next Prompt window, without added numbering. Keep **What this does:** above the window. Every fenced block is a Prompt window with Copy; untitled fences use “Prompt”. Older numbered prompt headings still supply a name without their number.
 - Bold-led Claude, Claude Cowork, Claude Code, monday agents and other AI tools paragraphs/blockquotes remain small tool callouts. Tables remain tables; HTML details remain collapsible with nested Prompt windows.
 - Go further consists of collapsed cards for sub-headings or bold-led paragraphs. Labels ending in a colon are not card headings; fenced text and nested details do not split cards.
-- Proof of work appears beneath the last **core** step (Step 4 in these files), highlighted and followed by Mark this adventure complete, before Next. It is not a rail item and does not move to Go further. Completing opens the existing celebration; repeating completion is idempotent.
+- Proof of work appears beneath the last **core** step (the last `## Step N:` section of the file), highlighted and followed by Mark this adventure complete, before Next. It is not a rail item and does not move to Go further. Completing opens the existing celebration; repeating completion is idempotent.
 - Footer beneath the reading section: computed What's next, then Related adventures (older title: Where to next) as a small link list. Neither enters the rail. Matching bold adventure titles become links.
 - No trail injection in any step. Older Core task / nested Step headings are supported; bodies without numbered steps show a single reading page, retaining older headings and proof/footer without a rail.
 
-**Accept:** All four full-content adventures show the three head sections once, Step 1–4 + Go further in the rail, named Prompt windows, proof and completion under Step 4, and What's next followed by related links below. Stay Original's Step 3 keeps the think-without-AI instruction before the first prompt. No design notes leak.
+**Accept:** All four full-content adventures show the three head sections once, the file's own Step sections + Go further in the rail (Stay Original with AI has five steps, the other three have four), named Prompt windows, proof and completion under the last step, and What's next followed by related links below. Stay Original's Step 3 keeps the think-without-AI instruction before the first prompt. No design notes leak.
 
 ## 9a. What's next panel
 
