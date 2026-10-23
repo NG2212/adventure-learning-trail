@@ -57,8 +57,6 @@ Already built Your AI Identity? It covers who you are and how you work. The brai
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have the documents you rely on most at hand, for example your team's quarterly plan, an account plan or a product spec.
 
 ## Step 1: Choose what goes in

@@ -55,8 +55,6 @@ The best ones are hard to see from inside your own routine, and AI tends to sugg
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have last week's calendar and your main monday boards open.
 
 ## Step 1: Learn what makes a good use case

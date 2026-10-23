@@ -56,8 +56,6 @@ The most valuable thing you build here is your **task set**: four to six request
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 You will compare two to four options you can use at Monday, for example Opus and Sonnet in Claude.
 
 ## Step 1: Find the tasks that represent your work

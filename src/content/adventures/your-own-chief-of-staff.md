@@ -57,8 +57,6 @@ Already have an assistant like this? The first prompt improves it, starting from
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have your calendar, mail and the monday boards you work from available to connect.
 
 ## Step 1: Decide what your chief of staff should do

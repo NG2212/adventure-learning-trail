@@ -56,8 +56,6 @@ This adventure audits what you already carry; Use-Case Discovery finds new thing
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 If you built Your AI Identity or a Personal Brain, load it first; more context gives a sharper map.
 
 ## Step 1: Map what you carry

@@ -59,8 +59,6 @@ This adventure finds those habits in your own work and replaces two of them. The
 
 ## Before you start
 
-Use a strong model for this adventure, for example Opus, with extended thinking on.
-
 Have last week's AI work at hand: your longest chats, your biggest pastes, and any scheduled jobs you run.
 
 ## Step 1: Understand what tokens cost
