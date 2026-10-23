@@ -32,6 +32,7 @@ Open items
 - monday agents: can an employee read the instructions of an agent a colleague built? Step 4 asks the three questions without assuming it.
 - next: slug automation-done-right is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: one-chat flow for Steps 1-4
 -->
 
 # 🤖 Understanding AI Agents
@@ -114,7 +115,7 @@ Agents lean on general knowledge, which stops at a cutoff date, and open your fi
 
 ## Step 3: Set a goal that works
 
-**Think first, without AI.** Close the chat. Pick a task you will hand an agent this week and work out what you want from it, in notes, a voice memo or a few lines. Be ready to give your tool an answer for each of the five parts below. No particular structure is needed; know what you want and what you expect.
+**Think first, without AI.** Step away from the chat: close the window and write or dictate your notes. Pick a task you will hand an agent this week and work out what you want from it. Be ready to give your tool an answer for each of the five parts below. No particular structure is needed; know what you want and what you expect.
 
 | Part | Question it answers | Example: QBR preparation |
 | --- | --- | --- |
@@ -130,9 +131,11 @@ Your wording sets how much the agent does. "Make sure the team is ready" invites
 
 **What this does:** the agent asks you for the task and the five parts, rewrites the goal for your approval, then shows its plan before it does anything.
 
-Open a new chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+Come back to the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
 
 ```
+This is a new task. Focus on this task only: put the earlier tasks in this chat aside, and keep only what they taught you about me.
+
 I want to hand you a task. Ask me for it, then ask me, one question at a time, for five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done). Skip a part I already covered. Do not choose the task, do not narrow it, and do not decide what good means.
 
 Then rewrite the goal in five short lines. Stop and wait for my approval.
@@ -140,7 +143,7 @@ Then rewrite the goal in five short lines. Stop and wait for my approval.
 After I approve, write your plan: the steps, the source for each step, and the points where you will stop for my decision. Stop and wait. Run the plan only after I approve it.
 ```
 
-Correct any wrong assumption in the plan before you approve it, because the agent acts on every assumption in it. You are done when the result needs only small edits.
+Correct any wrong assumption in the plan before you approve it. You are done when the result needs only small edits.
 
 ## Step 4: Write your rules for any agent
 
@@ -148,7 +151,7 @@ Correct any wrong assumption in the plan before you approve it, because the agen
 
 **What this does:** turns what you saw in this chat into one page of rules any AI can follow.
 
-Go back to the chat from Steps 1 and 2 and paste the prompt below, because it works from what happened there.
+Stay in the same chat and paste the prompt below, because it works from everything that happened in it (Steps 1 to 3).
 
 ```
 From everything in this chat, write my rules for working with agents. One page, four sections:
