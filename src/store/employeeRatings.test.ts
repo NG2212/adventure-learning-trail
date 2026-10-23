@@ -11,7 +11,7 @@ describe("employee adventure ratings", () => {
 
   it("shows aggregate-only ratings at five and hides them at four", () => {
     const slug = "the-loop";
-    const proofEntries = Array.from({ length: 5 }, (_, i) => ({ personId: "noa-levi", slug, built: "A work brief", learned: "", rating: [4, 5, 4, 5, 5][i], completed_at: "2026-10-15" }));
+    const proofEntries = Array.from({ length: 5 }, (_, i) => ({ personId: `employee-${i + 1}`, slug, built: "A work brief", learned: "", rating: [4, 5, 4, 5, 5][i], completed_at: "2026-10-15" }));
     window.localStorage.setItem("ai-adventure-state-v2", JSON.stringify({ proofEntries }));
     expect(createLocalStore().getAdventureRating(slug)).toEqual({ averageRating: 4.6, ratingCount: 5 });
     window.localStorage.setItem("ai-adventure-state-v2", JSON.stringify({ proofEntries: proofEntries.slice(0, 4) }));
