@@ -18,6 +18,6 @@ export function FootprintRating({ value, onChange }: { value: number; onChange?:
         const target = e.currentTarget.parentElement?.querySelector<HTMLElement>(`[aria-label="${next} out of 5"]`);
         target?.focus();
       }
-    }} className={cn("size-10 rounded-md hover:bg-primary-soft", n <= (hover || value) ? "text-primary" : "text-muted-foreground/35")}><Footprint className="h-7 w-4" /></Button>)}
+    }} className={cn("size-10 rounded-md hover:bg-primary-soft hover:text-primary", n <= (hover || value) ? "text-primary" : "text-muted-foreground/35")}><Footprint className="h-7! w-4!" /></Button>)}
   </div>;
 }
