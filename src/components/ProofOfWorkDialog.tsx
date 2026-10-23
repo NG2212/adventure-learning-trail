@@ -6,7 +6,7 @@ import { FootprintRating } from "./FootprintRating";
 import { proofGuidance } from "@/lib/proofOfWork";
 import type { ProofInput, ProofOfWork } from "@/store/types";
 
-export function ProofOfWorkDialog({ title, body, entry, onClose, onSave }: { title: string; body: string; entry?: ProofOfWork; onClose: () => void; onSave: (input: ProofInput) => void }) {
+export function ProofOfWorkDialog({ title, body, entry, onClose, onSave }: { title: string; body: string; entry?: ProofOfWork | undefined; onClose: () => void; onSave: (input: ProofInput) => void }) {
   const [built, setBuilt] = useState(entry?.built ?? "");
   const [learned, setLearned] = useState(entry?.learned ?? "");
   const [rating, setRating] = useState(entry?.rating ?? 0);
