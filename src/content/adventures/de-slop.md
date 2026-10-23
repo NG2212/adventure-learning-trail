@@ -16,6 +16,7 @@ wave: W1
 slot: 5
 next: [board-of-advisors, skills-when-how-and-how-well]
 source: "Adapted from de-slop/lab-de-slop.md and the De-Slop Playbook (de-slop/article-draft.md, Oct 2026); Slop Audit verbatim from de-slop/slop-audit-prompt.md (collapsed, Go further only); skill item adapted from de-slop/skill/de-slop/. Never edit the de-slop/ originals from this engagement."
+review: ready
 ---
 
 <!--
@@ -35,6 +36,7 @@ Open items
 - 23 Oct: do-this line on every prompt
 - 23 Oct: Step 3 prompt now plans and executes; Compare prompt removed
 - 23 Oct: new Step 4 Move out of the average; habit step is now Step 5
+- 23 Oct: Step 4 covers written or visual pieces; Go further item 2 = slop-review skill
 -->
 
 # 🧽 Stay Original with AI
@@ -160,7 +162,9 @@ You are done when the piece passes the name test.
 
 ## Step 4: Move out of the average
 
-AI predicts the most likely answer, which is the average of everything online. Ask for "an image of a restaurant dish, appetizing and over the top" and you get what everyone else gets. Your specifics move the piece out of the average. Step 3 added your thinking; this step adds your taste.
+Use the piece from Step 3, or anything you made recently, written or visual, for example a deck or an image.
+
+AI predicts the most likely answer, which is the average of everything online. Ask for "an image of a restaurant dish, appetizing and over the top" and you get what everyone else gets. Your specifics move the piece out of the average.
 
 | Lever | What to give the AI |
 | --- | --- |
@@ -172,23 +176,19 @@ AI predicts the most likely answer, which is the average of everything online. A
 
 ### Prompt: Pull this piece away from the average
 
-**What this does:** the AI asks for your specifics and reworks the piece with them.
+**What this does:** the AI asks for your specifics and reworks the piece.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Take the piece you wrote in this chat. To pull it away from the average, ask me five specific questions, one at a time, and wait for each answer:
-1. Inspiration and references: work I admire.
-2. The exact reader: who they are, what they already know.
-3. My likes and dislikes: words, formats, moves.
-4. Constraints only I know: history, promises, sensitive points.
-5. What everyone else does that I want to avoid.
-Do not invent answers for me. Skip a lever I already covered.
+Ask me which piece to work on: the one in this chat, or anything I made recently, written or visual. I will paste or describe it.
 
-Then rework the piece and mark each change that came from my answers.
+To pull it away from the average, ask me one question at a time about: inspiration and references, the exact reader, my likes and dislikes, constraints only I know, and what everyone else does that I want to avoid. Use only my answers. Skip anything I already covered.
+
+Then rework the piece and mark each change. For a visual piece, write a revised brief or prompt for my image or deck tool. Keep it short.
 ```
 
-Run Check before you send once more. You are done when the piece reads like something only you could have sent.
+Run Check before you send once more. You are done when the piece truly carries your taste and your choices.
 
 ## Step 5: Make it a habit
 
@@ -276,21 +276,21 @@ Then ask whether I want to set a reminder to retake the audit in 30 days and com
 
 </details>
 
-**Build a check your team shares.** Do this for a piece your team produces often, such as the weekly team update.
+**Build a slop-review skill for your team.** Do this for a piece your team produces often.
 
-**What this does:** writes a team definition of good and a shared check.
+**What this does:** writes a skill that reviews your team's drafts.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me build a quality check for one piece my team produces often. Interview me one question at a time: the piece and its reader, what our best examples share, what makes a weak one weak, what only our team can add.
+Help me build a slop-review skill for one piece my team produces often. Slop is AI work where the writer skipped the thinking. Interview me one question at a time: the piece and its reader, what our best and weak examples show, what only our team can add.
 
-Then write:
-1. A one-page team definition of good, with a short strong and a short weak example.
-2. A shared check that reviews any draft against it and returns Ready, Ready after cuts, or Needs another pass, with the main reason. It comments on the draft only, never on its writer.
+Then write the complete skill: a name, a one-line description of when it runs, and a body with our definition of good and a review of any draft. The review returns Ready, Ready after cuts, or Needs another pass, with the main reason. It comments on the work and never on its author.
 ```
 
-Pin the definition of good on your team's monday board. **In Claude:** put the check into a shared team project.
+Pin the definition of good on your team's monday board.
+
+**In Claude:** add it under Customize → Skills, share it in the team project, then close and reopen Claude.
 
 ## Proof of work
 
