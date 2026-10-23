@@ -12,3 +12,4 @@
 - Proof reflections use AdventureStore.saveProofOfWork for one atomic entry/completion write; seedProof uses an independent deterministic hash and rating summaries live in adminMock. Why: edits preserve badge/date, seeded activity stays stable, and the data layer remains swappable.
 - Proof guidance is extracted from the parser-separated proof body by proofGuidance; footprint rating and completion dialog are shared presentation components. Why: authored instructions remain authoritative without changing step parsing.
 - Company proof entries are an L&D-only Overview section and employee drawer section; rating summaries contain no identities. Why: existing Admin tabs stay intact and Manager view exposes aggregates only.
+- Render Admin leaf content after hydration through ClientOnly in the shared layout. Why: direct mock-store reads must not mismatch server seed with browser-persisted completions and proof entries on refresh.
