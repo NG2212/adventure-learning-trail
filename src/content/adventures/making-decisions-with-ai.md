@@ -105,7 +105,7 @@ Open a new chat, so the agreement from Step 2 stays behind. If the decision depe
 **What this does:** the AI asks for missing facts, argues against your leaning, names the biases in how you framed the decision, and attacks your plan before it gives one recommendation.
 
 ```
-I am weighing a decision and I want a real challenge, even when it goes against my view. I will paste my notes: the decision, the options, my leaning and my confidence. Use what you know about me; ask only for gaps, one question at a time.
+I am weighing a decision and I want a real challenge, even when it goes against my view. I will paste my notes: the decision, the options, my leaning and my confidence. Use what you know about me for background; ask only for gaps, one question at a time. Wait for my notes. Do not frame the decision for me or decide what a good outcome is; ask me what it is.
 
 Then:
 1. Argue the strongest case against my leaning.

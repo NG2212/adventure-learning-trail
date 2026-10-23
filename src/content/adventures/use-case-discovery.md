@@ -94,9 +94,9 @@ Examples at Monday: customer follow-ups after every call, QBR summaries, release
 ```
 Run a use-case discovery interview with me. Goal: my top 5 AI use cases at monday.com, simple to start and worth the effort.
 
-Use what you already know about me; ask only for gaps, and say so if your context on me is thin. I will paste notes about my week.
+Use what you already know about me as background; ask only for gaps, and say so if your context on me is thin. I will paste notes about my week.
 
-Ask one question at a time, at most seven: where my week goes, work I repeat or redo, information I search for, under-prepared decisions, the AI I already use. If I answer vaguely, ask for a recent example.
+Ask one question at a time, at most seven: my goals, where my week goes, work I repeat or redo, information I search for, under-prepared decisions, the AI I already use. If I answer vaguely, ask for a recent example. Do not decide my goals or which work matters; wait for my answers before ranking.
 
 Ask which AI features and team skills I already have; mark ideas they cover as "Use what exists". Remove ideas generic to my job title, multi-month projects, and ideas impossible with my tools.
 

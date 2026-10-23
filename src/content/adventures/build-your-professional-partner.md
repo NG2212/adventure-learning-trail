@@ -76,17 +76,17 @@ A partner covers one domain and several tasks in it, like a job description. Whe
 **What this does:** the AI reads your notes, interviews you, checks what you already have, and recommends one partner.
 
 ```
-Help me choose a professional partner to build: an AI specialist for one domain of my work, with a job description covering several recurring tasks. I will paste notes about my work. Use what you know about me; ask only for gaps.
+Help me choose a professional partner to build: an AI specialist for one domain of my work, with a job description covering several recurring tasks. I will paste notes about my work. Use what you know about me as background; ask only for gaps.
 
 First ask which AI setups I already use (instructions, projects, skills, agents), so you avoid a duplicate.
 
-Then ask as a batch; I may skip any:
+Then ask one question at a time; I may skip any:
 1. What is my function fundamentally for?
 2. Which KPI am I measured on?
 3. Which three to five recurring tasks need the most quality?
 4. What does my company do differently enough that standard advice misses it?
 5. If I could hire someone with ten years in exactly my world, what would they do every week?
-If an answer is vague, ask for a recent example.
+If an answer is vague, ask for a recent example. Do not choose my domain or tasks or answer these from memory; wait for my answers before proposing.
 
 Propose two or three partners: a name that says what it does, its domain, its three to five tasks, and why I would use it weekly. Recommend one, then stop for my choice.
 ```

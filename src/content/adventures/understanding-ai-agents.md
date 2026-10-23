@@ -47,7 +47,7 @@ Here you watch an agent work on one of your real tasks and explain itself as it 
 ## The trail
 
 1. **Watch the loop**, so you see how an agent plans, acts and checks on your own work.
-2. **Ask how it approaches different tasks**, so you know when it searches and when it relies on memory.
+2. **See where the agent gets its answers**, so you know when it searches and when it relies on memory.
 3. **Write a goal that works**, because an agent works toward exactly the goal you give it.
 4. **Write your rules for any agent**, so what you learned holds on your busiest day.
 
@@ -63,10 +63,12 @@ Pick one real task with several steps, such as preparing for a QBR or writing re
 
 **What this does:** the agent works on your task and labels every move, so you see the loop in slow motion.
 
+Open a new chat in an AI tool that can search the web and reach your files, for example Claude, and paste the prompt below. It asks what to work on before it starts, so answer its questions first.
+
 ```
 I want to watch how you work as an agent. The agentic loop is the cycle every agent runs: think (plan the next step), act (use a tool or write), observe (check the result), adjust (change the plan if needed), and repeat until the goal is met.
 
-Ask me for one real task from my work with several steps, and what a good result looks like. Use what you know about me; ask only for gaps.
+Before you do anything, ask me two questions, one at a time: which task of mine to work on, and what a good result looks like. Do not choose the task, do not narrow it, and do not decide what good means. If you need anything else to begin, ask for that too, then wait until I tell you to start.
 
 Then work on it. Before each step, say what you will do, which source you will use (web search, my files, monday boards, internal data, or your own memory) and why. After each step, say what you found and whether it changes your plan. Label each part THINK, ACT, OBSERVE or ADJUST.
 
@@ -84,29 +86,32 @@ As it works, watch for four things:
 
 **In Claude:** open the thinking section above the answer to read its reasoning. What you see may be a summary of the reasoning, so still check the result.
 
-## Step 2: Ask how it approaches different tasks
+## Step 2: See where the agent gets its answers
 
-Stay in the same chat.
+Every agentic tool runs on a set of decisions you never see: what to look up on the web, what to answer from the model's general knowledge, what to take from your own files and instructions, what to remember for next time. Those decisions are what make the results personal, persistent and useful, and they are also where results go wrong: an answer from general knowledge can be out of date, and a file it never opened cannot shape the answer. This step makes those decisions visible, so you know your tool's tendencies and can steer them.
 
-### Prompt: Explain your approach
+### Prompt: Show me where your answers come from
 
-**What this does:** the agent compares how it would handle three different kinds of your work, and admits where it relied on memory.
+**What this does:** the agent explains, for three real tasks of yours, which parts it would take from the web, from its own general knowledge, and from your files and instructions, and where each source can let you down.
+
+Stay in the chat from Step 1 and paste the prompt below.
 
 ```
-I want to understand how you approach different kinds of work. Ask me for three tasks I do often, each of a different kind: for example research, analysing data on a monday board, writing for a customer, or an action across several tools.
+I want to understand where your answers come from. Ask me for three tasks I do often, each of a different kind: for example research, analysing data on a monday board, writing for a customer, or an action across several tools. Wait for my three before you write anything, and do not pick them for me.
 
-For each task, show a table with: your plan in three steps, the tools you would use, where you would search the web and where you would answer from memory, where you are most likely to go wrong, and what you would need to ask me.
+For each task, show a table with four rows: what you would look up on the web, what you would answer from your own general knowledge, what you would take from my files, instructions or memory, and what you would remember for next time. In each row say why you would choose that source, and where that choice could let me down (out of date, too generic, a file you did not open).
 
-Then look back at the task you worked on earlier in this chat. Which facts came from your memory, and which of them may be out of date?
+Then look back at the task you worked on earlier in this chat: which parts came from each source, and which of them may be out of date or missing my context?
 ```
 
-Agents often answer from memory, which stops at a cutoff date. Insist on a web search in these cases:
+Agents often answer from general knowledge, which stops at a cutoff date, and they only use your files when they are told to or trained to. Insist on the right source in these cases:
 
 | Your task depends on | What to ask for |
 | --- | --- |
 | Something that changes: a competitor's latest release, new regulation, industry news | "Search the web first and give the date of each source." |
 | How a product works today, including Claude or monday features | "Check the current official documentation." |
 | Facts about a named customer or company | "Use the web and internal data through Kremer; mark anything you could not confirm." |
+| Your own standards, context or earlier decisions | "Read my instructions and the files in this project before you answer, and tell me which ones you used." |
 | Only your own material: restructure, shorten, rewrite | Skip the web search; it adds noise here. |
 
 ## Step 3: Write a goal that works
@@ -127,6 +132,8 @@ Your wording sets how much the agent does. "Make sure the team is ready" invites
 
 **What this does:** the agent checks your goal against the five parts, then shows its plan for your approval before it does anything.
 
+Open a new chat, paste the prompt below, then paste the goal you just wrote when it asks.
+
 ```
 I will paste a goal I wrote for an agent. Check it against five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done).
 
@@ -142,6 +149,8 @@ Correct any wrong assumption in the plan before you approve it, because the agen
 ### Prompt: My rules for agents
 
 **What this does:** turns what you saw in this chat into one page of rules any AI can follow.
+
+Go back to the chat from Steps 1 and 2 and paste the prompt below, because it works from what happened there.
 
 ```
 From everything in this chat, write my rules for working with agents. One page, four sections:
