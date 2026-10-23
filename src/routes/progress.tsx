@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ADVENTURES, TOTAL_ADVENTURES } from "@/content/adventures";
-import { useStoreState } from "@/store";
+import { ADVENTURES, canOpenAdventure, TOTAL_ADVENTURES } from "@/content/adventures";
+import { store, useStoreState } from "@/store";
 import { nextTitle, titleFor, TITLES } from "@/lib/titles";
 import { AdventureIcon, Disc } from "@/components/AdventureIcon";
 import { Footprint } from "@/components/Footprints";
@@ -69,7 +69,7 @@ function Progress() {
                 <span className={cn("text-xs font-medium", !has && "text-muted-foreground")}>{a.title}</span>
               </>
             );
-            return a.isOpen ? (
+            return canOpenAdventure(a, store.getDemoSettings().demoOpenAll) ? (
               <Link key={a.slug} to="/adventures/$slug" params={{ slug: a.slug }} className="flex flex-col items-center gap-2 text-center">{content}</Link>
             ) : (
               <div key={a.slug} className="flex flex-col items-center gap-2 text-center">{content}</div>
