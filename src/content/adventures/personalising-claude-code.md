@@ -38,6 +38,7 @@ Open items
 - Labels: the seed lists "advanced Claude Code users" as a profession, which is outside the label set; used [Engineering]. Tool label is the seed's "Agentic coding tool", while the adventure is Claude Code only (Inbar list says "Claude Code"). Nufar to decide.
 - next: advanced-skill-patterns and audit-and-improve-your-ai-system are provisional until those files exist.
 - Prompt test in a fresh Claude Code session: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🎛️ Personalising Claude Code
@@ -48,9 +49,9 @@ Open items
 
 A Claude Code setup grows one fix at a time: a line in `CLAUDE.md` after each mistake, a few skills, "always allow" clicked whenever a prompt interrupts. After a few months the instructions file is long, some rules contradict each other, and all of it loads into every session.
 
-Claude Code offers many controls, and each one is the right home for a different kind of behaviour. This adventure tours them all on one real repository and rebuilds your setup the lean way.
+Claude Code offers many controls, each the right home for a different kind of behaviour. This adventure tours them on one real repository and rebuilds your setup the lean way.
 
-Already have a tuned setup? The bar: an instructions file short enough that you would read every line, and every "always" enforced by a hook or a permission rule.
+Already have a tuned setup? Aim for an instructions file you read in full, and every "always" enforced by a hook or a permission rule.
 
 ## The trail
 
@@ -66,15 +67,17 @@ Open Claude Code in a real repository you work in every week, on a new branch, s
 
 ## Step 1: See what your setup loads today
 
-**Think first, without AI.** Close Claude Code. In a note, list the corrections you repeat ("use the shared logger"), the approvals you click in every session, and anything Claude Code must never do in this repository.
+**Think first, without AI.** Close Claude Code. In a note, list the corrections you repeat ("use the shared logger"), the approvals you click in every session, and anything Claude Code must never do here.
 
-Then open Claude Code in the repository, run `/context`, and note how much context the setup uses before you type anything. You will compare in Step 5.
+Then open Claude Code in the repository, run `/context`, and note how much context the setup uses.
 
 The `.claude` folder is hidden. On Mac, press Cmd+Shift+. in Finder. On Windows, open File Explorer and choose View → Show → Hidden items.
 
 ### Prompt: Audit what loads today
 
-**What this does:** Claude Code reads every personalisation file for this repository, rates each item, and adds your list as gaps.
+**What this does:** reads every personalisation file for this repository, rates each item, and adds your list as gaps.
+
+Paste the prompt below into Claude Code, and give it your note when it asks.
 
 ```
 Audit how Claude Code is personalised for this repository. Check the current Claude Code documentation for where each kind of setting lives, then read everything that applies: CLAUDE.md or AGENTS.md at every level including my home folder, the .claude folders (settings, skills, commands, agents), hooks, permission rules, MCP servers and memory files.
@@ -84,11 +87,9 @@ Report one table: item, location, what it does, loads every session (yes or no),
 Then ask me for my list of repeated corrections and approvals, and add each one as a gap. Change nothing yet.
 ```
 
-Keep this chat open for the next prompts.
-
 ## Step 2: Give each behaviour its right home
 
-The rule for a lean setup: **put each behaviour in the cheapest place that still makes it reliable.** Only the instructions file and memory load in every session; a hook runs as code, whatever the model decides.
+The rule for a lean setup: **put each behaviour in the cheapest place that still makes it reliable.** Only the instructions file and memory load in every session; a hook runs as code.
 
 | What you want | Where it lives | Example in a Monday repository |
 | --- | --- | --- |
@@ -100,11 +101,11 @@ The rule for a lean setup: **put each behaviour in the cheapest place that still
 | Lessons learned while working | Memory | A flaky test and its workaround |
 | Access to another system | MCP server | monday boards; internal data through Kremer |
 
-Files in `.claude/commands/` also appear as slash commands; new procedures belong in skills.
-
 ### Prompt: Plan the right home for each behaviour
 
 **What this does:** turns the audit table into a plan with one home per behaviour.
+
+Stay in the same session and paste the prompt below.
 
 ```
 Use the audit table in this chat. Give every row marked cut, move, fix or gap one home:
@@ -121,11 +122,13 @@ Where two homes fit, ask me, one question at a time. Show the plan as a table: b
 
 ## Step 3: Rewrite the instructions file lean
 
-A lean instructions file holds what a strong new teammate would need on day one and could not find in the code. Personal preferences go in `~/.claude/CLAUDE.md`, which follows you to every repository.
+A lean instructions file holds what a strong new teammate would need on day one and could not find in the code.
 
 ### Prompt: Rewrite the instructions file
 
 **What this does:** rewrites the instructions file from your plan and shows what moved where.
+
+Stay in the same session and paste the prompt below.
 
 ```
 Rewrite this repository's instructions file from the plan I approved in this chat. Keep the name AGENTS.md if the repository uses it.
@@ -145,11 +148,13 @@ Read every line and delete any you would skip.
 
 An instruction is advice the model weighs. Hooks and permission rules are enforced by Claude Code itself, so they hold in long sessions and in every permission mode.
 
-Press Shift+Tab to switch permission modes; plan mode suits unfamiliar code. If your Claude Code starts in auto mode, a classifier approves routine actions for you while your deny rules and hooks still apply: the guarantees you build here make auto mode safe. Monday's managed settings, where they exist, come first.
+Press Shift+Tab to switch permission modes. If your Claude Code starts in auto mode, a classifier approves routine actions while your deny rules and hooks still apply, so the guarantees you build here make auto mode safe. Monday's managed settings, where they exist, come first.
 
 ### Prompt: Set up hooks and permission rules
 
 **What this does:** writes your permission rules and hooks, splits team and personal settings, and tests each hook.
+
+Stay in the same session and paste the prompt below.
 
 ```
 Set up the guarantees from the plan I approved in this chat. Check the current Claude Code documentation for the settings format and the hook events first.
@@ -163,11 +168,13 @@ Show every file you will change and wait for my approval. Then trigger each hook
 
 ## Step 5: Move repeated work into a skill and a sub-agent, then test
 
-Treat a skill like a microservice: one job, with its description as the contract that decides when it runs. A sub-agent earns its cost on heavy reading, such as searching a large codebase, or work that needs a clean context, such as a review.
+Treat a skill like a microservice: one job, with its description as the contract that decides when it runs. A sub-agent earns its cost on heavy reading or work that needs a clean context, such as a review.
 
 ### Prompt: Build the skill and the sub-agent
 
 **What this does:** interviews you for one skill, then writes it and one sub-agent into the repository.
+
+Stay in the same session and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Build one skill and one sub-agent from the plan I approved in this chat. Check the current Claude Code documentation for both file formats first.
@@ -192,7 +199,7 @@ When a check fails, fix the home it belongs to and run the ticket again. You are
 
 ## Go further
 
-**Share the setup with your team.** Do this so every teammate starts from what the team has learned. Commit the instructions file, project settings, skill and sub-agent; keep personal preferences in your local settings and home folder. If your team distributes setups as a plugin, bundle them into one.
+**Share the setup with your team.** Do this so every teammate starts from what the team has learned. Commit the instructions file, project settings, skill and sub-agent. If your team distributes setups as a plugin, bundle them into one.
 
 **Audit again after every model upgrade.** Do this because a new model reads the same instructions differently. Rerun the Audit what loads today prompt from Step 1 and delete what the new model no longer needs.
 

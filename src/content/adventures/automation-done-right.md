@@ -34,6 +34,7 @@ Open items
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; the "In Claude Cowork" lines may need a freshness sweep before W2 (23 Nov).
 - Model choice per scheduled run (routine runs on Sonnet) left out until Keren Q3 confirms which models employees can pick.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # ⏰ Automation Done Right
@@ -46,7 +47,7 @@ An automation is any AI job that runs without you starting it: a scheduled task 
 
 Most people already run one or two. Many run too often, read far more than they use, and produce output nobody checks. Every run costs tokens, and an unchecked one can put wrong information on a board your team trusts.
 
-Here you review what you already run, then design, test and switch on one automation properly, new or rebuilt, and keep a checklist for the next one. For a personal assistant that prepares your day, see Your Own Chief of Staff.
+Here you review what you already run, then design, test and switch on one automation properly, new or rebuilt, and keep a checklist for the next one.
 
 ## The trail
 
@@ -71,6 +72,8 @@ Have the monday boards, mail and Slack channels your automations read from avail
 
 **What this does:** checks each automation on your list for value, verification and efficiency, and gives it a verdict.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me review the AI automations I run: AI jobs that start without me, on a schedule or when something changes on a monday board, in mail or in Slack. I will paste or dictate my list. Ask only for what is missing, one automation at a time.
 
@@ -84,7 +87,7 @@ Show a table: automation, value, verified, efficient, verdict (Keep, Fix or Stop
 Then recommend one automation to rebuild. If my list is empty or everything passes, propose a new one for work I repeat weekly, with its information on monday boards. Stop and wait for my choice.
 ```
 
-Pause every automation marked Stop today; switching off what nobody uses is part of the skill. Keep the chat open for Step 2.
+Pause every automation marked Stop today.
 
 ## Step 2: Design one automation on purpose
 
@@ -99,11 +102,13 @@ Six decisions shape every automation; most waste comes from the first three.
 | **Quiet run** | What should it say when nothing changed? | "One line: nothing new on the Renewals board" |
 | **Approval line** | What may it do alone, and what must a person see first? | "Read, summarise and draft alone; anything that reaches a customer or changes a status waits for me" |
 
-**Filters save the most tokens.** A connector pulls in everything you point it at: every column, every update, every thread. Name one board, one group, the columns that matter and a time window. For internal data, ask Kremer one narrow question, such as "renewal date and open support tickets for this account".
+**Filters save the most tokens.** A connector pulls in everything you point it at. Name one board, one group, the columns that matter and a time window. For internal data, ask Kremer one narrow question, such as "renewal date and open support tickets for this account".
 
 ### Prompt: Design card for my automation
 
 **What this does:** interviews you through the six decisions, then writes a design card and the instructions the automation will follow.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me design the AI automation I chose earlier in this chat (if it is missing, ask). Interview me one question at a time on six decisions:
@@ -121,11 +126,13 @@ Write a design card with my six answers, then complete, self-contained instructi
 
 ## Step 3: Prove it by hand
 
-Before any schedule or trigger, run the instructions yourself three times: on a busy day, a quiet day, and at the planned time. Do the last run in a new chat with only the instructions pasted in, because that is all the automation will see.
+Before any schedule or trigger, run the instructions yourself three times: on a busy day, a quiet day, and at the planned time.
 
 ### Prompt: Dry run with a run report
 
 **What this does:** runs the instructions once and reports what it read and what it would have done.
+
+For the busy-day and quiet-day runs, stay in the same chat and paste the prompt below. Do the run at the planned time in a new chat with only the instructions and this prompt, because that is all the automation will see.
 
 ```
 Run the automation instructions we approved in this chat once, now, exactly as written (if they are missing, ask me to paste them). Describe any action that needs my approval instead of doing it.
@@ -140,7 +147,7 @@ After the output, write a run report:
 Then ask me what to change, and write each fix into the instructions.
 ```
 
-Give specific feedback: "it read all 400 items; only the Q4 group matters". The run report shows waste the output hides. It is ready when three runs in a row produce output you would act on as it is, from the sources on your design card only.
+Give specific feedback: "it read all 400 items; only the Q4 group matters". It is ready when three runs in a row produce output you would act on as it is, from the sources on your design card only.
 
 ## Step 4: Switch it on and watch it
 
@@ -163,6 +170,8 @@ Open the first three unattended runs and check: it ran on time, read the right s
 
 **What this does:** turns your design card and hand-run lessons into a checklist for every future automation.
 
+Go back to the chat where you designed the automation and paste the prompt below.
+
 ```
 From this chat, write my one-page automation checklist, for building any future AI automation and for a monthly review of the ones I run. Sections:
 1. Before building: the six design decisions (trigger, frequency, inputs and filters, destination, quiet run, approval line), one question each.
@@ -172,13 +181,13 @@ From this chat, write my one-page automation checklist, for building any future 
 Add the two lessons from my own hand runs I am most likely to forget.
 ```
 
-Pin the checklist on your team's monday board or save it in your Claude project instructions, and set a monthly reminder to run the Review my automations prompt. You are done when an unattended run arrives and someone acts on it.
+Pin the checklist on your team's monday board. Set a monthly reminder to run the Review my automations prompt. You are done when an unattended run arrives and someone acts on it.
 
 ## Go further
 
 **Move from report to draft.** Do this when the output always leads to the same next step, such as a customer follow-up. Ask the automation to prepare that step as a draft. The approval line stays: you send, and you change the status.
 
-**Hand work between automations through a board.** Do this when one job feeds another. The first automation adds items to a board with the status "Ready for review". You check each item and set it to "Approved", and that status change triggers the second automation, for example one that drafts the customer follow-up. The board holds the hand-off and the approval line, visible to your team.
+**Hand work between automations through a board.** Do this when one job feeds another. The first automation adds items to a board with the status "Ready for review". You check each item and set it to "Approved", and that status change triggers the second automation, for example one that drafts the customer follow-up.
 
 ## Proof of work
 

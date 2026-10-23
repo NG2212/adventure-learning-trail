@@ -35,6 +35,7 @@ Open items
 - Labels: the seed lists "Advanced users" as a profession, which is outside the label set; used [Everyone, Engineering] with level Advanced. Nufar to decide.
 - next: agent-teams-and-orchestration is provisional until that file exists.
 - Prompt test in a fresh Claude Code session: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🔁 The Loop
@@ -103,6 +104,8 @@ Copy the inputs into the sandbox first, for example an export of your team's mon
 
 **What this does:** the AI interviews you about the assignment you picked in Step 1, challenges any finish line that needs your taste, saves the card and writes the exact command for your tool.
 
+Open Claude Code, Cursor or Codex in your sandbox folder and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me design a goal card for an agentic loop: an agent that works on one goal, turn after turn, until a finish line is met or a cap stops it. Design only; start no work yet.
 
@@ -152,6 +155,8 @@ When the loop stops, the verdict is yours. Note how it stopped: finish line met,
 ### Prompt: Check the result against the goal card
 
 **What this does:** a fresh session checks every DONE WHEN line with evidence, then helps you debrief and update the card.
+
+Open a new session in the sandbox folder, so a fresh agent checks the work, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Read goal-card.md and the output file it names. You are checking work you did not write.

@@ -37,6 +37,7 @@ Open items
 - Extended thinking toggle availability on Monday's plan (Keren Q3 covers model choice).
 - next: your-ai-taste-test is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🪙 Token Smartness
@@ -94,6 +95,8 @@ These habits create most of the waste:
 
 **What this does:** the AI interviews you about real examples from last week, rates your habits, and writes a one-page report card with two habits to change.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me write my token report card: an honest look at how I spend AI tokens, so I get better results from the same tools. Use what you know about me; ask only for what is missing, one question at a time.
 
@@ -122,11 +125,11 @@ The report card is only for you and stays in your chat. Keep it open; Step 3 use
 
 Pick a task you do often and know well: a QBR summary, release notes, an incident write-up, forecast commentary, or a weekly team update from your board. Recall how it went last time: how many rounds it took, what you pasted, and how good the result was.
 
-Open a fresh chat for this prompt. Your report card chat is already long.
-
 ### Prompt: Redo a task with two better habits
 
 **What this does:** the AI builds a short brief with you, works only from the sources the task needs, then compares this run with your last one.
+
+Open a fresh chat and paste the prompt below, because your report card chat is already long. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I want to redo one task I do often, using two habits from my token report card. Ask me which task and which two habits, one question at a time.
@@ -145,6 +148,8 @@ You are done when the redo gives you a result you would use, in fewer rounds tha
 **Measure your real usage.** Do this if you work in an agentic coding tool (Claude Code, Cursor or Codex). These tools log tokens, so your report card can use measured numbers instead of guesses.
 
 **What this does:** reads your local usage logs without changing anything and reports the numbers that show waste.
+
+Open your coding tool on the machine you work on and paste the prompt below.
 
 ```
 Measure my token usage from the logs on this machine. Rules: read-only; nothing leaves this machine; report numbers and project names only, never conversation content; never open credential files.

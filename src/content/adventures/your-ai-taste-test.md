@@ -33,6 +33,7 @@ Open items
 - Name of the AI built into monday.com that would draft a board update (written generically as "the AI built into monday.com").
 - Codex omitted (availability at Monday "likely", unconfirmed).
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🧭 Your AI Taste Test
@@ -60,7 +61,7 @@ You will compare two to four options you can use at Monday, for example Opus and
 
 ## Step 1: Find the tasks that represent your work
 
-This is the most important step: if every task is an email, you only learn which option writes the best email.
+This is the most important step.
 
 **Start without AI.** Close the chat. Write down the requests you made to AI most often last week, one rare task that matters a lot (a QBR or an incident write-up), and one thing you wish AI did well for you.
 
@@ -81,6 +82,8 @@ Aim for one task where you spot a weak answer quickly, one matter of taste (a me
 
 **What this does:** the AI interviews you with the Work Mix and proposes four to six tasks, each with made-up material and a scoring guide.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me build my AI task set: four to six real requests from my work that I will give to several AI options, names hidden, unchanged, at every new release.
 
@@ -93,7 +96,7 @@ For each task, propose: a short name; why it earns its place; the complete reque
 Ask me to review every request: would I really send this? Revise until I say the set is mine. Then give me one document with the numbered tasks.
 ```
 
-**Write what good looks like now.** A scoring guide written before you see any answer is a commitment; written afterwards, it only explains a choice you already made.
+**Write what good looks like now.** A scoring guide written before you see any answer is a commitment; written afterwards, it only explains a choice.
 
 For a tool task, use a fixed source, such as a test monday board with made-up items or a saved snapshot of Kremer data, so every retest gets the same input. Save the document in Drive.
 
@@ -107,19 +110,17 @@ An **option** is anything you can use for the same task:
 | **Tools** | Claude chat against Cowork; Claude Code against Cursor; Claude against the AI built into monday.com |
 | **Features** | With your skill against without it; a project against a plain chat |
 
-Pick two to four options, to **choose which option to use for which task** or to **test something new** against what you use today.
-
 For each request, open a fresh chat in each option, paste the request exactly as saved, and change only the option you are testing: web search, memory and the thinking setting stay the same everywhere. Copy each answer into one document under the option's name, without reading yet. For a file or a board update, save one result per option and note how many follow-up messages each needed.
 
-**In Claude:** choose the model in the model menu, set extended thinking the same way for every run, and work outside your projects unless you are testing a project.
+**In Claude:** choose the model in the model menu, and work outside your projects unless you are testing a project.
 
 ## Step 3: Hide the names and pick
-
-Hide the names in a fresh chat with the prompt below, ideally with a model you are not testing. A spreadsheet sorted by a `=RAND()` column also works.
 
 ### Prompt: Hide the names
 
 **What this does:** removes the names, shuffles the answers, records your picks, and keeps the key until you type "reveal".
+
+Open a fresh chat, ideally with a model you are not testing, and paste the prompt below.
 
 ```
 I am running a blind taste test of AI options, one request at a time. For each request I will paste several answers, each labeled with its model or tool.
@@ -129,9 +130,9 @@ Remove the names and any line that reveals the writer. Shuffle with a fresh shuf
 Keep the key to yourself. When I give you my pick, my one line on why, and "clear" or "close", record them and ask for the next request. When I type "reveal", show the key, my picks with the real names, and the wins for each option.
 ```
 
-**Read every answer before you judge any.** Then ask: which would I use as it is? Pick one letter, write one concrete line on why ("caught the renewal risk", "half the length and nothing lost"), and mark the win **clear** or **close**. These lines are your taste, written down.
+**Read every answer before you judge any.** Then ask: which would I use as it is? Pick one letter, write one concrete line on why ("caught the renewal risk", "half the length and nothing lost"), and mark the win **clear** or **close**.
 
-Type "reveal" and count the wins. If a result surprises you, run that request again: the same AI can answer the same request differently twice.
+Type "reveal" and count the wins. If a result surprises you, run that request again: the same AI can answer differently twice.
 
 ## Step 4: Decide and set your retest ritual
 
@@ -146,7 +147,9 @@ The rule: **a clear win on a task that matters moves you. A close call goes to t
 
 ### Prompt: My routing card and retest ritual
 
-**What this does:** turns your picks into a routing card (your default option, and which tasks go elsewhere), verdicts for new options, and a retest ritual.
+**What this does:** turns your picks into a routing card, verdicts for new options, and a retest ritual.
+
+Stay in the chat where you revealed the names and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I just ran a blind taste test of AI options on my saved requests and revealed the names. Interview me one question at a time.
@@ -172,6 +175,8 @@ Keep the task set and the routing card together, for example on your personal mo
 
 **What this does:** a strict judge scores hidden answers against your scoring guide.
 
+Open a new chat, so the judge never sees the key, and paste the prompt below.
+
 ```
 Act as a strict judge for one task of my AI taste test. I will paste my scoring guide, then answers labeled A, B, C.
 
@@ -182,7 +187,7 @@ Then read all answers, rank them, and score each from 1 to 5 with one line of ev
 
 Where you and the judge differ, your guide is usually missing something you care about. Your scores decide.
 
-**Build a team task set.** Do this when your team adopts tools together: run the Find my tasks prompt on your team's recurring work, such as release notes, and keep the set on the team's monday board.
+**Build a team task set.** Do this when your team adopts tools together: run the Find my tasks prompt on your team's recurring work and keep the set on the team's monday board.
 
 ## Proof of work
 

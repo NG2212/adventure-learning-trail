@@ -32,6 +32,7 @@ Open items
 - Keren Q2: are skills added by each employee under Customize → Skills, or provisioned by an admin? Affects the Step 3 install line and Go further item 3 (a skill for a teammate).
 - next: uses the existing slug de-slop for Stay Original with AI; the brief named stay-original-with-ai. advanced-skill-patterns is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🧰 Skills: When, How and How Well
@@ -87,6 +88,8 @@ A sample of finished work shows the AI the result. How you get there (what you c
 
 **What this does:** the AI interviews you about one recurring task and writes a one-page skill brief for your approval.
 
+Open a new chat in Claude and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me design a skill: saved instructions you follow for one recurring task. Use what you know about me; ask only for what is missing, one question at a time. If an answer is vague, ask for a real example.
 
@@ -119,7 +122,9 @@ Every good skill has these parts. The next prompt builds all of them.
 
 ### Prompt: Write the skill file
 
-**What this does:** in the same chat, turns the skill brief you approved in Step 2 into a complete skill file ready to save, plus three test requests.
+**What this does:** turns the skill brief you approved in Step 2 into a complete skill file ready to save, plus three test requests.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Use the skill brief I approved in this chat. First check Claude's current documentation for the skill file format (SKILL.md) and follow it. Then write the complete skill file:
@@ -142,7 +147,7 @@ Then close and reopen Claude so it finds the new skill.
 
 ## Step 4: Test it on real work
 
-Test in a fresh chat, so Claude works from the skill alone. When a test disappoints, find the cause:
+When a test disappoints, find the cause:
 
 | Failure | What happens | Fix |
 | --- | --- | --- |
@@ -155,6 +160,8 @@ Test in a fresh chat, so Claude works from the skill alone. When a test disappoi
 ### Prompt: Test and improve once
 
 **What this does:** runs the skill on two real requests, reviews each run against the five failure modes, and proposes one improved version.
+
+Open a new chat, so Claude works from the skill alone, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I am testing a skill I added to Claude. Ask me for a real request from my work and handle it the way you normally would. Then ask for a second real request and handle it too.

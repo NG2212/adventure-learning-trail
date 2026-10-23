@@ -35,6 +35,7 @@ Open items
 - next: build-a-personal-brain-for-your-ai is W2; the platform shows "coming soon".
 - Length: ~1,440 words including prompts, within the factory cap of 1,800 and above the guide's Quick win target of 1,000. First cut if needed: the "Keep it current" item in Go further, then the six-area table.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🪪 Your AI Identity
@@ -62,11 +63,11 @@ Have two or three recent pieces of your own writing ready, for example a Slack m
 
 ## Step 1: See what your AI knows about you today
 
-Open a new chat in the AI tool you use most.
-
 ### Prompt: What my AI knows about me
 
 **What this does:** shows what your AI already knows about you, and what it is only guessing.
+
+Open a new chat in Claude (or the AI tool you use most) and paste the prompt below.
 
 ```
 What do you know about me and my work? List it in short bullets. Mark each bullet as KNOWN (I told you, or it is in my settings or memory) or GUESSED.
@@ -90,6 +91,8 @@ Good standing instructions cover six areas. The prompt below asks about each one
 ### Prompt: My standing instructions
 
 **What this does:** the AI interviews you on the six areas and writes your standing instructions for your approval.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Interview me to write my standing instructions: a short text my AI tool reads before every chat, so it knows who I am and how I work.
@@ -119,6 +122,8 @@ Pick two or three pieces of your own writing that show how you really write. Bef
 
 **What this does:** studies your writing samples and describes your style so any AI can match it.
 
+Stay in the same chat and paste the prompt below, then your samples when it asks.
+
 ```
 Build a voice profile for me: a short description of how I write, so any AI tool can match my style. Ask me to paste two or three recent samples, and wait until I have.
 
@@ -139,11 +144,11 @@ Paste your approved standing instructions and voice profile into the place your 
 
 **In Claude:** go to Settings → Instructions for Claude, paste both, and save.
 
-Then open a **new** chat.
-
 ### Prompt: Test my AI identity
 
 **What this does:** checks that your AI uses your identity, and turns anything that feels wrong into a fix.
+
+Open a **new** chat, so the AI starts from your saved settings, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Test my standing instructions and voice profile, one task at a time. Wait for my reaction after each.
@@ -162,6 +167,8 @@ Put each fix into your settings and the Google Doc. Then repeat the baseline req
 
 **What this does:** interviews you about how you decide and writes a short section for your standing instructions.
 
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Add a short "Deeper context" section to my standing instructions. Interview me one question at a time: the best decision I made this year and what made it good; one decision I would make differently; feedback I hear again and again; what I tend to postpone. Write it in under 150 words, as bullets addressed to an AI. Show it to me for approval.
 ```
@@ -169,6 +176,8 @@ Add a short "Deeper context" section to my standing instructions. Interview me o
 **Keep it current.** Do this when your role, team or priorities change, or every few months.
 
 **What this does:** finds what is out of date and what you keep explaining again.
+
+Open a new chat and paste the prompt below, then your standing instructions. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I will paste my standing instructions. Ask me what changed in my role, team and priorities. If you can see our recent chats, list what I explained more than once. Show the revised instructions, under 400 words, with the changes marked.

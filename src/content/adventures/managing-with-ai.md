@@ -34,6 +34,7 @@ Open items
 - Keren Q2 (how skills are added at Monday): affects the Customize → Skills line in Step 4.
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; the "In Claude Cowork" lines may need a freshness sweep.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 👥 Managing with AI
@@ -42,9 +43,9 @@ Open items
 
 ## Why this adventure
 
-Much of managing is repeated preparation: planning the week, writing the team status, getting ready for each 1:1, finding words for feedback, and remembering at review time what each person did all year. AI can prepare most of this from your monday boards, your calendar and your own notes, so your time goes to your people and your decisions.
+Much of managing is repeated preparation: planning the week, writing the team status, getting ready for each 1:1, finding words for feedback, and remembering at review time what each person did all year. AI can prepare most of this from your monday boards, calendar and notes, so your time goes to your people and decisions.
 
-In this adventure you choose where AI helps you most, set clear rules for information about people, and build two or three routines: managerial tasks you repeat, each with a fixed moment, fixed sources and a fixed output. Already have routines like these? The Step 1 prompt builds on them.
+In this adventure you choose where AI helps you most and build two or three routines: managerial tasks you repeat, each with a fixed moment, fixed sources and a fixed output.
 
 ## The trail
 
@@ -75,7 +76,9 @@ At Monday, this could be a CS team lead's weekly status from the renewals board 
 
 ### Prompt: Choose your managerial routines
 
-**What this does:** the AI interviews you about your list, proposes up to five routines, and helps you pick two or three.
+**What this does:** the AI interviews you about your list and helps you pick two or three routines.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me choose two or three managerial routines to run with AI. A routine is a task I repeat as a manager, with a fixed trigger, sources and output: for example weekly planning, a team status from our monday boards, 1:1 preparation, feedback drafts, or a dated record of each person's work.
@@ -91,11 +94,9 @@ Then propose up to five routines in a table:
 Leave out any routine that scores, ranks or compares people. Help me pick two or three. Stop and wait.
 ```
 
-Keep the chat open for the next prompt.
-
 ## Step 2: Set the rules for people data
 
-Decide your rules for information about people before the first run, and write them where your AI reads them. Monday's Claude policy has one hard rule: nothing that Monday's customers uploaded to their own boards ever goes into Claude. Monday's own data about customers and accounts (Salesforce, Kremer) is fine. For people data, follow Monday's HR guidelines, and ask your HR business partner when you are unsure.
+Decide your rules for information about people before the first run. Monday's Claude policy has one hard rule: nothing that Monday's customers uploaded to their own boards ever goes into Claude. Monday's own data about customers and accounts (Salesforce, Kremer) is fine. For people data, follow Monday's HR guidelines, and ask your HR business partner when you are unsure.
 
 | Question | Your rule |
 | --- | --- |
@@ -107,7 +108,9 @@ Decide your rules for information about people before the first run, and write t
 
 ### Prompt: Your managing workspace
 
-**What this does:** writes standing instructions for a private workspace: your routines, sources and people-data rules.
+**What this does:** writes standing instructions for your private managing workspace.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Write standing instructions for my private managing workspace, where my AI helps me plan, track my team's work, prepare 1:1s and draft feedback. Use the routines I picked earlier in this chat; if they are missing, ask me.
@@ -125,11 +128,13 @@ Ask me to approve it.
 
 ## Step 3: Build each routine and run it on real work
 
-Build one routine at a time in your private managing workspace, starting with the one that costs you the most.
+Build one routine at a time, starting with the one that costs you the most.
 
 ### Prompt: Design one routine
 
-**What this does:** the AI interviews you about one routine, writes its instructions for your approval, and runs it once on real data.
+**What this does:** designs one routine with you, then runs it once on real data.
+
+Open a new chat in your private managing workspace and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Design one managerial routine with me. Ask which routine from my standing instructions, then interview me one question at a time: its trigger, its sources, who sees the output, and what a good result looked like when I last did it myself.
@@ -144,7 +149,7 @@ Start from these formats and adapt them:
 Write the routine as instructions: trigger, sources, steps, output, people-data rules. Stop and wait for my approval. Then run it once on real data, list your sources, and mark anything unconfirmed as UNVERIFIED.
 ```
 
-Read the output as you would on a busy Monday. When something is off, say exactly what: "show only what changed this week", "put Dana's topics before mine", "this feedback draft judges attitude; keep it to what happened and its effect".
+When the output is off, say exactly what: "show only what changed this week", "put Dana's topics before mine", "this feedback draft judges attitude; keep it to what happened and its effect".
 
 Ask the AI to write every fix into the routine's instructions. Then run the Design one routine prompt for your other routines. A routine is ready when you would use its output with light edits only.
 
@@ -160,7 +165,7 @@ Give each routine a fixed moment in your week.
 | Feedback draft | Soon after the moment you want to give feedback on |
 | Record of work | After each 1:1 and each delivery, as a short note you dictate |
 
-**In Claude Cowork:** ask Claude to turn each routine into a skill, and add it under Customize → Skills. Close and reopen Claude so it finds the new skill. Ask Claude to run the team status every week at the time you need it, check that it appears under Scheduled, and have it show you the draft before it posts.
+**In Claude Cowork:** ask Claude to turn each routine into a skill, and add it under Customize → Skills. Close and reopen Claude so it finds the new skill. Ask Claude to run the team status every week, check that it appears under Scheduled, and have it show you the draft before it posts.
 
 Once a month, ask yourself which output you used as it was, which you rewrote, and which you stopped reading. Fix or drop those routines. Then reread your record of work: is every note factual and fair?
 
@@ -170,7 +175,9 @@ You are done when two routines have run on a real week and you acted on their ou
 
 **Prepare for review season.** Do this when a review cycle starts, so each review draws on the whole period.
 
-**What this does:** drafts the facts for one review from your record of work, and shows where the record is thin.
+**What this does:** drafts the facts for one review from your record of work.
+
+Paste the prompt below in your private managing workspace.
 
 ```
 Help me prepare one performance review. Ask whose review it is and which period it covers. Read only my record of work and that person's board items for that period.

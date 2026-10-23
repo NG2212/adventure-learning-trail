@@ -2,7 +2,6 @@
 slug: understanding-ai-agents
 emoji: 🤖
 icon: robot
-review: ready
 title: "Understanding AI Agents"
 walkaway: "A working understanding of how agents think, and your own rules for setting goals and deciding what to delegate"
 category: Work smarter with AI
@@ -17,6 +16,7 @@ wave: W1
 slot: 4
 next: [your-own-chief-of-staff, automation-done-right]
 source: "Adapted from catch-up-may/content/week-4/project-10-understanding-agents.md (Step 1 narrated loop, Step 2 framing sets autonomy, Step 3 goal vs steps, Step 5 Rules of Autonomy tiers, Step 6 simplest thing that works, Step 7 plan before you execute), guide-understanding-agents.md (goal / access / verification test) and project-10-reference-card.md. Never edit the originals from this engagement."
+review: ready
 ---
 
 <!--
@@ -35,6 +35,7 @@ Open items
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 23 Oct: one-chat flow for Steps 1-4
 23 Oct: source table in Step 2, memory line, rewrite rationale in Step 3
+23 Oct: think-first without a prescribed medium; brain dump opens the Step 3 prompt
 -->
 
 # 🤖 Understanding AI Agents
@@ -126,7 +127,7 @@ Insist on the right source:
 
 ## Step 3: Set a goal that works
 
-**Think first, without AI.** Step away from the chat: close the window and write or dictate your notes. Pick a task you will hand an agent this week and work out what you want from it. Be ready to give your tool an answer for each of the five parts below. No particular structure is needed; know what you want and what you expect.
+**Think first for yourself, without AI.** Pick a task you will hand an agent this week. Ask yourself: What does done look like to you? What do you already know it should do? What should it leave alone? Where do you expect it to get things wrong? Be ready to give your tool an answer for each of the five parts below. No particular structure is needed.
 
 | Part | Question it answers | Example: QBR preparation |
 | --- | --- | --- |
@@ -136,7 +137,7 @@ Insist on the right source:
 | Boundaries | What may it do alone, and what must it show me first? | Read and draft only; I send everything |
 | Check | How will it prove the work is done? | Every risk has a source; unconfirmed lines are marked |
 
-Your wording sets how much the agent does. "Make sure the team is ready" invites it to act across your tools. "Draft a summary for me to review" keeps it to a draft.
+Your wording sets how much the agent does: "make sure the team is ready" lets it act across your tools.
 
 ### Prompt: Sharpen my goal and plan
 
@@ -147,7 +148,7 @@ Come back to the same chat and paste the prompt below. Answer its questions in w
 ```
 This is a new task. Focus on this task only: put the earlier tasks in this chat aside, and keep only what they taught you about me.
 
-I want to hand you a task. Ask me for it, then ask me, one question at a time, for five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done). Skip a part I already covered. Do not choose the task, do not narrow it, and do not decide what good means.
+Ask me to brain dump or paste all my thoughts on this task before you start, then ask me, one question at a time, for five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done). Skip a part I already covered. Do not choose the task, do not narrow it, and do not decide what good means.
 
 Then rewrite the goal in five short lines. Under each line, add one short line: what I gave you, what you changed, and why. Stop and wait for my approval.
 

@@ -33,6 +33,7 @@ Open items
 - Skill install path on Monday's Claude Enterprise pending Keren Q2.
 - next: making-decisions and hard-conversations slugs are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🎭 Build Your Board of Advisors
@@ -54,7 +55,7 @@ Here you build a board of advisors: a small group of AI personas, each one a per
 
 ## Before you start
 
-Have one real decision or deliverable ready: a feature brief, a QBR plan, a launch note, a quarterly plan or a board update.
+Have one real decision or deliverable ready: a feature brief, a QBR plan, a launch note or a board update.
 
 ## Step 1: Decide who should review your work
 
@@ -79,6 +80,8 @@ A **devil's advocate** is an optional extra member who argues against your plan.
 
 **What this does:** interviews you, proposes board members and waits while you edit the list.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me choose my Board of Advisors: a small group of AI personas, each one a perspective my work has to satisfy.
 
@@ -87,15 +90,15 @@ Use what you already know about me. Ask only for what is missing, one question a
 Propose two to five members: customer segments for product roles; ideal customer profiles (ICPs) and buyer roles for go-to-market roles; decision perspectives for leaders, including well-known external figures. For each: a name, who they represent, and what they would catch that I would miss. Offer a devil's advocate as an optional extra. Wait while I edit the list.
 ```
 
-Edit the list, then continue in this chat.
-
 ## Step 2: Build the board
 
-Evidence makes sharper personas: paste call notes, survey verbatims or a monday feedback board when the AI asks about a member, and use Kremer for internal customer data. Profiles of real colleagues cover work behaviour only.
+Evidence makes sharper personas: paste call notes, survey verbatims or a monday feedback board, and use Kremer for internal customer data. Profiles of real colleagues cover work behaviour only.
 
 ### Prompt: Your board instructions
 
 **What this does:** profiles each member, then writes the board's standing instructions.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Build the board from the members I approved in this chat. For each member, ask me as a batch: what they care about; how they react to a new idea; what they reject immediately; their blind spot. If I paste real material, build the profile from it and mark which traits come from evidence. For a known external figure, use only their public record.
@@ -111,13 +114,15 @@ Then write Board of Advisors instructions I can save:
 Wait for my approval.
 ```
 
-**In Claude:** create a project called "Board of Advisors", paste the board instructions into the project instructions and add your evidence files to the project knowledge. Convene the board from a new chat in that project. **In other AI tools:** save the board instructions as standing instructions.
+**In Claude:** create a project called "Board of Advisors", paste the board instructions into its instructions and add your evidence files to its knowledge. **In other AI tools:** save the board instructions as standing instructions.
 
 ## Step 3: Convene it on real work
 
 ### Prompt: Convene the board
 
-**What this does:** gathers context, runs one session and stops at the summary so you judge it first.
+**What this does:** runs one session and stops at the summary so you judge it first.
+
+Open a new chat in your Board of Advisors project, so the board instructions apply, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Convene my Board of Advisors, using the board instructions in this project or pasted above. First ask me three questions, one at a time: the decision or deliverable (I will paste or describe it), what I am leaning towards and how confident I am, and what a good outcome looks like. Then run the board and stop after the summary.
@@ -125,23 +130,25 @@ Convene my Board of Advisors, using the board instructions in this project or pa
 
 Then judge the session: does each member sound like the person they represent, and is the perspective "most likely to be dismissed" one you were about to dismiss?
 
-Personas change how your work is framed; facts still get verified. Check any number a member states before you rely on it.
+Verify any number a member states.
 
-> **Example: Noa, product manager, monday CRM.** Noa's feature brief: AI lead scoring. Her board: a 12-seat agency owner who abandons anything that needs configuring; a RevOps lead who judges everything by pipeline accuracy; a mid-market account manager; a devil's advocate. All agreed that scoring must work on day one. Sharpest split: the RevOps lead wanted editable scores, the agency owner wanted zero settings. Most likely to be dismissed: the account manager's warning that one wrong score on a key account costs more trust than having no score. Question before deciding: what does the score show with little data? Noa changed the brief's scope to answer it.
+> **Example: Noa, product manager, monday CRM.** Noa's feature brief: AI lead scoring. Her board: a 12-seat agency owner, a RevOps lead, a mid-market account manager and a devil's advocate. Sharpest split: the RevOps lead wanted editable scores, the agency owner wanted zero settings. Most likely to be dismissed: the account manager's warning that one wrong score on a key account costs more trust than having no score. Question before deciding: what does the score show with little data? Noa changed the brief's scope to answer it.
 
 ## Step 4: Make it sharper
 
-General feedback such as "not quite right" gives the AI little to work with. Say exactly what was wrong: "The RevOps lead would ask about data accuracy first." "They agreed too fast; show me the real disagreement."
+Tell the AI exactly what was wrong: "The RevOps lead would ask about data accuracy first." "They agreed too fast; show me the real disagreement."
 
 ### Prompt: A sharper board
 
 **What this does:** turns your feedback into updated board instructions.
 
+Stay in the same chat. Paste the prompt below, then your board instructions and your feedback. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Below are my Board of Advisors instructions, followed by my feedback on the first session. Ask me up to three questions to sharpen the fix. Then give me the complete updated instructions. Change only what my feedback calls for.
 ```
 
-Paste your board instructions and feedback after the prompt. Save the updated instructions and convene the board again on the same work. Then revise the deliverable or decide, and record the strongest objection you overruled in the monday item or the doc.
+Save the updated instructions and convene the board again on the same work. Then revise the deliverable or decide, and record the strongest objection you overruled in the monday item or the doc.
 
 You are done when your saved board has reviewed one real piece of work and improved once.
 
@@ -149,17 +156,29 @@ You are done when your saved board has reviewed one real piece of work and impro
 
 **Add a devil's advocate mode.** Do this when the board agrees too easily.
 
+**What this does:** adds a mode that attacks your weakest assumption.
+
+Stay in the same chat. Paste the prompt below, then your board instructions.
+
 ```
 Add a Devil's Advocate mode to my Board of Advisors instructions, pasted below. When I say "devil's advocate", it attacks the weakest assumption in my plan or the board's summary, names the scenario where it fails, and ends with "Here is what I would actually do." It pushes harder when I defend weakly and agrees when I bring new information. First ask how hard to push: constructive, firm or relentless. Then give me the complete updated instructions.
 ```
 
 **Add a stakeholder dynamics file.** Do this when your decisions depend on who influences whom.
 
+**What this does:** writes a short file on who shapes your decisions.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Interview me to create a Stakeholder Dynamics file for my Board of Advisors. Ask as a batch: the five to seven people or groups who matter most to my decisions; what each cares about, how they decide and what makes them resist; the tensions between them; how decisions really get made. Use only work behaviour. Write it under 500 words for the board's project knowledge.
 ```
 
-**Give each member an independent mind with sub-agents.** Do this when you want the sharpest disagreement. In one chat, members read each other's answers and start to agree. A sub-agent is a separate AI worker with its own context, so each member forms an opinion alone. Use Claude Code; Cursor and Codex work the same way, and so does Cowork if yours offers sub-agents. Paste:
+**Give each member an independent mind with sub-agents.** Do this for the sharpest disagreement: in one chat, members read each other's answers and start to agree. A sub-agent is a separate AI worker with its own context, so each member forms an opinion alone. Use Claude Code; Cursor and Codex work the same way, and so does Cowork if yours offers sub-agents.
+
+**What this does:** runs each member alone and shows every answer before the summary.
+
+Open Claude Code and paste the prompt below, then your board instructions and the work.
 
 ```
 Run my Board of Advisors with each member as its own sub-agent. The board instructions and the work to review are below.

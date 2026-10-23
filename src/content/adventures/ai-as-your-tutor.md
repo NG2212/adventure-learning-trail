@@ -33,6 +33,7 @@ Open items
 - Unified Claude (chat + Cowork) on 10 Nov 2026 may change the "In Claude" / "In Claude Cowork" project wording.
 - Effort is Quick win (guide budget under 1,000 words); this page is ~1,730 words including prompts, within the brief's 1,800 cap. If the budget is strict, cut Go further to the oral exam and merge the Step 2 table into the standing-instructions prompt.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 📚 AI as Your Tutor
@@ -73,6 +74,8 @@ Pick a professional topic you need for a real piece of work in the coming weeks.
 
 **What this does:** the AI interviews you about how you learn and writes a one-page Learning Contract that the tutor is built from.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me design a personal AI tutor for a professional topic, built so I remember and use what I learn. Apply these principles:
 - Recall: I answer from memory before you explain.
@@ -92,11 +95,11 @@ I will paste or dictate my topic, my "I can" sentence and the real work where I 
 Then write a one-page Learning Contract, including what "too easy" and "too hard" look like. Stop and wait for my approval.
 ```
 
-Choose the personality with care. A default AI tool is agreeable, and an agreeable tutor lets you pass too easily.
+A default AI tool is agreeable, and an agreeable tutor lets you pass too easily.
 
 ## Step 2: Set up your tutor
 
-Your tutor follows standing instructions: rules it applies in every session. They turn learning science into behaviour.
+Your tutor follows standing instructions: rules it applies in every session.
 
 | Principle | Why does it work? | What does your tutor do? |
 | --- | --- | --- |
@@ -106,11 +109,13 @@ Your tutor follows standing instructions: rules it applies in every session. The
 | **Formats** | A format you will open beats a better one you avoid. | Uses the formats you chose. |
 | **Grounding** | AI tools sound sure even when they guess. | Names its sources and says when it is unsure. |
 
-Good sources at Monday: your team's documents in Drive, internal playbooks, the relevant monday boards, and internal data through Kremer. Data that Monday's customers uploaded to their own monday boards stays out of Claude; Monday's own data about customers, such as account history through Kremer, is fine.
+Good sources at Monday: your team's documents in Drive, internal playbooks, the relevant monday boards, and internal data through Kremer. Data that Monday's customers uploaded to their own monday boards stays out of Claude; Monday's own data about customers is fine.
 
 ### Prompt: Standing instructions for your tutor
 
 **What this does:** turns your approved Learning Contract into the instructions your tutor follows every time.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Turn my approved Learning Contract into standing instructions for my tutor, written to the tutor ("You are my tutor for..."). Include:
@@ -130,11 +135,11 @@ Suggest three to seven sources for me to attach. Show the instructions as one bl
 
 ## Step 3: Take one lesson on real work
 
-Open a new chat inside the tutor's project, so it starts from the standing instructions.
-
 ### Prompt: One full lesson
 
 **What this does:** runs one full lesson that tests you before it teaches, and ends with you doing the real work.
+
+Open a new chat inside the tutor's project, so it starts from the standing instructions, and paste the prompt below.
 
 ```
 Run one complete lesson on the first part of my topic, following your standing instructions.
@@ -148,15 +153,17 @@ Run one complete lesson on the first part of my topic, following your standing i
 
 The gap between how sure you felt in the cold questions and your exam score is your real syllabus.
 
-Before you use the lesson in front of others, pick one fact you will repeat to a colleague or a customer, and check it against the source the tutor named.
+Before you use the lesson in front of others, check one fact you will repeat against the source the tutor named.
 
 ## Step 4: Make it stick
 
-Feed your experience of today's lesson back into the tutor while it is fresh. Be specific: "the questions were too easy" or "you explained for too long before asking me anything" builds a better tutor than "it was fine".
+Give the tutor feedback on today's lesson while it is fresh. Be specific: "the questions were too easy" builds a better tutor than "it was fine".
 
 ### Prompt: Improve your tutor and plan reviews
 
 **What this does:** collects your feedback, rewrites the tutor's standing instructions, and plans your review dates.
+
+Stay in the lesson chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Improve your standing instructions based on today's lesson, then plan my reviews.
@@ -179,7 +186,7 @@ You are done when your tutor carries your feedback and the next review date is i
 
 ## Go further
 
-**Take an oral exam.** Do this before you present the topic to your team or a customer: explaining out loud shows quickly what you can explain and what you cannot yet. Use dictation or voice mode.
+**Take an oral exam.** Do this before you present the topic to your team or a customer: explaining out loud shows the gaps quickly. Open a new chat in the tutor's project, paste the prompt below, and explain by dictation or voice mode.
 
 ```
 Give me an oral exam on what we have covered. I will explain the topic out loud as if I am presenting it to my team. Listen to my whole explanation, then ask three follow-up questions a sharp colleague would ask. Grade my accuracy, clarity and examples, and add the gaps to my progress note.
@@ -195,5 +202,5 @@ For example: "NRR tutor in a Claude project with our renewal playbook as a sourc
 
 ## Related adventures
 
-- **Your AI Identity**: a tutor that knows your role and how you think teaches at your level from the start.
+- **Your AI Identity**: a tutor that knows your role teaches at your level from the start.
 - **The Daily Dispatch**: a personal briefing on a topic you follow, to keep learning after the lessons end.

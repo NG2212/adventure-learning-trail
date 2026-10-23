@@ -32,6 +32,7 @@ Open items
 - Effort is Quick win (guide budget under 1,000 words); this page is ~1,240 words including prompts (brief cap 1,800). Cut Go further to one item if the budget is strict.
 - next: managing-with-ai slug is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 💬 Hard Conversations
@@ -73,6 +74,8 @@ Pick one real conversation you have coming up.
 
 **What this does:** the AI asks about gaps in your notes, reads the sources you name, and writes a one-page brief that keeps facts and opinions apart.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me prepare for a hard conversation at work. I will paste or dictate my notes. Use what you know about me; ask only for what is missing, one question at a time, five questions at most. If I give a vague answer, ask for a specific recent example.
 
@@ -98,6 +101,8 @@ Mark anything without a source as UNVERIFIED. Stop and wait for my corrections.
 
 **What this does:** turns the brief you approved in Step 1 into one core message, three possible openings and replies to the hardest pushback.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Using the prep brief we agreed in this chat, help me shape my message.
 
@@ -118,6 +123,8 @@ Speak your replies, so you practise the words you will actually say: press Fn tw
 ### Prompt: Rehearsal with coaching
 
 **What this does:** the AI plays the other person, then steps out of the role and coaches you on what you said.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Rehearse this conversation with me. Play the other person, based on the prep brief and message card in this chat. Before we start, ask me to choose the difficulty: easy, realistic or tough.
@@ -144,7 +151,7 @@ Rerun at least once on tough. Then ask the AI to update the message card with th
 
 **Rehearse from the other side.** Do this when their reaction is hard to predict. Write "Swap roles: you play me using my message card; I play the other person." Hearing your own message from their seat shows you what lands and what stings.
 
-**Debrief after the real conversation.** Do this to learn from what actually happened and to follow up the same day.
+**Debrief after the real conversation.** Do this to learn from what actually happened and to follow up the same day. After the conversation, go back to the same chat and paste the prompt below.
 
 ```
 I just had the conversation we prepared in this chat. I will tell you how it went. Compare it with my message card: what went as planned, what surprised me, what we agreed. Then draft a short follow-up message that records the agreed next steps, for me to send myself.

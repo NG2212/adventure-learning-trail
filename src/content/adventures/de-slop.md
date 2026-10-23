@@ -32,6 +32,7 @@ Open items
 - Keren Q2 (how skills are added on Monday's Claude Enterprise) affects the Customize → Skills line in Go further.
 - next: slugs board-of-advisors and skills-when-how-and-how-well are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🧽 Stay Original with AI
@@ -40,11 +41,11 @@ Open items
 
 ## Why this adventure
 
-The AI industry has a name for low-quality AI output: slop. Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
+Low-quality AI output has a name: slop. Merriam-Webster made "slop" its 2025 Word of the Year and defines it as "digital content of low quality that is produced usually in quantity by means of artificial intelligence".
 
-At work, slop is output that is generic and unoriginal, often too long or simply uninteresting, sent with little real thought, so the reader has to do the thinking instead. It can be a document, an email, a deck, a message, a plan.
+At work, slop is output that is generic and unoriginal, often too long or uninteresting, sent with little real thought, so the reader has to do the thinking instead. It can be a document, an email, a deck, a message, a plan.
 
-This adventure keeps the speed of AI and puts your own thinking back in charge, on one real piece of your work.
+This adventure keeps the speed of AI and puts your own thinking back in charge.
 
 ## The trail
 
@@ -55,28 +56,28 @@ This adventure keeps the speed of AI and puts your own thinking back in charge, 
 
 ## Before you start
 
-You will work on one real piece of your own: something you recently produced with AI, or are about to.
+Have one real piece of your own work: something you recently produced with AI, or are about to. Good choices: a customer follow-up, QBR summary, release notes or an incident write-up.
 
 ## Step 1: Understand what slop is
 
-These six questions test how much thinking went into any output created with AI. Work that passes all six is what high-quality AI-assisted work looks like.
+These six questions test how much thinking went into any AI-assisted output.
 
 | Question | How can you tell? | What it means when the answer is no |
 | --- | --- | --- |
 | **1. Could the writer defend every sentence without reading it again?** | Confident, unverified claims | There is no clear owner of the work. |
 | **2. Did the writer read all of it before sending?** | The same point made twice; a leftover "Great question!" | The reader pays the price instead of the writer. |
 | **3. Is there something only this person or team could add?** A point of view, a customer story, a decision, real data. | Generic wording that would fit any company | Anyone with the same prompt could have produced it. |
-| **4. Is this the shortest form that still does the job?** | Five paragraphs where three sentences would do | The burden of extracting the core content was left to the reader. |
-| **5. Was it worth the reader's time?** Did it give more value than the time it took to read and review? | The reader finishes and still asks "What do you need from me?" | The writer saved time and the reader lost more. |
+| **4. Is this the shortest form that still does the job?** | Five paragraphs where three sentences would do | The reader has to find the core content. |
+| **5. Was it worth the reader's time?** Did it give more value than the reading cost? | The reader finishes and still asks "What do you need from me?" | The writer saved time and the reader lost more. |
 | **6. Would the writer proudly put their name on it?** | You would hesitate to sign it | It needs more work before anyone sees it. |
-
-Good pieces to work on: a customer follow-up, a QBR summary, release notes, an incident write-up, forecast commentary or a team update.
 
 ## Step 2: See it in real work
 
 ### Prompt: Tell slop from intentional work
 
-**What this does:** the AI writes two versions of a piece you produce often, you guess which one is slop, then it grades both and a recent piece of yours.
+**What this does:** the AI writes two versions of a piece you produce often, you spot the slop, and it grades a recent piece of yours.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me recognise slop: low-quality AI content where the writer skipped the thinking.
@@ -96,20 +97,30 @@ Reveal, then grade both in a table: question, yes or no, the line that shows it.
 Finally, ask for a recent piece of mine and grade it the same way, without rewriting it.
 ```
 
-Save the AI's assessment of your piece. You will compare against it at the end of Step 3, with the Compare prompt.
+Save the AI's assessment of your piece for Step 3.
 
 ## Step 3: Remake one piece without it
 
-Take a real work item you are about to produce, or the piece you checked in Step 2, and do it again the intentional way.
+Choose a real piece of work that needs creativity, judgment or originality. It can be something you are about to produce, or the piece you checked in Step 2.
 
-**Think first, without AI.** Close the chat. On paper or in a note, write what you want this piece to achieve, what you believe about it, what worries you, and who will read it. Messy is fine. This is the thinking that slop skips, and it is the input for everything that follows.
+**Think first for yourself, without AI.** Ask yourself:
+
+- How would I go about this piece?
+- What original ideas do I have?
+- What does good look like?
+- What am I sure about?
+- What alternatives am I weighing?
+
+Messy is fine: this is the thinking that slop skips.
 
 ### Prompt: Turn your thinking into a brief and directions
 
-**What this does:** the AI interviews you about what you wrote down, turns it into a short brief for your approval, and offers three directions before it drafts anything.
+**What this does:** the AI interviews you about your thoughts, then writes a brief and agrees a direction before drafting.
+
+Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me do one piece of work the intentional way: my own thinking first, then options, then a draft. I have already written down my thoughts; I will paste or dictate them. Ask one question at a time about anything missing.
+Help me do one piece of work the intentional way: my own thinking first, then a direction, then a draft. Before you start, ask me to brain dump or paste all my thoughts on this piece. Then ask one question at a time about anything missing.
 
 1. What is this piece, and what should it achieve?
 2. What is my view, and how confident am I (as a percentage)? If I am under 70% sure, argue the strongest alternative first.
@@ -118,14 +129,16 @@ Help me do one piece of work the intentional way: my own thinking first, then op
 
 Write a short brief from my answers. Stop and wait for my approval.
 
-Then give me three genuinely different directions, each with a title, the core idea in two sentences, and the reader it suits best. Draft only after I pick or combine them.
+If my thoughts show a clear direction, work with it, and suggest one alternative only if you think it is clearly stronger. If I am undecided, give me two or three genuinely different directions, each with a title and the core idea in two sentences. Draft only after I choose.
 ```
 
-When a draft misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three". Specific feedback gets a better draft than "make it better".
+When a draft misses, say exactly what is wrong: "too formal for this customer", "the request is hidden in paragraph three".
 
 ### Prompt: Check before you send
 
-**What this does:** checks your draft on the six questions and shows you the problems to fix.
+**What this does:** checks your draft on the six questions and lists what to fix.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Check this draft before I send it. Answer each question yes or no, with one line of evidence.
@@ -140,7 +153,9 @@ Show the problems only. Rewrite only if I ask.
 
 ### Prompt: Compare
 
-**What this does:** compares your original and your remake and names the change that mattered most.
+**What this does:** compares the two versions and names the change that mattered most.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 I will paste an earlier assessment of my original piece, then my remake. Grade the remake on the same six questions (defend every sentence, read it all, something only I could add, shortest form, worth the reader's time, proud to sign it). Show both side by side in one table, then name the change that mattered most.
@@ -152,7 +167,9 @@ You are done when the remake passes the name test.
 
 ### Prompt: Your standards
 
-**What this does:** the AI learns your taste from real examples and writes one page of standards for your work.
+**What this does:** learns your taste from real examples and writes one page of standards.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Learn my taste. I will share examples in batches: work I am proud of (mine or by others) and work I dislike. Wait until I say I have finished.
@@ -166,13 +183,13 @@ Then:
 Write the rules so any AI can follow them.
 ```
 
-Save the page where your AI reads it in every chat. Then ask for a short piece you write often and check it against the page.
+Save the page where your AI reads it in every chat, and test it on a short piece.
 
-**In Claude:** paste it into Settings → Instructions for Claude, or into the instructions of the project you use for this kind of work.
+**In Claude:** paste it into Settings → Instructions for Claude, or into a project's instructions.
 
 ## Go further
 
-**Take the full Slop Audit.** Do this to find which of your AI habits most need work: a longer interview about 12 habits that ends with a score and your two biggest fixes. The score is only for you and stays in your chat.
+**Take the full Slop Audit.** Do this to find which AI habits most need work: 12 questions, a private score and your two biggest fixes. Paste the prompt in the same chat and answer its questions in writing, or by voice if your tool has dictation.
 
 <details>
 <summary>The full Slop Audit prompt</summary>
@@ -232,9 +249,11 @@ Then ask whether I want to set a reminder to retake the audit in 30 days and com
 
 </details>
 
-**Build a check your team shares.** Do this when your team produces the same piece again and again, such as release notes or the weekly team update. One shared definition of good raises every draft.
+**Build a check your team shares.** Do this for a piece your team produces again and again, such as the weekly team update.
 
-**What this does:** writes a team definition of good and a shared check for one recurring piece.
+**What this does:** writes a team definition of good and a shared check.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me create a quality check for one piece of work my team produces often. Interview me one question at a time: what the piece is and who reads it, what our best examples share, what makes a weak one weak, and what only our team can add (data, customer context, decisions).
@@ -244,11 +263,13 @@ Then write:
 2. Instructions for a shared check that reviews any draft against that definition and returns Ready, Ready after cuts, or Needs another pass, with the main reason. The check comments on the draft only, never on its writer.
 ```
 
-Pin the definition of good on your team's monday board. **In Claude:** put the check into a shared project for your team.
+Pin the definition of good on your team's monday board. **In Claude:** put the check into a shared team project.
 
-**Make the habit automatic with a skill.** Do this when you want the intentional way on busy days too, without having to remember it.
+**Make the habit automatic with a skill.** Do this to keep the intentional way on busy days too.
 
 **What this does:** asks when the skill should run, then writes it for your approval.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me build a skill for high-quality work. The skill should:
@@ -258,15 +279,15 @@ Help me build a skill for high-quality work. The skill should:
 Interview me one question at a time: which work it runs on, which quick tasks it skips, the phrases I use. Then write the complete skill: name, a description of when to use it, steps, three test requests. Wait for my approval.
 ```
 
-Add the skill, then close and reopen your AI tool so it finds the skill. Try the three test requests on real work. **In Claude:** add it under Customize → Skills.
+Add the skill, close and reopen your AI tool, and try the three test requests. **In Claude:** add it under Customize → Skills.
 
 ## Proof of work
 
-In "what I built", name the piece you remade, the one change that mattered most, and one thing you learned about your own habits.
+In "what I built", name the piece you remade, the change that mattered most, and one thing you learned about your habits.
 
-For example: "Remade my QBR summary: two pages became eight lines that open with the renewal risk. I learned that my drafts put the request at the end."
+For example: "Remade my QBR summary: two pages became eight lines that open with the renewal risk. I learned that I put the request at the end."
 
 ## Related adventures
 
-- **Build Your Board of Advisors**: stress-test your most important work from several angles before it goes out.
-- **Skills: When, How and How Well**: learn to build and test skills like the one in Go further.
+- **Build Your Board of Advisors**: test important work from several angles.
+- **Skills: When, How and How Well**: build and test skills like the one in Go further.

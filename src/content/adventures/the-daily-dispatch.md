@@ -34,6 +34,7 @@ Open items
 - Web search inside scheduled runs: assumed available in Cowork; the prompt tells the run to name any source it could not reach.
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; "In Claude Cowork" lines may need a freshness sweep before W3 (7 Dec).
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 📰 The Daily Dispatch
@@ -68,6 +69,8 @@ Keep one topic per dispatch. A work topic and a personal topic each get their ow
 
 **What this does:** interviews you into a one-page brief for your dispatch: topic, timing, sources, filters, format and what to say on a quiet day.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me design a personal newsletter on one topic, for me alone, that will later run on a schedule. I will paste or dictate what I wrote about the topic. Use what you know about me; ask only for what is missing, one question at a time.
 
@@ -84,11 +87,13 @@ Write a one-page Dispatch Brief with a one-line name for my dispatch. Stop and w
 
 ## Step 2: Write the first edition and review it
 
-In the same chat, turn the approved brief into the instructions your dispatch will follow every time, and see a real edition now.
+Turn the approved brief into the instructions your dispatch will follow every time, and see a real edition now.
 
 ### Prompt: First edition and taste review
 
 **What this does:** writes complete instructions for an unattended run, produces edition one, then interviews you on what you like and dislike until you would open it on a normal day.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Using my approved Dispatch Brief from this chat:
@@ -129,6 +134,8 @@ Open the first three editions. When something annoys you, put the fix into the i
 **Tighten it after a week.** Do this when you notice which items you skip.
 
 **What this does:** uses a week of editions to sharpen the filters.
+
+Open a new chat, paste the prompt below, and add your last five editions and the dispatch instructions. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Here are my last five dispatch editions and the instructions behind them. Ask me, one edition at a time, which items I read, which I skipped, and why. Then rewrite the filters in the instructions so the skipped kinds of items are dropped, and show me what changed.

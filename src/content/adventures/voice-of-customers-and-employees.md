@@ -34,10 +34,10 @@ Open items
 - "In Claude Cowork" line assumes Cowork reads a Drive folder and a monday board through the connectors and runs code on the files (code execution is approved per the Claude-at-Monday slide). Unified Claude reaches all orgs 10 Nov 2026; freshness sweep may be needed.
 - next: slugs research-done-right and creating-apps-with-ai-done-right; research-done-right file does not exist yet.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 💬 Voice of Customers and Employees
-
 
 **Turn real feedback into honest themes, real quotes, clear charts and an action list that people own.**
 
@@ -47,7 +47,7 @@ Feedback reaches you from everywhere: survey answers, support tickets, interview
 
 AI makes synthesis fast. It also makes three mistakes easy: themes that rest on two comments, quotes that nobody wrote, and a summary that ends with "interesting" instead of a decision.
 
-Here you run the full method on one real set of feedback and finish with a synthesis you can present and actions with named owners.
+Here you run the full method on one real set of feedback.
 
 ## The trail
 
@@ -58,11 +58,11 @@ Here you run the full method on one real set of feedback and finish with a synth
 
 ## Before you start
 
-Have one real set of feedback ready, ideally a few dozen items or more: a survey export, tickets, interview notes, engagement comments or a monday feedback board.
+Have one real set of feedback ready, ideally a few dozen items or more.
 
 ## Step 1: Decide what the feedback should answer
 
-**Think first, without AI.** Close the chat. In a note, answer the four questions below. Keep the note; the prompt in Step 2 starts from it.
+**Think first, without AI.** Close the chat. In a note, answer the four questions below for the Step 2 prompt.
 
 | Ask yourself | Why it matters |
 | --- | --- |
@@ -71,7 +71,7 @@ Have one real set of feedback ready, ideally a few dozen items or more: a survey
 | **Who is missing?** | Customers who left and employees who skipped the survey rarely appear in feedback. Your readout should name them. |
 | **What do you expect to find?** | Write three expected themes now. In Step 2 you will see whether the data confirms them, or whether the AI simply agreed with you. |
 
-**What may go in.** Monday's Claude policy has one hard rule: nothing that Monday's customers uploaded to their own boards ever goes into Claude. Monday's own data about customers is fine: Salesforce, support tickets, surveys, interview notes, and context through Kremer. If a ticket quotes a customer's board, remove that quote before you export. Export only the columns you need (comment, date, segment) and leave out names and emails where they add nothing. For employee comments, use anonymised comments, follow Monday's HR guidelines and report on groups only. Context numbers such as segment or renewal date come through Kremer, which applies your own permissions.
+**What may go in.** Monday's Claude policy has one hard rule: nothing that Monday's customers uploaded to their own boards ever goes into Claude. Monday's own data about customers is fine: Salesforce, support tickets, surveys, interview notes, and context through Kremer. If a ticket quotes a customer's board, remove that quote before you export. Export only the columns you need (comment, date, segment) and leave out names and emails where they add nothing. For employee comments, use anonymised comments, follow Monday's HR guidelines and report on groups only.
 
 ## Step 2: Find honest themes with real quotes
 
@@ -87,7 +87,9 @@ A theme is a point that several different people make. AI has habits worth check
 
 ### Prompt: Honest themes with real quotes
 
-**What this does:** the AI checks the data, waits for your approval, then builds themes with counts and real quotes and compares them with the themes you expected.
+**What this does:** checks the data first, then builds themes with counts and real quotes and compares them with the themes you expected.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below.
 
 ```
 Help me synthesise feedback honestly. I will paste or dictate my notes (the decision, the sources, who is missing, the themes I expect), then share the feedback. Ask only for what is missing.
@@ -123,7 +125,9 @@ Themes tell you what people say. Questions show who says it, since when, and how
 
 ### Prompt: Questions and charts
 
-**What this does:** the AI proposes questions worth asking the data, answers the three you pick with a computed chart each, and says what could mislead.
+**What this does:** answers three questions you pick about the data, each with a computed chart and what could mislead.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Using the themes in this chat, help me ask better questions of the feedback. Propose five: who says each theme (by segment, team or another field), how it changed over time, how it compares with an earlier round, and what could predict an outcome I care about. Ask me which three to answer, and wait.
@@ -155,7 +159,9 @@ An insight is a theme plus what it means for the decision you wrote down in Step
 
 ### Prompt: Owned action list and readout
 
-**What this does:** the AI interviews you about each top insight, drafts an action list for your approval, then writes a one-page readout.
+**What this does:** drafts an owned action list with you, then writes a one-page readout.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me turn this synthesis into actions, using the themes and charts in this chat and the decision I described at the start.
@@ -173,9 +179,11 @@ You are done when every action has a confirmed owner and the readout reaches the
 
 ## Go further
 
-**Make the method repeatable.** Do this when you synthesise feedback every quarter or after every survey, so the rules from Steps 2 to 4 hold in every run.
+**Make the method repeatable.** Do this when you synthesise feedback every quarter or after every survey.
 
 **What this does:** interviews you about your recurring feedback and writes a skill for your approval.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me build a skill for feedback synthesis. Interview me one question at a time: which feedback I synthesise, its sources and fields, the decisions it serves, and who reads the result.
@@ -188,6 +196,7 @@ Write the complete skill: name, when to use it, steps, output format, three test
 Add the skill, then close and reopen your AI tool so it finds the skill. **In Claude:** add it under Customize → Skills.
 
 **Check whether the actions worked.** Do this at the next survey or quarter. Share both syntheses and the monday board with the action list, and ask the AI to compare the rounds theme by theme and say whether each action's signal moved.
+
 ## Proof of work
 
 In "what I built", name the feedback you synthesised, the theme that surprised you, and one action with its owner.
