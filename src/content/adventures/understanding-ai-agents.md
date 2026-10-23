@@ -48,7 +48,7 @@ Here you watch an agent work on one of your real tasks and explain itself as it 
 
 1. **Watch the loop**, so you see how an agent plans, acts and checks on your own work.
 2. **See where the agent gets its answers**, so you know when it searches and when it relies on memory.
-3. **Write a goal that works**, because an agent works toward exactly the goal you give it.
+3. **Set a goal that works**, because an agent works toward exactly the goal you give it.
 4. **Write your rules for any agent**, so what you learned holds on your busiest day.
 
 ## Before you start
@@ -114,9 +114,9 @@ Agents lean on general knowledge, which stops at a cutoff date, and open your fi
 | Your own standards or earlier decisions | "Read my instructions and project files first, and tell me which you used." |
 | Only your own material: restructure, shorten, rewrite | Skip the web search. |
 
-## Step 3: Write a goal that works
+## Step 3: Set a goal that works
 
-**Think first, without AI.** Close the chat. For a task you will hand an agent this week, write the goal yourself using these five parts:
+**Think first, without AI.** Close the chat. Pick a task you will hand an agent this week and work out what you want from it, in notes, a voice memo or a few lines. Be ready to give your tool an answer for each of the five parts below. No particular structure is needed; know what you want and what you expect.
 
 | Part | Question it answers | Example: QBR preparation |
 | --- | --- | --- |
@@ -130,14 +130,14 @@ Your wording sets how much the agent does. "Make sure the team is ready" invites
 
 ### Prompt: Sharpen my goal and plan
 
-**What this does:** the agent checks your goal against the five parts, then shows its plan for your approval before it does anything.
+**What this does:** the agent asks you for the task and the five parts, rewrites the goal for your approval, then shows its plan before it does anything.
 
-Open a new chat, paste the prompt below, then paste the goal you just wrote when it asks.
+Open a new chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
 
 ```
-I will paste a goal I wrote for an agent. Check it against five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done).
+I want to hand you a task. Ask me for it, then ask me, one question at a time, for five parts: outcome (what done looks like), context (who it is for and why now), sources (where to look), boundaries (what you may do alone and what you must show me first), and check (how you will prove the work is done). Skip a part I already covered. Do not choose the task, do not narrow it, and do not decide what good means.
 
-Say which parts are clear. Ask me about the missing parts, one question at a time. Then rewrite the goal in five short lines. Stop and wait for my approval.
+Then rewrite the goal in five short lines. Stop and wait for my approval.
 
 After I approve, write your plan: the steps, the source for each step, and the points where you will stop for my decision. Stop and wait. Run the plan only after I approve it.
 ```
