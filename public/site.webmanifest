@@ -1,0 +1,9 @@
+{
+  "name": "AI Adventure",
+  "short_name": "AI Adventure",
+  "icons": [{ "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }],
+  "theme_color": "#9450FD",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/"
+}

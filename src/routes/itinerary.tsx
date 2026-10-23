@@ -13,12 +13,8 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/itinerary")({
   head: () => ({
     meta: [
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
       { title: "My itinerary · AI Adventure" },
       { name: "description", content: "Your chosen AI Adventure destinations, in order." },
-      { property: "og:title", content: "My itinerary · AI Adventure" },
-      { property: "og:description", content: "Your chosen destinations, in order." },
     ],
   }),
   component: Itinerary,

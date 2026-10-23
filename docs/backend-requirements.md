@@ -153,3 +153,4 @@ No per-person scores or levels, onboarding comfort, employee rankings, leaderboa
 - Adventure bodies for scheduled (not yet open) waves are stored and delivered to admins only. Non-admin readers receive title, promise, labels and the opens-on date, never the body, until the wave opens.
 - The admin directory exposes a Preview action that renders the full adventure page in read-only preview mode (no completion, no analytics events recorded).
 - Server must enforce this: the body endpoint checks the admin role when the adventure's wave is not yet open. (The mockup gates it client-side with `person.isAdmin` only.)
+- Head tags and files: the Big Brain Studio port must carry favicon.ico, favicon-512.png, apple-touch-icon.png, og-image.png and site.webmanifest, with the icon/manifest links and the shared Open Graph/Twitter tags (title "AI Adventure", absolute og-image URL) on every page; adventure pages titled "<adventure title> · AI Adventure".

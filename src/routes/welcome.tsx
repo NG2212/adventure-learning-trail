@@ -6,12 +6,8 @@ import { WelcomeChoices } from "@/components/WelcomeChoices";
 export const Route = createFileRoute("/welcome")({
   head: () => ({
     meta: [
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
       { title: "Welcome · AI Adventure" },
       { name: "description", content: "Start your AI Adventure: get a suggested itinerary or build your own." },
-      { property: "og:title", content: "Welcome · AI Adventure" },
-      { property: "og:description", content: "Start your AI Adventure." },
     ],
   }),
   component: Welcome,
