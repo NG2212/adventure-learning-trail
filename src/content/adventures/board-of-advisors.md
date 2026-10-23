@@ -58,7 +58,7 @@ Here you build that board: a small group of AI personas, each one a perspective 
 
 ## Before you start
 
-Have one real decision or deliverable ready, for example a feature brief, a QBR plan, a launch note or a board update.
+Have one real decision or deliverable ready, for example a feature brief, a QBR plan, a launch note or a board update. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: Decide who should review your work
 

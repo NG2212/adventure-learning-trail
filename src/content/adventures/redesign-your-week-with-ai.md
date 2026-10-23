@@ -57,7 +57,7 @@ This adventure audits what you already carry; Use-Case Discovery finds new thing
 
 ## Before you start
 
-If you built Your AI Identity or a Personal Brain, load it first; more context gives a sharper map.
+If you built Your AI Identity or a Personal Brain, load it first; more context gives a sharper map. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: Map what you carry
 
