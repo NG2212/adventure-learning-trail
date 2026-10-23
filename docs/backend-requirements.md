@@ -63,6 +63,7 @@ Computed by the platform, never authored text. Reads: own itinerary, own complet
 The adventure footer shows the computed panel first, then Markdown "Related adventures" (older files: "Where to next") as a small link list under the file's own heading. Neither is a rail step. Page-head sections, numbered steps, optional Go further, and Proof of work are derived from the Markdown; no new layout fields are required.
 
 Step switching and sticky header/rail offsets are presentation-only: rail and Next/Back align the new heading below the visible header and mobile strip. No scrolling state is persisted and no additional reads, writes or entity fields are needed.
+Completion entry points: Proof of work section and rail footer (including the mobile strip action) open the same completion/edit dialog and call the same atomic saveProofOfWork; admin preview disables the rail action with a “Preview” tooltip, with no additional fields or writes.
 
 Adventure page requirement: shared AdventureTrail component (including admin preview) renders the authored numbered list with purple number discs, an alternating faint-purple footprint path and a thin stone dotted line; preserve bold names/clauses and fixed left spacing on phones, without changing Markdown parsing.
 

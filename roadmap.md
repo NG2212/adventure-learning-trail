@@ -16,3 +16,5 @@
 - [x] Document entry/privacy rules, test them and verify completion/editing/admin screenshots.
 - [x] Add thresholded employee rating summaries and shared card/page display.
 - [x] Document rating setting, test threshold rules and verify catalogue/page screenshots plus itinerary/home coverage.
+- [x] Add desktop/mobile rail completion and edit actions, preserving step items and read-only preview.
+- [x] Document entry points and verify completion/edit flow plus desktop/phone screenshots in both states.

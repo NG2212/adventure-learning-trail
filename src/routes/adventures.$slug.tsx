@@ -20,6 +20,7 @@ import { WhatsNextPanel } from "@/components/WhatsNext";
 import { Button } from "@/components/ui/button";
 import { ProofOfWorkDialog } from "@/components/ProofOfWorkDialog";
 import { FootprintRating } from "@/components/FootprintRating";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const Route = createFileRoute("/adventures/$slug")({
   validateSearch: (search: Record<string, unknown>): { preview?: boolean } =>
@@ -244,8 +245,8 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
 
       <div className={cn("mt-8 grid grid-cols-[minmax(0,1fr)] gap-8", hasNumberedSteps && "md:grid-cols-[240px_minmax(0,1fr)]")}>
         {hasNumberedSteps && (
-          <nav ref={railRef} aria-label="Steps" className="adventure-step-rail sticky z-30 -mx-5 min-w-0 self-start border-b bg-surface px-5 py-2 md:mx-0 md:border-b-0 md:bg-transparent md:p-0">
-            <ol className="relative flex gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
+          <nav ref={railRef} aria-label="Steps" className="adventure-step-rail sticky z-30 -mx-5 flex min-w-0 items-center gap-2 self-start border-b bg-surface px-5 py-2 md:mx-0 md:block md:border-b-0 md:bg-transparent md:p-0">
+            <ol className="relative flex min-w-0 flex-1 gap-2 overflow-x-auto md:flex-col md:gap-1 md:border-l-2 md:border-stone">
               {steps.map((s, i) => (
                 <li key={`${i}-${s.title}`}>
                   <Button variant="ghost" onClick={() => selectStep(i)} aria-label={s.title} aria-current={i === current ? "step" : undefined}
@@ -257,6 +258,25 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
                 </li>
               ))}
             </ol>
+            <div className="shrink-0 border-l border-stone pl-2 md:mt-4 md:border-t md:border-l-0 md:pt-4 md:pl-0">
+              <TooltipProvider delayDuration={150}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex md:w-full" tabIndex={preview ? 0 : undefined}>
+                      <Button variant="outline" size="sm" disabled={preview || !open} onClick={() => setProofDialog(true)}
+                        className="text-primary shadow-none md:w-full">
+                        {done && <Check className="rounded-full bg-lime p-0.5 text-foreground" />}
+                        <span className="hidden md:inline">{done ? "Completed" : "Complete this adventure"}</span>
+                        <span className={done ? "sr-only md:hidden" : "md:hidden"}>{done ? "Completed" : "Complete"}</span>
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  {preview && <TooltipContent>Preview</TooltipContent>}
+                </Tooltip>
+              </TooltipProvider>
+              {done && !preview && open && <Button variant="link" size="sm" onClick={() => setProofDialog(true)}
+                className="mt-1 hidden h-auto w-full whitespace-normal px-0 md:inline-flex">Edit your proof of work</Button>}
+            </div>
           </nav>
         )}
         <div className="min-w-0">
