@@ -34,6 +34,7 @@ Open items
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 - 23 Oct: do-this line on every prompt
 - 23 Oct: Step 3 prompt now plans and executes; Compare prompt removed
+- 23 Oct: new Step 4 Move out of the average; habit step is now Step 5
 -->
 
 # 🧽 Stay Original with AI
@@ -53,7 +54,8 @@ This adventure keeps the speed of AI and puts your own thinking back in charge.
 1. **Understand what slop is**, so you know what to look for.
 2. **See it in real work**, because the test matters most on your own work.
 3. **Remake one piece without it**, to practise the intentional way on real work.
-4. **Make it a habit**, so your AI holds your standard on your busiest day.
+4. **Move out of the average**, because your specifics make the piece yours.
+5. **Make it a habit**, so your AI holds your standard on your busiest day.
 
 ## Before you start
 
@@ -61,22 +63,22 @@ Have one real piece of your own work, recently produced with AI. Good choices: a
 
 ## Step 1: Understand what slop is
 
-These six questions test how much thinking went into any AI-assisted output.
+Six questions test the thinking behind any AI-assisted work.
 
-| Question | How can you tell? | What it means when the answer is no |
+| Question | How can you tell? | What a no means |
 | --- | --- | --- |
-| **1. Could the writer defend every sentence without reading it again?** | Confident, unverified claims | There is no clear owner of the work. |
-| **2. Did the writer read all of it before sending?** | The same point made twice; a leftover "Great question!" | The reader pays the price instead of the writer. |
-| **3. Is there something only this person or team could add?** A point of view, a customer story, a decision, real data. | Generic wording that would fit any company | Anyone with the same prompt could have produced it. |
-| **4. Is this the shortest form that still does the job?** | Five paragraphs where three sentences would do | The reader has to find the core content. |
-| **5. Was it worth the reader's time?** Did it give more value than the reading cost? | The reader finishes and still asks "What do you need from me?" | The writer saved time and the reader lost more. |
-| **6. Would the writer proudly put their name on it?** | You would hesitate to sign it | It needs more work before anyone sees it. |
+| **1. Could the writer defend every sentence without reading it again?** | Confident, unverified claims | The work has no clear owner. |
+| **2. Did the writer read all of it before sending?** | The same point twice; a leftover "Great question!" | The reader pays the price. |
+| **3. Is there something only this person or team could add?** | Generic wording that fits any company | Anyone with the same prompt could have written it. |
+| **4. Is this the shortest form that still does the job?** | Five paragraphs where three sentences would do | The reader has to dig for the point. |
+| **5. Was it worth the reader's time?** | The reader still asks "What do you need from me?" | The writer saved time; the reader lost more. |
+| **6. Would the writer proudly put their name on it?** | You would hesitate to sign it | It needs more work. |
 
 ## Step 2: See it in real work
 
 ### Prompt: Tell slop from intentional work
 
-**What this does:** the AI writes two versions of a piece you produce often, you spot the slop, and it grades a recent piece of yours.
+**What this does:** you spot the slop in two AI versions of a piece you produce often, then the AI grades a recent piece of yours.
 
 Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
@@ -156,7 +158,39 @@ Show the problems only. Rewrite only if I ask.
 
 You are done when the piece passes the name test.
 
-## Step 4: Make it a habit
+## Step 4: Move out of the average
+
+AI predicts the most likely answer, which is the average of everything online. Ask for "an image of a restaurant dish, appetizing and over the top" and you get what everyone else gets. Your specifics move the piece out of the average. Step 3 added your thinking; this step adds your taste.
+
+| Lever | What to give the AI |
+| --- | --- |
+| Inspiration and references | Work you admire |
+| The exact reader | Who they are, what they already know |
+| Your likes and dislikes | Words, formats, moves |
+| Constraints only you know | History, promises, sensitive points |
+| What everyone else does | The common approach to avoid |
+
+### Prompt: Pull this piece away from the average
+
+**What this does:** the AI asks for your specifics and reworks the piece with them.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Take the piece you wrote in this chat. To pull it away from the average, ask me five specific questions, one at a time, and wait for each answer:
+1. Inspiration and references: work I admire.
+2. The exact reader: who they are, what they already know.
+3. My likes and dislikes: words, formats, moves.
+4. Constraints only I know: history, promises, sensitive points.
+5. What everyone else does that I want to avoid.
+Do not invent answers for me. Skip a lever I already covered.
+
+Then rework the piece and mark each change that came from my answers.
+```
+
+Run Check before you send once more. You are done when the piece reads like something only you could have sent.
+
+## Step 5: Make it a habit
 
 ### Prompt: Your standards
 
@@ -182,7 +216,7 @@ Save the page where your AI reads it in every chat, and test it on a short piece
 
 ## Go further
 
-**Take the full Slop Audit.** Do this to find which AI habits most need work: 12 questions, a private score and your two biggest fixes. Paste the prompt in the same chat and answer its questions in writing, or by voice if your tool has dictation.
+**Take the full Slop Audit.** Do this to find which AI habits most need work: 12 questions, a private score, your two biggest fixes. Stay in the same chat, paste the prompt and answer its questions in writing, or by voice if your tool has dictation.
 
 <details>
 <summary>The full Slop Audit prompt</summary>
@@ -242,37 +276,21 @@ Then ask whether I want to set a reminder to retake the audit in 30 days and com
 
 </details>
 
-**Build a check your team shares.** Do this for a piece your team produces again and again, such as the weekly team update.
+**Build a check your team shares.** Do this for a piece your team produces often, such as the weekly team update.
 
 **What this does:** writes a team definition of good and a shared check.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me create a quality check for one piece of work my team produces often. Interview me one question at a time: what the piece is and who reads it, what our best examples share, what makes a weak one weak, and what only our team can add (data, customer context, decisions).
+Help me build a quality check for one piece my team produces often. Interview me one question at a time: the piece and its reader, what our best examples share, what makes a weak one weak, what only our team can add.
 
 Then write:
 1. A one-page team definition of good, with a short strong and a short weak example.
-2. Instructions for a shared check that reviews any draft against that definition and returns Ready, Ready after cuts, or Needs another pass, with the main reason. The check comments on the draft only, never on its writer.
+2. A shared check that reviews any draft against it and returns Ready, Ready after cuts, or Needs another pass, with the main reason. It comments on the draft only, never on its writer.
 ```
 
 Pin the definition of good on your team's monday board. **In Claude:** put the check into a shared team project.
-
-**Make the habit automatic with a skill.** Do this to keep the intentional way on busy days too.
-
-**What this does:** asks when the skill should run, then writes it for your approval.
-
-Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
-
-```
-Help me build a skill for high-quality work. The skill should:
-- On substantial work, first ask about my view, the reader and what good looks like, then offer three directions before drafting.
-- Before handing over a draft, check six questions: Could I defend every sentence? Did I read it all? Does it hold something only I could add? Is it the shortest form? Is it worth the reader's time? Would I proudly sign it?
-
-Interview me one question at a time: which work it runs on, which quick tasks it skips, the phrases I use. Then write the complete skill: name, a description of when to use it, steps, three test requests. Wait for my approval.
-```
-
-Add the skill, close and reopen your AI tool, and try the three test requests. **In Claude:** add it under Customize → Skills.
 
 ## Proof of work
 
@@ -283,4 +301,4 @@ For example: "Remade my QBR summary: two pages became eight lines that open with
 ## Related adventures
 
 - **Build Your Board of Advisors**: test important work from several angles.
-- **Skills: When, How and How Well**: build and test skills like the one in Go further.
+- **Skills: When, How and How Well**: turn your standards page into a skill that runs on every piece.
