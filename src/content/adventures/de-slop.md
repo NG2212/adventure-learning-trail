@@ -116,7 +116,7 @@ Messy is fine: this is the thinking that slop skips.
 
 ### Prompt: From your thinking to a plan and a draft
 
-**What this does:** the AI interviews you about your thoughts, agrees a brief and a concrete plan, then writes the piece.
+**What this does:** the AI interviews you about your thoughts, agrees on a brief and a concrete plan, then writes the piece.
 
 Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation.
 
