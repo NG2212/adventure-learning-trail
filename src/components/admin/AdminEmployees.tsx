@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { store, useStoreState } from "@/store";
 import type { AdminFilters, AdminPerson } from "@/store/adminTypes";
 import { Disc } from "@/components/AdventureIcon";
+import { FootprintRating } from "@/components/FootprintRating";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -215,6 +216,16 @@ export function AdminEmployees() {
                 {!person.itinerary.length && (
                   <p className="text-sm text-muted-foreground">No itinerary stops.</p>
                 )}
+              </Section>
+              <Section title="Proof of work">
+                <div className="space-y-4">
+                  {store.listProofEntries({ personId: person.id }).map((entry) => <div key={entry.slug} className="border-b pb-4">
+                    <h3 className="text-sm font-semibold">{entry.adventureTitle}</h3>
+                    <div className="mt-2 flex flex-wrap items-center gap-3"><time className="text-xs text-muted-foreground">{entry.completed_at.slice(0, 10)}</time><FootprintRating value={entry.rating} /></div>
+                    <p className="mt-2 whitespace-pre-wrap break-words text-sm">{entry.built}</p>
+                  </div>)}
+                  {!store.listProofEntries({ personId: person.id }).length && <p className="text-sm text-muted-foreground">No proof-of-work entries yet.</p>}
+                </div>
               </Section>
               <Section title="Activity timeline">
                 <ol className="space-y-4 border-l pl-4">

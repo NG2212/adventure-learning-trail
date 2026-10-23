@@ -1,5 +1,5 @@
 import type { Adventure } from "@/content/adventures";
-import type { Completion } from "./types";
+import type { Completion, ProofOfWork } from "./types";
 export const ADMIN_TODAY = "2026-10-22";
 export const ORG_TEAMS: Record<string, string[]> = {
   "Sales & CS": ["Enterprise Sales", "Commercial Sales", "Customer Success", "Support"],
@@ -109,6 +109,8 @@ export interface AdminAnnouncement {
   showUntil: string;
 }
 export interface AdminReadsWrites {
+  listProofEntries(filters?: ProofFilters): AdminProofEntry[];
+  getRatingSummaries(filters?: ProofFilters): RatingSummary[];
   listPeople(filters?: AdminFilters): AdminPerson[];
   getPersonActivity(id: string, filters?: AdminFilters): ActivityEvent[];
   getAggregates(filters?: AdminFilters): AdminAggregates;
@@ -122,4 +124,24 @@ export interface AdminReadsWrites {
   saveAdminAnnouncement(announcement: AdminAnnouncement): void;
   listAdmins(): string[];
   addAdmin(personId: string): void;
+}
+
+export interface ProofFilters {
+  category?: string;
+  profession?: string;
+  slug?: string;
+  personId?: string;
+  search?: string;
+}
+export interface AdminProofEntry extends ProofOfWork {
+  personName: string;
+  adventureTitle: string;
+  profession: string;
+  category: string;
+}
+export interface RatingSummary {
+  slug: string;
+  title: string;
+  averageRating: number;
+  ratingCount: number;
 }

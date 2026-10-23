@@ -11,6 +11,7 @@ What the frontend mockup implies for a real backend. The mockup's `AdventureStor
 | Wave | number, opensOn (date) | W1 open, W2 23 Nov, W3 7 Dec, W4 4 Jan. Adventure is open when today ≥ opensOn. |
 | ItineraryItem | personId, adventureSlug, position | Ordered list per person. |
 | Completion | personId, adventureSlug, completedAt | Unique per (person, adventure). Each completion = one badge. |
+| ProofOfWork | personId, adventureSlug, built, learned, rating, completed_at | Unique per (person, adventure); built required/nonblank, learned optional, integer rating 1–5 required. Save atomically with completion; edits retain original completed_at and badge. |
 | Title | name, threshold | First Steps 1 · Day Tripper 3 · Frequent Flyer 11 · Globetrotter 20. Derived from completion count, not stored per person. |
 | Announcement | id, text, linkTo, activeFrom, activeTo | One active at a time. |
 | AnnouncementDismissal | personId, announcementId | |
@@ -46,7 +47,7 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 
 Catalogue page note (must survive the Big Brain Studio port): a single quiet helper line sits under the page intro, above the filters — "Every adventure works best on a strong model, for example Opus, with extended thinking on." Platform copy, not per-adventure content.
 | My itinerary | own itinerary, adventures, own completions | reorderItinerary, removeFromItinerary |
-| Adventure page | adventure (body only if open), own completion, own itinerary, What's next (see below) | add/remove itinerary, markComplete |
+| Adventure page | adventure (body only if open), own completion/proof entry, own itinerary, What's next (see below) | add/remove itinerary, saveProofOfWork (atomic entry/completion; edit keeps completion date) |
 | Progress | own completion count, titles, adventures, planned total (30) | — |
 | Admin | adventure directory, waves, aggregates | create/edit adventure, export CSV |
 
@@ -101,7 +102,8 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 
 ## Privacy rules
 
-- No scores, no rankings, no leaderboards, no streaks, for anyone (employees, managers or admins).
+- No employee scores, rankings, leaderboards or streaks. Admin may sort adventures by average satisfaction rating; this rates content, not people.
+- Proof-of-work entries are visible to the person and to L&D admins, never to other employees or managers. L&D admins see individual built/learned text, rating and completion date. The real backend must enforce ownership/L&D authorization on reads, updates and exports; authors may edit only their own entry.
 - Per-employee completion and engagement data is visible to L&D admins only.
 - Managers receive only team-level aggregates, produced by L&D.
 - The comfort answer is used only at recommendation time and never stored as a level or shown back.
@@ -124,6 +126,11 @@ Extend Person with email, profession, org, team, managerId, isManager, joinedAt 
 
 ### Queries and metric events
 
+- `getProofOfWork(slug)` reads the current person's entry; `saveProofOfWork(slug, {built, learned, rating})` validates nonblank built text and integer 1–5 rating, trims text, and atomically upserts the entry and idempotent completion. Existing completion timestamps never change on edits; edits do not re-award badges or titles. Mock employee entries persist through the browser-storage AdventureStore; generated colleagues remain deterministic mock data, not a backend.
+- `listProofEntries({personId, slug, category, profession, search})` is L&D-only; search matches person/adventure/built/learned text, newest completed_at first. Overview table and CSV use the identical filtered rows. Employee drawers query by personId. Manager view must not request/display individual entries or expose exports.
+- `getRatingSummaries({category, profession})` returns adventure slug/title, rating count and arithmetic mean (zero with no ratings). Profession filters the respondent, category filters the adventure. One current rating per person/adventure; edits replace the old rating. Most loved sorts mean descending, count descending then title; it uses all lifetime entries independently of Overview activity dates, so new demo completions appear immediately. Directory uses the same all-entry averages/counts; zero-rating rows show a dash. No identities in rating summaries.
+- Every seeded completion in the 140-person mock dataset has a deterministic proof entry (QBR briefs, board automations, release-notes skills, customer-feedback summaries and other Monday work); most ratings are 4–5 with some 3s. An independent hash leaves the existing activity seed unchanged.
+
 - `listPeople(filters)`: employee dimension filters, case-insensitive name/email search, lifetime title filter, inactive >30 days or never active; return current itinerary/completion counts and estimated lifetime session time. Support sorting/pagination in the real build.
 - `getPersonActivity(personId, filters)`: authorized L&D-only dated event timeline of opens, adds and completions.
 - `getAggregates(filters)`: employee dimensions + wave + date bounds; never return employee names in manager reports. Active distinct employees requires `adventure_opened`. Active % denominator includes every matching employee. Completion counts require unique `adventure_completed` person/adventure records. Average completed / active = completed events divided by distinct active employees. Rate = completed events / open events; repeat opens count and this is not a matched funnel. Adds require `itinerary_added`; removals must also be logged for reconstructing itineraries.
@@ -137,7 +144,7 @@ L&D-authorized content CRUD with validated slug, Markdown/frontmatter and fixed 
 
 ### Privacy in Admin views
 
-No per-person scores or levels, onboarding comfort, rankings, leaderboards or streaks. Adventure content levels are labels only and may appear in the directory. Manager view hides names, named manager filters, employee table/drawers and admin names on every tab; aggregates remain available. A real manager account must receive only team-limited aggregates from L&D, not employee data hidden with CSS or client flags. Overview footer: "Analytics are for L&D; managers receive aggregates only."
+No per-person scores or levels, onboarding comfort, employee rankings, leaderboards or streaks. Adventure satisfaction averages are content feedback only. Adventure content levels are labels only and may appear in the directory. Manager view hides names, named manager filters, employee table/drawers, individual proof entries/exports and admin names on every tab; aggregates remain available. A real manager account must receive only team-limited aggregates from L&D, not employee data hidden with CSS or client flags. Overview footer: "Analytics are for L&D; managers receive aggregates only."
 
 ## Admin preview of scheduled adventures
 

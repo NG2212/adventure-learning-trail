@@ -1,5 +1,6 @@
 import { ADVENTURES, CATEGORIES } from "@/content/adventures";
 import { titleFor, TITLES } from "@/lib/titles";
+import { seedProof } from "./proofSeed";
 import type { StoreState } from "./types";
 import {
   ADMIN_TODAY,
@@ -12,6 +13,7 @@ import {
   type AdminReadsWrites,
   type AdminAdventure,
   type GroupMetric,
+  type ProofFilters,
 } from "./adminTypes";
 const FIRST = [
   "Noa",
@@ -229,7 +231,8 @@ export function generateAdminDataset(seed = 20261022) {
       { personId: noa.id, slug: "board-of-advisors", at: noa.lastActiveAt, estimatedMinutes: 15 },
     );
   }
-  return { people, events, sessions };
+  const proofEntries = people.flatMap((p) => p.completions.map((c) => seedProof(p.id, c.slug, c.completedAt)));
+  return { people, events, sessions, proofEntries };
 }
 export function createAdminMock(getState: () => StoreState, notify: () => void): AdminReadsWrites {
   const data = generateAdminDataset();
@@ -295,7 +298,27 @@ export function createAdminMock(getState: () => StoreState, notify: () => void):
         (!f.wave || adventures.find((a) => a.slug === e.slug)?.wave === Number(f.wave)),
     );
   };
+  const matchingProof = (f: ProofFilters = {}) => {
+    const state = getState();
+    const people = allPeople();
+    return [...data.proofEntries.filter((p) => p.personId !== state.person.id), ...state.proofEntries]
+      .flatMap((entry) => {
+        const person = people.find((p) => p.id === entry.personId);
+        const adventure = adventures.find((a) => a.slug === entry.slug);
+        return person && adventure ? [{ ...entry, personName: person.name, profession: person.profession, adventureTitle: adventure.title, category: adventure.category }] : [];
+      })
+      .filter((p) => (!f.category || p.category === f.category) && (!f.profession || p.profession === f.profession) && (!f.slug || p.slug === f.slug) && (!f.personId || p.personId === f.personId) && (!f.search || `${p.personName} ${p.adventureTitle} ${p.built} ${p.learned}`.toLowerCase().includes(f.search.toLowerCase())))
+      .sort((a, b) => b.completed_at.localeCompare(a.completed_at));
+  };
   return {
+    listProofEntries: (f = {}) => getState().person.isAdmin ? matchingProof(f) : [],
+    getRatingSummaries(f = {}) {
+      const entries = matchingProof(f);
+      return adventures.filter((a) => (!f.category || a.category === f.category) && (!f.slug || a.slug === f.slug)).map((a) => {
+        const ratings = entries.filter((p) => p.slug === a.slug);
+        return { slug: a.slug, title: a.title, ratingCount: ratings.length, averageRating: ratings.length ? ratings.reduce((sum, p) => sum + p.rating, 0) / ratings.length : 0 };
+      }).sort((a, b) => b.averageRating - a.averageRating || b.ratingCount - a.ratingCount || a.title.localeCompare(b.title));
+    },
     listPeople: matchingPeople,
     getPersonActivity: (id, f = {}) =>
       filteredEvents(f)

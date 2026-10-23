@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Outlet } from "@tanstack/react-router";
+import { ClientOnly, Link, Outlet } from "@tanstack/react-router";
 import { BarChart3, Users, Library, CalendarDays, Settings, ShieldCheck } from "lucide-react";
 import { useStoreState } from "@/store";
 import { PageHeading } from "@/components/AppShell";
@@ -51,7 +51,7 @@ export function AdminLayout() {
               </Link>
             ))}
         </nav>
-        <Outlet />
+        <ClientOnly fallback={<div className="py-8 text-sm text-muted-foreground" role="status">Loading programme data…</div>}><Outlet /></ClientOnly>
       </div>
       <Toaster />
     </AdminViewContext.Provider>

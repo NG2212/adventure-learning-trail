@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils";
 import { parseAdventure, splitDetails, splitGoFurther, splitPromptWindows } from "@/lib/adventureSteps";
 import { WhatsNextPanel } from "@/components/WhatsNext";
 import { Button } from "@/components/ui/button";
+import { ProofOfWorkDialog } from "@/components/ProofOfWorkDialog";
+import { FootprintRating } from "@/components/FootprintRating";
 
 export const Route = createFileRoute("/adventures/$slug")({
   validateSearch: (search: Record<string, unknown>): { preview?: boolean } =>
@@ -175,6 +177,8 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
     setCurrent(index);
   };
   const [celebration, setCelebration] = useState<CompletionResult | null>(null);
+  const [proofDialog, setProofDialog] = useState(false);
+  const entry = store.getProofOfWork(slug);
   const done = completions.some((c) => c.slug === slug);
   const step = steps[current] ?? steps[0];
   const showProof = current === lastCoreStep;
@@ -266,8 +270,18 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
                   <h2 className="text-xl">Proof of work</h2>
                   <Md text={proof.body} />
                 </section>}
-                {open && !preview && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
-                  onClick={() => setCelebration(store.markComplete(slug))}>
+                {done && entry && !preview && <section aria-label="Your proof of work" className="mt-4 rounded-lg border p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-lg">Your proof of work</h3>
+                    <Button variant="link" size="sm" onClick={() => setProofDialog(true)}>Edit</Button>
+                  </div>
+                  <div className="mt-2 flex flex-wrap items-center gap-3"><time className="text-xs text-muted-foreground">{entry.completed_at.slice(0, 10)}</time><FootprintRating value={entry.rating} /></div>
+                  <p className="mt-4 text-xs font-semibold text-muted-foreground">What you built</p>
+                  <p className="mt-1 whitespace-pre-wrap break-words text-sm">{entry.built}</p>
+                  {entry.learned && <><p className="mt-4 text-xs font-semibold text-muted-foreground">What you learned</p><p className="mt-1 whitespace-pre-wrap break-words text-sm">{entry.learned}</p></>}
+                </section>}
+                {open && !preview && !entry && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
+                  onClick={() => setProofDialog(true)}>
                   {done && <Check className="size-4" />}
                   Mark this adventure complete
                 </Button>}
@@ -291,6 +305,11 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         </div>
       </div>
       <Celebration result={celebration} adventureTitle={adventure.title} slug={slug} onClose={() => setCelebration(null)} />
+      {proofDialog && <ProofOfWorkDialog title={adventure.title} body={proof?.body ?? ""} entry={entry} onClose={() => setProofDialog(false)} onSave={(input) => {
+        const result = store.saveProofOfWork(slug, input);
+        setProofDialog(false);
+        if (!result.alreadyDone) setCelebration(result);
+      }} />}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { titleFor } from "@/lib/titles";
 import type { AdventureStore, DemoSettings, StoreState } from "./types";
 import { createAdminMock } from "./adminMock";
+import { seedProof } from "./proofSeed";
+import { ADVENTURES } from "@/content/adventures";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
@@ -22,6 +24,7 @@ export const SEED_STATE: StoreState = {
   },
   itinerary: ["board-of-advisors", "your-ai-identity", "skills-when-how-and-how-well"],
   completions: [{ slug: "de-slop", completedAt: "2026-10-15" }],
+  proofEntries: [seedProof("noa-levi", "de-slop", "2026-10-15")],
   announcementDismissed: false,
 };
 
@@ -35,7 +38,14 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     loaded = true;
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) state = { ...SEED_STATE, ...JSON.parse(raw) };
+      if (raw) {
+        const saved = JSON.parse(raw);
+        state = { ...SEED_STATE, ...saved };
+        // Older demo completions predate reflection collection; give them seeded entries.
+        if (!Array.isArray(saved.proofEntries)) {
+          state = { ...state, proofEntries: state.completions.map((c) => seedProof(state.person.id, c.slug, c.completedAt)) };
+        }
+      }
     } catch {
       /* ignore corrupt storage */
     }
@@ -100,6 +110,21 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
       };
     },
     getCompletions: () => read().completions,
+    getProofOfWork: (slug) => read().proofEntries.find((p) => p.personId === read().person.id && p.slug === slug),
+    saveProofOfWork(slug, input) {
+      if (!input.built.trim() || !Number.isInteger(input.rating) || input.rating < 1 || input.rating > 5) {
+        throw new Error("Describe what you built and choose a rating from 1 to 5.");
+      }
+      if (!ADVENTURES.some((a) => a.slug === slug)) throw new Error("Unknown adventure.");
+      const s = read();
+      const previous = s.completions.find((c) => c.slug === slug);
+      const completedAt = previous?.completedAt ?? new Date().toISOString();
+      const completions = previous ? s.completions : [...s.completions, { slug, completedAt }];
+      const entry = { personId: s.person.id, slug, built: input.built.trim(), learned: input.learned.trim(), rating: input.rating, completed_at: completedAt };
+      write({ ...s, completions, proofEntries: [...s.proofEntries.filter((p) => !(p.personId === s.person.id && p.slug === slug)), entry] });
+      const newTitle = titleFor(completions.length);
+      return { count: completions.length, alreadyDone: Boolean(previous), newTitle: newTitle !== titleFor(s.completions.length) ? newTitle : null };
+    },
     getTitle: () => titleFor(read().completions.length),
     isAnnouncementDismissed: () => read().announcementDismissed,
     dismissAnnouncement: () => write({ ...read(), announcementDismissed: true }),
