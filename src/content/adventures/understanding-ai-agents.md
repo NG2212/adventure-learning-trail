@@ -88,31 +88,31 @@ As it works, watch for four things:
 
 ## Step 2: See where the agent gets its answers
 
-Every agentic tool runs on a set of decisions you never see: what to look up on the web, what to answer from the model's general knowledge, what to take from your own files and instructions, what to remember for next time. Those decisions are what make the results personal, persistent and useful, and they are also where results go wrong: an answer from general knowledge can be out of date, and a file it never opened cannot shape the answer. This step makes those decisions visible, so you know your tool's tendencies and can steer them.
+Behind every answer, the agent decides where to look: the web, its own general knowledge, your files and instructions, or what it remembers from before. Those decisions make results personal and useful, and they are where results go wrong. This step makes them visible.
 
 ### Prompt: Show me where your answers come from
 
-**What this does:** the agent explains, for three real tasks of yours, which parts it would take from the web, from its own general knowledge, and from your files and instructions, and where each source can let you down.
+**What this does:** for three tasks of yours, the agent says which source it would use for each part, and where that choice could fail.
 
 Stay in the chat from Step 1 and paste the prompt below.
 
 ```
-I want to understand where your answers come from. Ask me for three tasks I do often, each of a different kind: for example research, analysing data on a monday board, writing for a customer, or an action across several tools. Wait for my three before you write anything, and do not pick them for me.
+I want to see where your answers come from. Ask me for three tasks I do often, each of a different kind (research, analysing a monday board, writing for a customer, an action across tools). Wait for all three; do not pick them for me.
 
-For each task, show a table with four rows: what you would look up on the web, what you would answer from your own general knowledge, what you would take from my files, instructions or memory, and what you would remember for next time. In each row say why you would choose that source, and where that choice could let me down (out of date, too generic, a file you did not open).
+For each task, show a table with four rows: from the web, from your general knowledge, from my files and instructions, from memory. In each row: what you would take from that source, and how it could let me down (out of date, generic, a file you never opened).
 
-Then look back at the task you worked on earlier in this chat: which parts came from each source, and which of them may be out of date or missing my context?
+Then look at the task from earlier in this chat: which parts came from which source, and which may be out of date?
 ```
 
-Agents often answer from general knowledge, which stops at a cutoff date, and they only use your files when they are told to or trained to. Insist on the right source in these cases:
+Agents lean on general knowledge, which stops at a cutoff date, and open your files only when told to. Insist on the right source:
 
-| Your task depends on | What to ask for |
+| Your task depends on | Ask for |
 | --- | --- |
-| Something that changes: a competitor's latest release, new regulation, industry news | "Search the web first and give the date of each source." |
+| Something that changes: a release, a regulation, news | "Search the web first and date each source." |
 | How a product works today, including Claude or monday features | "Check the current official documentation." |
-| Facts about a named customer or company | "Use the web and internal data through Kremer; mark anything you could not confirm." |
-| Your own standards, context or earlier decisions | "Read my instructions and the files in this project before you answer, and tell me which ones you used." |
-| Only your own material: restructure, shorten, rewrite | Skip the web search; it adds noise here. |
+| A named customer or company | "Use the web and internal data through Kremer; mark what you could not confirm." |
+| Your own standards or earlier decisions | "Read my instructions and project files first, and tell me which you used." |
+| Only your own material: restructure, shorten, rewrite | Skip the web search. |
 
 ## Step 3: Write a goal that works
 
