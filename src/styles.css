@@ -111,6 +111,61 @@
   top: var(--app-header-height, 0px);
 }
 
+.adventure-trail {
+  counter-reset: trail-step;
+  list-style: none;
+}
+
+.adventure-trail-item {
+  counter-increment: trail-step;
+  display: grid;
+  grid-template-columns: 28px 24px minmax(0, 1fr);
+  column-gap: 12px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.adventure-trail-item:last-child {
+  padding-bottom: 0;
+}
+
+.adventure-trail-number::before {
+  content: counter(trail-step);
+}
+
+.adventure-trail-path {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.adventure-trail-path::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: -2px;
+  left: 13px;
+  border-left: 2px dotted var(--color-stone);
+}
+
+.adventure-trail-item:last-child .adventure-trail-path::before {
+  display: none;
+}
+
+.adventure-trail-footprint {
+  opacity: 0.22;
+  transform: translateX(-4px) rotate(-15deg);
+}
+
+.adventure-trail-item:nth-child(even) .adventure-trail-footprint {
+  transform: translateX(4px) rotate(15deg) scaleX(-1);
+}
+
+.adventure-trail-item:last-child .adventure-trail-footprint {
+  opacity: 0.38;
+}
+
 /* Short steps still need enough document height to align their heading. */
 .adventure-step-content {
   min-height: calc(100dvh - var(--app-header-height, 0px));

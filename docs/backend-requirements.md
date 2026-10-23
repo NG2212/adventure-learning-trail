@@ -59,6 +59,8 @@ The adventure footer shows the computed panel first, then Markdown "Related adve
 
 Step switching and sticky header/rail offsets are presentation-only: rail and Next/Back align the new heading below the visible header and mobile strip. No scrolling state is persisted and no additional reads, writes or entity fields are needed.
 
+Adventure page requirement: shared AdventureTrail component (including admin preview) renders the authored numbered list with purple number discs, an alternating faint-purple footprint path and a thin stone dotted line; preserve bold names/clauses and fixed left spacing on phones, without changing Markdown parsing.
+
 ## Events to log
 
 - `adventure_opened` (personId, slug, at)
