@@ -7,12 +7,8 @@ import { MondayLogo } from "@/components/MondayLogo";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
       { title: "AI Adventure · Sign in" },
       { name: "description", content: "Pick a path. Build something real. Keep it." },
-      { property: "og:title", content: "AI Adventure" },
-      { property: "og:description", content: "Pick a path. Build something real. Keep it." },
     ],
   }),
   component: SignIn,
