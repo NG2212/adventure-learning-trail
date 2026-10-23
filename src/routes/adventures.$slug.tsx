@@ -7,6 +7,7 @@ import { ADVENTURES, adventureBody, getAdventure, WAVES } from "@/content/advent
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
+import { AdventureTrail } from "@/components/AdventureTrail";
 import { Chip, LabelChips } from "@/components/LabelChips";
 import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
@@ -222,7 +223,8 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
       {introduction.length > 0 && (
         <div aria-label="Adventure introduction" className="mt-8 space-y-6 bg-card px-6 py-6 sm:px-8">
           {introduction.map((section) => (
-            <section key={section.heading} className={cn("max-w-3xl", /^the trail$/i.test(section.heading) && "rounded-2xl bg-stone px-5 py-4")}>
+            /^the trail$/i.test(section.heading) ? <AdventureTrail key={section.heading} heading={section.heading} body={section.body} /> :
+            <section key={section.heading} className="max-w-3xl">
               <h2 className="mb-2 text-xl">{section.heading}</h2>
               <Md text={section.body} />
             </section>

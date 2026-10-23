@@ -7,3 +7,4 @@
 - [x] Build Overview and Employees with filters, aggregates, CSV exports and employee drawer; enforce Manager privacy.
 - [x] Build adventure directory/editor, waves/announcements and settings mock tabs.
 - [x] Document Admin data and metrics; test rules and verify the requested Admin flows.
+- [x] Add the shared visual trail panel and document it; verify desktop/phone screenshots and unchanged rail/content.
