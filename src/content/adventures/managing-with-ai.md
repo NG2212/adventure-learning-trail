@@ -56,7 +56,7 @@ In this adventure you choose where AI helps you most and build two or three rout
 
 ## Before you start
 
-Know which monday boards your team works from; your routines will read them.
+Know which monday boards your team works from; your routines will read them. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: Choose what AI should help you manage
 

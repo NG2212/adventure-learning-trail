@@ -63,7 +63,7 @@ Already have a tuned setup? Aim for an instructions file you read in full, and e
 
 ## Before you start
 
-Open Claude Code in a real repository you work in every week, on a new branch, so every change to the setup is a diff you can review.
+Open Claude Code in a real repository you work in every week, on a new branch, so every change to the setup is a diff you can review. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: See what your setup loads today
 

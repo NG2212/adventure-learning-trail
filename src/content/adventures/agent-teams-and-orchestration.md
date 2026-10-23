@@ -59,7 +59,7 @@ This adventure assumes you already run more than one agent or sub-agent. If you 
 
 ## Before you start
 
-Open Claude Code, Cursor or Codex in the folder where this work lives: a repository, or a working folder with the inputs.
+Open Claude Code, Cursor or Codex in the folder where this work lives: a repository, or a working folder with the inputs. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: Map the agents you already run and pick one piece of work
 

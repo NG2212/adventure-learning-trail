@@ -61,7 +61,7 @@ In this adventure you audit your own system, fix what fights itself, and prove t
 
 ## Before you start
 
-You need an AI system you have used for a while: custom instructions, a project, skills, a monday agent or a Claude Code setup.
+You need an AI system you have used for a while: custom instructions, a project, skills, a monday agent or a Claude Code setup. If you have never built a skill, start with **Skills: When, How and How Well**.
 
 ## Step 1: Learn what changed
 
