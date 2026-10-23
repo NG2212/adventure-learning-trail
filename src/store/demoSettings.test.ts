@@ -31,7 +31,7 @@ describe("temporary demo review rules", () => {
     for (const value of ["", "review: draft", "review: Ready", "review: true"]) {
       expect(reviewState(parse(value))).toBe("Draft");
     }
-    expect(ADVENTURES.filter((a) => reviewState(a) === "Ready").map((a) => a.slug)).toEqual(["board-of-advisors", "understanding-ai-agents"]);
+    expect(ADVENTURES.filter((a) => reviewState(a) === "Ready").map((a) => a.slug)).toEqual(["understanding-ai-agents", "board-of-advisors"]);
   });
 
   it("can hide all review marks independently of opening adventures", () => {
