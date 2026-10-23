@@ -34,6 +34,8 @@ Open items
 - next: making-decisions and hard-conversations slugs are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 - 23 Oct: do-this line on every prompt
+- 23 Oct: board = a skill in every tool; general opener; several boards; sub-agents as a skill conversion. Open: monday agents sub-agents unverified (Jobs tab only)
+- 23 Oct: sub-agent pitfalls table cut for length (the sub-agent prompt covers all three rows)
 -->
 
 # 🎭 Build Your Board of Advisors
@@ -42,9 +44,9 @@ Open items
 
 ## Why this adventure
 
-You present a feature brief, and the first question comes from an angle you missed: a customer segment you forgot, or a finance partner who reads every plan as a cost. Generic AI feedback sounds like none of them.
+You are presenting something you worked hard on to key stakeholders, and the first question comes from an angle you missed. AI gives you a different way to get feedback: several perspectives and personas review your work and give nuanced advice on how to make it better for its audience.
 
-Here you build a board of advisors: a small group of AI personas, each one a perspective your work has to satisfy. They argue about your real work and give you a clear summary before you decide. The board stays saved.
+Here you build that board: a small group of AI personas, each one a perspective your work has to satisfy. They argue about your real work, give you a clear summary before you decide, and stay saved as a skill you call on any work.
 
 ## The trail
 
@@ -55,11 +57,11 @@ Here you build a board of advisors: a small group of AI personas, each one a per
 
 ## Before you start
 
-Have one real decision or deliverable ready: a feature brief, a QBR plan, a launch note or a board update.
+Have one real decision or deliverable ready, for example a feature brief, a QBR plan, a launch note or a board update.
 
 ## Step 1: Decide who should review your work
 
-Choose two to five perspectives your work has to satisfy. If only two truly matter, use two.
+Choose two to five perspectives your work has to satisfy. If only two truly matter, use two. Many people keep more than one board, one per kind of work, for example one for product briefs and one for plans they present upward.
 
 | Who could sit on your board? | For example |
 | --- | --- |
@@ -80,7 +82,7 @@ A **devil's advocate** is an optional extra member who argues against your plan.
 
 **What this does:** interviews you, proposes board members and waits while you edit the list.
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat in Claude and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me choose my Board of Advisors: a small group of AI personas, each one a perspective my work has to satisfy.
@@ -92,29 +94,32 @@ Propose two to five members: customer segments for product roles; ideal customer
 
 ## Step 2: Build the board
 
-Evidence makes sharper personas: paste call notes, survey verbatims or a monday feedback board, and use Kremer for internal customer data. Profiles of real colleagues cover work behaviour only.
+Real evidence makes sharper members: call notes, survey verbatims, a monday feedback board, or internal customer data from Kremer. Profiles of colleagues cover work behaviour only.
 
-### Prompt: Your board instructions
+### Prompt: Your board skill
 
-**What this does:** profiles each member, then writes the board's standing instructions.
+**What this does:** profiles each member, then writes the board as a complete skill ready to save.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Build the board from the members I approved in this chat. For each member, ask me as a batch: what they care about; how they react to a new idea; what they reject immediately; their blind spot. If I paste real material, build the profile from it and mark which traits come from evidence. For a known external figure, use only their public record.
 
-Then write Board of Advisors instructions I can save:
+Then write the board as a complete skill in the SKILL.md format my tool expects: a short name such as board-of-advisors; a one-line description of when to use it, with phrases I would say; the board instructions below as the body; and where my evidence files go (the skill's folder).
+
 1. Each member's profile, four to six lines.
 2. When I say "board", each member answers in character in two or three sentences, then they challenge each other by name in one round. Keep real disagreements visible.
 3. Then a summary: where most members agree; the sharpest disagreement and what it depends on; the perspective I am most likely to dismiss, and whether dismissing it is justified; one question to answer before deciding.
 4. When I say "your call", give one recommendation that accounts for the strongest objection.
-5. A devil's advocate, if present, attacks my weakest assumption and ends with what it would actually do.
+5. A devil's advocate, if present, attacks my weakest assumption.
 6. Flag any number or fact I should verify.
 
-Wait for my approval.
+Show the whole skill in one block and wait for my approval.
 ```
 
-**In Claude:** create a project called "Board of Advisors", paste the board instructions into its instructions and add your evidence files to its knowledge. **In other AI tools:** save the board instructions as standing instructions.
+**In Claude:** add it under Customize → Skills, as a folder or zip with your evidence files inside. **In monday agents:** add it in the agent's Profile tab under skills. **In Cursor, Codex and Claude Code:** save it in the skills folder. **In ChatGPT (Business or Enterprise):** add it under Skills.
+
+Then close and reopen your AI tool.
 
 ## Step 3: Convene it on real work
 
@@ -122,17 +127,15 @@ Wait for my approval.
 
 **What this does:** runs one session and stops at the summary so you judge it first.
 
-Open a new chat in your Board of Advisors project, so the board instructions apply, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat and call the skill by name, then paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Convene my Board of Advisors, using the board instructions in this project or pasted above. First ask me three questions, one at a time: the decision or deliverable (I will paste or describe it), what I am leaning towards and how confident I am, and what a good outcome looks like. Then run the board and stop after the summary.
+Convene my Board of Advisors, using my Board of Advisors skill. First ask me three questions, one at a time: the decision or deliverable (I will paste or describe it), what I am leaning towards and how confident I am, and what a good outcome looks like. Then run the board and stop after the summary.
 ```
 
 Then judge the session: does each member sound like the person they represent, and is the perspective "most likely to be dismissed" one you were about to dismiss?
 
-Verify any number a member states.
-
-> **Example: Noa, product manager, monday CRM.** Noa's feature brief: AI lead scoring. Her board: a 12-seat agency owner, a RevOps lead, a mid-market account manager and a devil's advocate. Sharpest split: the RevOps lead wanted editable scores, the agency owner wanted zero settings. Most likely to be dismissed: the account manager's warning that one wrong score on a key account costs more trust than having no score. Question before deciding: what does the score show with little data? Noa changed the brief's scope to answer it.
+> **Example: Noa, product manager, monday CRM.** Feature brief: AI lead scoring. Board: a 12-seat agency owner, a RevOps lead, a mid-market account manager and a devil's advocate. Sharpest split: the RevOps lead wanted editable scores, the agency owner wanted zero settings. Most likely to be dismissed: the account manager's warning that one wrong score on a key account costs more trust than no score. Question before deciding: what does the score show with little data? Noa changed the brief's scope.
 
 ## Step 4: Make it sharper
 
@@ -140,66 +143,62 @@ Tell the AI exactly what was wrong: "The RevOps lead would ask about data accura
 
 ### Prompt: A sharper board
 
-**What this does:** turns your feedback into updated board instructions.
+**What this does:** turns your feedback into an updated board skill.
 
-Stay in the same chat. Paste the prompt below, then your board instructions and your feedback. Answer its questions in writing, or by voice if your tool has dictation.
+Stay in the same chat. Paste the prompt below, then your feedback. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Below are my Board of Advisors instructions, followed by my feedback on the first session. Ask me up to three questions to sharpen the fix. Then give me the complete updated instructions. Change only what my feedback calls for.
+Below is my feedback on this session of my Board of Advisors skill. Ask me up to three questions to sharpen the fix. Then give me the complete updated skill. Change only what my feedback calls for.
 ```
 
-Save the updated instructions and convene the board again on the same work. Then revise the deliverable or decide, and record the strongest objection you overruled in the monday item or the doc.
+Replace the saved skill, close and reopen your AI tool, and convene the board again on the same work. Then revise the deliverable or decide, and record the strongest objection you overruled in the monday item or the doc.
 
 You are done when your saved board has reviewed one real piece of work and improved once.
 
 ## Go further
 
-**Add a devil's advocate mode.** Do this when the board agrees too easily.
+Each prompt below returns the updated skill. Replace the saved one, then close and reopen your AI tool.
+
+**Add a devil's advocate mode** when the board agrees too easily.
 
 **What this does:** adds a mode that attacks your weakest assumption.
 
-Stay in the same chat. Paste the prompt below, then your board instructions.
+Stay in the same chat and paste the prompt below.
 
 ```
-Add a Devil's Advocate mode to my Board of Advisors instructions, pasted below. When I say "devil's advocate", it attacks the weakest assumption in my plan or the board's summary, names the scenario where it fails, and ends with "Here is what I would actually do." It pushes harder when I defend weakly and agrees when I bring new information. First ask how hard to push: constructive, firm or relentless. Then give me the complete updated instructions.
+Add a Devil's Advocate mode to my Board of Advisors skill. When I say "devil's advocate", it attacks the weakest assumption in my plan or the board's summary, names where it fails, agrees when I bring new information, and ends with "Here is what I would actually do." First ask how hard to push: constructive, firm or relentless. Then give me the complete updated skill.
 ```
 
-**Add a stakeholder dynamics file.** Do this when your decisions depend on who influences whom.
+**Add a stakeholder dynamics file** when your decisions depend on who influences whom.
 
-**What this does:** writes a short file on who shapes your decisions.
+**What this does:** writes a short file on who shapes your decisions, saved in the skill's folder.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Interview me to create a Stakeholder Dynamics file for my Board of Advisors. Ask as a batch: the five to seven people or groups who matter most to my decisions; what each cares about, how they decide and what makes them resist; the tensions between them; how decisions really get made. Use only work behaviour. Write it under 500 words for the board's project knowledge.
+Interview me to create a Stakeholder Dynamics file for my Board of Advisors. Ask as a batch: the five to seven people or groups who matter most to my decisions; what each cares about and what makes them resist; the tensions between them; how decisions really get made. Use only work behaviour. Write it under 500 words for my board skill's folder, and add a line to the skill telling the board to read it.
 ```
 
-**Give each member an independent mind with sub-agents.** Do this for the sharpest disagreement: in one chat, members read each other's answers and start to agree. A sub-agent is a separate AI worker with its own context, so each member forms an opinion alone. Use Claude Code; Cursor and Codex work the same way, and so does Cowork if yours offers sub-agents.
+**Give each member an independent mind with sub-agents** when members start to agree because they read each other's answers. A sub-agent is a separate AI worker with its own context. Use Claude Code, Cursor or Codex, or Cowork where it offers sub-agents.
 
-**What this does:** runs each member alone and shows every answer before the summary.
+**What this does:** converts your board skill so each member answers alone.
 
-Open Claude Code and paste the prompt below, then your board instructions and the work.
+Open the tool and paste the prompt below.
 
 ```
-Run my Board of Advisors with each member as its own sub-agent. The board instructions and the work to review are below.
+Rewrite my Board of Advisors skill so each member runs as its own sub-agent, in parallel:
 1. Launch one sub-agent per member. Give each only that member's profile, the work and my question.
 2. Each returns its verdict in two or three sentences, the one change it would demand, and its confidence.
-3. Show me every answer word for word.
-4. Then summarise as the board instructions describe, quoting members where they disagree.
-If this tool runs everything in one chat, say so and stop.
+3. Show me every verdict word for word.
+4. Then summarise as the skill describes, quoting members where they disagree.
+If this tool runs everything in one chat, say so and stop. Otherwise give me the complete updated skill.
 ```
-
-| What can go wrong? | What happens | How to fix it |
-| --- | --- | --- |
-| **Echo** | The summary turns disagreement into agreement | Ask for word-for-word answers and quotes |
-| **Shared context** | A sub-agent sees another member's answer and agrees | Give each sub-agent only its profile, the work and the question |
-| **Many members, one voice** | Thin profiles give near-identical answers | Add evidence to the profiles with the Your board instructions |
 
 ## Proof of work
 
 In "what I built", name your board's members, one thing it caught that you missed, and what you changed.
 
-For example: "Agency owner, RevOps lead, account manager, devil's advocate. They caught that lead scoring breaks with little data; I changed the scope of the feature brief."
+For example: "Agency owner, RevOps lead, account manager, devil's advocate. They caught that lead scoring breaks with little data; I changed the brief's scope."
 
 ## Related adventures
 
