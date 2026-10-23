@@ -14,11 +14,24 @@ export interface Completion {
   completedAt: string; // ISO date
 }
 
+export interface ProofInput {
+  built: string;
+  learned: string;
+  rating: number;
+}
+
+export interface ProofOfWork extends ProofInput {
+  personId: string;
+  slug: string;
+  completed_at: string;
+}
+
 export interface StoreState {
   signedIn: boolean;
   person: Person;
   itinerary: string[]; // ordered adventure slugs
   completions: Completion[];
+  proofEntries: ProofOfWork[];
   announcementDismissed: boolean;
 }
 
@@ -47,6 +60,8 @@ export interface AdventureStore extends AdminReadsWrites {
   removeFromItinerary(slug: string): void;
   reorderItinerary(slug: string, direction: "up" | "down"): void;
   markComplete(slug: string): CompletionResult;
+  getProofOfWork(slug: string): ProofOfWork | undefined;
+  saveProofOfWork(slug: string, input: ProofInput): CompletionResult;
   getCompletions(): Completion[];
   getTitle(): TitleName | null;
   isAnnouncementDismissed(): boolean;
