@@ -102,7 +102,9 @@ The blueprint has five parts:
 4. Build rules: what stays personal, what becomes a team standard, who approves it.
 5. Review rhythm: monthly and quarterly.
 
-Interview me in at most two rounds of batched questions, about the team's work, knowledge and rules, never assessing individual people. If I answer vaguely, ask for a recent example. Ask where the team pays for the same AI work again and again.
+First ask, one at a time, which team work needs AI help and what good looks like. Do not choose the work, owners or what good means; wait.
+
+Then interview me in at most two rounds of batched questions, about the team's work, knowledge and rules, never assessing individual people. If I answer vaguely, ask for a recent example. Ask where the team pays for the same AI work again and again.
 
 Then write the Team AI Blueprint: one section per part, the backlog as a table (use case, Feasibility, Value, Investment as High, Medium or Low, owner, first step), and "This Week": three actions for the next five workdays, each concrete enough to start tomorrow morning. Stop and wait for my review.
 ```

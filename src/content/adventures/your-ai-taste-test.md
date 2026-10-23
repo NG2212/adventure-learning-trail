@@ -86,9 +86,9 @@ Aim for one task where you spot a weak answer quickly, one matter of taste (a me
 ```
 Help me build my AI task set: four to six real requests from my work that I will give to several AI options, names hidden, unchanged, at every new release.
 
-I will paste or dictate my notes. Use what you already know about me; ask only for gaps, one question at a time, ten at most.
+I will paste or dictate my notes. Use what you already know about me as background; ask only for gaps, one question at a time, ten at most.
 
-Map my work with the Work Mix: kind of work (writing, analysis, research, advice, planning, making things); how often (daily or rare); stakes (quick ask or costly mistake); starting point (blank page or my own material); tools (chat only, or files, boards and apps); wish list (something AI has never done well for me). Ask about the empty parts.
+Map my work with the Work Mix: kind of work (writing, analysis, research, advice, planning, making things); how often (daily or rare); stakes (quick ask or costly mistake); starting point (blank page or my own material); tools (chat only, or files, boards and apps); wish list (something AI has never done well for me). Ask about the empty parts. Ask me which requests to include. Do not choose tasks or decide what good means for me; wait for my answers.
 
 For each task, propose: a short name; why it earns its place; the complete request with realistic made-up material (invented names and numbers); and a two-line scoring guide, in my words, from asking me how I would tell a great answer from a weak one.
 
