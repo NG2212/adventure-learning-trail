@@ -36,6 +36,7 @@ Open items
 - monday agents: confirm an agent's brief can be read or pasted for audit. Wording is provisional.
 - next: personalising-claude-code exists; your-ai-taste-test is provisional until that file exists.
 - Prompt test in a fresh Claude chat and a Claude Code session: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🔍 Audit and Improve Your AI System
@@ -76,6 +77,8 @@ Two rules hold for the whole audit: an instruction that works **stays until your
 
 **What this does:** the AI researches current vendor guidance and tells you which of your habits it affects.
 
+Open a new chat in Claude (or the AI tool you use) with web search on, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Brief me before I audit my AI instructions. Ask which AI tools and models I use and what work my instructions support. Use what you know about me; ask only for gaps.
 
@@ -99,11 +102,11 @@ Finish with a table: my habit, still useful or now costly, why. Mark anything un
 
 New to audits? Start with one artifact and finish it.
 
-**Think first, without AI.** Write down three to five real tasks your system handles often, such as a QBR summary, release notes or an incident write-up, and what a good result looks like for each. Run each task once through your current setup and save the outputs in one document named "Baseline". After every change, you rerun these tasks and compare.
+**Think first, without AI.** Write down three to five real tasks your system handles often, such as a QBR summary, release notes or an incident write-up, and what a good result looks like for each. Run each task once through your current setup and save the outputs in one document named "Baseline".
 
 ## Step 3: Audit your context, instructions and tools
 
-Run the audit where the AI can read what you audit. **In Claude:** open a fresh chat in the project you audit.
+Run the audit in a new chat or session where the AI can read what you audit. **In Claude:** use the project you audit.
 
 **In Claude Code:** start a fresh session in the folder where your instruction files live. The `.claude` folder is hidden: on Mac, press Cmd+Shift+. in Finder; on Windows, open File Explorer and choose View → Show → Hidden items. Run `/context` and note how much context loads before you type anything.
 
@@ -112,6 +115,8 @@ A typical contradiction: your global instructions say "keep every answer under 1
 ### Prompt: Audit my AI system
 
 **What this does:** the AI reads everything in scope and reports up to ten findings with quoted evidence.
+
+Paste the prompt below into that new chat or session.
 
 ```
 Audit my AI system like a careful doctor with a mostly healthy patient: evidence first, cautious about change. Read everything in scope; if you cannot read a file, ask me to paste it.
@@ -137,6 +142,8 @@ Report up to ten findings in severity order: finding, quote, why it costs me, re
 
 **What this does:** applies the findings you choose, in groups, saving the originals and a log.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Apply the findings I choose from the audit in this chat.
 
@@ -152,6 +159,8 @@ Compare each rerun with the Baseline document from Step 2. Then build an index: 
 ### Prompt: Build my index
 
 **What this does:** turns your files and skills into one index with a "when to open" line for each.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Restructure my context so my AI opens what it needs. Ask what files and skills I have and how each loads today.
@@ -170,6 +179,8 @@ Save the audit log where your AI can read it, so decisions you made stay settled
 ### Prompt: Turn the audit into a skill
 
 **What this does:** packages this audit as a skill you start by name.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Turn the audit we ran in this chat into a skill. It must:

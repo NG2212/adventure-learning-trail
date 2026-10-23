@@ -36,6 +36,7 @@ Open items
 - Google Drive connector at Monday: name as it appears, and whether it creates Docs in the person's Drive (Step 4 prompt).
 - Unified Claude reaches all orgs 10 Nov 2026; wording of "a regular Claude chat" may need a sweep.
 - Prompt test in a fresh Claude chat and in the side panel: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 📄 Claude in Your Docs, Sheets and Slides
@@ -75,6 +76,8 @@ Before Claude edits anything, know how to undo: **File → Version history → S
 
 **What this does:** Claude describes the data, asks what decision it should support, and writes its findings with formulas in a new tab after you approve the plan.
 
+Paste the prompt below into the Claude side panel of your Sheet. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me analyse the data in this Sheet. First describe it in three lines: the tabs, the columns, the date range and the number of rows. List anything that looks wrong, such as empty cells, duplicates or mixed formats.
 
@@ -98,6 +101,8 @@ Open a Doc you are working on: a QBR summary, release notes, an incident write-u
 
 **What this does:** Claude asks about the reader, proposes an edit plan for your approval, then edits the Doc one section at a time.
 
+Open Claude in the side panel of your Doc and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me improve this document where it is. Ask me, one question at a time: who reads it, what they should do after reading it, and what bothers me about it now.
 
@@ -115,6 +120,8 @@ Open a deck you will present soon, for example a QBR deck or a team update.
 ### Prompt: Tidy this deck
 
 **What this does:** Claude reviews every slide against one message per slide, then fixes only the slides you approve.
+
+Open Claude in the side panel of your deck and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Review this deck as its audience will see it. Ask me who the audience is and the one thing they should remember. Wait for my answers.
@@ -141,7 +148,9 @@ Try the chat path once, on a document you would otherwise assemble by hand.
 
 ### Prompt: Build a Google Doc from several sources
 
-**What this does:** in a regular Claude chat, Claude collects information from several places, shows you an outline for approval, then creates the Doc in your Drive.
+**What this does:** Claude collects information from several places, shows you an outline for approval, then creates the Doc in your Drive.
+
+Open a new Claude chat with the Google Drive connector on, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me create one Google Doc from information that lives in several places. Ask me, one question at a time: what the document is for, who reads it, and which sources to use: monday boards, Drive files, mail threads, Slack channels, or internal data through Kremer.
@@ -158,6 +167,8 @@ Now close the chat and write your rule in one sentence: which work you will do i
 **Understand a Sheet you inherited.** Do this when you take over someone else's model or tracker and need to trust it before you change it.
 
 **What this does:** Claude explains how the Sheet works and points to the cells that could break.
+
+Open Claude in the side panel of the inherited Sheet and paste the prompt below.
 
 ```
 Explain this Sheet to me as its new owner. Describe each tab in one line, how the tabs connect, and the five formulas that matter most, in plain words. List cells that look fragile: numbers typed inside formulas, broken references, ranges that miss new rows. Change nothing.

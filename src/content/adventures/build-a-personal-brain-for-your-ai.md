@@ -34,6 +34,7 @@ Open items
 - Team edition: confirm Monday's preferred home for shared team context (shared Drive folder vs shared Claude project) with Inbar; wording offers both.
 - Overlap check with slot 24 (Your Team's AI Blueprint), whose design note lists "team edition of a brain page" as a layer: this file covers the personal-to-team step; the Blueprint should link here.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🧠 Build a Personal Brain for Your AI
@@ -61,9 +62,9 @@ Have the documents you rely on most at hand, for example your team's quarterly p
 
 ## Step 1: Choose what goes in
 
-**Think first, without AI.** Close the chat. On paper or in a note, list what you explained to an AI, or to a new colleague, more than once this month. Messy is fine.
+**Think first, without AI.** Close the chat. In a note, list what you explained to an AI, or to a new colleague, more than once this month.
 
-Then check your list against this table.
+Check your list against this table.
 
 | What belongs in the brain? | Example at Monday |
 | --- | --- |
@@ -77,7 +78,9 @@ Then check your list against this table.
 
 ### Prompt: Plan my brain
 
-**What this does:** the AI turns the list you wrote into a plan of files, and asks about what is missing.
+**What this does:** the AI turns your list into a plan of files and asks about gaps.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me plan a personal brain: short files about my work that my AI tool reads in every chat. I will paste or dictate a list of what I keep explaining.
@@ -93,11 +96,13 @@ Stop and wait for my approval.
 
 ## Step 2: Write the files and the index
 
-Short files on one topic are easy for your AI to find and easy for you to keep current.
+Short files on one topic are easy for your AI to find and for you to keep current.
 
 ### Prompt: Write my brain files
 
-**What this does:** the AI writes each file from your documents and answers, then the start-here file and your test questions.
+**What this does:** the AI writes each file from your documents, then the start-here file and your test questions.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Write the files for the brain plan I approved in this chat. If the plan is missing, ask me for it.
@@ -127,11 +132,11 @@ Save all the files in one place your AI reads.
 
 **In Claude Code:** open Claude Code in the Brain folder; it reads CLAUDE.md at the start of every session.
 
-Then open a **new** chat or task with the brain loaded.
-
 ### Prompt: Test my brain
 
 **What this does:** your AI answers your golden questions from the brain alone and helps you fix what is wrong.
+
+Open a **new** chat or task with the brain loaded. Paste the prompt below, then your golden questions.
 
 ```
 Test my brain. I will paste eight golden questions about my work. Answer each in two lines or less, using only my brain files. After each answer, name the file you used, or write NOT IN MY BRAIN.
@@ -155,6 +160,8 @@ Context changes at different speeds, so each kind gets its own schedule.
 
 **What this does:** collects this week's changes and proposes exact updates for your approval.
 
+Each week, open a new chat or task with the brain loaded and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Run my weekly brain update. Read my start-here file and its index first.
 
@@ -171,9 +178,11 @@ Stop and wait for my approval. Then make the approved changes, move finished wor
 
 **Make capture automatic.** Do this when busy days leave no time to say "save this to my brain". Add one rule to your start-here file: "At the end of a working session, propose up to three updates to my brain, and wait for my approval." **In Claude Cowork:** ask Claude to run the Weekly brain update every Friday in the Brain folder, and check that it appears under Scheduled.
 
-**A team edition.** Do this when your teammates explain the same accounts, release process and terms to their own AI. A team brain holds the shared part once. Keep it about the work; notes about individual people stay out, in line with Monday's norms on people data.
+**A team edition.** Do this when your teammates explain the same accounts, release process and terms to their own AI. A team brain holds the shared part once. Keep it about the work, in line with Monday's norms on people data.
 
 **What this does:** keeps what the team needs, strips personal notes, and sets up an owner and a way to suggest changes.
+
+Open a new chat or task with your brain loaded and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me create a team edition of my personal brain: shared files my team's AI tools read. I will share my brain files.
@@ -188,7 +197,7 @@ Show me what passes, with personal notes removed, and wait for my approval.
 Then ask me, one at a time: who is the one owner who approves changes, where the team brain lives, and how teammates suggest a change. Write a team start-here file with the index and those answers.
 ```
 
-A good setup: one owner, one home (a shared Drive folder or a shared Claude project for your team), and a "Brain suggestions" group on your team's monday board that the owner reviews every week.
+A good setup: one owner, one home (a shared Drive folder or a shared Claude project), and a "Brain suggestions" group on your team's monday board that the owner reviews every week.
 
 ## Proof of work
 

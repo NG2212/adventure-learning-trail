@@ -34,6 +34,7 @@ Open items
 - Chain hand-off location: written as "the folder you work in" for Claude Code and Cowork, "the same chat" for Claude chat. Hands-on check pending for Cowork; Unified Claude reaches all orgs 10 Nov 2026 and may change the Cowork wording.
 - next: personalising-claude-code exists; audit-and-improve-your-ai-system is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🧩 Advanced Skill Patterns
@@ -76,6 +77,8 @@ Skills that share verbs and inputs ("summarise the account", "summarise the QBR"
 
 **What this does:** maps your skills and shows where they collide, where you move work by hand, and where a result must be exact.
 
+Open a new chat in Claude, where your skills are installed, and paste the prompt below.
+
 ```
 Help me see my skills as a system. A skill is saved instructions Claude follows for one recurring task; Claude picks a skill by reading each skill's description.
 
@@ -90,8 +93,6 @@ Then list:
 
 Use only what you can see or what I tell you. Stop and wait.
 ```
-
-Keep this chat open for Step 2.
 
 ## Step 2: Choose one pattern for one real workflow
 
@@ -108,7 +109,9 @@ A reference file holds what changes rarely: rules, templates, naming. Data that 
 
 ### Prompt: Write the skill-system brief
 
-**What this does:** in the same chat, the AI interviews you about one workflow, recommends a pattern and writes a brief for your approval.
+**What this does:** the AI interviews you about one workflow, recommends a pattern and writes a brief for your approval.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me choose one skill pattern for one real workflow, using the skill map in this chat. The four patterns:
@@ -135,7 +138,9 @@ A skill can be a folder of files. Claude reads only the description until the sk
 
 ### Prompt: Build the skill system
 
-**What this does:** in the same chat, turns the brief you approved in Step 2 into every file the system needs, with install steps.
+**What this does:** turns the brief you approved in Step 2 into every file the system needs, with install steps.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Build the skill system in the brief I approved in this chat. First check Claude's current documentation on skill folders (SKILL.md, reference files, scripts) and follow it.
@@ -160,11 +165,13 @@ Then close and reopen Claude so it finds the new skills.
 
 ## Step 4: Prove it on real work
 
-Test in a fresh chat, so Claude works from the installed skills alone. Each pattern has a moment where it should stop safely; this prompt tests it.
+Each pattern has a moment where it should stop safely; this prompt tests it.
 
 ### Prompt: Prove the skill system
 
 **What this does:** runs one real request, then the failure test for your pattern, and proposes one improved version.
+
+Open a new chat, so Claude works from the installed skills alone, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I installed a skill system. Ask me its pattern (knowledge files, code, chain or router) and for one real request from my work. Use the installed skills only.

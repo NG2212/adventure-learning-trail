@@ -34,6 +34,7 @@ Open items
 - Where non-Claude users find Monday's brand guidelines (a link for the "In any other AI tool" line), and which image tools Monday permits for illustrations and photo-style images.
 - Monday rebrands in Jan 2027. The page points to the design system and never hardcodes brand values, so it should survive; re-read after the rebrand.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🎨 Designing with AI: Results You Actually Like
@@ -79,6 +80,8 @@ Your taste works inside the brand. When your taste and the brand conflict, the b
 
 **What this does:** the AI reads Monday's brand material and shows you which choices are fixed and which are yours.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below.
+
 ```
 Help me design within Monday's brand. Use Monday's design system or design skill if you can reach it. If you cannot, ask me to attach the brand guidelines or a screenshot of an official Monday page or deck.
 
@@ -89,8 +92,6 @@ Read the brand material and write three short lists:
 
 Stop and wait.
 ```
-
-Keep this chat open for Steps 2 and 3.
 
 ## Step 2: Collect what you like in a mood board
 
@@ -108,6 +109,8 @@ Under each image, write one line: what exactly you like or dislike in it. Messy 
 
 **What this does:** the AI interviews you about each image and finds the patterns your images share.
 
+Stay in the same chat, attach your mood board images and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 I attached my mood board: images that show the look I like, plus one I dislike, each with a line of my notes. Use them only to learn my taste.
 
@@ -123,6 +126,8 @@ Then describe the patterns my images share in six to eight lines, each with the 
 ### Prompt: Your visual language
 
 **What this does:** turns the brand lists and mood board patterns into one page of rules.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Write my visual language: one page of plain rules any AI follows when it designs for me. Base it on the brand lists and mood board patterns earlier in this chat; ask for them if they are missing.
@@ -156,6 +161,8 @@ Start a new chat where your visual-language file is available, for the visual yo
 
 **What this does:** the AI agrees a brief with you, then makes three different versions so you choose before you fix.
 
+Paste the prompt below into that new chat. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Design one real visual with me, following Monday's design system and my visual language. Ask me to paste my visual language if it is missing.
 
@@ -183,6 +190,8 @@ When a fix applies to everything you make, ask the AI to add it to your visual-l
 **Make a set that belongs together.** Do this when one launch or event needs several visuals, such as a deck cover, a Slack announcement image and a one-pager.
 
 **What this does:** locks what stays the same, then makes and checks the pieces one at a time.
+
+Stay in the chat from Step 4 and paste the prompt below.
 
 ```
 I need three visuals that clearly belong together, for one launch or event. Ask me what the three pieces are. First write a short set sheet from my visual language: what stays the same in every piece (colours, type style, imagery style, any icon or character, layout grid) and what may change. Wait for my approval. Then make the pieces one at a time from the set sheet. After the third, list every place where the set drifted.

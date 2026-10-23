@@ -35,6 +35,7 @@ Open items
 - Effort: seed says Ambitious; inventory row says M. Used the seed value.
 - next: slugs are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🧰 Creating Apps with AI, Done Right
@@ -76,7 +77,9 @@ For internal data such as accounts, renewals or Salesforce records, plan to get 
 
 ### Prompt: Grill me, then write the spec
 
-**What this does:** the AI asks the basic questions, then keeps asking more specific ones until you say "enough", and writes a one-page spec for your approval.
+**What this does:** the AI asks basic questions, then more specific ones until you say "enough", and writes a one-page spec for your approval.
+
+Open a new chat in the tool you chose above and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me plan a small internal app before anything is built. Write no code and design no screens yet. I will paste or dictate my notes about the app.
@@ -96,7 +99,7 @@ Then write a one-page spec:
 Stop and wait for my approval.
 ```
 
-Answer by voice if you can. The grill takes a while, and it replaces days of questions after the build.
+The grill takes a while, and it replaces days of questions after the build.
 
 ## Step 2: Build three drafts and pick one
 
@@ -112,6 +115,8 @@ When the app must match an existing look, such as the monday brand, a screenshot
 ### Prompt: Three drafts of the MVP
 
 **What this does:** builds the MVP from your approved spec in three versions that work the same and look clearly different, then saves the winning look as a note.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Build the MVP from the spec I approved earlier in this chat. If the spec is missing, ask me to paste it. Follow its behaviour rules exactly and leave out every later feature.
@@ -145,13 +150,15 @@ Anyone who can open the app's link can see the data in it, so share it only with
 
 **What this does:** fixes one failure at a time and tells you what to test again.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 I tested my app against the test cases in my spec. I will describe each failure, often with a screenshot where I marked the problem.
 
 For each failure: say what you understood, name the likely cause, and fix only that. Change nothing else. Then list the test cases I should run again, including the main flow.
 ```
 
-Give exact feedback, such as "the filter forgets the region when I go back". A screenshot with the problem circled works best.
+Give exact feedback, such as "the filter forgets the region when I go back".
 
 Save a copy of each working version before the next change, so you can go back. If two fixes in a row fail, start a new chat with the spec, the visual-language note and the one problem.
 
@@ -162,6 +169,8 @@ When the MVP passes all five test cases, add features from the later-features li
 ### Prompt: Add the next feature
 
 **What this does:** plans one feature with its behaviour and test, builds only that, and keeps the look.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 My app's MVP works and passes the test cases in my spec. Help me add one feature from the later-features list.
@@ -182,6 +191,8 @@ You are done when one real user does the job in your app without your help.
 **Make the method a skill.** Do this when you build apps often and want this method in every build.
 
 **What this does:** writes a skill for your app builds, for your approval.
+
+Open a new chat in the AI tool where you will keep the skill, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me build a skill for creating apps with AI. On any app request it should: ask essentials, then grill me with more and more specific questions until I say "enough"; write a spec with an MVP, behaviour rules, later features and five test cases; wait for approval; build three visually distinct drafts; save the winning look as a visual-language note; add features one at a time with a test after each.

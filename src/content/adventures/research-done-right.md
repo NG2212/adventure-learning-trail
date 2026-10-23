@@ -33,6 +33,7 @@ Open items
 - Sub-agents for the panel: Claude Code, Cursor or Codex access pending Keren Q4.
 - next: making-decisions-with-ai is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt (sub-agent sentence in Go further cut for budget)
 -->
 
 # 🔎 Research Done Right
@@ -41,11 +42,11 @@ Open items
 
 ## Why this adventure
 
-A research question typed into a chat usually comes back as a confident, well-written answer. You still do not know which sources it used, what it left out, or whether it answers the decision you actually face.
+A research question typed into a chat comes back as a confident, well-written answer. You still do not know which sources it used, what it left out, or whether it answers the decision you face.
 
-Good research starts before any searching: a precise question, clear limits (time, geography, which sources count) and a plan for where to look. Afterwards, you check the result before you rely on it.
+Good research starts before any searching: a precise question, clear limits and a plan for where to look. Then you check the result before relying on it.
 
-In this adventure you do this on one real question from your work, and save the method in your AI tool.
+Here you do this on one real question from your work, and save the method.
 
 ## The trail
 
@@ -60,13 +61,15 @@ Bring one real question you need answered for a decision at work.
 
 ## Step 1: Frame the question
 
-Good questions at Monday: what changed in a key account's industry before a renewal call, which messages competitors used in recent launches, how public software companies explained net revenue retention, for your forecast commentary.
+Good questions at Monday: what changed in a key account's industry before a renewal, which messages competitors used in recent launches, how public software companies explain net revenue retention.
 
-**Think first, without AI.** Close the chat. Write down the question, the decision it serves, what you already know, and what you expect the answer to be.
+**Think first, without AI.** Close the chat. Write down the question, the decision it serves, what you already know, and the answer you expect.
 
 ### Prompt: Sharpen your research question
 
-**What this does:** the AI interviews you about your notes and turns them into a research brief for your approval.
+**What this does:** the AI turns your notes into a research brief for your approval.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me turn a research need into a research brief. I will paste or dictate my notes. Use what you know about me; ask only for what is missing, one question at a time. If an answer is vague, ask for a recent example.
@@ -101,7 +104,7 @@ Save the approved brief on the monday board where the decision lives.
 
 ## Step 2: Plan the search and choose the sources
 
-A search plan splits the question into smaller ones and says where to look for each. Choose sources on purpose:
+A search plan splits the question into smaller ones and says where to look for each:
 
 | Where to look | Best for |
 | --- | --- |
@@ -114,7 +117,9 @@ A search plan splits the question into smaller ones and says where to look for e
 
 ### Prompt: Plan the search
 
-**What this does:** the AI turns your approved brief into a search plan and waits for your approval before it searches.
+**What this does:** turns your approved brief into a search plan for your approval.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Plan the research for the research brief I approved above, or ask me to paste it.
@@ -127,17 +132,19 @@ Plan the research for the research brief I approved above, or ask me to paste it
 Stop and wait for my approval. Start searching only after I approve.
 ```
 
-Read the plan as a skeptic. If every source is likely to agree with you, ask for a change.
+If every source in the plan is likely to agree with you, ask for a change.
 
 ## Step 3: Run the research and check it
 
-For a narrow question, web search is enough. For a decision with several sub-questions, use a deep research mode, where the AI runs many searches on its own and writes a cited report.
+For a narrow question, web search is enough. For several sub-questions, use a deep research mode: the AI runs many searches on its own and writes a cited report.
 
 **In Claude:** turn on Research in the tools menu of the chat box.
 
 ### Prompt: Run the research
 
-**What this does:** runs the approved plan and returns a research report that separates evidence from opinion.
+**What this does:** runs the approved plan and returns a report that separates evidence from opinion.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Run the research, following the research brief and the search plan I approved above.
@@ -156,7 +163,7 @@ Output:
 4. "Before you act, verify": the three claims most worth checking myself, and why.
 ```
 
-AI tools sometimes cite a real page that does not support the claim, or present an old source as current. Check the result with three questions:
+AI tools sometimes cite a page that does not support the claim, or present an old source as current. Check with three questions:
 
 | Ask yourself | How to check |
 | --- | --- |
@@ -166,13 +173,15 @@ AI tools sometimes cite a real page that does not support the claim, or present 
 
 When a claim fails, say exactly what you need: "Find the primary source for the claim that EU banks require AI audit logs, or tell me you cannot." When the answer is too careful: "Give me a direct answer with your honest confidence."
 
-You are done when you can answer your question in two sentences and name the source behind each sentence.
+You are done when you can answer your question in two sentences and name the source behind each.
 
 ## Step 4: Save the method
 
 ### Prompt: Your Research Analyst
 
 **What this does:** turns the method from this chat into standing instructions for a research project you reuse.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Write standing instructions for my Research Analyst: a project I will use for every important research question. Base them on the research we did in this chat. First interview me, one question at a time: the questions I research most often, the sources I trust and distrust in my field, and the formats my readers prefer.
@@ -186,15 +195,17 @@ The instructions must include:
 Keep it to one page. Ask me to approve it.
 ```
 
-**In Claude:** create a project named Research Analyst and paste the instructions into its instructions.
+**In Claude:** create a project named Research Analyst and paste the instructions there.
 
-Then test the Research Analyst on a second question from another part of your work, and ask it to write any fix into its instructions.
+Test it on a second question, and ask it to write any fix into its instructions.
 
 ## Go further
 
-**Run a research panel.** Do this for a high-stakes decision, when one researcher's blind spots are a real risk.
+**Run a research panel.** Do this for a high-stakes decision, where one researcher's blind spots matter.
 
-**What this does:** four AI researchers with different angles research your question separately, then one summary shows where they agree and where they split.
+**What this does:** four AI researchers with different angles work separately, then one summary shows where they agree and split.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Run a research panel on the research brief above. A research panel is several researchers, each with a different angle, working on the same question separately, followed by one summary.
@@ -209,23 +220,25 @@ Run a research panel on the research brief above. A research panel is several re
    - Recommendation, with a confidence rating from 1 to 10
 ```
 
-Then challenge the summary: "What would have to be true for the opposite conclusion?" and "Which finding rests on the weakest source?" For more independent researchers, run each angle as its own sub-agent in Claude Code, Cursor or Codex. If you also have an AI tool from a different company, run one angle there: it has different blind spots.
+Then challenge the summary: "What would have to be true for the opposite conclusion?" and "Which finding rests on the weakest source?" If you also have an AI tool from another company, run one angle there for different blind spots.
 
-**Turn the report into a visual.** Do this when the research goes to people who will only glance at it before a decision.
+**Turn the report into a visual.** Do this when readers will only glance at the research before a decision.
 
 **What this does:** turns your research report into a one-page visual, after you approve a plan.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Turn the research report above into a one-page visual. First ask me who will read it and what they will decide. Make the most important finding impossible to miss, show each finding's confidence, and keep the sources visible. Show me your plan and wait for my approval before you build it.
 ```
 
-Check every number against the report, then share the visual on the monday board where the decision lives.
+Check every number against the report, then share the visual on the decision's monday board.
 
 ## Proof of work
 
 In "what I built", name the question you researched, the finding that mattered most and its source, and one thing you learned.
 
-For example: "Researched whether financial-services buyers require AI audit logs. Two regulator sources confirmed it for EU banks; one claim traced to a vendor blog, so I dropped it. I learned to write down the answer I expect before I search."
+For example: "AI audit logs for financial-services buyers. Two regulator sources confirmed the need for EU banks; one claim traced to a vendor blog, so I dropped it. I learned to write down my expected answer before I search."
 
 ## Related adventures
 

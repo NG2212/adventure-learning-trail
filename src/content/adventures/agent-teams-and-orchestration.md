@@ -37,6 +37,7 @@ Open items
 - Labels: the seed lists "Advanced users" as a profession, which is outside the label set; used [Everyone] with level [Advanced] (design notes: advanced users, not only engineering or product). Pattern kept as the inventory's LOOP.
 - next: slugs provisional until The Loop exists (it is linked from the hook and Related adventures by name).
 - Prompt test in a fresh Claude Code session: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🎼 Agent Teams and Orchestration
@@ -70,6 +71,8 @@ Agent files sit in hidden folders such as `.claude` and `.cursor`. On Mac, press
 
 **What this does:** reads the agent files here, adds the agents from your note, and interviews you about the work.
 
+Open a new session in Claude Code, Cursor or Codex in the folder where this work lives, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me map the AI agents I already run, so I can design a team for one piece of work.
 
@@ -79,8 +82,6 @@ Show one table: agent, where it lives, its job, what it receives and returns, an
 
 Then ask which piece of work I want to give a team. Ask one question at a time until you know its steps, inputs, the people who touch it, who receives the result, and where it breaks today. If I answer vaguely, ask for the last real example. Design nothing yet.
 ```
-
-Keep this session open for the next prompts.
 
 ## Step 2: Check that the work needs a team
 
@@ -100,7 +101,9 @@ Answer four questions yourself, yes or no. Does each step need its own context? 
 
 ### Prompt: Design the org chart
 
-**What this does:** asks which signals you see, then designs the smallest team that fixes them, with agent cards, handoffs and your approval point.
+**What this does:** designs the smallest team that fixes the signals you see, with agent cards, handoffs and your approval point.
+
+Stay in the same session and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Design an agent team for the piece of work in this chat, reusing agents from the agent map before proposing new ones.
@@ -135,6 +138,8 @@ Monday's own data about customers is fine: Salesforce through Kremer, support ti
 ### Prompt: Build the team
 
 **What this does:** writes the new agents as sub-agent role files and the orchestration as a skill with a run log, for your approval.
+
+Stay in the same session and paste the prompt below.
 
 ```
 Build the agent team I approved in this chat. Check this tool's current documentation for how sub-agents and skills are defined, then:

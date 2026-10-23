@@ -34,6 +34,7 @@ Open items
 - Scheduled jobs depend on Keren Q6 (Cowork scheduled tasks).
 - next: slugs provisional until sibling files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🧭 Use-Case Discovery
@@ -74,7 +75,7 @@ Two rules keep the list useful:
 
 ## Step 2: Write down your week
 
-Close the chat. From last week's calendar and boards, write down:
+**Think first for yourself, without AI.** From last week's calendar and boards, note:
 
 - Three tasks you repeated, dreaded or redid
 - Information you searched for more than once
@@ -88,6 +89,8 @@ Examples at Monday: customer follow-ups after every call, QBR summaries, release
 ### Prompt: My top 5 AI use cases
 
 **What this does:** the AI interviews you, removes weak and duplicate ideas, and ranks your top 5 with FVI.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below, then your notes from Step 2. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Run a use-case discovery interview with me. Goal: my top 5 AI use cases at monday.com, simple to start and worth the effort.
@@ -114,7 +117,9 @@ If the use cases could fit anyone with your job title, your AI needs more contex
 
 ### Prompt: Feasibility check and first test
 
-**What this does:** in the same chat, checks your number 1 use case for feasibility and writes a small test for this week.
+**What this does:** checks your number 1 use case for feasibility and writes a small test for this week.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Check my number 1 use case from the table above through three lenses. Answer each with Go, Unclear or No-go and one line of evidence:

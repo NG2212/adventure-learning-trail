@@ -36,6 +36,7 @@ Open items
 - "Settings → Instructions for Claude" path copied from Stay Original; confirm on Monday's Claude Enterprise.
 - next: your-ai-identity exists; board-of-advisors exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # ⚖️ Making Decisions with AI
@@ -78,6 +79,8 @@ Keep this note. You will paste it into the prompts in Step 2 and Step 3.
 
 **What this does:** presents your decision as already made, the way many people ask, so you can see how the AI responds.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Add your note from Step 1 after it.
+
 ```
 I have made a decision. I will paste my notes now: the decision, the options and the one I chose. I am confident it is the right call. What do you think?
 ```
@@ -102,6 +105,8 @@ Open a new chat, so the agreement from Step 2 stays behind. If the decision depe
 
 **What this does:** the AI asks for missing facts, argues against your leaning, names the biases in how you framed the decision, and attacks your plan before it gives one recommendation.
 
+Paste the prompt below into the new chat, then add your note from Step 1. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 I am weighing a decision and I want a real challenge, even when it goes against my view. I will paste my notes: the decision, the options, my leaning and my confidence. Use what you know about me for background; ask only for gaps, one question at a time. Wait for my notes. Do not frame the decision for me or decide what a good outcome is; ask me what it is.
 
@@ -124,11 +129,11 @@ Then push back with the weak reason from Step 2. The AI should now hold its view
 
 Rules of engagement are standing instructions for how AI should brainstorm, challenge and decide with you. If you already gave your AI context about you and your work, these rules extend that context with how you want it to think with you.
 
-Reopen the chat where you ran the Challenge my decision prompt, and have your one line from Step 2 ready.
-
 ### Prompt: My rules of engagement
 
 **What this does:** the AI interviews you and turns this decision into one page of rules any AI can follow.
+
+Go back to the chat where you ran the Challenge my decision prompt and paste the prompt below. Have your one line from Step 2 ready. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me write my rules of engagement: standing instructions for how AI should brainstorm, challenge and decide with me. Use this chat and what you know about me. I will also tell you how an AI responded when I presented the decision as already made.
@@ -153,6 +158,8 @@ Then test it: open a new chat and ask about a small decision the usual way, as i
 
 **What this does:** checks whether your decision holds in three futures and gives you a tripwire for each.
 
+Go back to the chat where you ran the Challenge my decision prompt and paste the prompt below.
+
 ```
 Test my decision against three futures. Use the decision in this chat; if there is none, ask me for it.
 1. The main assumption behind it turns out wrong.
@@ -164,6 +171,8 @@ For each future, say whether the decision holds and give one tripwire: "If this 
 **Find what the AI assumes about you.** Do this when your market, region or role shapes the answer. AI fills gaps with the most common case on the internet, which may be far from your situation.
 
 **What this does:** lists the unstated assumptions behind the advice, so you can correct them.
+
+Stay in the chat that gave you the advice and paste the prompt below.
 
 ```
 List the assumptions you are making about me that I never stated: my market, region, company size, role and customers. For each one, say how it shaped your advice. Ask me to correct the wrong ones, then update your recommendation.

@@ -34,6 +34,7 @@ Open items
 - Team agent home: confirm that monday agents can serve a whole team from a team board, and that shared Claude projects are enabled for teams. Wording is provisional.
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; "In Claude" lines may need a freshness sweep.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 📐 Your Team's AI Blueprint
@@ -57,7 +58,7 @@ Joined Monday's managers training? This is the Team OS idea, in a version you re
 
 ## Before you start
 
-Work in the AI tool or project that knows most about your team, and have your team's main monday board open.
+Have your team's main monday board open.
 
 ## Step 1: Look at your team as a whole
 
@@ -82,13 +83,15 @@ The blueprint stays at team level: the team's work, knowledge and rules. Each pe
 - AI ideas the team has raised, and builds teammates already share
 - What the team must achieve this quarter
 
-Messy is fine. These notes are the input for Step 2.
+Messy is fine.
 
 ## Step 2: Get interviewed and draft the blueprint
 
 ### Prompt: Team AI Blueprint interview
 
-**What this does:** the AI reads your Step 1 notes, interviews you about the team, and writes the blueprint with a scored backlog and three actions for this week.
+**What this does:** the AI interviews you from your Step 1 notes and writes the blueprint, with a scored backlog and three actions for this week.
+
+Open a new chat in the AI tool or project that knows most about your team, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me design my team's AI blueprint: the shared layer that makes everyone's AI better at our team's work. Use what you know about me and my team; ask only for gaps, and say if your context is thin. I will paste my notes.
@@ -138,6 +141,8 @@ The review rhythm keeps the blueprint true:
 
 **What this does:** updates the blueprint from what really happened, honestly, with a new This Week.
 
+Each quarter, open a new chat in the same tool or project and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Run the quarterly review of our Team AI Blueprint. Its five parts: shared context, team skills, a use-case backlog scored with FVI (Feasibility, Value, Investment), build rules and review rhythm. I will paste the blueprint and, if I have it, an export of our AI Backlog board.
 
@@ -156,6 +161,8 @@ You are done when the backlog is on your board and the first This Week action is
 
 **What this does:** turns one job from your blueprint into a one-page brief for an agent the whole team uses.
 
+Stay in the chat that holds your blueprint and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me design a team agent: one agent several teammates use, with shared knowledge and agreed rules. Use my Team AI Blueprint from this chat, or ask me for it. Interview me in at most two rounds, across five decisions:
 1. What it does: the one job where several teammates need the same answers or output.
@@ -167,6 +174,7 @@ Then write a one-page Team Agent Brief: those five sections, the main risks, the
 ```
 
 A team agent can live in monday agents on your team board, or in a shared Claude project.
+
 ## Proof of work
 
 In "what I built", name the parts of your blueprint the team starts with, the top backlog item with its owner, and the This Week action you completed.

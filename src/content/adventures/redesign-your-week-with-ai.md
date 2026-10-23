@@ -33,6 +33,7 @@ Open items
 - Keren Q2 (how skills are added at Monday) if a hand-off becomes a skill in Step 4.
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; this ships 4 Jan 2027, so sweep the "In Claude Cowork" lines before release.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # ⚖️ Redesign Your Week with AI
@@ -75,7 +76,9 @@ Memory forgets small recurring tasks; files miss the work you never write down. 
 
 ### Prompt: First Load Map
 
-**What this does:** gathers your real load by interview, or by reading and then interview, and produces a first map with the source of each item.
+**What this does:** builds a first map of your load, with the source of each item.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Act as an impartial coach auditing my work load. This step produces a Load Map: everything that takes my time and attention. Make no decisions yet. Use what you already know about me; ask only for gaps.
@@ -100,6 +103,8 @@ The first map is wrong somewhere: the AI misses context, invents structure, or t
 ### Prompt: Correct the Load Map
 
 **What this does:** updates the map from your corrections, pass after pass, until you trust it.
+
+Stay in the same chat, paste the prompt below, and add your corrections after it.
 
 ```
 Here are my corrections to the Load Map: what is wrong, missing, too heavy, too light or biased. Update the map.
@@ -134,6 +139,8 @@ Parking an item for later is fine when you review your backlog on a fixed rhythm
 
 **What this does:** coaches you from the trusted map to decisions and writes a one-page Week Plan.
 
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Using my trusted Load Map in this chat, coach me to decisions. Prefer a realistic load to a heroic one. I will first share three instincts I wrote down: what to stop, protect, and make time for.
 
@@ -157,6 +164,8 @@ Start with the smallest AI hand-off: the one that would lighten next week.
 
 **What this does:** turns each AI hand-off in your Week Plan into a specific form of help with a first step.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Look at the AI hand-offs in my Week Plan. For each one, use what you know about me and my tools, and propose:
 1. The form of help: a prompt I reuse, a skill, a scheduled job, a monday automation or agent, or a draft I review
@@ -178,6 +187,8 @@ Put the Week Plan on a monday board you open every day: one item per decision, w
 **Add a weekly check-in.** Do this so the plan stays alive after the first week.
 
 **What this does:** a short Friday review of the Week Plan on your board.
+
+Each Friday, open a new chat and paste the prompt below.
 
 ```
 Check in on my Week Plan, which is on my monday board. Ask me three short questions: which stops held, which hand-off ran, and what crept back in. Then suggest one change for next week. If nothing moved, ask one question about what got in the way. Keep it brief.

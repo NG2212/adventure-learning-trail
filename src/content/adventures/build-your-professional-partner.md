@@ -31,6 +31,7 @@ Open items
 - Effort: the inventory row says L; the seed and the Inbar list say Moderate. Frontmatter uses Moderate.
 - next: slugs exist as files; build-a-personal-brain-for-your-ai is W2, so it is live before this W4 adventure.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 💼 Build Your Professional Partner
@@ -39,9 +40,9 @@ Open items
 
 ## Why this adventure
 
-Out of the box, AI answers from the average of everything written about your field, so you get textbook advice. Your work runs on your company's definitions, your team's frameworks, the number you are measured on and the words your team uses.
+Out of the box, AI gives the textbook advice for your field. Your work runs on your company's definitions, your team's frameworks, the number you are measured on and the words your team uses.
 
-A professional partner is an AI specialist for one domain of your work, with a job description: what it is for, the main number it helps you move (your KPI), the frameworks and vocabulary it uses, and the tasks it handles every week. Think of a colleague with ten years of experience in exactly your world.
+A professional partner is an AI specialist for one domain of your work, with a job description: its purpose, the main number it helps you move (your KPI), its frameworks and vocabulary, and its weekly tasks.
 
 New to this? Steps 1 to 3 give you a working partner. Already have one? Bring it to Step 4: the bar is a partner that tells you where an expert would disagree with you.
 
@@ -54,11 +55,11 @@ New to this? Steps 1 to 3 give you a working partner. Already have one? Bring it
 
 ## Before you start
 
-Have two or three documents your work runs on: a framework, your KPI definitions, an example of excellent work. If you set up standing instructions in Your AI Identity, your partner builds on them.
+Have two or three documents your work runs on: a framework, your KPI definitions, an example of excellent work.
 
 ## Step 1: Decide what your partner should do
 
-A partner covers one domain and several tasks in it, like a job description. When you want one task done the same way every time, build a skill instead (see Skills: When, How and How Well); your partner can use those skills later.
+A partner covers several tasks in one domain. For one task done the same way every time, build a skill instead (see Skills: When, How and How Well).
 
 | Where do you work? | Which partner could you build? | What would it handle every week? |
 | --- | --- | --- |
@@ -67,11 +68,13 @@ A partner covers one domain and several tasks in it, like a job description. Whe
 | Engineering | Reliability Advisor | Incident write-ups, design reviews, tech debt priorities |
 | Finance | Forecast Analyst | Forecast commentary, variance explanations, numbers for board updates |
 
-**Think first, without AI.** Close the chat. Write down three things: the recurring tasks where quality matters most, the part of your work where you keep wishing for an expert colleague, and where generic AI answers disappoint you. These notes decide what you build.
+**Think first, without AI.** Close the chat. Write down the recurring tasks where quality matters most, where you wish for an expert colleague, and where generic AI answers disappoint you.
 
 ### Prompt: Find the partner worth building
 
-**What this does:** the AI reads your notes, interviews you, checks what you already have, and recommends one partner.
+**What this does:** the AI interviews you and recommends one partner.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me choose a professional partner to build: an AI specialist for one domain of my work, with a job description covering several recurring tasks. I will paste notes about my work. Use what you know about me as background; ask only for gaps.
@@ -89,15 +92,15 @@ If an answer is vague, ask for a recent example. Do not choose my domain or task
 Propose two or three partners: a name that says what it does, its domain, its three to five tasks, and why I would use it weekly. Recommend one, then stop for my choice.
 ```
 
-Pick the partner you would use every week. Keep this chat open for Step 2.
-
 ## Step 2: Write its job description
 
-The job description is a **craft brief**: what your function is for, your KPI with what good and concerning look like, the frameworks and vocabulary your team uses, and what great output looks like for each task.
+The job description is a **craft brief**: the specifics an expert on your team would know.
 
 ### Prompt: Write my partner's instructions
 
-**What this does:** interviews you for the craft brief and writes the complete instructions for your partner.
+**What this does:** writes your partner's instructions from a short interview.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Let's build the partner I chose in this chat. It needs a craft brief: what my function is for, my KPI with thresholds, our frameworks and internal definitions, our vocabulary, and what great output looks like for each recurring task.
@@ -116,43 +119,45 @@ Then write the complete instructions, under 600 words:
 Show them to me and wait for my approval.
 ```
 
-Read the instructions. Where a line could fit any company, tell the AI exactly what is missing and ask for a new version.
+Where a line could fit any company, tell the AI what is missing and ask for a new version.
 
-**Set it up.** Save the approved instructions where your AI reads them every time, and add the documents you prepared:
+**Set it up.** Save the approved instructions where your AI always reads them, and add your documents:
 
 | What kind of document is it? | What should you add? |
 | --- | --- |
 | A stable reference: a framework, a playbook, a policy | The original file |
-| A long document where only a few pages matter | A short summary of those pages; ask your AI to write it |
+| A long document where only a few pages matter | A short summary of those pages, written by your AI |
 | Information that changes often: targets, team, roadmap | A live Drive file or monday board, or a short file you update every quarter |
 
 Your partner may use Monday's own data about customers: Salesforce data through Kremer, support tickets Monday wrote, feedback Monday collected. Data that Monday's customers uploaded to their own monday boards (customer boards) never goes into Claude.
 
-**In Claude:** create a project named after your partner (for example Renewal Coach), paste the instructions into the project instructions, and add the documents to the project knowledge.
+**In Claude:** create a project named after your partner, paste the instructions into the project instructions, and add the documents to its knowledge.
 
-**In Claude Cowork:** create a project the same way and connect the Drive folders and monday boards your partner should read.
+**In Claude Cowork:** create a project the same way and connect the Drive folders and monday boards it should read.
 
 ## Step 3: Give it real work and review it like a new hire
 
-Pick a real task from your partner's job description that you need this week, such as a QBR summary or a set of release notes. Open a new chat in your partner's project.
+Pick a real task you need this week, such as a QBR summary or release notes.
 
 ### Prompt: First real task
 
-**What this does:** your partner asks for what it needs, does the task, and shows you where it made assumptions.
+**What this does:** your partner does a real task and shows its assumptions.
+
+Open a new chat in your partner's project and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I have a real task for you from your job description. Ask me, one question at a time, which task it is, what the result is for, and what context you need. Then do it. After the result, list the assumptions you made, and mark anything you could not confirm from my documents or connected sources as UNVERIFIED.
 ```
 
-**Review it like a manager before you reply.** Write three lines yourself: what it got right, where it is generic, and what it still misunderstands about your work.
+**Review it like a manager before you reply.** Write three lines yourself: what it got right, where it is generic, and what it misunderstands.
 
-Then give feedback the way you would to a new hire: say exactly what was wrong and what should change. "You used the textbook definition of churn risk; on our team an account is at risk when usage drops two months in a row." Specific feedback gets a better result than "make it better".
+Then give feedback as you would to a new hire: exactly what was wrong and what should change. "You used the textbook definition of churn risk; on our team an account is at risk when usage drops two months in a row."
 
-Ask for a new version. Then ask your partner to write the complete instructions again with the fix included, and replace the old instructions in the project. You are done with this step when one result from your partner goes into your real work.
+Ask for a new version. Then ask your partner to rewrite its complete instructions with the fix, and replace the old ones in the project. You are done when one result goes into your real work.
 
 ## Step 4: Improve it from your feedback
 
-After three to five real tasks, find out why the misses happen. Each miss has one of three causes, and each cause has its own fix:
+After three to five real tasks, find out why the misses happen. Each miss has one of three causes, each with its own fix:
 
 | What do you see? | What is the cause? | What is the fix? |
 | --- | --- | --- |
@@ -162,7 +167,9 @@ After three to five real tasks, find out why the misses happen. Each miss has on
 
 ### Prompt: Diagnose and improve my partner
 
-**What this does:** collects your honest assessment, sorts each miss into one of the three causes, and rewrites the instructions.
+**What this does:** sorts each miss into one of the three causes and rewrites the instructions.
+
+Open a new chat in your partner's project and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 I have used you for real work. Help me improve you. If you can see our earlier chats in this project, use them as evidence.
@@ -182,32 +189,34 @@ Show a table: problem, cause, fix. Then write your complete updated instructions
 
 Replace the instructions in the project with the approved version.
 
-Then check for the **echo trap**: a partner that reflects your own views back to you with confidence and adds no expertise of its own.
+Then check for the **echo trap**: a partner that confidently repeats your own views and adds no expertise.
 
 ### Prompt: Echo trap test
 
 **What this does:** asks your partner to argue with you as an outside expert would.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Where would a skeptical expert in my field disagree with the advice you have given me? Name three specific points, with the reasoning for each.
 ```
 
-If the three points are weak or generic, add outside material to its documents: industry benchmarks, a competing method, a framework that disagrees with yours. You are done when the instructions hold your fixes and your partner names three real disagreements.
+If the points are weak, add outside material to its documents: industry benchmarks, a competing method, a framework that disagrees with yours. You are done when the instructions hold your fixes and your partner names three real disagreements.
 
 ## Go further
 
-**Turn two recurring tasks into named workflows.** Do this for tasks you run under time pressure, so one short phrase such as "QBR prep" gets a useful result in one pass. Ask your partner to add two workflows to its instructions, each with a trigger phrase, the minimum questions it asks you, the output format and one check before it delivers. When a workflow is stable, turn it into a skill with Skills: When, How and How Well.
+**Turn two recurring tasks into named workflows.** Do this for tasks you run under time pressure, so a short phrase such as "QBR prep" gets a useful result. Ask your partner to add two workflows to its instructions, each with a trigger phrase, the questions it asks, the output format and one check before it delivers.
 
-**Connect it to live data.** Do this when you paste the same snapshots again and again; pasted data is out of date by the next session. Connect the monday boards and Drive folders your partner reads, and reach internal data such as account history through Kremer. Where no connection exists, keep one export in one place, in the same format, updated on a fixed day.
+**Connect it to live data.** Do this when you paste the same snapshots again and again. Connect the monday boards and Drive folders it reads, and reach account history through Kremer.
 
 ## Proof of work
 
-In "what I built", write your partner's name, its domain, and one fix you made after reviewing its work.
+In "what I built", write your partner's name, its domain, and one fix you made after a review.
 
-For example: "Renewal Coach for my mid-market accounts. After its first QBR prep I added our rule: an account is at risk when usage drops two months in a row."
+For example: "Renewal Coach for my mid-market accounts. After its first QBR prep I added our churn-risk rule."
 
 ## Related adventures
 
-- **Your AI Identity**: tell your AI who you are, so every partner starts from it.
+- **Your AI Identity**: the standing instructions every partner builds on.
 - **Skills: When, How and How Well**: turn your partner's best workflows into skills.
-- **Build a Personal Brain for Your AI**: give your partner deeper context about your team and projects.
+- **Build a Personal Brain for Your AI**: deeper context about your team and projects.

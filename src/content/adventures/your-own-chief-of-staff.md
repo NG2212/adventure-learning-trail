@@ -34,6 +34,7 @@ Open items
 - Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026, the day after launch; the "In Claude Cowork" lines may need a freshness sweep.
 - Cowork scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 4 tells people to match permissions to the approval boundary. Hands-on check pending.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+- 23 Oct: do-this line on every prompt
 -->
 
 # 🗓️ Your Own Chief of Staff
@@ -46,7 +47,7 @@ Much of a busy week is the same preparation again and again: checking what chang
 
 In this adventure you design that assistant around the tasks you repeat, give it your context and tools, prove one job by hand, then put it on a schedule.
 
-Already have an assistant like this? The first prompt improves it, starting from its current instructions.
+Already have such an assistant? The Step 1 prompt builds on its instructions.
 
 ## The trail
 
@@ -73,7 +74,9 @@ Typical jobs at Monday: a morning briefing on your boards, preparation before a 
 
 ### Prompt: Three jobs for your chief of staff
 
-**What this does:** the AI interviews you about your week, proposes three jobs with their sources, output, timing and approval line, and helps you pick two.
+**What this does:** the AI interviews you about your week, proposes three jobs and helps you pick two.
+
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me design a personal chief of staff: an AI tool that does my recurring preparation work. Use what you know about me; ask only for what is missing, one question at a time. If I already have such an assistant, ask me to paste its instructions and build on them.
@@ -89,7 +92,7 @@ Then propose three jobs. For each job give:
 Help me pick one scheduled job and one on-demand job. Stop and wait.
 ```
 
-Many people pick a morning briefing (scheduled) and meeting prep (on demand); this page uses those two as the example. Keep the chat open for the next prompt.
+Many people pick a morning briefing (scheduled) and meeting prep (on demand); this page uses those two as the example.
 
 ## Step 2: Give it your context and your tools
 
@@ -98,6 +101,8 @@ Your chief of staff is as good as what it can see. Give it three kinds of contex
 ### Prompt: Standing instructions
 
 **What this does:** turns the two jobs you picked in Step 1 into the standing instructions your chief of staff follows every time it runs.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Write standing instructions for my chief of staff, based on the two jobs I picked earlier in this chat. If they are missing, ask for them.
@@ -118,19 +123,21 @@ Keep it to one page. Ask me to approve it.
 
 ## Step 3: Run one job by hand until it is right
 
-A scheduled job runs alone, so prove it by hand first, in the chief of staff you set up in Step 2.
+A scheduled job runs alone, so prove it by hand first.
 
 ### Prompt: Run the scheduled job now
 
 **What this does:** runs your scheduled job once, now, with the source of each line.
 
+Open a new chat in the chief of staff from Step 2, so it uses the standing instructions, and paste the prompt below.
+
 ```
 Run my scheduled job now, for today, exactly as your standing instructions describe. After the output, list the sources you used: each board, mail thread, calendar entry and document. Mark any line you could not confirm from a source as UNVERIFIED. Then ask me what to change.
 ```
 
-Read the output as you would on a busy morning. When something is off, say exactly what: "the renewal on my Renewals board is missing", "one line per meeting, please; I got a paragraph", "you listed a meeting I already declined". Specific feedback gets a better result than "make it better".
+Read the output as you would on a busy morning. When something is off, say exactly what: "the renewal on my Renewals board is missing", "one line per meeting, please; I got a paragraph", "you listed a meeting I already declined".
 
-Ask it to write every fix into the standing instructions. Scheduled runs start fresh and remember only those instructions. Run the Run the scheduled job now prompt again on a second day. You are ready to schedule when you would read the output every morning as it is.
+Ask it to write every fix into the standing instructions. Scheduled runs start fresh and remember only those instructions. Run the job again on a second day. You are ready to schedule when you would read the output every morning as it is.
 
 ## Step 4: Put it on a schedule and add an on-demand job
 
@@ -138,11 +145,13 @@ Schedule the job for the moment you would read it, for example before your morni
 
 **In Claude Cowork:** in the Chief of Staff project, ask Claude to run the scheduled job every weekday at that time, check that it appears under Scheduled, and set its permissions to match the approval boundary in your standing instructions.
 
-**In monday agents:** run the agent from a recurring automation on your board. A daily calendar reminder to run the Run the scheduled job now prompt yourself also works, in any AI tool.
+**In monday agents:** run the agent from a recurring automation on your board. A daily calendar reminder to run the job yourself also works, in any AI tool.
 
 ### Prompt: Prep me for my next meeting
 
 **What this does:** prepares you for one meeting from the board and your last conversation with the attendees.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Prep me for my next meeting, using the meeting prep format in your standing instructions. First show me my next three meetings from my calendar and ask which one. Use the related monday board and the last email or Slack thread with the attendees. List the sources you used, and mark anything you could not confirm as UNVERIFIED.
@@ -157,6 +166,8 @@ The next morning, open the first unattended run. Check three things: it ran on t
 **Research an account before a call.** Do this before a renewal, QBR or escalation call, when the context is spread across a board, the CRM and your mail.
 
 **What this does:** collects one account's context into a one-page brief.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Research one account before my call. Ask me which account and what the call is for.
@@ -175,6 +186,8 @@ Once it proves useful, add it to your standing instructions.
 **Pull a weekly status from your team board.** Do this when you write the same weekly update from your team's board.
 
 **What this does:** drafts a weekly status from what changed on one board.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Write my weekly team status from my team's monday board. Ask me which board and who reads the update.

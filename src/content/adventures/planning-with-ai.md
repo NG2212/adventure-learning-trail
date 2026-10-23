@@ -34,6 +34,7 @@ Open items
 - Kremer access from Claude chat and Cowork for usage and revenue data: worded "if you have access", consistent with other adventures.
 - next: board-of-advisors and making-decisions-with-ai both exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
+23 Oct: do-this line on every prompt
 -->
 
 # 🧭 Planning with AI
@@ -66,6 +67,8 @@ Pick one real plan you owe soon, and have the monday boards behind it available 
 
 **What this does:** the AI interviews you about your notes and writes a short brief that every later step uses.
 
+Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
 ```
 Help me prepare a plan. I will paste or dictate my notes. Use what you already know about me and my team; ask only for what is missing, one question at a time. If I answer vaguely, ask for an example.
 
@@ -79,8 +82,6 @@ Then write a plan brief, under 200 words:
 
 Stop and wait for my approval.
 ```
-
-Keep this chat open; Steps 2 to 5 continue in it.
 
 ## Step 2: Gather the real signals
 
@@ -100,6 +101,8 @@ AI tends to treat one loud request as a trend, so the prompt counts the sources 
 
 **What this does:** reads your sources and builds one table of evidence, before any plan exists.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Build a signal sheet for the plan brief in this chat. Ask me which monday boards, Drive documents and Slack channels to read, and read them through my connectors. If I have internal data through Kremer, ask whether to use it.
 
@@ -117,6 +120,8 @@ Then add what only you know, such as a promise made in a meeting.
 ### Prompt: Draft the plan
 
 **What this does:** offers three directions for the plan, waits for your choice, then drafts one page.
+
+Stay in the same chat and paste the prompt below.
 
 ```
 Draft my plan from the plan brief and the signal sheet in this chat.
@@ -153,6 +158,8 @@ Test the plan from the position of each reader.
 
 **What this does:** challenges the plan from each reader's position, waits for your decisions, then revises.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Stress-test the plan in this chat. First ask me who will read it, and each reader's role: Decider (approves it), Influencer (the Decider listens to them), Blocker (can stop it), Champion (will argue for it) or dependent team (delivers a part). If I paste what they have said in Slack or meetings, use it.
 
@@ -176,6 +183,8 @@ If you built a board in the Build Your Board of Advisors adventure, convene it o
 
 **What this does:** turns the revised plan into items for your team's monday board, and creates them only after you approve.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Turn the revised plan in this chat into items for my team's monday board. Ask me which board and groups to use.
 
@@ -192,6 +201,8 @@ Keep the change log and the rejected challenges with the plan. You are done when
 
 **What this does:** builds four scenarios from two uncertainties and tells you which moves to make now and which to hold.
 
+Stay in the same chat and paste the prompt below.
+
 ```
 Run scenario planning on the plan in this chat. Scenario planning means: pick the two uncertainties that would change the plan most, combine their outcomes into four scenarios, and decide in advance what to do in each.
 
@@ -205,7 +216,7 @@ Run scenario planning on the plan in this chat. Scenario planning means: pick th
 
 Add the warning signs to your board as a group called "Signals to watch", and check them at each planning review.
 
-**Check the plan against reality mid-way.** Do this halfway through the period, to see where the plan and the work have drifted apart.
+**Check the plan against reality mid-way.** Do this halfway through the period, to see where the plan and the work have drifted apart. Open a new chat and paste the prompt below.
 
 ```
 Compare my plan with my team's monday board. I will paste the plan and name the board. Report progress on each priority, signals that changed since the plan was written, and assumptions that no longer hold. End with one recommendation: keep, cut or add. Mark any point without a board item or source as UNVERIFIED.
