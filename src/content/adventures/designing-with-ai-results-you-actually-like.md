@@ -159,7 +159,7 @@ Start a new chat where your visual-language file is available, for the visual yo
 
 ### Prompt: Brief, then three versions
 
-**What this does:** the AI agrees a brief with you, then makes three different versions so you choose before you fix.
+**What this does:** the AI agrees on a brief with you, then makes three different versions so you choose before you fix.
 
 Paste the prompt below into that new chat. Answer its questions in writing, or by voice if your tool has dictation.
 
