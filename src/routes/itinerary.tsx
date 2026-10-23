@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp, X } from "lucide-react";
 import { getAdventure, WAVES, type Adventure } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import { AdventureIcon } from "@/components/AdventureIcon";
+import { AdventureRating } from "@/components/AdventureRating";
 import { Chip, LabelChips } from "@/components/LabelChips";
 import { FootprintPair, FootprintShape } from "@/components/Footprints";
 import { PageHeading } from "@/components/AppShell";
@@ -100,7 +101,7 @@ function Stop({ adventure, status, index, total }: { adventure: Adventure; statu
           {status === "later" && <Chip tone="neutral">{adventure.isOpen ? "Later" : WAVES[adventure.wave]?.label}</Chip>}
         </div>
         <p className="text-lg font-bold">{adventure.title}</p>
-        <LabelChips adventure={adventure} className="mt-2" />
+        <LabelChips adventure={adventure} className="mt-2" effortAccessory={<AdventureRating slug={adventure.slug} />} />
       </div>
       <div className="flex gap-1 sm:flex-col">
         <IconBtn label="Move up" disabled={index === 0} onClick={() => store.reorderItinerary(adventure.slug, "up")}><ArrowUp className="size-4" /></IconBtn>

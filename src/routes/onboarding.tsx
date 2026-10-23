@@ -5,6 +5,7 @@ import { ADVENTURES } from "@/content/adventures";
 import { recommend, type OnboardingAnswers } from "@/lib/recommend";
 import { store, useStoreState } from "@/store";
 import { AdventureIcon } from "@/components/AdventureIcon";
+import { AdventureRating } from "@/components/AdventureRating";
 import { LabelChips } from "@/components/LabelChips";
 import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { cn } from "@/lib/utils";
@@ -141,7 +142,7 @@ function Results({ answers, onRestart }: { answers: OnboardingAnswers; onRestart
             <div className="flex-1">
               <h2 className="text-lg">{adventure.title}</h2>
               <p className="text-sm text-muted-foreground">{adventure.walkaway}</p>
-              <LabelChips adventure={adventure} className="mt-3" />
+              <LabelChips adventure={adventure} className="mt-3" effortAccessory={<AdventureRating slug={adventure.slug} />} />
               <p className="mt-3 text-sm"><span className="font-semibold text-primary">Why this for you: </span>{why}</p>
             </div>
             <ItineraryToggle slug={adventure.slug} />

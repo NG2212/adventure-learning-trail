@@ -1,8 +1,9 @@
 import type { Adventure } from "@/content/adventures";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /** Compact label row: category, levels, tool, effort. Uses supporting colours sparingly. */
-export function LabelChips({ adventure, className }: { adventure: Adventure; className?: string }) {
+export function LabelChips({ adventure, className, effortAccessory }: { adventure: Adventure; className?: string; effortAccessory?: ReactNode }) {
   return (
     <div className={cn("flex flex-wrap gap-1.5", className)}>
       <Chip tone="primary">{adventure.category}</Chip>
@@ -10,7 +11,10 @@ export function LabelChips({ adventure, className }: { adventure: Adventure; cla
         <Chip key={l} tone="info">{l}</Chip>
       ))}
       <Chip tone="neutral">{adventure.tool}</Chip>
-      <Chip tone="neutral">{adventure.effort}</Chip>
+      <span className="inline-flex flex-wrap items-center gap-1.5">
+        <Chip tone="neutral">{adventure.effort}</Chip>
+        {effortAccessory}
+      </span>
     </div>
   );
 }

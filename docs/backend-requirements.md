@@ -36,6 +36,7 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 
 - Mock-store `demoOpenAll: true` temporarily makes all waves openable for everyone; set false to restore schedule gating, retaining wave data/card hints and read-only admin preview.
 - Mock-store `showReviewState: true` shows temporary top-left diagonal Ready/Draft stamps on cards and page heads; exact optional Markdown `review: ready` means Ready, missing/other values mean Draft; set false to hide all stamps without changing chips.
+- Mock-store `ratingDisplayMinimum: 5`: `getAdventureRating(slug)` returns only aggregate mean/count at or above the threshold; employee cards and page heads show one footprint, a one-decimal average and rating count, otherwise nothing (no icon/placeholder); no employee-side rankings or top-rated marks.
 
 | Screen | Reads | Writes |
 | --- | --- | --- |

@@ -7,13 +7,13 @@ describe("temporary demo review rules", () => {
 
   it("defaults to opening every wave, with review marks visible", () => {
     const settings = createLocalStore().getDemoSettings();
-    expect(settings).toEqual({ demoOpenAll: true, showReviewState: true });
+    expect(settings).toEqual({ demoOpenAll: true, showReviewState: true, ratingDisplayMinimum: 5 });
     expect(ADVENTURES.every((a) => canOpenAdventure(a, settings.demoOpenAll))).toBe(true);
   });
 
   it("restores scheduled locks with one flag without changing wave data", () => {
     if (!scheduled) throw new Error("Missing the-loop seed");
-    const settings = createLocalStore({ demoOpenAll: false, showReviewState: true }).getDemoSettings();
+    const settings = createLocalStore({ demoOpenAll: false, showReviewState: true, ratingDisplayMinimum: 5 }).getDemoSettings();
     expect(canOpenAdventure(scheduled, settings.demoOpenAll)).toBe(false);
     expect(scheduled.isOpen).toBe(false);
     expect(adventureBody(scheduled, false, settings.demoOpenAll)).toContain("This adventure opens on");
@@ -43,6 +43,6 @@ describe("temporary demo review rules", () => {
   });
 
   it("can hide all review marks independently of opening adventures", () => {
-    expect(createLocalStore({ demoOpenAll: true, showReviewState: false }).getDemoSettings()).toEqual({ demoOpenAll: true, showReviewState: false });
+    expect(createLocalStore({ demoOpenAll: true, showReviewState: false, ratingDisplayMinimum: 5 }).getDemoSettings()).toEqual({ demoOpenAll: true, showReviewState: false, ratingDisplayMinimum: 5 });
   });
 });

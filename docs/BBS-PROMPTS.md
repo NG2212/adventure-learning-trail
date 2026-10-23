@@ -68,6 +68,8 @@ Bodies: all 30 adventures have real, full bodies in the current structure (HTML 
 
 Profession chips: an adventure for "Everyone" matches every chip; "Managers" matches `audience: [Managers]`; "Other" also matches free-text professions.
 
+**Employee rating line:** every catalogue, itinerary and home adventure card shows one small footprint and muted `4.6 · 23 ratings` beside the effort chip; the adventure page head shows it under the title. Read the same lifetime aggregate mean/count as Admin through `getAdventureRating`; show only at or above mock-store `ratingDisplayMinimum` (default 5), otherwise render nothing at all. Preserve review stamps and label chips; no ranking or top-rated marks on employee screens (ranking stays in Admin Most loved adventures).
+
 **Accept:** filtering "Status: Done" shows only Stay Original with AI; "Status: Coming soon" shows 19.
 
 ## 8. My itinerary (`/itinerary`)
