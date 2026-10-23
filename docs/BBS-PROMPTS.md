@@ -32,6 +32,8 @@ Bodies: all 30 adventures have real, full bodies in the current structure (HTML 
 
 ## 2. Store
 
+**Temporary review mode:** `AdventureStore.getDemoSettings()` exposes `demoOpenAll: true` and `showReviewState: true`, configured once in the mock store, not persisted per employee. All cards and reader pages open regardless of wave while demoOpenAll is true; wave labels, filters and disc styles remain schedule-derived. False restores schedule gating. Scheduled admin previews remain read-only. Shared ReviewStamp overlays cards and page heads without moving chips: exact optional frontmatter `review: ready` → faint purple Ready; anything else/missing → stone-grey Draft. Small uppercase letter-spaced text at top-left, rotated -20°, no box/border. Only understanding-ai-agents is initially ready. Hide every stamp by setting showReviewState false. These demo rules temporarily override the schedule restrictions described below.
+
 **Build:** One interface: getPerson, getItinerary, addToItinerary, removeFromItinerary, reorderItinerary(slug, up|down), markComplete(slug) → {count, newTitle, alreadyDone}, getCompletions, getTitle, dismissAnnouncement (plus signIn, isSignedIn, isAnnouncementDismissed, subscribe, getSnapshot for the UI). One localStorage implementation. Seed: Noa Levi, Product Manager, admin; completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well` in that order (Board of Advisors is Next up). Progress shows 1 of 30, First Steps.
 
 **Accept:** refresh keeps changes; clearing storage restores the seed; marking an adventure complete twice does not double count.

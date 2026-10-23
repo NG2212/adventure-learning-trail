@@ -55,6 +55,7 @@ export interface Adventure {
   icon: IconName;
   /** Optional badge art (512px PNG, transparent outside the circle); falls back to the Lucide glyph for `icon`. */
   iconAsset?: string | undefined;
+  review?: string | undefined;
   title: string;
   walkaway: string;
   category: Category;
@@ -74,6 +75,7 @@ export interface Adventure {
 
 /** Raw frontmatter as written in the Markdown files. Extra fields (emoji, pattern, source) are ignored. */
 interface Frontmatter {
+  review?: unknown;
   slug?: string; icon?: string; title?: string; walkaway?: string;
   category?: Category; levels?: Level[]; professions?: string[]; audience?: string[];
   tool?: Tool; effort?: Effort; outcome?: string; wave?: number | string; slot?: number; next?: string[];
@@ -107,6 +109,7 @@ export function toAdventure(raw: string): Adventure {
   const wave = parseWave(data.wave);
   return {
     slug: String(data.slug),
+    review: typeof data.review === "string" ? data.review : undefined,
     icon: isIconName(data.icon) ? data.icon : CATEGORY_ICON[category],
     title: String(data.title),
     walkaway: String(data.walkaway ?? ""),
@@ -156,9 +159,18 @@ export function getAdventure(slug: string): Adventure | undefined {
  * - open without a body: a short "Content coming" page
  * - not open: "This adventure opens on <date>" (the body stays loaded for admin preview)
  */
-export function adventureBody(a: Adventure, adminPreview = false): string {
-  if ((a.isOpen || adminPreview) && a.body) return a.body;
-  if (a.isOpen) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
+export function canOpenAdventure(a: Pick<Adventure, "isOpen">, demoOpenAll: boolean): boolean {
+  return demoOpenAll || a.isOpen;
+}
+
+export function reviewState(a: Pick<Adventure, "review">): "Ready" | "Draft" {
+  return a.review === "ready" ? "Ready" : "Draft";
+}
+
+export function adventureBody(a: Adventure, adminPreview = false, demoOpenAll = false): string {
+  const open = canOpenAdventure(a, demoOpenAll);
+  if ((open || adminPreview) && a.body) return a.body;
+  if (open) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
   return `## This adventure opens on ${WAVES[a.wave]?.opensOn ?? "a later date"}\n\n${a.walkaway}`;
 }
 

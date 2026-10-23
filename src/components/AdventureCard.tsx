@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { WAVES, type Adventure } from "@/content/adventures";
-import { useStoreState } from "@/store";
+import { canOpenAdventure, WAVES, type Adventure } from "@/content/adventures";
+import { store, useStoreState } from "@/store";
 import { AdventureIcon } from "./AdventureIcon";
 import { Chip, LabelChips } from "./LabelChips";
 import { ItineraryToggle } from "./ItineraryToggle";
+import { ReviewStamp } from "./ReviewStamp";
 
 export function AdventureCard({ adventure, highlightAdd = false }: { adventure: Adventure; highlightAdd?: boolean }) {
   const { completions } = useStoreState();
@@ -11,6 +12,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
 
   const content = (
     <>
+      <ReviewStamp adventure={adventure} />
       <div className="flex justify-end">
         {done ? (
           <Chip tone="success">Done</Chip>
@@ -29,9 +31,9 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
     </>
   );
 
-  if (!adventure.isOpen) {
+  if (!canOpenAdventure(adventure, store.getDemoSettings().demoOpenAll)) {
     return (
-      <div className="flex flex-col rounded-3xl border bg-muted/50 p-6 opacity-80" aria-disabled>
+      <div className="relative flex flex-col rounded-3xl border bg-muted/50 p-6 opacity-80" aria-disabled>
         {content}
         <div className="mt-5"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
       </div>
@@ -42,7 +44,9 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
     <Link
       to="/adventures/$slug"
       params={{ slug: adventure.slug }}
-      className="flex flex-col rounded-3xl border bg-card p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+      className={adventure.isOpen
+        ? "relative flex flex-col rounded-3xl border bg-card p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+        : "relative flex flex-col rounded-3xl border bg-muted/50 p-6 opacity-80 transition hover:-translate-y-0.5 hover:border-primary/40"}
     >
       {content}
       <div className="mt-5"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>

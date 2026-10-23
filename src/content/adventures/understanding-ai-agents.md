@@ -2,6 +2,7 @@
 slug: understanding-ai-agents
 emoji: 🤖
 icon: robot
+review: ready
 title: "Understanding AI Agents"
 walkaway: "A working understanding of how agents think, and your own rules for setting goals and deciding what to delegate"
 category: Work smarter with AI

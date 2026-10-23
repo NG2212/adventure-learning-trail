@@ -3,11 +3,12 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
-import { ADVENTURES, adventureBody, getAdventure, WAVES } from "@/content/adventures";
+import { ADVENTURES, adventureBody, canOpenAdventure, getAdventure, WAVES } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
 import { AdventureTrail } from "@/components/AdventureTrail";
+import { ReviewStamp } from "@/components/ReviewStamp";
 import { Chip, LabelChips } from "@/components/LabelChips";
 import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
@@ -158,9 +159,11 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
   const slug = adventure.slug;
   const { completions, person } = useStoreState();
   const { preview: previewRequested } = Route.useSearch();
-  // Admin-only preview of a scheduled adventure; everyone else sees the opens-on page.
+  const { demoOpenAll } = store.getDemoSettings();
+  const open = canOpenAdventure(adventure, demoOpenAll);
+  // Keep scheduled admin previews read-only, including while demo access is enabled.
   const preview = !adventure.isOpen && !!previewRequested && person.isAdmin;
-  const parsed = useMemo(() => parseAdventure(adventureBody(adventure, preview), ADVENTURES), [adventure, preview]);
+  const parsed = useMemo(() => parseAdventure(adventureBody(adventure, preview, demoOpenAll), ADVENTURES), [adventure, preview, demoOpenAll]);
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const [current, setCurrent] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -205,7 +208,8 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
-      <header className="flex flex-col gap-5 rounded-3xl bg-primary-soft p-6 sm:flex-row sm:items-center sm:p-8">
+      <header className="relative flex flex-col gap-5 rounded-3xl bg-primary-soft p-6 sm:flex-row sm:items-center sm:p-8">
+        <ReviewStamp adventure={adventure} />
         <AdventureIcon adventure={adventure} size="xl" />
         <div className="min-w-0 flex-1">
           <div className="mb-2 flex gap-2">
@@ -262,12 +266,12 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
                   <h2 className="text-xl">Proof of work</h2>
                   <Md text={proof.body} />
                 </section>}
-                {adventure.isOpen && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
+                {open && !preview && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
                   onClick={() => setCelebration(store.markComplete(slug))}>
                   {done && <Check className="size-4" />}
                   Mark this adventure complete
                 </Button>}
-                {done && adventure.isOpen && <p className="mt-2 flex items-center gap-2 text-sm text-success"><Check className="size-4" />You completed this adventure. Badge earned.</p>}
+                {done && open && !preview && <p className="mt-2 flex items-center gap-2 text-sm text-success"><Check className="size-4" />You completed this adventure. Badge earned.</p>}
               </div>
             )}
 
