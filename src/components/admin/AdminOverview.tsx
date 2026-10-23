@@ -2,6 +2,7 @@ import { useState } from "react";
 import { store, useStoreState } from "@/store";
 import type { AdminFilters, GroupMetric } from "@/store/adminTypes";
 import { Disc } from "@/components/AdventureIcon";
+import { AdminProofOfWork, MostLovedAdventures } from "./AdminProofOfWork";
 import {
   AdminFiltersBar,
   Section,
@@ -92,6 +93,7 @@ export function AdminOverview() {
         ))}
       </div>
       <div className="mt-6 grid gap-x-10 lg:grid-cols-2">
+        <MostLovedAdventures />
         <Section title="Completions per week">
           <div className="flex h-44 items-end gap-2">
             {a.weekly.map((w) => (
@@ -168,6 +170,7 @@ export function AdminOverview() {
           {groupTable("Activity by profession", a.professions)}
         </div>
       </div>
+      <AdminProofOfWork />
       <p className="mt-6 border-t pt-4 text-xs text-muted-foreground">
         Analytics are for L&D; managers receive aggregates only.
       </p>

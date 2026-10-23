@@ -85,6 +85,7 @@ export function AdminAdventures() {
   const adventures = store.listAdminAdventures(),
     metrics = store.getAggregates().adventures,
     waves = store.getAdminWaves();
+  const ratings = store.getRatingSummaries();
   const [draft, setDraft] = useState<AdminAdventure | null>(null);
   const [originalSlug, setOriginalSlug] = useState<string | null>(null);
   const [error, setError] = useState("");
@@ -188,6 +189,8 @@ export function AdminAdventures() {
                 "Opens",
                 "Completions",
                 "Completion rate",
+                "Average rating",
+                "Rating count",
                 "Actions",
               ].map((x) => (
                 <th key={x}>{x}</th>
@@ -197,6 +200,7 @@ export function AdminAdventures() {
           <tbody>
             {adventures.map((a) => {
               const m = metrics.find((x) => x.slug === a.slug);
+              const rating = ratings.find((x) => x.slug === a.slug);
               return (
                 <tr key={a.slug}>
                   <td>
@@ -252,6 +256,8 @@ export function AdminAdventures() {
                   <td>{m?.opens ?? 0}</td>
                   <td>{m?.completions ?? 0}</td>
                   <td>{percent(m?.rate ?? 0)}</td>
+                  <td className="whitespace-nowrap">{rating?.ratingCount ? `${rating.averageRating.toFixed(1)} / 5` : "—"}</td>
+                  <td>{rating?.ratingCount ?? 0}</td>
                   <td>
                     <Button variant="ghost" size="sm" onClick={() => openEditor(a)}>
                       <Pencil className="size-3" />
