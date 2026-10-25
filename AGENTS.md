@@ -18,5 +18,5 @@
 
 - Employee onboarding answers are saved atomically on Person through AdventureStore; redo replaces suggestions but retains completed trail stops and completion/proof records. Why: personal preferences remain swappable and cannot erase earned work.
 - My journey is the canonical merged route with only the saved ordered trail and completed entries; legacy itinerary/progress routes redirect. Profile and Home reuse BadgeGrid with earned/open/later state independent of journey membership and demo access. Why: journey shows only personal destinations while badge schedule/reward styling stays consistent without lime.
-- Catalogue navigation and filter rows share a measured sticky band; label hints support hover, focus and touch. Why: scrolling headings and explanations remain accessible under the real header height.
+- Catalogue uses one category-navigation/selection row with Filters in a measured sticky band; shared category tokens and CategoryDot style labels and headings, with hover/focus/touch label hints. Why: one presentation avoids duplicate controls and keeps categories consistent across screens.
 - Effort duration is derived by effortLabel from frontmatter or defaults. Why: card and reader labels cannot diverge.

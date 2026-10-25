@@ -48,11 +48,11 @@
   --color-pink: var(--pink);
   --color-sunny: var(--sunny);
   --color-category-work: var(--primary);
-  --color-category-work-foreground: var(--primary-foreground);
+  --color-category-work-foreground: var(--foreground);
   --color-category-create: var(--pink);
   --color-category-create-foreground: var(--foreground);
   --color-category-setup: var(--info);
-  --color-category-setup-foreground: var(--primary-foreground);
+  --color-category-setup-foreground: var(--foreground);
   --color-category-automate: var(--success);
   --color-category-automate-foreground: var(--foreground);
   --color-category-lead: var(--sunny);
@@ -226,6 +226,17 @@
   font-weight: 700;
 }
 .catalogue-sticky { top: var(--app-header-height, 0px); }
+.category-work { --category-colour: var(--primary); }
+.category-create { --category-colour: var(--pink); }
+.category-setup { --category-colour: var(--info); }
+.category-automate { --category-colour: var(--success); }
+.category-lead { --category-colour: var(--sunny); }
+.category-chip {
+  background: color-mix(in srgb, var(--category-colour) 12%, var(--card));
+  color: var(--foreground);
+}
+.category-dot { background: var(--category-colour); }
+.category-heading { border-bottom: 2px solid var(--category-colour); }
 .catalogue-section { scroll-margin-top: calc(var(--app-header-height, 0px) + 170px); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
