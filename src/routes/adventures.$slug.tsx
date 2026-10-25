@@ -47,6 +47,10 @@ export const Route = createFileRoute("/adventures/$slug")({
       meta: [
         { title },
         { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -215,7 +219,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         <AdventureIcon adventure={adventure} size="xl" />
         <div className="min-w-0 flex-1">
           <div className="mb-2 flex gap-2">
-            {done && <Chip tone="success">Done</Chip>}
+            {done && <Chip>Completed</Chip>}
             {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
             {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>

@@ -47,6 +47,16 @@
   --color-lime: var(--lime);
   --color-pink: var(--pink);
   --color-sunny: var(--sunny);
+  --color-category-work: var(--primary);
+  --color-category-work-foreground: var(--primary-foreground);
+  --color-category-create: var(--pink);
+  --color-category-create-foreground: var(--foreground);
+  --color-category-setup: var(--info);
+  --color-category-setup-foreground: var(--primary-foreground);
+  --color-category-automate: var(--success);
+  --color-category-automate-foreground: var(--foreground);
+  --color-category-lead: var(--sunny);
+  --color-category-lead-foreground: var(--foreground);
   --shadow-soft: 0 1px 2px rgb(36 36 36 / 0.04), 0 8px 24px -12px rgb(36 36 36 / 0.12);
   --shadow-glow: 0 0 0 8px color-mix(in oklab, var(--lime) 35%, transparent), 0 0 80px 20px color-mix(in oklab, var(--lime) 45%, transparent);
 }
@@ -94,7 +104,7 @@
   }
   h1, h2, h3, h4 {
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 }
 
@@ -197,3 +207,26 @@
     top: calc(var(--app-header-height, 0px) + 16px);
   }
 }
+
+.completed-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  border: 3px solid var(--lime);
+  border-radius: 50%;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--card) 94%, transparent);
+  transform: rotate(-12deg);
+  gap: 4px;
+  font-size: 8px;
+  font-weight: 700;
+}
+.catalogue-sticky { top: var(--app-header-height, 0px); }
+.catalogue-section { scroll-margin-top: calc(var(--app-header-height, 0px) + 170px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.completed-stamp-card { width: 52px; height: 52px; font-size: 6px; gap: 2px; }

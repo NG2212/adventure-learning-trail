@@ -85,7 +85,7 @@ export function AdventureIcon({ adventure, size = "md", className }: { adventure
 const LEGEND_ART = ADVENTURES.find((a) => a.iconAsset)?.iconAsset;
 
 export function DiscLegend({ className }: { className?: string }) {
-  const items: [DiscState, string][] = [["open", "Open"], ["itinerary", "In my itinerary"], ["done", "Done"], ["later", "Opens later"]];
+  const items: [DiscState, string][] = [["open", "Open"], ["itinerary", "In my journey"], ["done", "Completed"], ["later", "Opens later"]];
   return (
     <div className={cn("flex flex-wrap items-center gap-x-2 gap-y-2 text-xs text-muted-foreground", className)}>
       {items.map(([s, label], i) => (

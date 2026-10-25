@@ -1,4 +1,5 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { createFileRoute, useNavigate, useHydrated } from "@tanstack/react-router";
 import { store } from "@/store";
 import { FootprintShape, trail } from "@/components/Footprints";
 import { Wordmark } from "@/components/AppShell";
@@ -9,6 +10,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "AI Adventure" },
       { name: "description", content: "Pick a path. Build something real. Keep it." },
+      { property: "og:title", content: 'AI Adventure' },
+      { property: "og:description", content: 'Pick a path. Build something real. Keep it.' },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: SignIn,
@@ -28,6 +33,9 @@ const TRAILS = [
 
 function SignIn() {
   const navigate = useNavigate();
+  const hydrated = useHydrated();
+  useEffect(() => { if (hydrated) void navigate({ to: store.getPerson().onboardingAnswers ? "/welcome" : "/onboarding", replace: true }); }, [hydrated, navigate]);
+  if (hydrated) return null;
   return (
     <section className="relative flex min-h-[calc(100vh-52px)] items-center overflow-hidden bg-primary text-primary-foreground">
       <svg viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full" aria-hidden>
@@ -45,7 +53,7 @@ function SignIn() {
         <button
           onClick={() => {
             store.signIn();
-            navigate({ to: "/welcome" });
+            navigate({ to: store.getPerson().onboardingAnswers ? "/welcome" : "/onboarding" });
           }}
           className="mt-10 rounded-3xl bg-background px-8 py-5 text-lg font-semibold text-foreground shadow-soft transition hover:-translate-y-0.5"
         >

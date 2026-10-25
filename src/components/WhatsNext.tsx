@@ -8,7 +8,7 @@ import { AdventureIcon } from "./AdventureIcon";
 /** "What's next" panel, chosen by rule from the person's itinerary and completions. */
 export function WhatsNextPanel({ currentSlug, onNavigate }: { currentSlug: string; onNavigate?: () => void }) {
   const { itinerary, completions, person } = useStoreState();
-  const next = pickWhatsNext(currentSlug, itinerary, completions.map((c) => c.slug), ADVENTURES, person.role);
+  const next = pickWhatsNext(currentSlug, itinerary, completions.map((c) => c.slug), ADVENTURES, person.role, person.onboardingAnswers);
   return (
     <section aria-label="What's next" className="rounded-3xl bg-primary-soft p-5 text-left">
       <p className="text-xs font-semibold uppercase tracking-wider text-primary">What's next</p>

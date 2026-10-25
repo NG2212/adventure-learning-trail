@@ -84,12 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#9450FD" },
       { property: "og:title", content: "AI Adventure" },
       { property: "og:description", content: "30 hands-on adventures with AI, on your real work." },
-      { property: "og:image", content: "https://adventure-learning-trail.lovable.app/og-image.png" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "AI Adventure" },
       { name: "twitter:description", content: "30 hands-on adventures with AI, on your real work." },
-      { name: "twitter:image", content: "https://adventure-learning-trail.lovable.app/og-image.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

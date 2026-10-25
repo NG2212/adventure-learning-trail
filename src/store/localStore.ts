@@ -3,6 +3,7 @@ import type { AdventureStore, DemoSettings, StoreState } from "./types";
 import { createAdminMock } from "./adminMock";
 import { seedProof } from "./proofSeed";
 import { ADVENTURES } from "@/content/adventures";
+import { recommend } from "@/lib/recommend";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
@@ -80,6 +81,13 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     getPerson: () => read().person,
     isSignedIn: () => read().signedIn,
     signIn: () => write({ ...read(), signedIn: true }),
+    saveOnboardingAnswers(answers) {
+      const s = read();
+      const saved = { ...answers, team: answers.team?.trim(), aspirations: [...(answers.aspirations ?? [])], aspirationText: answers.aspirationText?.trim() };
+      const completedStops = s.itinerary.filter((slug) => s.completions.some((c) => c.slug === slug));
+      const suggested = recommend(ADVENTURES, saved).map((r) => r.adventure.slug);
+      write({ ...s, signedIn: true, person: { ...s.person, onboardingAnswers: saved }, itinerary: [...new Set([...completedStops, ...suggested])] });
+    },
     getItinerary: () => read().itinerary,
     addToItinerary(slug) {
       const s = read();

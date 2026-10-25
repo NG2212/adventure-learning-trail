@@ -6,7 +6,7 @@
  * 3. Else a link to All adventures (returns null).
  */
 import type { Adventure } from "@/content/adventures";
-import { defaultAnswersFor, scoreAdventure } from "./recommend";
+import { defaultAnswersFor, scoreAdventure, type OnboardingAnswers } from "./recommend";
 
 export type WhatsNext = { adventure: Adventure; reason: "itinerary" | "suggested" } | null;
 
@@ -16,6 +16,7 @@ export function pickWhatsNext(
   doneSlugs: string[],
   adventures: Adventure[],
   role: string,
+  savedAnswers?: OnboardingAnswers,
 ): WhatsNext {
   const done = new Set([...doneSlugs, currentSlug]);
   const fromItinerary = itinerary.map((s) => adventures.find((a) => a.slug === s)).find((a) => a && !done.has(a.slug));
@@ -23,8 +24,9 @@ export function pickWhatsNext(
 
   const candidates = adventures.filter((a) => a.isOpen && !done.has(a.slug)).sort((x, y) => x.slot - y.slot);
   if (!candidates.length) return null;
-  const answers = defaultAnswersFor(role);
-  let best = candidates[0]!;
+  const answers = savedAnswers ?? defaultAnswersFor(role);
+  let best = candidates[0];
+  if (!best) return null;
   let bestScore = scoreAdventure(best, answers).score;
   for (const a of candidates.slice(1)) {
     const s = scoreAdventure(a, answers).score;

@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ItineraryRouteImport } from './routes/itinerary'
+import { Route as MyJourneyRouteImport } from './routes/my-journey'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -39,9 +41,19 @@ const ItineraryRoute = ItineraryRouteImport.update({
   path: '/itinerary',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MyJourneyRoute = MyJourneyRouteImport.update({
+  id: '/my-journey',
+  path: '/my-journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgressRoute = ProgressRouteImport.update({
@@ -99,7 +111,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/itinerary': typeof ItineraryRoute
+  '/my-journey': typeof MyJourneyRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
   '/admin/adventures': typeof AdminAdventuresRoute
@@ -114,7 +128,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/itinerary': typeof ItineraryRoute
+  '/my-journey': typeof MyJourneyRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
   '/admin/adventures': typeof AdminAdventuresRoute
@@ -131,7 +147,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/itinerary': typeof ItineraryRoute
+  '/my-journey': typeof MyJourneyRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/welcome': typeof WelcomeRoute
   '/admin/adventures': typeof AdminAdventuresRoute
@@ -149,7 +167,9 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/itinerary'
+    | '/my-journey'
     | '/onboarding'
+    | '/profile'
     | '/progress'
     | '/welcome'
     | '/admin/adventures'
@@ -164,7 +184,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/itinerary'
+    | '/my-journey'
     | '/onboarding'
+    | '/profile'
     | '/progress'
     | '/welcome'
     | '/admin/adventures'
@@ -180,7 +202,9 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/itinerary'
+    | '/my-journey'
     | '/onboarding'
+    | '/profile'
     | '/progress'
     | '/welcome'
     | '/admin/adventures'
@@ -197,7 +221,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
   ItineraryRoute: typeof ItineraryRoute
+  MyJourneyRoute: typeof MyJourneyRoute
   OnboardingRoute: typeof OnboardingRoute
+  ProfileRoute: typeof ProfileRoute
   ProgressRoute: typeof ProgressRoute
   WelcomeRoute: typeof WelcomeRoute
   AdventuresSlugRoute: typeof AdventuresSlugRoute
@@ -227,11 +253,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ItineraryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/my-journey': {
+      id: '/my-journey'
+      path: '/my-journey'
+      fullPath: '/my-journey'
+      preLoaderRoute: typeof MyJourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding': {
       id: '/onboarding'
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/progress': {
@@ -331,7 +371,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
   ItineraryRoute: ItineraryRoute,
+  MyJourneyRoute: MyJourneyRoute,
   OnboardingRoute: OnboardingRoute,
+  ProfileRoute: ProfileRoute,
   ProgressRoute: ProgressRoute,
   WelcomeRoute: WelcomeRoute,
   AdventuresSlugRoute: AdventuresSlugRoute,

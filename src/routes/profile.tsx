@@ -1,0 +1,12 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useStoreState } from "@/store";
+import { Button } from "@/components/ui/button";
+import { pageHead } from "@/lib/pageHead";
+
+export const Route = createFileRoute("/profile")({ head: () => pageHead("Your profile", "Your personal AI Adventure onboarding answers."), component: Profile });
+const LABELS: Record<string, string> = { role: "Role", team: "Team", aiUseToday: "AI use today", weeklyTools: "Weekly tools", goal: "Learning goal", aspirations: "What you want to get out of this", aspirationText: "Anything else", learningStyle: "Learning preference", comfort: "Comfort with AI" };
+const VALUES: Record<string, string> = { nothing: "Not much yet", writing: "Writing and editing", analysis: "Summaries and analysis", building: "Building or automating things", office: "Docs, slides, sheets, monday.com", claude: "Claude", coding: "An agentic coding tool", productivity: "Getting everyday work done faster", creating: "Creating content and ideas", setup: "Setting up AI so it knows my work", automation: "Automating and delegating tasks", leading: "Leading my team with AI", quick: "Small wins in one sitting", steady: "A steady project over a few sessions", deep: "A big, ambitious build", new: "Just getting started", some: "I use it now and then", confident: "I use it every day" };
+function Profile() {
+  const { person } = useStoreState();
+  return <div className="mx-auto max-w-3xl px-5 py-12"><h1 className="text-3xl">Your profile</h1><p className="mt-2 text-muted-foreground">{person.name} · {person.role}</p><section aria-label="Your answers" className="mt-8 rounded-lg border bg-card p-6"><div className="flex items-center justify-between"><h2 className="text-2xl">Your answers</h2><Button variant="outline" asChild><Link to="/onboarding">Redo</Link></Button></div>{person.onboardingAnswers ? <dl className="mt-6 grid gap-5 sm:grid-cols-2">{Object.entries(person.onboardingAnswers).filter(([, value]) => Boolean(Array.isArray(value) ? value.length : value)).map(([key, value]) => <div key={key}><dt className="text-xs font-semibold text-muted-foreground">{LABELS[key]}</dt><dd className="mt-1 break-words text-sm">{Array.isArray(value) ? value.join(" · ") : VALUES[String(value)] ?? String(value)}</dd></div>)}</dl> : <p className="mt-5 text-muted-foreground">Your starting point is waiting.</p>}</section></div>;
+}

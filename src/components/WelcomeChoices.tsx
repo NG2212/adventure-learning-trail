@@ -9,7 +9,7 @@ export function WelcomeChoices() {
       <Link to="/onboarding" className={cls}>
         <Sparkles className="size-7 text-primary" />
         <span className="text-lg font-bold">Suggest an itinerary for me</span>
-        <span className="text-sm text-muted-foreground">Answer six quick questions and get 3-4 destinations picked for you.</span>
+        <span className="text-sm text-muted-foreground">Answer eight quick questions and get 3-4 destinations picked for you.</span>
       </Link>
       <Link to="/adventures" search={{ build: true }} className={cls}>
         <Map className="size-7 text-primary" />

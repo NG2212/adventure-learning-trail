@@ -18,3 +18,8 @@
 - [x] Document rating setting, test threshold rules and verify catalogue/page screenshots plus itinerary/home coverage.
 - [x] Add desktop/mobile rail completion and edit actions, preserving step items and read-only preview.
 - [x] Document entry points and verify completion/edit flow plus desktop/phone screenshots in both states.
+- [x] Save first-visit onboarding answers, team and aspirations; add own profile and prefilled redo.
+- [x] Merge journey routes, retain trail completions, group monochrome badges and expose scheduled dates.
+- [x] Add authored/default effort estimates, category-only colours/tooltips and Completed stamp; tighten grids.
+- [x] Add sticky catalogue category navigation, collapsible sections and secondary filter panel.
+- [x] Update both client documents, test rules and verify all requested desktop/phone screens.

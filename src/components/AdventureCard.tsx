@@ -6,6 +6,8 @@ import { Chip, LabelChips } from "./LabelChips";
 import { ItineraryToggle } from "./ItineraryToggle";
 import { ReviewStamp } from "./ReviewStamp";
 import { AdventureRating } from "./AdventureRating";
+import { CompletedStamp } from "./CompletedStamp";
+import { LabelHint } from "./LabelHint";
 
 export function AdventureCard({ adventure, highlightAdd = false }: { adventure: Adventure; highlightAdd?: boolean }) {
   const { completions } = useStoreState();
@@ -16,27 +18,27 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
       <ReviewStamp adventure={adventure} />
       <div className="flex justify-end">
         {done ? (
-          <Chip tone="success">Done</Chip>
+          <span className="h-6" />
         ) : adventure.isOpen && adventure.body ? (
           <Chip tone="primary">Ready</Chip>
         ) : adventure.isOpen ? (
           <Chip tone="neutral">Content coming</Chip>
         ) : (
-          <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>
+          <LabelHint text={WAVES[adventure.wave]?.label ?? "Opens later"}><span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">{WAVES[adventure.wave]?.label}</span></LabelHint>
         )}
       </div>
-      <AdventureIcon adventure={adventure} size="xl" className="mx-auto -mt-2" />
+      <AdventureIcon adventure={adventure} size="lg" className="mx-auto -mt-2" />
       <h3 className="mt-4 text-center text-lg">{adventure.title}</h3>
       <p className="mt-1 flex-1 text-center text-sm text-muted-foreground">{adventure.walkaway}</p>
-      <LabelChips adventure={adventure} className="mt-4 justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} />
+      <div className="relative mt-4 pt-14">{done && <CompletedStamp className="completed-stamp-card pointer-events-none absolute top-0 right-0 z-10" />}<LabelChips adventure={adventure} className="justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} /></div>
     </>
   );
 
   if (!canOpenAdventure(adventure, store.getDemoSettings().demoOpenAll)) {
     return (
-      <div className="relative flex flex-col rounded-3xl border bg-muted/50 p-6 opacity-80" aria-disabled>
+      <div className="relative flex flex-col rounded-2xl border bg-muted/50 p-4 opacity-80" aria-disabled>
         {content}
-        <div className="mt-5"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
+        <div className="mt-4"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
       </div>
     );
   }
@@ -46,11 +48,11 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
       to="/adventures/$slug"
       params={{ slug: adventure.slug }}
       className={adventure.isOpen
-        ? "relative flex flex-col rounded-3xl border bg-card p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
-        : "relative flex flex-col rounded-3xl border bg-muted/50 p-6 opacity-80 transition hover:-translate-y-0.5 hover:border-primary/40"}
+        ? "relative flex flex-col rounded-2xl border bg-card p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+        : "relative flex flex-col rounded-2xl border bg-muted/50 p-4 opacity-80 transition hover:-translate-y-0.5 hover:border-primary/40"}
     >
       {content}
-      <div className="mt-5"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
+      <div className="mt-4"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
     </Link>
   );
 }
