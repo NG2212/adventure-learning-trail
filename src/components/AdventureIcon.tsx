@@ -23,6 +23,11 @@ export const ICONS: Record<IconName, LucideIcon> = {
  */
 export type DiscState = "open" | "itinerary" | "done" | "later";
 
+/** Badge rewards ignore journey membership and demo access; earned takes precedence over schedule. */
+export function badgeStateFor(a: Pick<Adventure, "slug" | "isOpen">, earned: Set<string>): "earned" | "open" | "later" {
+  return earned.has(a.slug) ? "earned" : a.isOpen ? "open" : "later";
+}
+
 export function discStateFor(a: Pick<Adventure, "slug" | "isOpen">, itinerary: string[], doneSlugs: Set<string>): DiscState {
   if (doneSlugs.has(a.slug)) return "done";
   if (itinerary.includes(a.slug)) return "itinerary";
