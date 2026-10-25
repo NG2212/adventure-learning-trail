@@ -36,7 +36,7 @@ function Journey() {
   </div>;
 }
 function TrailConnector({ flip }: { flip: boolean }) {
-  return <svg viewBox="0 0 200 60" className={cn("mx-auto h-16 w-48", flip && "-scale-x-100")} aria-hidden><path d="M100 0 C40 20,160 40,100 60" fill="none" stroke="var(--color-stone)" strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" /><FootprintShape x={80} y={22} angle={-20} scale={0.6} fill="var(--color-primary)" /><FootprintShape x={120} y={42} angle={10} scale={0.6} fill="var(--color-primary)" flip /></svg>;
+  return <svg viewBox="0 0 200 60" className={cn("mx-auto h-16 w-48", flip && "-scale-x-100")} aria-hidden><path d="M100 0 C40 20,160 40,100 60" fill="none" stroke="var(--color-stone)" strokeWidth="3" strokeDasharray="2 8" strokeLinecap="round" /><FootprintShape x={80} y={22} angle={160} scale={0.6} fill="var(--color-primary)" /><FootprintShape x={120} y={42} angle={190} scale={0.6} fill="var(--color-primary)" flip /></svg>;
 }
 function Stop({ adventure, status, index, total }: { adventure: Adventure; status: "done" | "next" | "later"; index: number; total: number }) {
   const navigate = useNavigate();
