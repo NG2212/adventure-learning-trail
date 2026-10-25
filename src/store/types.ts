@@ -1,5 +1,6 @@
 import type { TitleName } from "@/lib/titles";
 import type { AdminReadsWrites } from "./adminTypes";
+import type { OnboardingAnswers } from "@/lib/recommend";
 
 export interface Person {
   id: string;
@@ -7,6 +8,7 @@ export interface Person {
   firstName: string;
   role: string;
   isAdmin: boolean;
+  onboardingAnswers?: OnboardingAnswers;
 }
 
 export interface Completion {
@@ -62,6 +64,7 @@ export interface AdventureStore extends AdminReadsWrites {
   getPerson(): Person;
   isSignedIn(): boolean;
   signIn(): void;
+  saveOnboardingAnswers(answers: OnboardingAnswers): void;
   getItinerary(): string[];
   addToItinerary(slug: string): void;
   removeFromItinerary(slug: string): void;
