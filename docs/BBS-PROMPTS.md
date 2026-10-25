@@ -5,7 +5,7 @@ Each section is a self-contained prompt to rebuild one feature on another platfo
 - Palette: purple #9450FD (~70%), white #FFFFFF, near-black #242424 text, stone #E3D9CF panels; blue #1E77FD, coral #FF644D, green #06A24B for labels and states only; lime #D8F81E, pink #F07FFF, yellow #FBD54D only for "next up", celebrations and progress.
 - Poppins everywhere. Rounded corners 16-24px, subtle shadows, no gradients (except a faint lime glow on celebrations), no emojis, no stock imagery.
 - Motif: flat footprints (sole + heel shape) in accent colours.
-- No adventure-duration estimates, streaks, leaderboards or rankings. Admin session-time analytics are explicitly labelled estimated. Titles describe distance travelled, never ability.
+- Approved effort duration estimates are shown; no streaks, leaderboards or employee rankings. Admin session-time analytics are explicitly labelled estimated. Titles describe distance travelled, never ability.
 - Footer on every page: "AI Adventure · Built for monday.com by Nufar Gaspar".
 - All reads/writes go through one store interface (see `docs/backend-requirements.md`).
 
@@ -122,10 +122,10 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - Free-text professions ("Advanced users", "People with sophisticated AI systems", "advanced Claude Code users") match the "Other" chip.
 - In recommendations, a named profession scores +3 and "Everyone" scores +1, so specific adventures rank above general ones.
 - Adventure `next:` slugs are kept but not used; What's next is computed, and Related adventures links come from title matches.
-- The What's next fallback scores with the profile role only, because onboarding answers are not stored.
+- The What's next fallback scores with the profile role only, when no saved onboarding answers exist.
 - "Next up" skips stops that are not open yet.
 - Sign-in is not enforced on other routes; it only records that the sample user signed in.
-- The comfort answer only nudges level matching and is never shown or stored.
+- The comfort answer only nudges recommendation matching and is shown only to its owner.
 - Coming-soon cards can still be added to an itinerary.
 
 ## Design fixes (client review 1)
@@ -185,3 +185,18 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 ## 11f. Admin Settings (`/admin/settings`)
 
 **Build:** names of current L&D admins; choose an employee to Add admin (mock list only, no permissions change). Hide names and this editor in Manager view. Read-only thresholds: First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20, with note that these are configurable in the real build.
+
+
+## Approved L&D review — employee experience (25 Oct 2026)
+
+This section supersedes earlier six-question, separate Itinerary/Progress, duration and badge styling instructions above. Existing proof entries, ratings, review stamps, palette, Poppins, footprint motif, Admin privacy and demo-only storage remain intact.
+
+- **First visit:** `/` and Home (`/welcome`) open `/onboarding` if Person has no saved answers; this is automatic demo onboarding, not authentication. Eight questions retain the original six and add team (free text with suggestions) and aspirations (three selectable choices plus other text). The default choice wording is Build confidence with AI / Make everyday work easier / Build something new. Save all answers together on `Person.onboardingAnswers` through `AdventureStore.saveOnboardingAnswers`; no backend calls. The owner can view all their answers, including comfort, on `/profile`, reached through the greeting. Redo opens the questions prefilled. Saving recomputes suggested journey stops, retains completed stops already in the trail, and never changes completion dates, proof entries or badges. Admin and Manager reporting never receive these answers.
+- **My journey:** `/my-journey` merges Itinerary and Progress; `/itinerary` and `/progress` redirect. Main employee navigation is Home, My journey, All adventures; Admin remains for the demo admin. Sections: In progress (ordered trail, upward footprints, completed stops retain lime check), Completed (dated entries and stamp), Opens soon (scheduled faded cards with real wave dates), then title progress, grouped badges and optional share card. Employee page/control labels use journey; the internal itinerary model is unchanged.
+- **Effort/time:** optional free-text Markdown frontmatter `time:` overrides default duration. Exact defaults: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. For `effort: Moderate` and `time: "~1 h"`, display `Moderate · ~1 h`. One shared derived label is used on cards and adventure page heads. No measured-duration tracking is added.
+- **Catalogue:** category-navigation pills scroll to each category and highlight the current section; all sections are collapsible and initially expanded. One always-visible Category filter row and Filters button share the sticky band beneath the measured header. The panel contains Level, Profession, Works with, Effort and Outcome. Secondary selections appear as removable labelled chips. Within a family OR, across families AND; existing profession semantics are retained. Card grids are four columns on desktop, three tablet, one phone, with tighter spacing/padding and smaller icons.
+- **Labels:** category alone is coloured: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow, with contrasting text. Other metadata is neutral stone. Hover/focus/tap reveals one-line label-family guidance. Scheduled cards and badges reveal their actual wave opens date on hover or mobile tap; demo all-wave access remains in effect.
+- **Completed:** replace Done with Completed. Passport-style round stamp uses lime ring, uppercase COMPLETED, central footprint and -12° rotation, at card top-right over the label area without shifting or covering chips, and on dated journey completions. Card/page discs retain their lime completion check. Ready/Draft review stamps are unchanged.
+- **Badges:** group by category with small headings; discs shrink from 80px to 56px (30%). Earned purple disc/white glyph; unearned white disc/faint purple outline and glyph. The badge grid uses no green/lime ring or check regardless of itinerary state. All data continues through AdventureStore.
+
+**Port acceptance:** first-visit onboarding and prefilled redo preserve seeded completion/proof; saved answers read back in Profile after refresh; sticky category/filter controls and collapses work on phone/desktop; legacy URLs resolve to My journey; completion dates and passport stamps remain visible; badges are grouped and purple/white only; both duration defaults and authored overrides are covered by tests. No backend or external API is introduced.

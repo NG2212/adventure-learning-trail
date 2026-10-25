@@ -15,3 +15,8 @@
 - Company proof entries are an L&D-only Overview section and employee drawer section; rating summaries contain no identities. Why: existing Admin tabs stay intact and Manager view exposes aggregates only.
 - Render Admin leaf content after hydration through ClientOnly in the shared layout. Why: direct mock-store reads must not mismatch server seed with browser-persisted completions and proof entries on refresh.
 - Employee rating lines use a shared AdventureRating presentation and AdventureStore.getAdventureRating for thresholded aggregate-only reads; reuse the admin averages without ranking employee cards. Why: one display rule stays swappable and reflects edited ratings without exposing individual entries.
+
+- Employee onboarding answers are saved atomically on Person through AdventureStore; redo replaces suggestions but retains completed trail stops and completion/proof records. Why: personal preferences remain swappable and cannot erase earned work.
+- My journey is the canonical merged route; legacy itinerary/progress routes redirect and the shared BadgeGrid uses independent earned styling. Why: old links survive while card state cannot introduce lime into badges.
+- Catalogue navigation and filter rows share a measured sticky band; label hints support hover, focus and touch. Why: scrolling headings and explanations remain accessible under the real header height.
+- Effort duration is derived by effortLabel from frontmatter or defaults. Why: card and reader labels cannot diverge.

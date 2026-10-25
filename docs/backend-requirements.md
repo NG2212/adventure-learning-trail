@@ -43,7 +43,7 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 | Sign-in | — | Start SSO session |
 | Header (all pages) | person, completion count, derived title, active announcement + dismissal | dismissAnnouncement |
 | Welcome | person | — |
-| Onboarding | adventure index | addToItinerary (per card or all). Answers are not stored. |
+| Onboarding | adventure index | addToItinerary (per card or all). Answers are saved with the person. |
 | All adventures | adventure index, waves, own completions, own itinerary | addToItinerary, removeFromItinerary |
 
 Catalogue page note (must survive the Big Brain Studio port): a single quiet helper line sits under the page intro, above the filters — "Every adventure works best on a strong model, for example Opus, with extended thinking on." Platform copy, not per-adventure content.
@@ -57,7 +57,7 @@ Catalogue page note (must survive the Big Brain Studio port): a single quiet hel
 Computed by the platform, never authored text. Reads: own itinerary, own completions, open adventures, person's role.
 
 1. The first adventure in the person's itinerary that is not done and is not the current one.
-2. Else one open adventure the person has not done, chosen by the recommendation scoring (role from the profile; other answers neutral, since onboarding answers are not stored). Ties and zero scores fall back to the first open adventure by slot.
+2. Else one open adventure the person has not done, chosen by the recommendation scoring (role from the profile; other answers neutral, when no saved onboarding answers exist). Ties and zero scores fall back to the first open adventure by slot.
 3. Else a link to All adventures.
 
 The adventure footer shows the computed panel first, then Markdown "Related adventures" (older files: "Where to next") as a small link list under the file's own heading. Neither is a rail step. Page-head sections, numbered steps, optional Go further, and Proof of work are derived from the Markdown; no new layout fields are required.
@@ -108,8 +108,8 @@ Return top 4 when at least 4 score above 0, else top 3. The "why" line never ref
 - Proof-of-work entries are visible to the person and to L&D admins, never to other employees or managers. L&D admins see individual built/learned text, rating and completion date. The real backend must enforce ownership/L&D authorization on reads, updates and exports; authors may edit only their own entry.
 - Per-employee completion and engagement data is visible to L&D admins only.
 - Managers receive only team-level aggregates, produced by L&D.
-- The comfort answer is used only at recommendation time and never stored as a level or shown back.
-- Onboarding answers are not persisted.
+- The comfort answer stays private to the person and recommendation logic, never a stored employee level or Admin report.
+- Onboarding answers are persisted privately with the person.
 - Share cards are generated only when the person chooses to share.
 
 ## Disc state (derived, no new fields)
@@ -154,3 +154,18 @@ No per-person scores or levels, onboarding comfort, employee rankings, leaderboa
 - The admin directory exposes a Preview action that renders the full adventure page in read-only preview mode (no completion, no analytics events recorded).
 - Server must enforce this: the body endpoint checks the admin role when the adventure's wave is not yet open. (The mockup gates it client-side with `person.isAdmin` only.)
 - Head tags and files: the Big Brain Studio port must carry favicon.ico, favicon-512.png, apple-touch-icon.png, og-image.png and site.webmanifest, with the icon/manifest links and the shared Open Graph/Twitter tags (title "AI Adventure", absolute og-image URL) on every page; adventure pages titled "<adventure title> · AI Adventure".
+
+
+## Approved L&D review — employee experience (25 Oct 2026)
+
+This section supersedes earlier six-question, separate Itinerary/Progress, duration and badge styling instructions above. Existing proof entries, ratings, review stamps, palette, Poppins, footprint motif, Admin privacy and demo-only storage remain intact.
+
+- **First visit:** `/` and Home (`/welcome`) open `/onboarding` if Person has no saved answers; this is automatic demo onboarding, not authentication. Eight questions retain the original six and add team (free text with suggestions) and aspirations (three selectable choices plus other text). The default choice wording is Build confidence with AI / Make everyday work easier / Build something new. Save all answers together on `Person.onboardingAnswers` through `AdventureStore.saveOnboardingAnswers`; no backend calls. The owner can view all their answers, including comfort, on `/profile`, reached through the greeting. Redo opens the questions prefilled. Saving recomputes suggested journey stops, retains completed stops already in the trail, and never changes completion dates, proof entries or badges. Admin and Manager reporting never receive these answers.
+- **My journey:** `/my-journey` merges Itinerary and Progress; `/itinerary` and `/progress` redirect. Main employee navigation is Home, My journey, All adventures; Admin remains for the demo admin. Sections: In progress (ordered trail, upward footprints, completed stops retain lime check), Completed (dated entries and stamp), Opens soon (scheduled faded cards with real wave dates), then title progress, grouped badges and optional share card. Employee page/control labels use journey; the internal itinerary model is unchanged.
+- **Effort/time:** optional free-text Markdown frontmatter `time:` overrides default duration. Exact defaults: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. For `effort: Moderate` and `time: "~1 h"`, display `Moderate · ~1 h`. One shared derived label is used on cards and adventure page heads. No measured-duration tracking is added.
+- **Catalogue:** category-navigation pills scroll to each category and highlight the current section; all sections are collapsible and initially expanded. One always-visible Category filter row and Filters button share the sticky band beneath the measured header. The panel contains Level, Profession, Works with, Effort and Outcome. Secondary selections appear as removable labelled chips. Within a family OR, across families AND; existing profession semantics are retained. Card grids are four columns on desktop, three tablet, one phone, with tighter spacing/padding and smaller icons.
+- **Labels:** category alone is coloured: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow, with contrasting text. Other metadata is neutral stone. Hover/focus/tap reveals one-line label-family guidance. Scheduled cards and badges reveal their actual wave opens date on hover or mobile tap; demo all-wave access remains in effect.
+- **Completed:** replace Done with Completed. Passport-style round stamp uses lime ring, uppercase COMPLETED, central footprint and -12° rotation, at card top-right over the label area without shifting or covering chips, and on dated journey completions. Card/page discs retain their lime completion check. Ready/Draft review stamps are unchanged.
+- **Badges:** group by category with small headings; discs shrink from 80px to 56px (30%). Earned purple disc/white glyph; unearned white disc/faint purple outline and glyph. The badge grid uses no green/lime ring or check regardless of itinerary state. All data continues through AdventureStore.
+
+**Port acceptance:** first-visit onboarding and prefilled redo preserve seeded completion/proof; saved answers read back in Profile after refresh; sticky category/filter controls and collapses work on phone/desktop; legacy URLs resolve to My journey; completion dates and passport stamps remain visible; badges are grouped and purple/white only; both duration defaults and authored overrides are covered by tests. No backend or external API is introduced.
