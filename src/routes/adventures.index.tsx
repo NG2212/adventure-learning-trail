@@ -12,7 +12,7 @@ import { LabelHint } from "@/components/LabelHint";
 import { pageHead } from "@/lib/pageHead";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/adventures/")({ validateSearch: (s: Record<string, unknown>): { build?: boolean } => ({ build: s["build"] === true || s["build"] === "true" ? true : undefined }), head: () => pageHead("All adventures", "Explore all thirty AI Adventure destinations by category, effort and outcome."), component: AllAdventures });
+export const Route = createFileRoute("/adventures/")({ validateSearch: (s: Record<string, unknown>): { build?: boolean | undefined } => ({ build: s["build"] === true || s["build"] === "true" ? true : undefined }), head: () => pageHead("All adventures", "Explore all thirty AI Adventure destinations by category, effort and outcome."), component: AllAdventures });
 type FilterKey = "category" | "level" | "profession" | "tool" | "effort" | "outcome";
 type Filters = Record<FilterKey, string[]>;
 const EMPTY: Filters = { category: [], level: [], profession: [], tool: [], effort: [], outcome: [] };
@@ -37,7 +37,7 @@ function AllAdventures() {
       const barHeight = document.querySelector('[data-catalogue-bar]')?.getBoundingClientRect().height ?? 0;
       const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-category-section]'));
       const active = sections.filter((section) => section.getBoundingClientRect().top <= headerHeight + barHeight + 50).at(-1) ?? sections[0];
-      if (active?.dataset.categorySection) setCurrentCategory(active.dataset.categorySection);
+      if (active?.dataset['categorySection']) setCurrentCategory(active.dataset['categorySection']);
     };
     window.addEventListener('scroll', update, { passive: true }); update();
     return () => window.removeEventListener('scroll', update);

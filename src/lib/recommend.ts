@@ -18,9 +18,9 @@
 import type { Adventure, Category, Effort, Level, Profession, Tool } from "@/content/adventures";
 
 export interface OnboardingAnswers {
-  team?: string;
+  team?: string | undefined;
   aspirations?: string[];
-  aspirationText?: string;
+  aspirationText?: string | undefined;
   role: Profession;
   aiUseToday: "nothing" | "writing" | "analysis" | "building";
   weeklyTools: "office" | "claude" | "coding";
