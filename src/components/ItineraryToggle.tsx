@@ -2,7 +2,7 @@ import { Check, Plus } from "lucide-react";
 import { store, useStoreState } from "@/store";
 import { cn } from "@/lib/utils";
 
-/** "Add to my itinerary" / "In my itinerary" toggle. `highlight` draws attention in build-my-own mode. */
+/** "Add to my journey" / "In my journey" toggle. `highlight` draws attention in build-my-own mode. */
 export function ItineraryToggle({ slug, highlight = false, className }: { slug: string; highlight?: boolean; className?: string }) {
   const { itinerary } = useStoreState();
   const inItinerary = itinerary.includes(slug);
@@ -26,7 +26,7 @@ export function ItineraryToggle({ slug, highlight = false, className }: { slug: 
       )}
     >
       {inItinerary ? <Check className="size-4" /> : <Plus className="size-4" />}
-      {inItinerary ? "In my itinerary" : "Add to my itinerary"}
+      {inItinerary ? "In my journey" : "Add to my journey"}
     </button>
   );
 }

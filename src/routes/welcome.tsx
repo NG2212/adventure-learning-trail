@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { createFileRoute, useNavigate, useHydrated } from "@tanstack/react-router";
 import { Play } from "lucide-react";
 import { useStoreState } from "@/store";
 import { WelcomeChoices } from "@/components/WelcomeChoices";
@@ -15,6 +16,10 @@ export const Route = createFileRoute("/welcome")({
 
 function Welcome() {
   const { person } = useStoreState();
+  const navigate = useNavigate();
+  const hydrated = useHydrated();
+  useEffect(() => { if (hydrated && !person.onboardingAnswers) void navigate({ to: "/onboarding", replace: true }); }, [hydrated, person.onboardingAnswers, navigate]);
+  if (!hydrated || !person.onboardingAnswers) return null;
   return (
     <div className="mx-auto max-w-5xl px-5 py-12">
       <h1 className="text-3xl sm:text-4xl">Welcome, {person.firstName}</h1>

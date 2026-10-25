@@ -9,9 +9,9 @@ import { DiscFilters } from "./AdventureIcon";
 import { ADMIN_TODAY } from '@/store/adminTypes';
 
 const NAV = [
-  { to: "/itinerary", label: "My itinerary" },
+  { to: "/welcome", label: "Home" },
+  { to: "/my-journey", label: "My journey" },
   { to: "/adventures", label: "All adventures" },
-  { to: "/progress", label: "Progress" },
   { to: "/admin", label: "Admin" },
 ] as const;
 
@@ -64,8 +64,8 @@ export function AppHeader() {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3 text-sm">
-            <span className="hidden sm:inline">Hi {state.person.firstName}</span>
-            <Link to="/progress" className="rounded-full bg-primary px-3.5 py-1.5 font-medium text-primary-foreground">
+            <Link to="/profile" className="text-primary">Hi {state.person.firstName}</Link>
+            <Link to="/my-journey" className="rounded-full bg-primary px-3.5 py-1.5 font-medium text-primary-foreground">
               {title ?? "Ready to set off"} · {count} completed
             </Link>
           </div>

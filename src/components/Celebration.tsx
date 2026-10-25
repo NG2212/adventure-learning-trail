@@ -48,7 +48,7 @@ export function Celebration({ result, adventureTitle, slug, onClose }: { result:
             <WhatsNextPanel currentSlug={slug} onNavigate={onClose} />
             <div className="mt-2 flex flex-wrap justify-center gap-3">
               <button onClick={() => setSharing(true)} className="rounded-full bg-primary px-5 py-2.5 font-semibold text-primary-foreground">Share</button>
-              <Link to="/itinerary" className="rounded-full border border-primary px-5 py-2.5 font-semibold text-primary">Back to my itinerary</Link>
+              <Link to="/my-journey" className="rounded-full border border-primary px-5 py-2.5 font-semibold text-primary">Back to my journey</Link>
             </div>
           </>
         )}

@@ -215,7 +215,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         <AdventureIcon adventure={adventure} size="xl" />
         <div className="min-w-0 flex-1">
           <div className="mb-2 flex gap-2">
-            {done && <Chip tone="success">Done</Chip>}
+            {done && <Chip>Completed</Chip>}
             {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
             {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>

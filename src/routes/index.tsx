@@ -45,7 +45,7 @@ function SignIn() {
         <button
           onClick={() => {
             store.signIn();
-            navigate({ to: "/welcome" });
+            navigate({ to: store.getPerson().onboardingAnswers ? "/welcome" : "/onboarding" });
           }}
           className="mt-10 rounded-3xl bg-background px-8 py-5 text-lg font-semibold text-foreground shadow-soft transition hover:-translate-y-0.5"
         >
