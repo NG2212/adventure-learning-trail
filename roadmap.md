@@ -26,3 +26,4 @@
 - [x] Restore earned/open/scheduled badge states across Profile, My journey and Home; document and verify Profile screenshots.
 - [x] Simplify My journey to In progress + Completed, retain faded scheduled added stops, update docs and verify screenshots/empty state.
 - [x] Unify catalogue category navigation/selection, soften shared category chips, update docs and verify desktop/phone screenshots.
+- [ ] Restore journey title ladder, shared badges and share card beneath Completed; update docs, run tests and capture badges.
