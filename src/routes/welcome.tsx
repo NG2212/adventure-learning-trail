@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate, useHydrated } from "@tanstack/react-route
 import { Play } from "lucide-react";
 import { useStoreState } from "@/store";
 import { WelcomeChoices } from "@/components/WelcomeChoices";
+import { BadgeGrid } from "@/components/BadgeGrid";
 
 export const Route = createFileRoute("/welcome")({
   head: () => ({
@@ -39,6 +40,7 @@ function Welcome() {
       </p>
       <h2 className="mt-12 mb-5 text-xl">How would you like to start?</h2>
       <WelcomeChoices />
+      <BadgeGrid />
     </div>
   );
 }

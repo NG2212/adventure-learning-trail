@@ -23,3 +23,4 @@
 - [x] Add authored/default effort estimates, category-only colours/tooltips and Completed stamp; tighten grids.
 - [x] Add sticky catalogue category navigation, collapsible sections and secondary filter panel.
 - [x] Update both client documents, test rules and verify all requested desktop/phone screens.
+- [x] Restore earned/open/scheduled badge states across Profile, My journey and Home; document and verify Profile screenshots.

@@ -17,6 +17,6 @@
 - Employee rating lines use a shared AdventureRating presentation and AdventureStore.getAdventureRating for thresholded aggregate-only reads; reuse the admin averages without ranking employee cards. Why: one display rule stays swappable and reflects edited ratings without exposing individual entries.
 
 - Employee onboarding answers are saved atomically on Person through AdventureStore; redo replaces suggestions but retains completed trail stops and completion/proof records. Why: personal preferences remain swappable and cannot erase earned work.
-- My journey is the canonical merged route; legacy itinerary/progress routes redirect and the shared BadgeGrid uses independent earned styling. Why: old links survive while card state cannot introduce lime into badges.
+- My journey is the canonical merged route; legacy itinerary/progress routes redirect and Profile, My journey and Home reuse BadgeGrid with earned/open/later state independent of journey membership and demo access. Why: old links survive and badge schedule/reward styling stays consistent without lime.
 - Catalogue navigation and filter rows share a measured sticky band; label hints support hover, focus and touch. Why: scrolling headings and explanations remain accessible under the real header height.
 - Effort duration is derived by effortLabel from frontmatter or defaults. Why: card and reader labels cannot diverge.
