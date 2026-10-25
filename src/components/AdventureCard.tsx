@@ -30,7 +30,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
       <AdventureIcon adventure={adventure} size="lg" className="mx-auto -mt-2" />
       <h3 className="mt-4 text-center text-lg">{adventure.title}</h3>
       <p className="mt-1 flex-1 text-center text-sm text-muted-foreground">{adventure.walkaway}</p>
-      <div className="relative mt-4 pt-20">{done && <CompletedStamp className="pointer-events-none absolute top-0 right-0 z-10" />}<LabelChips adventure={adventure} className="justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} /></div>
+      <div className="relative mt-4 pt-14">{done && <CompletedStamp className="completed-stamp-card pointer-events-none absolute top-0 right-0 z-10" />}<LabelChips adventure={adventure} className="justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} /></div>
     </>
   );
 

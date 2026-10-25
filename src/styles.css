@@ -228,3 +228,5 @@
 .catalogue-sticky { top: var(--app-header-height, 0px); }
 .catalogue-section { scroll-margin-top: calc(var(--app-header-height, 0px) + 170px); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.completed-stamp-card { width: 52px; height: 52px; font-size: 6px; gap: 2px; }

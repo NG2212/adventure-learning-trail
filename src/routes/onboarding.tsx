@@ -22,7 +22,7 @@ const QUESTIONS = [
   { key: "learningStyle", prompt: "How do you prefer to learn?", options: ["Small wins I can finish in one sitting", "A steady project over a few sessions", "A big, ambitious build"], values: ["quick", "steady", "deep"] },
   { key: "comfort", prompt: "How comfortable are you with AI today?", options: ["Just getting started", "I use it now and then", "I use it every day"], values: ["new", "some", "confident"] },
 ] as const;
-export const ANSWER_LABELS: Record<string, string> = { nothing: "Not much yet", writing: "Writing and editing", analysis: "Summaries and analysis", building: "Building or automating things", office: "Docs, slides, sheets, monday.com", claude: "Claude", coding: "An agentic coding tool", productivity: "Getting everyday work done faster", creating: "Creating content and ideas", setup: "Setting up AI so it knows my work", automation: "Automating and delegating tasks", leading: "Leading my team with AI", quick: "Small wins I can finish in one sitting", steady: "A steady project over a few sessions", deep: "A big, ambitious build", new: "Just getting started", some: "I use it now and then", confident: "I use it every day" };
+
 function Onboarding() {
   const hydrated = useHydrated();
   return hydrated ? <Questions /> : null;
