@@ -7,6 +7,13 @@ import { badgeStateFor } from "@/components/AdventureIcon";
 const answers: OnboardingAnswers = { role: "Product", team: "Product Experience", aiUseToday: "writing", weeklyTools: "claude", goal: "creating", aspirations: ["Build confidence with AI", "Build something new"], aspirationText: "Bring useful ideas to my team", learningStyle: "steady", comfort: "some" };
 beforeEach(() => localStorage.clear());
 describe("approved L&D review rules", () => {
+  it("added scheduled adventures retain their saved trail position and unadded scheduled adventures stay out", () => {
+    const store = createLocalStore();
+    store.addToItinerary("making-decisions-with-ai");
+    store.reorderItinerary("making-decisions-with-ai", "up");
+    expect(store.getItinerary()).toEqual(["board-of-advisors", "your-ai-identity", "making-decisions-with-ai", "skills-when-how-and-how-well"]);
+    expect(store.getItinerary()).not.toContain("your-ai-taste-test");
+  });
   it("earned badges take priority even for scheduled adventures", () => {
     expect(badgeStateFor({ slug: "scheduled", isOpen: false }, new Set(["scheduled"]))).toBe("earned");
   });
