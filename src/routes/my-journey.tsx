@@ -8,14 +8,18 @@ import { Chip, LabelChips } from "@/components/LabelChips";
 import { FootprintPair, FootprintShape } from "@/components/Footprints";
 import { PageHeading } from "@/components/AppShell";
 import { CompletedStamp } from "@/components/CompletedStamp";
+import { BadgeGrid } from "@/components/BadgeGrid";
+import { ShareCard } from "@/components/ShareCard";
 import { Button } from "@/components/ui/button";
-import { titleFor } from "@/lib/titles";
+import { nextTitle, TITLES, titleFor } from "@/lib/titles";
 import { pageHead } from "@/lib/pageHead";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/my-journey")({ head: () => pageHead("My journey", "Your AI Adventure journey: added destinations in order and completed adventures."), component: Journey });
+export const Route = createFileRoute("/my-journey")({ head: () => pageHead("My journey", "Your AI Adventure journey: destinations, completed adventures, earned titles, badges and your share card."), component: Journey });
 function Journey() {
-  const { itinerary, completions } = useStoreState();
+  const { person, itinerary, completions } = useStoreState();
+  const currentTitle = titleFor(completions.length);
+  const upcomingTitle = nextTitle(completions.length);
   const done = new Set(completions.map((c) => c.slug));
   const stops = itinerary.map(getAdventure).filter((a): a is Adventure => Boolean(a));
   const nextSlug = stops.find((a) => !done.has(a.slug) && a.isOpen)?.slug;
@@ -25,6 +29,9 @@ function Journey() {
       const a = getAdventure(c.slug); if (!a) return null;
       return <Link key={c.slug} to="/adventures/$slug" params={{ slug: c.slug }} className="flex items-center gap-4 rounded-lg border bg-card p-5"><AdventureIcon adventure={a} /><div className="min-w-0 flex-1"><h3 className="text-base">{a.title}</h3><time className="mt-2 block text-xs text-muted-foreground">{new Date(c.completedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })}</time></div><CompletedStamp /></Link>;
     })}</div>{!completions.length && <p className="text-muted-foreground">Your completed destinations will appear here.</p>}</section>
+    <section aria-label="Your title" className="mt-12"><h2 className="mb-5 text-2xl">Your title</h2><ol className="grid grid-cols-2 gap-4 md:grid-cols-4">{TITLES.map((title) => <li key={title.name} aria-current={currentTitle === title.name ? "step" : undefined} className={cn("border-b-2 px-3 py-4", currentTitle === title.name ? "border-primary bg-primary-soft" : "border-stone")}><h3 className="text-base">{title.name}</h3><p className="mt-2 text-sm text-muted-foreground">{title.threshold} {title.threshold === 1 ? "adventure" : "adventures"} completed</p></li>)}</ol>{upcomingTitle ? <p className="mt-5 text-sm text-muted-foreground">Next title: {upcomingTitle.name} at {upcomingTitle.threshold} completed ({upcomingTitle.threshold - completions.length} to go)</p> : <p className="mt-5 text-sm text-muted-foreground">Globetrotter · {completions.length} adventures completed</p>}</section>
+    <BadgeGrid title="Your badges" />
+    <section aria-label="Share card" className="mt-12 max-w-xl"><ShareCard name={person.name} title={currentTitle} count={completions.length} /></section>
   </div>;
 }
 function TrailConnector({ flip }: { flip: boolean }) {

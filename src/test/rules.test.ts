@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { titleFor } from "@/lib/titles";
+import { nextTitle, titleFor } from "@/lib/titles";
 import { recommend } from "@/lib/recommend";
 import { ADVENTURES, CATEGORIES, getAdventure, matchesProfession, toAdventure } from "@/content/adventures";
 import { parseAdventure, splitPromptWindows, splitGoFurther } from "@/lib/adventureSteps";
@@ -7,6 +7,13 @@ import { pickWhatsNext } from "@/lib/whatsNext";
 import { createLocalStore } from "@/store/localStore";
 
 describe("titles", () => {
+  it("shows the next title at each threshold and none after Globetrotter", () => {
+    expect(nextTitle(0)).toEqual({ name: "First Steps", threshold: 1 });
+    expect(nextTitle(1)).toEqual({ name: "Day Tripper", threshold: 3 });
+    expect(nextTitle(3)).toEqual({ name: "Frequent Flyer", threshold: 11 });
+    expect(nextTitle(11)).toEqual({ name: "Globetrotter", threshold: 20 });
+    expect(nextTitle(20)).toBeNull();
+  });
   it("uses the thresholds 1 / 3 / 11 / 20", () => {
     expect(titleFor(0)).toBeNull();
     expect(titleFor(1)).toBe("First Steps");
