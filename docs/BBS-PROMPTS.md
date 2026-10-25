@@ -1,86 +1,105 @@
 # AI Adventure: build prompts, feature by feature
 
-Each section is a self-contained prompt to rebuild one feature on another platform. Shared rules for every feature:
+Current-state frontend specification for the Big Brain Studio port. Each feature below describes the current demo; production requirements are explicitly identified. All application data reads and writes use the swappable AdventureStore. There is no authentication service, database, backend or external call in this mockup.
 
-- Palette: purple #9450FD is the only strong interface colour, with white #FFFFFF, near-black #242424 text and stone #E3D9CF panels. Category colours appear as small dots, section underlines and 12% soft-tint chip backgrounds, never saturated pink/blue/green/yellow fills. Lime #D8F81E stays for Completed and completion checks.
-- Poppins everywhere. Rounded corners 16-24px, subtle shadows, no gradients (except a faint lime glow on celebrations), no emojis, no stock imagery.
-- Motif: flat footprints (sole + heel shape) in accent colours.
-- Approved effort duration estimates are shown; no streaks, leaderboards or employee rankings. Admin session-time analytics are explicitly labelled estimated. Titles describe distance travelled, never ability.
-- Footer on every page: "AI Adventure · Built for monday.com by Nufar Gaspar".
-- All reads/writes go through one store interface (see `docs/backend-requirements.md`).
+Shared rules for every feature:
 
----
+- Purple #9450FD is the strong interface colour; white #FFFFFF, near-black #242424 text, stone #E3D9CF panels and warm #FBF9F6 page surfaces support it. Category chips use 12% light tints and dark text, with colour confined to a small dot and catalogue section underline. No saturated pink/blue/green/yellow chip fills. Lime #D8F81E marks Completed and completion checks; existing artwork and celebration accents remain.
+- Poppins, rounded surfaces, subtle shadows, no gradients except a faint lime celebration glow, no emojis or stock imagery. Reuse existing controls and tokens.
+- Motif: flat footprints with sole and heel. Respect reduced-motion preferences.
+- Show approved effort estimates. No streaks, employee rankings, leaderboards, personal scores or competitive elements. Titles describe distance travelled, never ability. Admin session-time analytics are explicitly estimated.
+- Footer on every page: “AI Adventure · Built for monday.com by Nufar Gaspar”.
+- Data access uses one AdventureStore interface; see docs/backend-requirements.md.
 
 ## 1. Content index
 
-**Build:** 30 adventures, one Markdown file each, YAML frontmatter: slug, icon, title, walkaway (the one-line promise), category, levels[], professions[], audience[], tool, effort, outcome, wave (`W1`-`W4`), slot, next[]. Extra fields (`emoji`, `pattern`, `source`) are ignored. At startup, parse all files into an index sorted by wave then slot.
+**Build:** 30 Markdown adventures, indexed from YAML frontmatter at startup and sorted by wave/slot. Fields: slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, optional time, outcome, wave (W1–W4), slot, next[], optional demo-only review. Extra emoji/pattern/source fields are ignored. Normalise CRLF. Frontmatter is authoritative for labels; adding a file adds it to catalogue, badges and recommendation pool without page-code changes.
 
-Label values:
-- category: Work smarter with AI · Create with AI · Set up your AI · Automate and delegate · Lead with AI
-- levels: Foundations · Intermediate · Advanced
-- professions: Everyone (matches every profession filter), Customer Facing, Marketing, Engineering, Product, Design, HR, Finance, or free text (e.g. "Advanced users"), which matches the "Other" chip
-- audience: Managers (matched by the "Managers" chip under Profession)
-- tool ("Works with"): Any AI tool · Claude · Agentic coding tool
-- effort: Quick win · Moderate · Ambitious
-- outcome: Build something · Learn something · Work differently
-- wave: W1 open now · W2 opens 23 Nov · W3 opens 7 Dec · W4 opens 4 Jan
-- icon: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown or missing → the category's default glyph (Work smarter: compass, Create: palette, Set up: toolbox, Automate: robot, Lead: people). Discs use badge PNG art with Lucide fallback (see Badge art below).
+- Categories: Work smarter with AI, Create with AI, Set up your AI, Automate and delegate, Lead with AI.
+- Levels: Foundations, Intermediate, Advanced.
+- Professions: Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text matches Other. Managers matches audience: [Managers].
+- Works with: Any AI tool, Claude, Agentic coding tool.
+- Effort: Quick win, Moderate, Ambitious. Default labels: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. Optional free-text `time: "~1 h"` gives, for example, `Moderate · ~1 h`; the same derived effortLabel is used on cards and page heads.
+- Outcomes: Build something, Learn something, Work differently.
+- Waves: W1 open, W2 opens 23 Nov, W3 opens 7 Dec, W4 opens 4 Jan; actual schedule comes from wave data.
+- Icons: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown icons fall back by category: compass, palette, toolbox, robot, people respectively.
 
-Bodies: all 30 adventures have real, full bodies in the current structure (HTML design-notes comment, Why this adventure, The trail, Before you start, Step 1-N, Go further, Proof of work, Related adventures). Frontmatter in each file is the source of truth for labels; CRLF is normalised on import. All 11 W1 adventures show "Ready". W2-W4 bodies are loaded but hidden: readers see "This adventure opens on <date>" with title and promise. **Preview rule:** an admin can open the full body of a scheduled adventure via the Preview action in /admin/adventures (`/adventures/<slug>?preview=1`, honoured only when the person is an admin; page shows an "Admin preview" chip and no Mark complete). The "Content coming" fallback remains only for an open adventure with an empty body.
-
-**Accept:** /adventures shows 30 cards; adding a file makes it appear in the grid, progress badges and onboarding pool with no code change.
+All 30 bodies are loaded and contain their authored head sections, core steps, optional Go further, proof and related links. Current demoOpenAll allows every body to be inspected, while dates and schedule styling remain wave-derived. With that switch off, scheduled readers see title/promise/date until opening. Admin Preview (`/adventures/<slug>?preview=1`) renders the full body read-only for the demo admin. Empty open bodies retain Content coming fallback. Review marks follow frontmatter, not wave or body presence.
 
 ## 2. Store
 
-**Temporary review mode:** `AdventureStore.getDemoSettings()` exposes `demoOpenAll: true` and `showReviewState: true`, configured once in the mock store, not persisted per employee. All cards and reader pages open regardless of wave while demoOpenAll is true; wave labels, filters and disc styles remain schedule-derived. False restores schedule gating. Scheduled admin previews remain read-only. Shared ReviewStamp overlays cards and page heads without moving chips: exact optional frontmatter `review: ready` → faint purple Ready; anything else/missing → stone-grey Draft. Small uppercase letter-spaced text at top-left, rotated -20°, no box/border. Ready marks come from the `review: ready` frontmatter field. Hide every stamp by setting showReviewState false. These demo rules temporarily override the schedule restrictions described below.
+**Build:** one localStorage-backed AdventureStore, replaceable on port. Employee contract: getPerson, getItinerary, addToItinerary, removeFromItinerary, reorderItinerary, getCompletions, getTitle, getProofOfWork, saveProofOfWork, saveOnboardingAnswers, getAdventureRating, getDemoSettings, announcement dismissal, subscribe/getSnapshot and demo sign-in methods. Admin reads/writes use the same interface. Employee changes persist; Admin mutations are session-only.
 
-**Build:** One interface: getPerson, getItinerary, addToItinerary, removeFromItinerary, reorderItinerary(slug, up|down), markComplete(slug) → {count, newTitle, alreadyDone}, getCompletions, getTitle, dismissAnnouncement (plus signIn, isSignedIn, isAnnouncementDismissed, subscribe, getSnapshot for the UI). One localStorage implementation. Seed: Noa Levi, Product Manager, admin; completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well` in that order (Board of Advisors is Next up). Progress shows 1 of 30, First Steps.
+Seed: Noa Levi, Product Manager, demo admin; completed `de-slop`; journey `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well`, in that order. One completion means First Steps. No saved onboarding answers initially. Completion is idempotent; saveProofOfWork is the employee completion path and atomically saves reflection and completion. Editing retains the badge and original date.
 
-**Accept:** refresh keeps changes; clearing storage restores the seed; marking an adventure complete twice does not double count.
+Demo settings are source-configured, not employee-persisted. demoOpenAll and showReviewState default true; ratingDisplayMinimum defaults 5. ReviewStamp is a faint top-left uppercase diagonal mark, rotated -20°, no box/border: exact `review: ready` means Ready; other/missing values mean Draft. It does not move chips and can be hidden globally.
 
-## 3. Sign-in (`/`)
+## 3. Entry and first visit (`/`)
 
-**Build:** Full purple screen with footprint trails in lime, pink, yellow, white, green, coral, blue branching in several directions. Wordmark, H1 "AI Adventure", subtitle "Pick a path. Build something real. Keep it.", one white button "Continue with your monday account". Clicking signs in the sample employee and goes to `/welcome`. No form, no global header.
-
-**Accept:** one button only; lands on welcome with "Welcome, Noa".
+After hydration, `/` redirects to `/onboarding` without saved answers or `/welcome` with answers. The purple branded sign-in design is the pre-hydration entry shell, not a persistent login gate: logo, footprint trails, AI Adventure headline, “Pick a path. Build something real. Keep it.” and the demo “Continue with your monday account” action. There is no real authentication. Production entry must be SSO-driven.
 
 ## 4. Global header and announcement
 
-**Build:** On every page except `/`: wordmark (links to welcome), nav My itinerary · All adventures · Progress · Admin (Admin only if person is admin), right side "Hi Noa" and a purple pill "<title> · N completed" linking to progress. Below it a dismissible banner "New on Monday: two new adventures opened." with a link to `/adventures`. Dismissal persists via the store.
+**Build:** shared sticky header outside the entry route: monday.com logo and AI Adventure wordmark linking to Home, navigation Home · My journey · All adventures · Admin (Admin visible to the demo admin). Greeting “Hi Noa” links to `/profile`; purple title/completion-count pill links to `/my-journey`. Measure actual header height, including mobile navigation and announcement. Dismissible “New on Monday: two new adventures opened.” banner links to `/adventures`; dismissal persists through AdventureStore.
 
-**Accept:** pill updates immediately after completing an adventure; banner stays gone after refresh.
+**Accept:** greeting opens Profile, title pill updates after completion, navigation works on direct load and phones, dismissal survives refresh.
 
 ## 5. Welcome (`/welcome`)
 
-**Build:** 16:9 stone video placeholder labelled "A welcome from L&D", one paragraph, three big choice cards: Suggest an itinerary for me → `/onboarding`; Build my own itinerary → `/adventures?build=true`; See all destinations → `/adventures`.
+Home opens onboarding before rendering if Person has no saved answers. Otherwise show “Welcome, Noa”, a stone 16:9 “A welcome from L&D” video placeholder, introductory copy and three choices: “Suggest an itinerary for me” → `/onboarding`; “Build my own itinerary” → `/adventures?build=true`; “See all destinations” → `/adventures`. Build mode highlights add-to-journey controls. Retain the grouped three-state badge grid below the choices.
 
-**Accept:** in build mode the "Add to my itinerary" buttons are highlighted (filled purple with lime ring).
+## 6. Onboarding and Profile (`/onboarding`, `/profile`)
 
-## 6. Suggest an itinerary (`/onboarding`)
+**Build:** eight questions, one per step, segmented progress and Back. Prefill from the person's saved answers when present:
 
-**Build:** Six single-choice questions, one per step, with a segmented progress bar and Back: role; what you use AI for today; which tools you open weekly; what you want to get better at; how you prefer to learn; how comfortable you are with AI today. Results: 3-4 cards (icon, title, walkaway, labels, "Why this for you: …", per-card Add toggle), plus "Add all to my itinerary", "Go to my itinerary", "Start over". Scoring lives in its own module (`src/lib/recommend.ts`) and is replaced by an AI call in the real build.
+1. “What's your role?” — single choice (`role`).
+2. “Which team do you belong to?” — required free text with suggestions (`team`).
+3. “What do you use AI for today?” — single choice (`aiUseToday`).
+4. “Which tools do you open weekly?” — single choice (`weeklyTools`).
+5. “What do you want to get better at?” — single choice (`goal`).
+6. “What do you want to get out of this?” — multi-select Build confidence with AI / Make everyday work easier / Build something new (`aspirations`), plus “Anything else?” free text (`aspirationText`); require a choice or text.
+7. “How do you prefer to learn?” — single choice (`learningStyle`).
+8. “How comfortable are you with AI today?” — single choice (`comfort`).
 
-**Accept:** results never mention the comfort answer or any level/score; "Add all" adds all recommended slugs once.
+Eight questions map to nine stored properties because question 6 includes both selections and text. Save all answers together through saveOnboardingAnswers at the final step. Saving recomputes suggested journey destinations while retaining completed stops already in the trail, completions, dates, badges and proof entries. Results show 3–4 suggested cards with individual journey toggles and Home, Go to My journey, Edit answers actions; no scores, comfort explanation or bulk Add all control is displayed. Recommendation logic is isolated in src/lib/recommend.ts for replacement by an AI call; team/aspirations are saved but do not yet affect scoring.
+
+Profile shows name/role, a “Your answers” card displaying the owner's saved answers (including comfort), and Redo linking to prefilled onboarding. Its grouped badge grid remains. Answers are private to the employee, never Admin or Manager reporting.
+
+**Accept:** a fresh visit shows onboarding before Home; Profile answers survive refresh; Redo never erases completion/proof records.
 
 ## 7. All adventures (`/adventures`)
 
-**Build:** one sticky category-navigation/selection row with five soft-tinted pills, dark text and category dots, plus Filters at the right end. Pills jump to sections and highlight the section in view. No duplicate Category chip row. Filters opens Level, Profession, Works with, Effort and Outcome; active selections appear as removable chips below the bar. Chips within a filter family are OR, families are AND. Card grid grouped by five collapsible categories with matching heading dots and coloured underlines. Cards retain icon, title, walkaway, soft-tinted category label, neutral metadata and journey toggle. Scheduled cards retain the wave date and can be added to the journey; demoOpenAll governs page access. Empty-filter state shows footprints and Clear filters.
+**Build:** one sticky category-navigation/selection row under the measured header: five pills with a small category dot and dark text, plus Filters at the right end. Pills jump to their category section and highlight the section in view; they do not hide other sections. On phones the pills scroll horizontally while Filters stays available. No separate Category filter row or Category in the panel.
 
-Profession chips: an adventure for "Everyone" matches every chip; "Managers" matches `audience: [Managers]`; "Other" also matches free-text professions.
+Filters opens Level, Profession, Works with, Effort, Outcome. OR within a family, AND between families. Everyone matches any profession; Managers reads audience; Other matches free-text professions. Active selections appear as removable labelled chips below the bar, with Clear filters. Five sections are initially expanded, collapsible, and have matching coloured heading dots/underlines. Grid: four cards desktop, three tablet, one phone; compact spacing, padding and icons. Empty results show footprints and Clear filters.
 
-**Employee rating line:** every catalogue, itinerary and home adventure card shows one small footprint and muted `4.6 · 23 ratings` beside the effort chip; the adventure page head shows it under the title. Read the same lifetime aggregate mean/count as Admin through `getAdventureRating`; show only at or above mock-store `ratingDisplayMinimum` (default 5), otherwise render nothing at all. Preserve review stamps and label chips; no ranking or top-rated marks on employee screens (ranking stays in Admin Most loved adventures).
+Category chips on cards, page heads, journey stops and the bar use about 12% category-colour tint with #242424 text: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow. Colour itself appears as the dot and section underline; other metadata chips are neutral stone. Label-family explanations are available on hover, focus and touch.
 
-**Accept:** there is only one category row, Filters remains at its right end on desktop and phone, category clicks align their section beneath the sticky band, and secondary filters can be removed individually.
+Cards show disc, title, walkaway, labels, add/remove journey action and wave-date hint where scheduled. Review marks remain separate. Completed passport stamp: lime ring, uppercase COMPLETED, central footprint, rotated -12°, top-right above the labels without shifting them; also on journey completion entries. Scheduled styling and hover/tap opening-date hints follow wave data independently of demoOpenAll.
 
-## 8. My itinerary (`/itinerary`)
+Under the sticky band, the shared disc legend reads “Open · In my journey · Completed · Opens later”. Helper line above it: “Every adventure works best on a strong model, for example Opus, with extended thinking on.” This is platform copy, not Markdown content.
 
-**Build:** Stops top to bottom, joined by a winding dotted line with two footprints between each pair. Each stop card: icon, title (links if open), labels, status chip done / next up / later (or wave label if not open). The first undone open stop is highlighted lime as "Next up". Up/down and remove controls per stop. "Find more destinations" link. Empty state: footprints, message, the three welcome choices.
+**Rating line:** getAdventureRating returns lifetime aggregate mean/count only at or above ratingDisplayMinimum (default 5). Show a small footprint and muted one-decimal average/count beside effort on catalogue, journey, home and suggested cards; the reader head shows it below the title. Below threshold render nothing, including no placeholder. No employee-side ranking or top-rated mark.
 
-**Accept:** reorder and remove persist; completing the next-up adventure moves "Next up" to the following open stop.
+**Accept:** one category row, working jumps/current-section highlight, removable secondary filters, four-up desktop grid and no saturated category fills.
+
+## 8. My journey (`/my-journey`)
+
+**Build:** header completion count/current title and Find more destinations link. `/itinerary` and `/progress` redirect here; there is no separate Progress page. Sections, in order:
+
+1. **In progress:** only saved added destinations, in their saved order, including completed stops with checks. Up/down/remove controls persist and stop card navigation. The whole stop opens its reader under demo access. The first incomplete schedule-open stop is Next up. Added scheduled stops remain faded in place with actual “Opens 23 Nov” style chip and no Start action until open; demoOpenAll permits page inspection but does not change scheduling. Unadded scheduled destinations appear only in All adventures. Empty state links there with “Add destinations from All adventures”.
+2. **Completed:** completed destinations with original dates and Completed passport stamps.
+3. **Your title:** First Steps at 1, Day Tripper at 3, Frequent Flyer at 11, Globetrotter at 20 completions; current title highlighted purple, next title/threshold and remaining count. Before the first completion use Ready to set off; after Globetrotter there is no next threshold.
+4. **Your badges:** shared category-grouped three-state grid, 56px discs: earned purple/white glyph; open unearned white/purple outline/purple glyph; scheduled unearned stone-grey outline/grey glyph/muted label and reduced whole-item opacity. Earned wins over scheduling; journey membership and demoOpenAll never change badge state. Actual wave-date tooltip on hover/tap. No lime badge ring/check. Profile and Home retain this same grid.
+5. **Share card:** purple preview with name, current title, completion count and footprint artwork; no automatic sharing or external call.
+
+No Opens soon section. Between trail cards retain the winding dotted path, alternating left/right feet and mirrored connector alternation. Each footprint is rotated to the current toe direction, at 160° and 190° respectively (opposite the original glyph orientation). Onboarding currently has no connector preview; any future preview must match these angles.
+
+**Accept:** reorder/remove and completion dates persist; all five sections appear; scheduled unadded adventures do not become journey suggestions.
 
 ## 9. Adventure page (`/adventures/:slug`)
 
-**Build:** Persistent page head with disc, title, promise, label chips and itinerary toggle. Below it, render Why this adventure as paragraphs, The trail as a compact numbered list in a stone panel, and Before you start as its authored short lines. These sections appear once, above the rail, never inside a step.
+**Build:** page head with disc, title, promise, shared soft-tint/neutral labels, shared effort/time estimate, thresholded rating line and journey toggle. Why this adventure, shared AdventureTrail and Before you start appear once above the rail. Scheduled access follows demo settings; Admin Preview is read-only.
 
 - Strip HTML design comments; drop the Markdown title/tagline before the first section.
 - The shared AdventureTrail panel (also in admin preview) keeps the authored title and list, adding purple number discs and alternating faint-purple footprints along a thin stone dotted path; the final print is slightly stronger, and the text stays in its own column on phones. No Markdown parser changes.
@@ -94,69 +113,25 @@ Profession chips: an adventure for "Everyone" matches every chip; "Managers" mat
 - Footer beneath the reading section: computed What's next, then Related adventures (older title: Where to next) as a small link list. Neither enters the rail. Matching bold adventure titles become links.
 - No trail injection in any step. Older Core task / nested Step headings are supported; bodies without numbered steps show a single reading page, retaining older headings and proof/footer without a rail.
 
-**Accept:** All four full-content adventures show the three head sections once, the file's own Step sections + Go further in the rail (Stay Original with AI has five steps, the other three have four), named Prompt windows, proof and completion under the last step, and What's next followed by related links below. Stay Original's Step 3 keeps the think-without-AI instruction before the first prompt. No design notes leak.
+**Accept:** all 30 authored bodies retain their own core-step counts, optional Go further, named prompts, proof instructions and related links; no design notes leak. Page-head sections appear once and completion stays below the last core step.
 
 ## 9a. What's next panel
 
-**Build:** In the footer beneath the steps on every adventure page, and inside the completion celebration, show a "What's next" panel chosen by rule: (1) the first itinerary adventure not done and not the current one, labelled "Next in your itinerary"; (2) else one open, undone adventure picked by the onboarding scoring using the person's role (neutral defaults for other answers; ties fall back to lowest slot), labelled "Suggested for you"; (3) else "Browse all adventures". Never static text.
+Below the reader and in completion celebration, choose dynamically: first saved journey destination not completed and not current; otherwise a schedule-open, incomplete destination scored with saved answers, or role-based defaults without answers; otherwise Browse all adventures. The journey-first branch follows saved order. Suggested ties use slot order. Display “Next in your journey” or “Suggested for you”; keep authored Related adventures below it and outside the rail. No static next-adventure text.
 
-**Accept:** As Noa, /adventures/board-of-advisors ends with What's next = Your AI Identity; after marking it complete, the celebration shows Your AI Identity too.
+## 10. Admin (`/admin`)
 
-## 10. Progress (`/progress`)
+Five routed mock tabs: Overview, Employees, Adventures, Waves & announcements, Settings. Sections 10a–10f specify them. Manager view is aggregate-only. All demo mutations remain session-only, with no backend or messaging.
 
-**Build:** "Adventures completed: N of 30". Four titles on a horizontal line (First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20) with current highlighted yellow and "Next title: X at T completed (k to go)". Badge grid of all 30 adventures: full colour when earned, faint dashed outline when not. Share card preview (purple panel: name, title, count, footprints).
-
-**Accept:** no comparison with other people anywhere.
-
-## 11. Admin (`/admin`)
-
-**Build:** five routed Admin tabs with deterministic activity data, filtering and exports, employee drawers, a session-only adventure editor, waves/announcements and settings. See sections 11a–11f below.
-
----
-
-## Assumptions made
-
-- Onboarding questions are single choice (simplest version).
-- Before any completion the title shows "Ready to set off".
-- "N of 30" uses a fixed planned total of 30 (now equal to the content count).
-- Free-text professions ("Advanced users", "People with sophisticated AI systems", "advanced Claude Code users") match the "Other" chip.
-- In recommendations, a named profession scores +3 and "Everyone" scores +1, so specific adventures rank above general ones.
-- Adventure `next:` slugs are kept but not used; What's next is computed, and Related adventures links come from title matches.
-- The What's next fallback scores with the profile role only, when no saved onboarding answers exist.
-- "Next up" skips stops that are not open yet.
-- Sign-in is not enforced on other routes; it only records that the sample user signed in.
-- The comfort answer only nudges recommendation matching and is shown only to its owner.
-- Coming-soon cards can still be added to an itinerary.
-
-## Design fixes (client review 1)
-
-**Logo:** one `MondayLogo` component, shown left of the "AI Adventure" wordmark in the header and above the wordmark on sign-in. It renders `src/assets/monday-logo.svg` at ~22px high: as-is on light surfaces; on the purple sign-in the wordmark is white while the three marks keep their colours. The favicon uses the three marks.
-
-**Icons:** Lucide icons, stroke 1.75, 58% of the disc, centred. Mapping from frontmatter `icon:`: sponge→Eraser, masks→Drama, robot→Bot, scale→Scale, compass→Compass, book→BookOpen, toolbox→Wrench, magnifier→Search, document→FileText, chat→MessageSquare, palette→Palette, calendar→CalendarCheck, id-card→IdCard, map-pin→MapPin, brain→Brain, briefcase→Briefcase, gauge→Gauge, layers→Layers, shield→ShieldCheck, clock→Clock, terminal→Terminal, newspaper→Newspaper, chart→BarChart3, loop→Repeat, network→Network, people→Users, balance→Scale. Unknown names fall back to the category glyph. On cards the disc is large and centred at the top with the title below; on the adventure page it sits left of the title.
-
-**Disc state (one meaning per colour, everywhere: cards, itinerary, progress badges, What's next):** white disc + purple icon + thin purple ring = open, not in itinerary; solid purple + white icon = in my itinerary; solid purple + small lime check badge = done; faded stone + muted icon = opens later. Priority: done > itinerary > open/later. A legend line "Open · In my itinerary · Done · Opens later" sits under the filters on /adventures. No other purple-vs-stone styling carries meaning.
-
-**Itinerary:** the whole stop card opens the adventure; reorder and remove buttons stop propagation.
-
-**Backgrounds:** signed-in pages use a warm surface #FBF9F6 with a sparse fixed pattern of small footprints in the accent colours at ~8% opacity. The adventure reading column sits on a white card. Sign-in is unchanged.
-
-**Adventure links:** slugs match case-insensitively; a mis-cased link (e.g. /adventures/De-Slop) redirects to the canonical lowercase URL, and an unknown slug shows a friendly "We couldn't find that adventure" page with a link to All adventures. Every page resolves on a direct load or refresh.
-
-## Badge art (replaces Lucide on discs)
-
-**Assets:** `src/assets/icons/<slug>.png`, one per adventure (30 files), 512x512, transparent outside the circle. Each is a purple disc (#9450FD) with a white glyph and one lime accent, cut from five 3x2 generated sheets in reading order: sheet 1 your-ai-identity, understanding-ai-agents, de-slop, use-case-discovery, board-of-advisors, hard-conversations; sheet 2 claude-in-your-docs-sheets-and-slides, skills-when-how-and-how-well, your-own-chief-of-staff, creating-apps-with-ai-done-right, making-decisions-with-ai, research-done-right; sheet 3 build-a-personal-brain-for-your-ai, automation-done-right, managing-with-ai, personalising-claude-code, voice-of-customers-and-employees, your-ai-taste-test; sheet 4 token-smartness, designing-with-ai-results-you-actually-like, planning-with-ai, advanced-skill-patterns, audit-and-improve-your-ai-system, your-team-s-ai-blueprint; sheet 5 the-daily-dispatch, ai-as-your-tutor, redesign-your-week-with-ai, the-loop, agent-teams-and-orchestration, build-your-professional-partner. Adventures are matched to art by slug at startup; a slug without a PNG falls back to the Lucide glyph for its `icon:`.
-
-**State treatments on the art (same disc-state rule):** in my itinerary = art as-is; done = art as-is + small lime check badge; open, not in itinerary = an SVG colour-matrix filter that swaps purple and white (white disc, purple glyph; the lime accent also turns purple) plus a thin purple ring; opens later = art greyscale at 45% opacity. The legend uses the same art treatments.
-
-## 11a. Admin data and shared shell
+## 10a. Admin data and shared shell
 
 **Build:** `/admin` redirects to `/admin/overview`; five routed tabs share the existing app header and a Programme admin heading. Admin nav and area are visible only for the demo admin. One Manager view switch applies across all tabs: hide employee tab, employee drawers, names in manager filters and the admin list. This is presentation-only demo privacy, not real authorization. Default is L&D view. Reuse existing colours, badge art, form controls and toast system.
 
 **Mock data:** deterministic seeded generator (`20261022`) with a fixed reference date, 22 Oct 2026. Exactly 140 employees, 28 managers from that list, eight professions and orgs, 2–4 teams per org. Employee: id, name, email, profession, org, team, managerId, isManager (Managers tag), joinedAt, lastActiveAt (null = never), derived title, completions with timestamps, ordered itinerary, estimatedMinutes. Exactly 21 never active; approximately 20% have no completions, most have 1–4, a small tail has 8–12. Almost all completions are W1; a rare later-wave completion represents mock early access. Names and activity are invented except Noa's requested seed: Stay Original completed; Board of Advisors → Your AI Identity → Skills itinerary. Store reads reflect Noa's current local completion/itinerary state.
 
-Activity is a timestamped event ledger: id, personId, slug, kind (opened / added / completed), at; estimated sessions: personId, slug, at, estimatedMinutes. No personal level, score, onboarding answer or comfort field exists. Admin reads (`listPeople`, `getPersonActivity`, `getAggregates`, directory/waves/announcement/admin reads) and every write go through AdventureStore. Admin writes remain in-memory for this session; refresh restores deterministic data. Never call external services.
+Activity is a timestamped event ledger: id, personId, slug, kind (opened / added / completed), at; estimated sessions: personId, slug, at, estimatedMinutes. The Admin dataset contains no personal level, score, onboarding answer or comfort field; private answers belong only to Person. Admin reads (`listPeople`, `getPersonActivity`, `getAggregates`, directory/waves/announcement/admin reads) and every write go through AdventureStore. Admin writes remain in-memory for this session; refresh restores deterministic data. Never call external services.
 
-## 11b. Admin Overview (`/admin/overview`)
+## 10b. Admin Overview (`/admin/overview`)
 
 **Build:** org, team, manager, profession, wave and last 7/30/60-day filters. Manager view omits named manager options. Six KPI tiles; weekly completion bars, top 10 adventure bars (completed and opens), five category bars, title distribution including Not started, sorted badge distribution with art, org and profession tables. CSV exports for group and badge tables use the currently displayed data, generated client-side. Empty results show zeros safely. Footer: "Analytics are for L&D; managers receive aggregates only."
 
@@ -166,39 +141,69 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 **Proof-of-work reporting:** Overview includes "Most loved adventures", sorted by average adventure satisfaction rating with rating counts and independent category/profession filters (profession means the respondent's profession). This is adventure feedback, not employee scoring. A separate L&D-only "Proof of work" section lists all latest entries with adventure, person, completion date, rating, built and learned text; search person/adventure/text, filter adventure/category/profession, and export exactly the visible rows to CSV. Manager view renders neither entries nor their export controls. The adventure directory shows average rating/count per row; employee drawers list that person's entries with adventure/date/rating/built text. Every existing mock completion has a deterministic short, varied Monday-work reflection; ratings are mostly 4–5 with some 3s. No backend or messaging is added.
 
-## 11c. Admin Employees (`/admin/employees`)
+## 10c. Admin Employees (`/admin/employees`)
 
 **Build:** search name/email, org/team/manager/profession/title filters, inactive-for-30+-days checkbox (includes never active). Sort every table column; name, email, org, team, manager, profession, derived title, completed count, itinerary count, last active, estimated time. Export filtered and sorted rows. Row click/Enter opens a drawer with all badge art (earned highlighted), ordered itinerary and dated opens/adds/completions. Send a nudge displays only "Nudge drafted: new adventures for Product opened this week"; no message is sent. Manager mode hides the entire table and any open drawer.
 
 **Accept:** searching Noa finds Noa Levi; her drawer reads First Steps, one completion and three stops.
 
-## 11d. Admin Adventures (`/admin/adventures`)
+## 10d. Admin Adventures (`/admin/adventures`)
 
 **Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
 
 **Accept:** Add adventure saves a Draft visible in the directory with zero opens/completions; refresh returns to 30. No files or real content are published.
 
-## 11e. Admin Waves & announcements (`/admin/waves`)
+## 10e. Admin Waves & announcements (`/admin/waves`)
 
 **Build:** four wave sections, dates and each assigned adventure with a wave dropdown. Save date edits in the mock store. Announcement text, show-from and show-until controls; validate date order. Saving updates the global banner when the reference date is within the interval (existing dismissal still applies). No drag operation required.
 
-## 11f. Admin Settings (`/admin/settings`)
+## 10f. Admin Settings (`/admin/settings`)
 
 **Build:** names of current L&D admins; choose an employee to Add admin (mock list only, no permissions change). Hide names and this editor in Manager view. Read-only thresholds: First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20, with note that these are configurable in the real build.
 
+## Visual system: logo, icons and states
 
-## Approved L&D review — employee experience (25 Oct 2026)
+**Logo:** shared MondayLogo left of the AI Adventure wordmark (~22px); light-surface artwork as supplied, inverted wordmark on the entry shell with original coloured marks. Favicon uses the marks.
 
-This section supersedes earlier six-question, separate Itinerary/Progress, duration and badge styling instructions above. Existing proof entries, ratings, review stamps, palette, Poppins, footprint motif, Admin privacy and demo-only storage remain intact.
+**Icons:** Lucide stroke 1.75, centred at about 58% of card disc. Frontmatter mapping: sponge→Eraser, masks→Drama, robot→Bot, scale/balance→Scale, compass→Compass, book→BookOpen, toolbox→Wrench, magnifier→Search, document→FileText, chat→MessageSquare, palette→Palette, calendar→CalendarCheck, id-card→IdCard, map-pin→MapPin, brain→Brain, briefcase→Briefcase, gauge→Gauge, layers→Layers, shield→ShieldCheck, clock→Clock, terminal→Terminal, newspaper→Newspaper, chart→BarChart3, loop→Repeat, network→Network, people→Users. Category fallback applies to unknown names.
 
-- **First visit:** `/` and Home (`/welcome`) open `/onboarding` if Person has no saved answers; this is automatic demo onboarding, not authentication. Eight questions retain the original six and add team (free text with suggestions) and aspirations (three selectable choices plus other text). The default choice wording is Build confidence with AI / Make everyday work easier / Build something new. Save all answers together on `Person.onboardingAnswers` through `AdventureStore.saveOnboardingAnswers`; no backend calls. The owner can view all their answers, including comfort, on `/profile`, reached through the greeting. Redo opens the questions prefilled. Saving recomputes suggested journey stops, retains completed stops already in the trail, and never changes completion dates, proof entries or badges. Admin and Manager reporting never receive these answers.
-- **My journey:** `/my-journey` merges Itinerary and Progress; `/itinerary` and `/progress` redirect. Main employee navigation is Home, My journey, All adventures; Admin remains for the demo admin. Sections in this order: In progress (only adventures the person added, in saved order; completed stops retain lime check), Completed (dated entries and stamp), Your title, Your badges, then the share card. Only Opens soon stays removed. Your title shows the four-title ladder: First Steps at 1, Day Tripper at 3, Frequent Flyer at 11 and Globetrotter at 20 completions, with the current title highlighted in purple and the next title/threshold plus remaining completions. Your badges reuses the grouped three-state badge grid. The share card shows the person’s name, current title, completion count and footprint artwork. Added scheduled adventures stay faded in their existing trail position with the real wave-date chip (e.g. "Opens 23 Nov") and no Start button until open; demoOpenAll still allows page inspection. Unadded scheduled adventures appear only in All adventures, never as journey suggestions. Empty In progress links to All adventures with "Add destinations from All adventures". Employee page/control labels use journey; the internal itinerary model is unchanged.
-- **Effort/time:** optional free-text Markdown frontmatter `time:` overrides default duration. Exact defaults: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. For `effort: Moderate` and `time: "~1 h"`, display `Moderate · ~1 h`. One shared derived label is used on cards and adventure page heads. No measured-duration tracking is added.
-- **Catalogue:** exactly one sticky row beneath the measured header: five soft-tinted category pills with dark text and a small category-coloured dot select/jump to sections and highlight the section in view. No separate Category filter row and no Category in the panel. Filters sits at the right end of the same row; the panel contains Level, Profession, Works with, Effort and Outcome. Active filters appear as removable labelled chips under the bar. Secondary filters use OR within a family and AND across families; existing profession semantics remain. Sections are collapsible and initially expanded. Card grids are four columns on desktop, three tablet, one phone, with tighter spacing/padding and smaller icons.
-- **Labels:** every category chip (cards, page heads, journey stops and catalogue controls) uses a light background mixed with about 12% category colour and dark #242424 text. Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow. The category colour itself appears only as the small preceding dot and catalogue section-heading underline; section headings carry the same dot. No saturated pink, blue, green or yellow fills; purple remains the only strong interface colour and lime is reserved for Completed and the check. Other metadata is neutral stone. Hover/focus/tap reveals one-line label-family guidance. Scheduled cards and badges reveal their actual wave opens date on hover or mobile tap; demo all-wave access remains in effect.
-- **Completed:** replace Done with Completed. Passport-style round stamp uses lime ring, uppercase COMPLETED, central footprint and -12° rotation, at card top-right over the label area without shifting or covering chips, and on dated journey completions. Card/page discs retain their lime completion check. Ready/Draft review stamps are unchanged.
-- **Badges:** group by category with small headings; discs shrink from 80px to 56px (30%). Three states everywhere the badge grid appears (Profile, Home and My journey): earned = purple disc/white glyph; open and unearned = white disc/purple outline/purple glyph; opens later = stone-grey outline/grey glyph/muted-grey label with reduced opacity on the whole item and the existing wave-date tooltip (e.g. "Opens 23 Nov"). Earned takes priority. Schedule follows wave data independently of `demoOpenAll`, which only makes pages openable; journey membership does not affect badges. No green/lime ring or check. All data continues through AdventureStore.
+**Card/page discs:** Completed > journey membership > schedule-open/later. Open not added: white/purple glyph/thin purple ring. Added: purple/white glyph. Completed: purple with lime check. Scheduled not added: faded stone/muted glyph. An added scheduled journey stop also has its explicit whole-stop faded treatment. Keep these separate from reward badges.
 
-**Port acceptance:** first-visit onboarding and prefilled redo preserve seeded completion/proof; saved answers read back in Profile after refresh; sticky category/filter controls and collapses work on phone/desktop; legacy URLs resolve to My journey; completion dates and passport stamps remain visible; badges are grouped with earned/open/scheduled states; My journey retains the title ladder, badges and share card below Completed; both duration defaults and authored overrides are covered by tests. No backend or external API is introduced.
+**Reward badges:** Profile, Home and My journey use only earned/open/scheduled states, not membership: purple/white earned, white/purple open unearned, stone-grey outline/grey glyph/muted label and reduced item opacity scheduled unearned. Schedule ignores demoOpenAll; earned has priority. No lime accents on this grid.
 
-**Journey connector correction:** rotate each connector footprint glyph by 180° from the original orientation (angles -20°/10° become 160°/190°). Preserve positions, alternating left/right feet, connector mirroring and dotted path. Onboarding currently shows suggested cards without footprint connectors; any future journey preview connector must use the corrected orientation.
+**Completed stamp:** round passport treatment described in §7; Ready/Draft review marks remain separate.
+
+**Backgrounds and links:** warm signed-in surface with sparse low-opacity footprint pattern; white reading surface. Slug lookup is case-insensitive with canonical lowercase redirect; unknown slugs show a friendly not-found state linking to All adventures. Direct routes and refresh must work.
+
+## Badge art and state treatments
+
+**Assets:** `src/assets/icons/<slug>.png`, one per adventure (30 files), 512x512, transparent outside the circle. Each is a purple disc (#9450FD) with a white glyph and one lime accent, cut from five 3x2 generated sheets in reading order: sheet 1 your-ai-identity, understanding-ai-agents, de-slop, use-case-discovery, board-of-advisors, hard-conversations; sheet 2 claude-in-your-docs-sheets-and-slides, skills-when-how-and-how-well, your-own-chief-of-staff, creating-apps-with-ai-done-right, making-decisions-with-ai, research-done-right; sheet 3 build-a-personal-brain-for-your-ai, automation-done-right, managing-with-ai, personalising-claude-code, voice-of-customers-and-employees, your-ai-taste-test; sheet 4 token-smartness, designing-with-ai-results-you-actually-like, planning-with-ai, advanced-skill-patterns, audit-and-improve-your-ai-system, your-team-s-ai-blueprint; sheet 5 the-daily-dispatch, ai-as-your-tutor, redesign-your-week-with-ai, the-loop, agent-teams-and-orchestration, build-your-professional-partner. Adventures are matched to art by slug at startup; a slug without a PNG falls back to the Lucide glyph for its `icon:`.
+
+**Card/page art:** added = PNG as supplied; Completed = supplied PNG plus lime check; open not added = SVG colour-matrix purple/white swap (lime detail becomes purple) and thin purple ring; scheduled not added = greyscale at about 45% opacity. Legend uses these same art treatments. Lucide fallback follows the same card-disc meanings.
+
+**Badge grids:** render the mapped Lucide glyph in the shared 56px three-state disc, not the generated PNG. Earned purple/white, open white/purple, scheduled grey/muted with reduced item opacity and wave tooltip. Never bring the PNG lime detail into badge-grid rewards.
+
+## Head tags, icons and manifest
+
+Carry public/favicon.ico, favicon-512.png, apple-touch-icon.png, og-image.png (1200×630) and site.webmanifest into the Big Brain Studio port, with favicon/apple icon/manifest links. Each content page has app-specific title/description, og:title/og:description, og:type=website and twitter:card=summary_large_image. Entry title is AI Adventure; adventures use “<adventure title> · AI Adventure”. Preserve the shared absolute-site og-image URL where configured; never emit a relative image URL. Port must retain both OG and Twitter preview image tags with the same absolute og-image URL and verify asset responses. Current leaf metadata is supplied by route head functions and the root supplies icon/manifest links. The image asset is present, but current head code does not configure OG/Twitter image tags; the absolute image-tag requirement must be implemented during the port, not assumed present.
+
+## Demo-only switches to remove for production
+
+- Remove demoOpenAll; enforce actual wave opening dates and authorised previews.
+- Remove showReviewState and demo-only `review: ready` frontmatter/review marks; they are review aids, not production publication status.
+- Keep ratingDisplayMinimum as a real aggregate-privacy/display setting, default 5.
+- Replace the deterministic mock Admin dataset and session-only writes with authorised real data; replace client-side admin gating with server-enforced access.
+- Replace demo entry/onboarding-on-first-visit with SSO-driven identity plus saved-answer checks. Onboarding answers remain private and editable.
+
+## Assumptions made
+
+- Six questions are single-choice; team is free text; aspirations is multi-select plus optional text.
+- Team and aspirations are stored for the port but not yet used by deterministic scoring.
+- Ready to set off applies before a first completion. The planned total is 30.
+- Free-text professions match Other; Managers matches adventure audience.
+- Recommendation named profession scores +3, Everyone +1. Comfort affects matching only, never an employee level/score; the owner can see their own comfort answer in Profile.
+- Adventure next[] remains authored data but the displayed next destination is computed. Related links come from authored title matching.
+- What's next uses saved answers when available and role-based defaults otherwise. Next up skips schedule-closed stops.
+- Demo sign-in is not security; entry/Home check saved answers, not a real session.
+- Coming-soon cards can still be added to a journey. Added scheduled stops retain their position; only demo reader access bypasses their date.
+- Share card is a local preview; no external sharing occurs automatically.
