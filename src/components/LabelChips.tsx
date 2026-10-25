@@ -4,12 +4,15 @@ import { cn } from "@/lib/utils";
 import { LabelHint } from "./LabelHint";
 
 export const CATEGORY_TONES: Record<Category, string> = {
-  "Work smarter with AI": "bg-category-work text-category-work-foreground",
-  "Create with AI": "bg-category-create text-category-create-foreground",
-  "Set up your AI": "bg-category-setup text-category-setup-foreground",
-  "Automate and delegate": "bg-category-automate text-category-automate-foreground",
-  "Lead with AI": "bg-category-lead text-category-lead-foreground",
+  "Work smarter with AI": "category-work",
+  "Create with AI": "category-create",
+  "Set up your AI": "category-setup",
+  "Automate and delegate": "category-automate",
+  "Lead with AI": "category-lead",
 };
+export function CategoryDot() {
+  return <span aria-hidden="true" className="category-dot size-1.5 shrink-0 rounded-full" />;
+}
 export const LABEL_HINTS = {
   category: "Category: the kind of work this adventure helps with",
   level: "Level: how much AI experience the adventure assumes",
@@ -23,7 +26,7 @@ export const LABEL_HINTS = {
 export function LabelChips({ adventure, className, effortAccessory }: { adventure: Adventure; className?: string; effortAccessory?: ReactNode }) {
   return (
     <div className={cn("flex flex-wrap gap-1.5", className)}>
-      <LabelHint text={LABEL_HINTS.category}><span className={cn("rounded-full px-2.5 py-0.5 text-xs font-medium", CATEGORY_TONES[adventure.category])}>{adventure.category}</span></LabelHint>
+      <LabelHint text={LABEL_HINTS.category}><span className={cn("category-chip inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium", CATEGORY_TONES[adventure.category])}><CategoryDot />{adventure.category}</span></LabelHint>
       {adventure.levels.map((l) => (
         <Chip key={l} hint={LABEL_HINTS.level}>{l}</Chip>
       ))}

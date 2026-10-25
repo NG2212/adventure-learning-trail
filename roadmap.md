@@ -25,3 +25,4 @@
 - [x] Update both client documents, test rules and verify all requested desktop/phone screens.
 - [x] Restore earned/open/scheduled badge states across Profile, My journey and Home; document and verify Profile screenshots.
 - [x] Simplify My journey to In progress + Completed, retain faded scheduled added stops, update docs and verify screenshots/empty state.
+- [ ] Unify catalogue category navigation/selection, soften shared category chips, update docs and verify desktop/phone screenshots.
