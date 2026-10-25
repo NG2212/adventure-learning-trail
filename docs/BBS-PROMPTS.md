@@ -46,7 +46,7 @@ After hydration, `/` redirects to `/onboarding` without saved answers or `/welco
 
 ## 5. Welcome (`/welcome`)
 
-Home opens onboarding before rendering if Person has no saved answers. Otherwise show “Welcome, Noa”, a stone 16:9 “A welcome from L&D” video placeholder, introductory copy and three choices: suggested journey → `/onboarding`; build your own journey → `/adventures?build=true`; all destinations → `/adventures`. Build mode highlights add-to-journey controls. Retain the grouped three-state badge grid below the choices.
+Home opens onboarding before rendering if Person has no saved answers. Otherwise show “Welcome, Noa”, a stone 16:9 “A welcome from L&D” video placeholder, introductory copy and three choices: “Suggest an itinerary for me” → `/onboarding`; “Build my own itinerary” → `/adventures?build=true`; “See all destinations” → `/adventures`. Build mode highlights add-to-journey controls. Retain the grouped three-state badge grid below the choices.
 
 ## 6. Onboarding and Profile (`/onboarding`, `/profile`)
 
@@ -185,7 +185,7 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 ## Head tags, icons and manifest
 
-Carry public/favicon.ico, favicon-512.png, apple-touch-icon.png, og-image.png (1200×630) and site.webmanifest into the Big Brain Studio port, with favicon/apple icon/manifest links. Each content page has app-specific title/description, og:title/og:description, og:type=website and twitter:card=summary_large_image. Entry title is AI Adventure; adventures use “<adventure title> · AI Adventure”. Preserve the shared absolute-site og-image URL where configured; never emit a relative image URL. Port must retain both OG and Twitter preview image tags with the same absolute og-image URL and verify asset responses. Current leaf metadata is supplied by route head functions; the shared root supplies the site image/icon links.
+Carry public/favicon.ico, favicon-512.png, apple-touch-icon.png, og-image.png (1200×630) and site.webmanifest into the Big Brain Studio port, with favicon/apple icon/manifest links. Each content page has app-specific title/description, og:title/og:description, og:type=website and twitter:card=summary_large_image. Entry title is AI Adventure; adventures use “<adventure title> · AI Adventure”. Preserve the shared absolute-site og-image URL where configured; never emit a relative image URL. Port must retain both OG and Twitter preview image tags with the same absolute og-image URL and verify asset responses. Current leaf metadata is supplied by route head functions and the root supplies icon/manifest links. The image asset is present, but current head code does not configure OG/Twitter image tags; the absolute image-tag requirement must be implemented during the port, not assumed present.
 
 ## Demo-only switches to remove for production
 
