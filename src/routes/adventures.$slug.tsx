@@ -9,6 +9,7 @@ import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
 import { AdventureRating } from "@/components/AdventureRating";
 import { AdventureTrail } from "@/components/AdventureTrail";
+import { PreviewVideo } from "@/components/PreviewVideo";
 import { ReviewStamp } from "@/components/ReviewStamp";
 import { Chip, LabelChips } from "@/components/LabelChips";
 import { ItineraryToggle } from "@/components/ItineraryToggle";
@@ -227,6 +228,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           <AdventureRating slug={slug} className="mt-2" />
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
           <LabelChips adventure={adventure} className="mt-4" />
+          {!introduction.some((section) => /^the trail$/i.test(section.heading)) && <div className="mt-5"><PreviewVideo url={adventure.video} title={adventure.title} /></div>}
         </div>
         <ItineraryToggle slug={slug} className="self-start bg-background" />
       </header>
@@ -234,7 +236,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
       {introduction.length > 0 && (
         <div aria-label="Adventure introduction" className="mt-8 space-y-6 bg-card px-6 py-6 sm:px-8">
           {introduction.map((section) => (
-            /^the trail$/i.test(section.heading) ? <AdventureTrail key={section.heading} heading={section.heading} body={section.body} /> :
+            /^the trail$/i.test(section.heading) ? (adventure.video ? <div key={section.heading} className="flex flex-col gap-6 lg:flex-row lg:items-start"><div className="min-w-0 flex-1"><AdventureTrail heading={section.heading} body={section.body} /></div><PreviewVideo url={adventure.video} title={adventure.title} /></div> : <AdventureTrail key={section.heading} heading={section.heading} body={section.body} />) :
             <section key={section.heading} className="max-w-3xl">
               <h2 className="mb-2 text-xl">{section.heading}</h2>
               <Md text={section.body} />

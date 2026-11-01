@@ -19,6 +19,7 @@ export const LABEL_HINTS = {
   profession: "Profession: the roles this adventure is designed for",
   tool: "Works with: the AI tools you can use for this adventure",
   effort: "Effort: the size of the task and its estimated duration",
+  audience: "Audience: written for people who manage a team",
   outcome: "Outcome: what you will take away from this adventure",
 };
 
@@ -27,6 +28,7 @@ export function LabelChips({ adventure, className, effortAccessory }: { adventur
   return (
     <div className={cn("flex flex-wrap gap-1.5", className)}>
       <LabelHint text={LABEL_HINTS.category}><span className={cn("category-chip inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium", CATEGORY_TONES[adventure.category])}><CategoryDot />{adventure.category}</span></LabelHint>
+      {adventure.audience.includes("Managers") && <Chip hint={LABEL_HINTS.audience}>For managers</Chip>}
       {adventure.levels.map((l) => (
         <Chip key={l} hint={LABEL_HINTS.level}>{l}</Chip>
       ))}

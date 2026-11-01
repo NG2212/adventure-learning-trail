@@ -13,11 +13,11 @@ Shared rules for every feature:
 
 ## 1. Content index
 
-**Build:** 30 Markdown adventures, indexed from YAML frontmatter at startup and sorted by wave/slot. Fields: slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, optional time, outcome, wave (W1–W4), slot, next[], optional demo-only review. Extra emoji/pattern/source fields are ignored. Normalise CRLF. Frontmatter is authoritative for labels; adding a file adds it to catalogue, badges and recommendation pool without page-code changes.
+**Build:** 30 Markdown adventures, indexed from YAML frontmatter at startup and sorted by wave/slot. Fields: slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, optional time, optional video (URL), outcome, wave (W1–W4), slot, next[], optional demo-only review. Extra emoji/pattern/source fields are ignored. Normalise CRLF. Frontmatter is authoritative for labels; adding a file adds it to catalogue, badges and recommendation pool without page-code changes.
 
 - Categories: Work smarter with AI, Create with AI, Set up your AI, Automate and delegate, Lead with AI.
 - Levels: Foundations, Intermediate, Advanced.
-- Professions: Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text matches Other. Managers matches audience: [Managers].
+- Professions: Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text matches Other. Managers matches audience: [Managers]. Adventures with audience: [Managers] (e.g. Managing with AI, Your Team's AI Blueprint, Hard Conversations) show a neutral stone “For managers” chip immediately after the category chip on cards and page heads.
 - Works with: Any AI tool, Claude, Agentic coding tool.
 - Effort: Quick win, Moderate, Ambitious. Default labels: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. Optional free-text `time: "~1 h"` gives, for example, `Moderate · ~1 h`; the same derived effortLabel is used on cards and page heads.
 - Outcomes: Build something, Learn something, Work differently.
@@ -46,42 +46,46 @@ After hydration, `/` redirects to `/onboarding` without saved answers or `/welco
 
 ## 5. Welcome (`/welcome`)
 
-Home opens onboarding before rendering if Person has no saved answers. Otherwise show “Welcome, Noa”, a stone 16:9 “A welcome from L&D” video placeholder, introductory copy and three choices: “Suggest an itinerary for me” → `/onboarding`; “Build my own itinerary” → `/adventures?build=true`; “See all destinations” → `/adventures`. Build mode highlights add-to-journey controls. Retain the grouped three-state badge grid below the choices.
+Home opens onboarding before rendering if Person has no saved answers. Otherwise, in this order: “Welcome, Noa” with “How would you like to start?”; directly beneath it the three choice cards: “Suggest a journey for me” → `/onboarding`; “Build my own journey” → `/adventures?build=true`; “See all destinations” → `/adventures` (descriptions speak of the journey); then the stone 16:9 “A welcome from L&D” video placeholder, introductory copy and the grouped three-state badge grid. Build mode highlights the “Add to my journey” controls. The Your journey panel sits in a right column on desktop and below the choice cards on phones, so the choices always come first.
+
+**Your journey panel (Home and All adventures):** compact card, about 300px wide in a right column sticky under the header on desktop; on phones a card above the content (on Home after the choice cards, on All adventures above the grid). Contents: current title (or Ready to set off) and “N of 30 completed”; Next up = first incomplete schedule-open journey stop (else first incomplete stop) with its disc, title and Continue to its page, or “Add destinations” → `/adventures?build=true` when there is none; Last badge earned = the most recent completion's earned badge with name and date, hidden when nothing is completed. Reads existing store data only; no new fields.
+
+**Employee wording:** the employee UI never says “itinerary”; it says journey (“Add to my journey”, “In my journey”, “Next in your journey”). Internal store method and Admin names may keep the word.
 
 ## 6. Onboarding and Profile (`/onboarding`, `/profile`)
 
-**Build:** eight questions, one per step, segmented progress and Back. Prefill from the person's saved answers when present:
+**Build:** eight questions, one per step, segmented progress and Back. Prefill from the person's saved answers when present (Redo prefills multi-select arrays). A saved single value from an older save is migrated to a one-item array:
 
 1. “What's your role?” — single choice (`role`).
 2. “Which team do you belong to?” — required free text with suggestions (`team`).
 3. “What do you use AI for today?” — single choice (`aiUseToday`).
-4. “Which tools do you open weekly?” — single choice (`weeklyTools`).
-5. “What do you want to get better at?” — single choice (`goal`).
+4. “Which tools do you open weekly?” — multi-select, one or more (`weeklyTools[]`).
+5. “What do you want to get better at?” — multi-select, one or more (`goal[]`).
 6. “What do you want to get out of this?” — multi-select Build confidence with AI / Make everyday work easier / Build something new (`aspirations`), plus “Anything else?” free text (`aspirationText`); require a choice or text.
-7. “How do you prefer to learn?” — single choice (`learningStyle`).
+7. “How do you prefer to learn?” — multi-select, one or more (`learningStyle[]`).
 8. “How comfortable are you with AI today?” — single choice (`comfort`).
 
-Eight questions map to nine stored properties because question 6 includes both selections and text. Save all answers together through saveOnboardingAnswers at the final step. Saving recomputes suggested journey destinations while retaining completed stops already in the trail, completions, dates, badges and proof entries. Results show 3–4 suggested cards with individual journey toggles and Home, Go to My journey, Edit answers actions; no scores, comfort explanation or bulk Add all control is displayed. Recommendation logic is isolated in src/lib/recommend.ts for replacement by an AI call; team/aspirations are saved but do not yet affect scoring.
+Eight questions map to nine stored properties because question 6 includes both selections and text. Save all answers together through saveOnboardingAnswers at the final step. Saving recomputes suggested journey destinations while retaining completed stops already in the trail, completions, dates, badges and proof entries. Results show 3–4 suggested cards with individual journey toggles and Home, Go to My journey, Edit answers actions; no scores, comfort explanation or bulk Add all control is displayed. Recommendation logic is isolated in src/lib/recommend.ts for replacement by an AI call; team/aspirations are saved but do not yet affect scoring. For the multi-select fields, scoring sums the matches across all selected values (each matching goal +3, each matching tool +1 — “Any AI tool” counts once — each matching learning preference +1).
 
-Profile shows name/role, a “Your answers” card displaying the owner's saved answers (including comfort), and Redo linking to prefilled onboarding. Its grouped badge grid remains. Answers are private to the employee, never Admin or Manager reporting.
+Profile shows name/role, a “Your answers” card displaying the owner's saved answers (including comfort; multi-select answers joined with “ · ”), and Redo linking to prefilled onboarding. Its grouped badge grid remains. Answers are private to the employee, never Admin or Manager reporting.
 
 **Accept:** a fresh visit shows onboarding before Home; Profile answers survive refresh; Redo never erases completion/proof records.
 
 ## 7. All adventures (`/adventures`)
 
-**Build:** one sticky category-navigation/selection row under the measured header: five pills with a small category dot and dark text, plus Filters at the right end. Pills jump to their category section and highlight the section in view; they do not hide other sections. On phones the pills scroll horizontally while Filters stays available. No separate Category filter row or Category in the panel.
+**Build:** one sticky category-navigation/selection row under the measured header: five pills with a small category dot and dark text. Directly beneath it, a second line, left-aligned: a “More filters” button followed on the same line by the disc legend (the legend wraps below on phones). Active filter chips sit under that line. Pills jump to their category section and highlight the section in view; they do not hide other sections. On phones the pills scroll horizontally; More filters stays on its own line. No separate Category filter row or Category in the panel.
 
-Filters opens Level, Profession, Works with, Effort, Outcome. OR within a family, AND between families. Everyone matches any profession; Managers reads audience; Other matches free-text professions. Active selections appear as removable labelled chips below the bar, with Clear filters. Five sections are initially expanded, collapsible, and have matching coloured heading dots/underlines. Grid: four cards desktop, three tablet, one phone; compact spacing, padding and icons. Empty results show footprints and Clear filters.
+More filters opens Level, Profession, Works with, Effort, Outcome. OR within a family, AND between families. Everyone matches any profession; Managers reads audience; Other matches free-text professions. Active selections appear as removable labelled chips below the More filters line, with Clear filters. Five sections are initially expanded, collapsible, and have matching coloured heading dots/underlines. Grid: four cards desktop, three tablet, one phone; compact spacing, padding and icons. Empty results show footprints and Clear filters.
 
 Category chips on cards, page heads, journey stops and the bar use about 12% category-colour tint with #242424 text: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow. Colour itself appears as the dot and section underline; other metadata chips are neutral stone. Label-family explanations are available on hover, focus and touch.
 
 Cards show disc, title, walkaway, labels, add/remove journey action and wave-date hint where scheduled. Review marks remain separate. Completed passport stamp: lime ring, uppercase COMPLETED, central footprint, rotated -12°, top-right above the labels without shifting them; also on journey completion entries. Scheduled styling and hover/tap opening-date hints follow wave data independently of demoOpenAll.
 
-Under the sticky band, the shared disc legend reads “Open · In my journey · Completed · Opens later”. Helper line above it: “Every adventure works best on a strong model, for example Opus, with extended thinking on.” This is platform copy, not Markdown content.
+The shared disc legend reads “Open · In my journey · Completed · Opens later” and renders one sample badge art (the drafting-compass art of Your Team's AI Blueprint) in each of the four card-disc states with exactly the card treatments, so it reads identically to the grid. Helper line above the sticky band: “Every adventure works best on a strong model, for example Opus, with extended thinking on.” This is platform copy, not Markdown content.
 
 **Rating line:** getAdventureRating returns lifetime aggregate mean/count only at or above ratingDisplayMinimum (default 5). Show a small footprint and muted one-decimal average/count beside effort on catalogue, journey, home and suggested cards; the reader head shows it below the title. Below threshold render nothing, including no placeholder. No employee-side ranking or top-rated mark.
 
-**Accept:** one category row, working jumps/current-section highlight, removable secondary filters, four-up desktop grid and no saturated category fills.
+**Accept:** one category row, More filters and legend on the line beneath it, Your journey panel (right column desktop, card above grid on phones), working jumps/current-section highlight, removable secondary filters, four-up desktop grid and no saturated category fills.
 
 ## 8. My journey (`/my-journey`)
 
@@ -99,7 +103,7 @@ No Opens soon section. Between trail cards retain the winding dotted path, alter
 
 ## 9. Adventure page (`/adventures/:slug`)
 
-**Build:** page head with disc, title, promise, shared soft-tint/neutral labels, shared effort/time estimate, thresholded rating line and journey toggle. Why this adventure, shared AdventureTrail and Before you start appear once above the rail. Scheduled access follows demo settings; Admin Preview is read-only.
+**Build:** page head with disc, title, promise, shared soft-tint/neutral labels, shared effort/time estimate, thresholded rating line and journey toggle (“Add to my journey” / “In my journey”). Optional `video:` frontmatter: when present, a small 16:9 player (native video element for files; embed for YouTube, Vimeo or Loom URLs) sits beside the trail panel with the one-line caption “A short preview”; absent means nothing renders, no placeholder. No adventure file carries it yet. Why this adventure, shared AdventureTrail and Before you start appear once above the rail. Scheduled access follows demo settings; Admin Preview is read-only.
 
 - Strip HTML design comments; drop the Markdown title/tagline before the first section.
 - The shared AdventureTrail panel (also in admin preview) keeps the authored title and list, adding purple number discs and alternating faint-purple footprints along a thin stone dotted path; the final print is slightly stronger, and the text stays in its own column on phones. No Markdown parser changes.
@@ -149,7 +153,7 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 ## 10d. Admin Adventures (`/admin/adventures`)
 
-**Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
+**Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels, an optional “Preview video URL” field (frontmatter `video:`) and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
 
 **Accept:** Add adventure saves a Draft visible in the directory with zero opens/completions; refresh returns to 30. No files or real content are published.
 

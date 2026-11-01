@@ -226,6 +226,7 @@
   font-weight: 700;
 }
 .catalogue-sticky { top: var(--app-header-height, 0px); }
+.journey-panel-sticky { top: calc(var(--app-header-height, 0px) + 1.5rem); }
 .category-work { --category-colour: var(--primary); }
 .category-create { --category-colour: var(--pink); }
 .category-setup { --category-colour: var(--info); }

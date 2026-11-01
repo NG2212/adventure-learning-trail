@@ -351,6 +351,17 @@ export function AdminAdventures() {
                       onChange={(e) => update({ walkaway: e.target.value })}
                     />
                   </label>
+                  <label className="block text-xs font-medium">
+                    Preview video URL (optional)
+                    <Input
+                      aria-label="Preview video URL"
+                      type="url"
+                      placeholder="https://"
+                      className="mt-1"
+                      value={draft.video ?? ""}
+                      onChange={(e) => update({ video: e.target.value.trim() || undefined })}
+                    />
+                  </label>
                   <SelectField
                     label="Category"
                     value={draft.category}

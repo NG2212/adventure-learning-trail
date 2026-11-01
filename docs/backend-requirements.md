@@ -7,7 +7,7 @@ Current-state data and behavior contract for the Big Brain Studio port. The curr
 | Entity | Fields | Notes |
 | --- | --- | --- |
 | Person | id, name, firstName, role, isAdmin, onboardingAnswers? | Mock person now; company SSO identity in production. Answers are private to the owner and recommendation logic. |
-| Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, time?, outcome, wave, slot, next[], body, review?, iconAsset? | Markdown/frontmatter content. time is optional free text; review is demo-only, not production status. iconAsset is derived badge-art path. Extra author fields and design comments are never displayed. |
+| Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, time?, video?, outcome, wave, slot, next[], body, review?, iconAsset? | Markdown/frontmatter content. time is optional free text; video is an optional preview URL (file or hosted YouTube/Vimeo/Loom page) shown beside the trail panel and editable in the Admin adventure editor; review is demo-only, not production status. iconAsset is derived badge-art path. Extra author fields and design comments are never displayed. |
 | Wave | number, opensOn | Wave data defines schedule. W1 open; W2 23 Nov, W3 7 Dec, W4 4 Jan in the demo. Production uses actual dates. |
 | ItineraryItem | personId, adventureSlug, position | Internal ordered model behind employee-facing My journey. |
 | Completion | personId, adventureSlug, completedAt | Unique person/adventure; one earned badge per completion. |
@@ -25,13 +25,13 @@ Eight questions map to the following fields (aspirations includes an additional 
 | What's your role? | role: Customer Facing, Marketing, Engineering, Product, Design, HR, Finance, Managers, Other |
 | Which team do you belong to? | team: required free text in the UI, with suggestions |
 | What do you use AI for today? | aiUseToday: nothing, writing, analysis, building |
-| Which tools do you open weekly? | weeklyTools: office, claude, coding |
-| What do you want to get better at? | goal: productivity, creating, setup, automation, leading |
+| Which tools do you open weekly? | weeklyTools[]: one or more of office, claude, coding |
+| What do you want to get better at? | goal[]: one or more of productivity, creating, setup, automation, leading |
 | What do you want to get out of this? | aspirations: selected strings (Build confidence with AI / Make everyday work easier / Build something new); aspirationText: optional Anything else text |
-| How do you prefer to learn? | learningStyle: quick, steady, deep |
+| How do you prefer to learn? | learningStyle[]: one or more of quick, steady, deep |
 | How comfortable are you with AI today? | comfort: new, some, confident |
 
-saveOnboardingAnswers saves all fields atomically, trims text and recomputes recommendations. Replace incomplete suggested stops, retain completed stops already on the trail (in their existing relative order), then append deduplicated recommendations. Never mutate completions, proof entries, completion dates or earned badges. Profile reads the owner's answers; Redo prefills onboarding. Team/aspirations are currently stored context, not scoring signals. In the demo `/` and `/welcome` route to onboarding when answers are absent; production checks follow SSO identity.
+weeklyTools, goal and learningStyle are arrays (multi-select). Reads and saves migrate a stored single value to a one-item array. Profile joins selections with “ · ”; Redo prefills them. saveOnboardingAnswers saves all fields atomically, trims text and recomputes recommendations. Replace incomplete suggested stops, retain completed stops already on the trail (in their existing relative order), then append deduplicated recommendations. Never mutate completions, proof entries, completion dates or earned badges. Profile reads the owner's answers; Redo prefills onboarding. Team/aspirations are currently stored context, not scoring signals. In the demo `/` and `/welcome` route to onboarding when answers are absent; production checks follow SSO identity.
 
 ## Label values (enumerations)
 
@@ -40,9 +40,10 @@ saveOnboardingAnswers saves all fields atomically, trims text and recomputes rec
 | category | Work smarter with AI, Create with AI, Set up your AI, Automate and delegate, Lead with AI |
 | levels | Foundations, Intermediate, Advanced |
 | professions | Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text allowed (filters as "Other") |
-| audience | Managers |
+| audience | Managers (shows a neutral stone “For managers” chip right after the category chip on cards and page heads) |
 | tool | Any AI tool, Claude, Agentic coding tool |
 | effort | Quick win, Moderate, Ambitious |
+| video | Optional URL; when absent nothing renders |
 | time | Optional free text, e.g. ~1 h; overrides the effort duration default |
 | review | Optional demo-only frontmatter; exact ready shows Ready, other/missing values show Draft while showReviewState is true |
 | outcome | Build something, Learn something, Work differently |
@@ -71,7 +72,7 @@ Category chips everywhere use about 12% soft tint and #242424 text, with a small
 | --- | --- | --- |
 | Entry / | Person and saved-answer presence | Demo signIn; production SSO session |
 | Header | Person, completion count/title, announcement/dismissal | dismissAnnouncement |
-| Home /welcome | Person, saved-answer presence, adventure/wave index, own completions for badges | Journey entry navigation |
+| Home /welcome | Person, saved-answer presence, adventure/wave index, own journey and completions (badges, Your journey panel) | Journey entry navigation; Continue / Add destinations |
 | Onboarding /onboarding | Own saved answers, adventure index/recommendations | saveOnboardingAnswers; individual add/remove journey toggles on results |
 | Profile /profile | Own Person.onboardingAnswers, own completions, adventures/waves | Redo navigation to prefilled onboarding |
 | All adventures /adventures | Index, waves, own completions/journey, thresholded ratings | addToItinerary, removeFromItinerary; filters are local presentation state |
@@ -81,11 +82,23 @@ Category chips everywhere use about 12% soft tint and #242424 text, with a small
 
 ## Catalogue presentation contract
 
-One measured sticky band contains a single category navigation/selection row with five pills and Filters at its right end. Pills jump/highlight sections rather than filtering other categories out. No Category in the secondary panel; panel has Level, Profession, Works with, Effort, Outcome. OR within families, AND across them. Active filters are removable chips below the bar; sections are initially open and collapsible. Four desktop/three tablet/one phone cards. Filters and collapse state need no persistence.
+One measured sticky band contains a single category navigation/selection row with five pills, and directly beneath it a left-aligned line with the “More filters” button and the disc legend to its right (wrapping below on phones). Pills jump/highlight sections rather than filtering other categories out. No Category in the secondary panel; panel has Level, Profession, Works with, Effort, Outcome. OR within families, AND across them. Active filters are removable chips under the More filters line; sections are initially open and collapsible. Four desktop/three tablet/one phone cards. The Your journey panel (see below) sits in a sticky right column on desktop and above the grid on phones. Filters and collapse state need no persistence.
 
 ### Catalogue helper line
 
-Under the page intro and above filters, retain: “Every adventure works best on a strong model, for example Opus, with extended thinking on.” Platform copy, not per-adventure Markdown. Shared legend below the band: Open · In my journey · Completed · Opens later.
+Under the page intro and above filters, retain: “Every adventure works best on a strong model, for example Opus, with extended thinking on.” Platform copy, not per-adventure Markdown. Shared legend on the More filters line: Open · In my journey · Completed · Opens later, each rendered with one sample badge art (the drafting-compass art of Your Team's AI Blueprint) in the matching card-disc treatment.
+
+### Your journey panel
+
+Shown on Home and All adventures: about 300px right column sticky under the header on desktop, a card on phones (Home: after the three choice cards; All adventures: above the grid). Reads only existing data: current title and N of 30 completed; Next up = first incomplete schedule-open journey stop (else first incomplete stop) with Continue to its page, or Add destinations → build mode when none; Last badge earned = most recent completion's badge, name and date, hidden with no completions.
+
+### Employee wording
+
+Employee-facing copy uses “journey”, never “itinerary” (Home choices “Suggest a journey for me”, “Build my own journey”, “See all destinations”; “Add to my journey”; What's next “Next in your journey”). Store methods, events and Admin labels may keep itinerary.
+
+### Home order
+
+Welcome line, then the three choice cards, then the L&D video placeholder and intro copy, then the badge grid.
 
 ## My journey presentation contract
 
@@ -95,7 +108,7 @@ Completed entries retain dates and passport stamps. Title ladder uses shared thr
 
 ## Adventure reader presentation contract
 
-Page head: title/promise/disc, shared labels and effort/time, thresholded rating line, journey toggle. Parse Markdown into head sections, core steps, optional Go further, proof and related footer. Hide HTML design notes; keep authored prompt names, tables, tool callouts and details. Render head sections once outside the rail. Core steps plus optional Go further are the only rail items; authored headings remain intact. Bodies without numbered steps retain a single-page fallback.
+Page head: title/promise/disc, shared labels and effort/time, thresholded rating line, journey toggle; optional `video:` renders a small 16:9 player (native video, or embed for hosted URLs) beside the trail panel with caption “A short preview”, nothing when absent. Parse Markdown into head sections, core steps, optional Go further, proof and related footer. Hide HTML design notes; keep authored prompt names, tables, tool callouts and details. Render head sections once outside the rail. Core steps plus optional Go further are the only rail items; authored headings remain intact. Bodies without numbered steps retain a single-page fallback.
 
 ### AdventureTrail and step navigation
 
@@ -142,11 +155,11 @@ Local src/lib/recommend.ts is the replacement boundary for a production AI call.
 | --- | --- | --- |
 | Role | named in adventure.professions (Managers: in audience) | +3 |
 | Role | adventure is for "Everyone" (only when not named) | +1 |
-| Goal | maps to category (productivity → Work smarter, creating → Create, setup → Set up, automation → Automate and delegate, leading → Lead) | +3 |
+| Goal | each selected goal that maps to the category (productivity → Work smarter, creating → Create, setup → Set up, automation → Automate and delegate, leading → Lead) | +3 per match |
 | Comfort | maps to level (new → Foundations, some → Intermediate, confident → Advanced) | +2 |
-| Weekly tools | maps to tool (office → Any AI tool, Claude → Claude, coding → Agentic coding tool); "Any AI tool" always matches | +1 |
+| Weekly tools | maps to tool (office → Any AI tool, Claude → Claude, coding → Agentic coding tool); "Any AI tool" always matches once | +1 per selected matching tool |
 | AI use today | maps to category | +1 |
-| Learning style | maps to effort (one sitting → Quick win, steady → Moderate, big → Ambitious) | +1 |
+| Learning style | maps to effort (one sitting → Quick win, steady → Moderate, big → Ambitious) | +1 per selected matching style |
 | Open now | wave is open | +1 |
 
 Seed for the demo person: completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well`.
