@@ -66,6 +66,8 @@ export interface Adventure {
   tool: Tool;
   effort: Effort;
   time?: string | undefined;
+  /** Optional preview video URL (file or hosted page such as YouTube/Vimeo/Loom). */
+  video?: string | undefined;
   outcome: string;
   wave: number;
   slot: number;
@@ -79,7 +81,7 @@ interface Frontmatter {
   review?: unknown;
   slug?: string; icon?: string; title?: string; walkaway?: string;
   category?: Category; levels?: Level[]; professions?: string[]; audience?: string[];
-  tool?: Tool; effort?: Effort; time?: unknown; outcome?: string; wave?: number | string; slot?: number; next?: string[];
+  tool?: Tool; effort?: Effort; time?: unknown; video?: unknown; outcome?: string; wave?: number | string; slot?: number; next?: string[];
 }
 
 function splitFrontmatter(raw: string): { data: Frontmatter; body: string } {
@@ -121,6 +123,7 @@ export function toAdventure(raw: string): Adventure {
     tool: data.tool ?? "Any AI tool",
     effort: data.effort ?? "Moderate",
     time: typeof data.time === "string" ? data.time.trim() || undefined : undefined,
+    video: typeof data.video === "string" ? data.video.trim() || undefined : undefined,
     outcome: String(data.outcome ?? ""),
     wave,
     slot: Number(data.slot ?? 0),
