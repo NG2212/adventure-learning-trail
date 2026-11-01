@@ -32,8 +32,8 @@ function Welcome() {
         <div className="min-w-0">
           <h1 className="text-3xl sm:text-4xl">Welcome, {person.firstName}</h1>
           <p className="mt-2 mb-6 text-muted-foreground">How would you like to start?</p>
-          <JourneyPanel className="mb-6 lg:hidden" />
           <WelcomeChoices />
+          <JourneyPanel className="mt-6 lg:hidden" />
           <div className="mt-8 flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-3xl bg-stone">
             <span className="flex size-20 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <Play className="ml-1 size-8" fill="currentColor" />
