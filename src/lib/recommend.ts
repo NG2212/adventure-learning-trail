@@ -90,7 +90,7 @@ export function scoreAdventure(a: Adventure, input: OnboardingAnswers): { score:
   const goals = ans.goal.filter((g) => GOAL_TO_CATEGORY[g] === a.category).length;
   if (goals) { score += 3 * goals; reasons.push(`matches your goal to ${a.category.toLowerCase()}`); }
   if (a.levels.includes(COMFORT_TO_LEVEL[ans.comfort])) score += 2; // never surfaced in the "why"
-  const tools = a.tool === "Any AI tool" ? Math.max(1, ans.weeklyTools.length) : ans.weeklyTools.filter((t) => TOOLS_TO_TOOL[t] === a.tool).length;
+  const tools = a.tool === "Any AI tool" ? 1 : ans.weeklyTools.filter((t) => TOOLS_TO_TOOL[t] === a.tool).length;
   if (tools) { score += tools; reasons.push(`works with ${a.tool === "Any AI tool" ? "the tools you already use" : a.tool}`); }
   if (a.category === USE_TO_CATEGORY[ans.aiUseToday]) score += 1;
   const styles = ans.learningStyle.filter((l) => STYLE_TO_EFFORT[l] === a.effort).length;
