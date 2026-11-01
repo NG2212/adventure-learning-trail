@@ -153,7 +153,7 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 ## 10d. Admin Adventures (`/admin/adventures`)
 
-**Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
+**Build:** directory starts with 30 rows, badge art and all authored labels, wave, Open/Scheduled-date/Draft state, opens, completions and completed/open rate (60-day mock window). Edit opens a two-column sheet: Markdown on left, fixed-list labels, an optional “Preview video URL” field (frontmatter `video:`) and a live card preview on right. Add starts with standard Why / The trail / Before you start / Step 1–3 / Go further / Proof / Related headings and a named fenced prompt. Validate title, promise, slug and uniqueness; retain slug on edits. New saves are Draft, in-memory only. Upload .md reads YAML frontmatter/body into this editor; invalid files show a toast. Extra author fields may be ignored. Inline wave and status selectors update the mock store.
 
 **Accept:** Add adventure saves a Draft visible in the directory with zero opens/completions; refresh returns to 30. No files or real content are published.
 
