@@ -228,6 +228,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           <AdventureRating slug={slug} className="mt-2" />
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
           <LabelChips adventure={adventure} className="mt-4" />
+          {!introduction.some((section) => /^the trail$/i.test(section.heading)) && <div className="mt-5"><PreviewVideo url={adventure.video} title={adventure.title} /></div>}
         </div>
         <ItineraryToggle slug={slug} className="self-start bg-background" />
       </header>
