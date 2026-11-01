@@ -123,7 +123,7 @@ describe("what's next", () => {
 
 describe("recommendations", () => {
   it("returns 3 or 4 adventures", () => {
-    const r = recommend(ADVENTURES, { role: "Product", aiUseToday: "writing", weeklyTools: "claude", goal: "creating", learningStyle: "steady", comfort: "some" });
+    const r = recommend(ADVENTURES, { role: "Product", aiUseToday: "writing", weeklyTools: ["claude"], goal: ["creating"], learningStyle: ["steady"], comfort: "some" });
     expect(r.length).toBeGreaterThanOrEqual(3);
     expect(r.length).toBeLessThanOrEqual(4);
   });
