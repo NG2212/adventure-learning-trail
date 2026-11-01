@@ -43,6 +43,8 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
       if (raw) {
         const saved = JSON.parse(raw);
         state = { ...SEED_STATE, ...saved };
+        // Older saves held one value for the multi-select questions; migrate to one-item arrays.
+        if (state.person.onboardingAnswers) state = { ...state, person: { ...state.person, onboardingAnswers: normaliseAnswers(state.person.onboardingAnswers) } };
         // Older demo completions predate reflection collection; give them seeded entries.
         if (!Array.isArray(saved.proofEntries)) {
           state = { ...state, proofEntries: state.completions.map((c) => seedProof(state.person.id, c.slug, c.completedAt)) };
@@ -83,7 +85,7 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     signIn: () => write({ ...read(), signedIn: true }),
     saveOnboardingAnswers(answers) {
       const s = read();
-      const saved = { ...answers, team: answers.team?.trim(), aspirations: [...(answers.aspirations ?? [])], aspirationText: answers.aspirationText?.trim() };
+      const saved = { ...normaliseAnswers(answers), team: answers.team?.trim(), aspirations: [...(answers.aspirations ?? [])], aspirationText: answers.aspirationText?.trim() };
       const completedStops = s.itinerary.filter((slug) => s.completions.some((c) => c.slug === slug));
       const suggested = recommend(ADVENTURES, saved).map((r) => r.adventure.slug);
       write({ ...s, signedIn: true, person: { ...s.person, onboardingAnswers: saved }, itinerary: [...new Set([...completedStops, ...suggested])] });
