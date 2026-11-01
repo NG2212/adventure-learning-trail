@@ -39,7 +39,7 @@ export function useDiscState(a: Pick<Adventure, "slug" | "isOpen">): DiscState {
   return discStateFor(a, itinerary, new Set(completions.map((c) => c.slug)));
 }
 
-const BOX = { xs: "size-5", sm: "size-10", md: "size-16", lg: "size-20", xl: "size-24" } as const;
+const BOX = { xs: "size-5", legend: "size-7", sm: "size-10", md: "size-16", lg: "size-20", xl: "size-24" } as const;
 
 export function Disc({ name, art, state, size = "md", className }: { name: IconName; art?: string | undefined; state: DiscState; size?: keyof typeof BOX; className?: string | undefined }) {
   const Icon = ICONS[name] ?? MapPin;
@@ -87,7 +87,8 @@ export function AdventureIcon({ adventure, size = "md", className }: { adventure
   return <Disc name={adventure.icon} art={adventure.iconAsset} state={state} size={size} className={className} />;
 }
 
-const LEGEND_ART = ADVENTURES.find((a) => a.iconAsset)?.iconAsset;
+/** The legend always uses the compass badge art so it reads like the grid. */
+const LEGEND_ART = ADVENTURES.find((a) => a.icon === "compass" && a.iconAsset)?.iconAsset;
 
 export function DiscLegend({ className }: { className?: string }) {
   const items: [DiscState, string][] = [["open", "Open"], ["itinerary", "In my journey"], ["done", "Completed"], ["later", "Opens later"]];
@@ -96,7 +97,7 @@ export function DiscLegend({ className }: { className?: string }) {
       {items.map(([s, label], i) => (
         <span key={s} className="inline-flex items-center gap-1.5">
           {i > 0 && <span aria-hidden className="mr-1">·</span>}
-          <Disc name="compass" art={LEGEND_ART} state={s} size="xs" />
+          <Disc name="compass" art={LEGEND_ART} state={s} size="legend" />
           {label}
         </span>
       ))}

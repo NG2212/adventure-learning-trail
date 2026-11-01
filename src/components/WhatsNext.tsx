@@ -16,7 +16,7 @@ export function WhatsNextPanel({ currentSlug, onNavigate }: { currentSlug: strin
         <Link to="/adventures/$slug" params={{ slug: next.adventure.slug }} onClick={onNavigate} className="mt-3 flex items-center gap-4 rounded-2xl bg-background p-4 hover:shadow-md">
           <AdventureIcon adventure={next.adventure} />
           <div className="min-w-0 flex-1">
-            <p className="text-xs text-muted-foreground">{next.reason === "itinerary" ? "Next in your itinerary" : "Suggested for you"}</p>
+            <p className="text-xs text-muted-foreground">{next.reason === "itinerary" ? "Next in your journey" : "Suggested for you"}</p>
             <p className="font-semibold">{next.adventure.title}</p>
             <p className="text-sm text-muted-foreground">{next.adventure.walkaway}</p>
           </div>
