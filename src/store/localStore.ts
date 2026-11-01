@@ -3,7 +3,7 @@ import type { AdventureStore, DemoSettings, StoreState } from "./types";
 import { createAdminMock } from "./adminMock";
 import { seedProof } from "./proofSeed";
 import { ADVENTURES } from "@/content/adventures";
-import { recommend } from "@/lib/recommend";
+import { normaliseAnswers, recommend } from "@/lib/recommend";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
 
