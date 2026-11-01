@@ -36,6 +36,7 @@ Open items
 - next: slugs are provisional until those files exist.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 23 Oct: do-this line on every prompt
+25 Oct: permissions heads-up broadened; value-and-maintenance emphasis in Step 1 (Inbar)
 -->
 
 # 🧰 Creating Apps with AI, Done Right
@@ -48,7 +49,7 @@ At Monday you can build a working app by describing it to AI: in monday vibe, in
 
 The result depends mostly on the method. Good builds share five habits: the tool asks you questions until the plan is clear, you describe the behaviour precisely and let the AI handle the look, you choose between several drafts, you build the smallest useful version first, and you test before you add more.
 
-In this adventure you apply all five to one real app. Already build apps often? Use a tool you started and abandoned, and compare the result with your usual way.
+Already build apps often? Use a tool you started and abandoned, and compare the result with your usual way.
 
 ## The trail
 
@@ -63,7 +64,7 @@ You will build one real app or dashboard that you or your team would use every w
 
 ## Step 1: Plan the app and let the tool grill you
 
-**Think first, without AI.** Close the chat and write five lines: who will use the app, the one job it does, what they use today, where the data lives, and how you will know it works. Good ideas at Monday: a renewal tracker on a monday board, a forecast scenario calculator, an intake form for campaign briefs, a viewer for incident timelines.
+**Think first, without AI.** Close the chat and write five lines: who will use the app, the one job it does, what they use today, where the data lives, and how you will know it works. Build something you will use every week. A good app needs upkeep, so pick the one worth maintaining. Good ideas at Monday: a renewal tracker on a monday board, a forecast scenario calculator, an intake form for campaign briefs, a viewer for incident timelines.
 
 Choose where to build:
 
@@ -84,7 +85,7 @@ Open a new chat in the tool you chose above and paste the prompt below. Answer i
 ```
 Help me plan a small internal app before anything is built. Write no code and design no screens yet. I will paste or dictate my notes about the app.
 
-Round 1, essentials, as one batch: who uses it, the one job it does, what they use today, where the data comes from (a monday board, a file, internal data), and how we will know it works.
+Round 1, essentials, as one batch: who uses it, the one job it does, what they use today, what this app saves me every week, who maintains it after launch, where the data comes from (a monday board, a file, internal data), and how we will know it works.
 
 Round 2, grill me. Ask one question at a time, each more specific than the last: what each click and button does, what each screen shows when there is no data yet, wrong or missing input, realistic data volumes and ranges, who may see and change what. Keep going until I say "enough". If I answer vaguely, ask for a real example.
 
@@ -99,8 +100,6 @@ Then write a one-page spec:
 Stop and wait for my approval.
 ```
 
-The grill takes a while, and it replaces days of questions after the build.
-
 ## Step 2: Build three drafts and pick one
 
 Describe the two halves of an app differently:
@@ -110,7 +109,7 @@ Describe the two halves of an app differently:
 | **Behaviour:** what happens on each click, filter, empty screen and error | Exactly, one rule per interaction | "Clicking an account opens its last three notes. An account with no notes shows 'No notes yet' and an Add note button." |
 | **Look:** colours, fonts, spacing, tone | As a visual language: a few words and a reference | "Calm and compact, like a monday board: white background, one accent colour, short rows." |
 
-When the app must match an existing look, such as the monday brand, a screenshot works better than adjectives.
+To match an existing look, such as the monday brand, share a screenshot.
 
 ### Prompt: Three drafts of the MVP
 
@@ -132,7 +131,7 @@ When I pick a winner, write a visual-language note for it: colours with their va
 
 **In monday vibe and Big Brain Studio:** if the tool builds one version at a time, run the prompt three times and give each run one visual direction.
 
-Pick the draft closest to what you want and continue only from it. Save the visual-language note next to your spec.
+Continue only from the draft you pick. Save the visual-language note next to your spec.
 
 ## Step 3: Test what you built
 
@@ -144,7 +143,7 @@ Pick the draft closest to what you want and continue only from it. Save the visu
 | Numbers | Check three numbers against the source board or file |
 | Access | Who can open it, and what can they see? |
 
-Anyone who can open the app's link can see the data in it, so share it only with people allowed to see that data.
+**Important:** test your app's permissions in the tool you built it in, and make sure only the people who should see the data can open it. If you built it in Claude, check the artifact's sharing settings; in a vibe-coding builder, the project's publish and access settings; in a monday app, the board and app permissions.
 
 ### Prompt: Fix what failed
 
@@ -157,8 +156,6 @@ I tested my app against the test cases in my spec. I will describe each failure,
 
 For each failure: say what you understood, name the likely cause, and fix only that. Change nothing else. Then list the test cases I should run again, including the main flow.
 ```
-
-Give exact feedback, such as "the filter forgets the region when I go back".
 
 Save a copy of each working version before the next change, so you can go back. If two fixes in a row fail, start a new chat with the spec, the visual-language note and the one problem.
 
@@ -180,7 +177,7 @@ Ask which feature I want. Then ask two or three questions about its exact behavi
 Build only that feature and keep the look in my visual-language note. Then list every test case to run again, old and new.
 ```
 
-Then share the app with one real user. Watch them use it without your explanations and write down where they hesitate: that list is your next round of fixes.
+Then share the app with one real user. Watch them use it without your explanations and note where they hesitate: those are your next fixes.
 
 **In Big Brain Studio:** start private, then share with the people who need it.
 
