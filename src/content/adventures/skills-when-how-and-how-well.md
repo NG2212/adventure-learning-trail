@@ -33,6 +33,7 @@ Open items
 - next: uses the existing slug de-slop for Stay Original with AI; the brief named stay-original-with-ai. advanced-skill-patterns is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 - 23 Oct: do-this line on every prompt
+- 25 Oct: trigger/description note added (Inbar)
 -->
 
 # 🧰 Skills: When, How and How Well
@@ -106,6 +107,13 @@ Then write a one-page skill brief from my answers, with a name and a one-line jo
 
 If the brief sounds generic, say exactly what is missing: "enterprise customers get a call before any email". Specific feedback gets a better brief.
 
+**When a skill fires.** Claude chooses skills on its own, by their description. Name the requests it serves, in the words people actually use. A vague description leaves the skill unused.
+
+| Description | What happens |
+| --- | --- |
+| "Helps with updates." | Stays unused |
+| "Turns tickets into release notes. Use for any release notes request." | Runs when needed |
+
 ## Step 3: Build and install it
 
 Every good skill has these parts. The next prompt builds all of them.
@@ -136,14 +144,14 @@ Use the skill brief I approved in this chat. First check Claude's current docume
 5. Gotchas: my known failure points, written as clear rules.
 6. One worked example: a real input from my work and the full output, written out completely.
 
-Show the whole file in one block, kept short and clear. Then give me three real test requests from my own work. End by reminding me to close and reopen Claude after I add the skill.
+Show the whole file in one block, kept short and clear. Then give me three real test requests from my own work; phrase one in my own words, without naming the skill. End by reminding me to close and reopen Claude after I add the skill.
 ```
 
 Read the file before you save it, and ask for a rewrite of any step a new teammate would find unclear.
 
 **In Claude:** add the skill under Customize → Skills. **In Claude Code:** save the file as `SKILL.md` inside a folder named after the skill, in `.claude/skills/` (in your home folder for all projects, or in one project folder). The `.claude` folder is hidden: on Mac, press Cmd+Shift+. in Finder; on Windows, open File Explorer and choose View → Show → Hidden items.
 
-Then close and reopen Claude so it finds the new skill.
+Then close and reopen Claude so it finds the new skill. If the skill stays silent, sharpen the description before anything else.
 
 ## Step 4: Test it on real work
 
