@@ -87,8 +87,8 @@ export function AdventureIcon({ adventure, size = "md", className }: { adventure
   return <Disc name={adventure.icon} art={adventure.iconAsset} state={state} size={size} className={className} />;
 }
 
-/** The legend always uses the compass badge art so it reads like the grid. */
-const LEGEND_ART = ADVENTURES.find((a) => a.icon === "compass" && a.iconAsset)?.iconAsset;
+/** The legend always uses the compass badge art (Your Team's AI Blueprint) so it reads like the grid. */
+const LEGEND_ART = ADVENTURES.find((a) => a.slug === "your-team-s-ai-blueprint")?.iconAsset;
 
 export function DiscLegend({ className }: { className?: string }) {
   const items: [DiscState, string][] = [["open", "Open"], ["itinerary", "In my journey"], ["done", "Completed"], ["later", "Opens later"]];
