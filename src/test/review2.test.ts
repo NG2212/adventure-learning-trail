@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { ADVENTURES, toAdventure } from "@/content/adventures";
 import { normaliseAnswers, scoreAdventure, type OnboardingAnswers } from "@/lib/recommend";
 import { journeyNextUp } from "@/components/JourneyPanel";
-import { embedUrl } from "@/components/PreviewVideo";
+import { embedUrl, posterFor } from "@/components/PreviewVideo";
 
 const base: OnboardingAnswers = { role: "Other", aiUseToday: "nothing", weeklyTools: [], goal: [], learningStyle: [], comfort: "new" };
 
