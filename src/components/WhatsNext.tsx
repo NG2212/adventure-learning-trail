@@ -10,10 +10,10 @@ export function WhatsNextPanel({ currentSlug, onNavigate }: { currentSlug: strin
   const { itinerary, completions, person } = useStoreState();
   const next = pickWhatsNext(currentSlug, itinerary, completions.map((c) => c.slug), ADVENTURES, person.role, person.onboardingAnswers);
   return (
-    <section aria-label="What's next" className="rounded-3xl bg-primary-soft p-5 text-left">
-      <p className="text-xs font-semibold uppercase tracking-wider text-primary">What's next</p>
+    <section aria-label="What's next" className="ui-card p-5 pb-7 text-left">
+      <p className="eyebrow">What's next</p>
       {next ? (
-        <Link to="/adventures/$slug" params={{ slug: next.adventure.slug }} onClick={onNavigate} className="mt-3 flex items-center gap-4 rounded-2xl bg-background p-4 hover:shadow-md">
+        <Link to="/adventures/$slug" params={{ slug: next.adventure.slug }} onClick={onNavigate} className="mt-3 flex items-center gap-4 rounded-2xl bg-primary-soft p-4 transition-transform hover:-translate-y-0.5">
           <AdventureIcon adventure={next.adventure} />
           <div className="min-w-0 flex-1">
             <p className="text-xs text-muted-foreground">{next.reason === "itinerary" ? "Next in your journey" : "Suggested for you"}</p>

@@ -13,7 +13,7 @@ export function ProofOfWorkDialog({ title, body, entry, onClose, onSave }: { tit
   const [error, setError] = useState("");
   const guidance = proofGuidance(body);
   return <Dialog open onOpenChange={(open) => { if (!open) onClose(); }}>
-    <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] overflow-y-auto rounded-lg">
+    <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] overflow-y-auto ui-card">
       <DialogTitle className="pr-6 text-xl leading-snug">{title}</DialogTitle>
       <DialogDescription>Visible to you and L&D admins, never to other employees.</DialogDescription>
       <form className="space-y-5" onSubmit={(e) => {

@@ -172,7 +172,7 @@ export function AdminAdventures() {
           e.target.value = "";
         }}
       />
-      <div className="overflow-x-auto border bg-card">
+      <div className="overflow-x-auto ui-card pb-1">
         <table className={tableClass}>
           <thead>
             <tr>
@@ -431,7 +431,7 @@ export function AdminAdventures() {
                   </div>
                   <div className="border-t pt-4">
                     <p className="mb-3 text-xs font-semibold text-muted-foreground">Card preview</p>
-                    <div className="max-w-sm rounded-lg border bg-card p-5 text-center">
+                    <div className="max-w-sm ui-card p-5 pb-7 text-center">
                       <div className="flex justify-center">
                         <Disc name={draft.icon} art={draft.iconAsset} state="later" size="lg" />
                       </div>

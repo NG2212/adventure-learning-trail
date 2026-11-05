@@ -97,7 +97,7 @@ export function AdminEmployees() {
       </div>
       <AdminFiltersBar filters={filters} onChange={setFilters} employees />
       <p className="mb-3 text-sm text-muted-foreground">{people.length} employees</p>
-      <div className="overflow-x-auto border bg-card">
+      <div className="overflow-x-auto ui-card pb-1">
         <table className={tableClass}>
           <thead>
             <tr>

@@ -4,7 +4,7 @@ import { FootprintShape, trail } from "./Footprints";
 export function ShareCard({ name, title, count }: { name: string; title: string | null; count: number }) {
   const colours = ["var(--color-lime)", "var(--color-pink)", "var(--color-sunny)", "var(--color-background)"];
   return (
-    <div className="relative aspect-[1.91/1] w-full overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground">
+    <div className="ui-card ui-card-accent-lime aspect-[1.91/1] w-full overflow-hidden bg-primary p-8 text-primary-foreground">
       <svg viewBox="0 0 400 210" className="absolute inset-0 size-full" preserveAspectRatio="xMaxYMid slice" aria-hidden>
         {trail(300, 230, 25, 7, 34, -4).map((p, i) => (
           <FootprintShape key={i} {...p} scale={0.8} fill={colours[i % colours.length]} />

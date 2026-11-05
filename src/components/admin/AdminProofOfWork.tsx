@@ -38,7 +38,7 @@ export function AdminProofOfWork() {
       <SelectField label="Proof profession" value={filters.profession ?? ""} options={EMPLOYEE_PROFESSIONS} onChange={(profession) => setFilters({ ...filters, profession })} />
     </div>
     <p className="mb-3 text-xs text-muted-foreground">{entries.length} entries · Latest first · Visible to the person and L&D admins only.</p>
-    <div className="max-h-[640px] overflow-auto border bg-card">
+    <div className="max-h-[640px] overflow-auto ui-card">
       <table className={tableClass}><thead><tr><th>Adventure</th><th>Person</th><th>Date</th><th>Rating</th><th>What they built</th><th>What they learned</th></tr></thead><tbody>
         {entries.map((p) => <tr key={`${p.personId}/${p.slug}`}><td className="min-w-40 font-medium">{p.adventureTitle}</td><td className="whitespace-nowrap">{p.personName}</td><td className="whitespace-nowrap">{p.completed_at.slice(0, 10)}</td><td><FootprintRating value={p.rating} /></td><td className="min-w-64 whitespace-pre-wrap break-words">{p.built}</td><td className="min-w-48 whitespace-pre-wrap break-words">{p.learned || "—"}</td></tr>)}
       </tbody></table>
