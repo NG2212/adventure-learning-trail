@@ -8,6 +8,9 @@ import { ReviewStamp } from "./ReviewStamp";
 import { AdventureRating } from "./AdventureRating";
 import { CompletedStamp } from "./CompletedStamp";
 import { LabelHint } from "./LabelHint";
+import { cardClass } from "./ui/card";
+import { CATEGORY_TONES } from "./LabelChips";
+import { cn } from "@/lib/utils";
 
 export function AdventureCard({ adventure, highlightAdd = false }: { adventure: Adventure; highlightAdd?: boolean }) {
   const { completions } = useStoreState();
@@ -28,7 +31,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
         )}
       </div>
       <AdventureIcon adventure={adventure} size="lg" className="mx-auto -mt-2" />
-      <h3 className="mt-4 text-center text-lg">{adventure.title}</h3>
+      <h3 className="mt-4 text-center text-lg font-semibold">{adventure.title}</h3>
       <p className="mt-1 flex-1 text-center text-sm text-muted-foreground">{adventure.walkaway}</p>
       <div className="relative mt-4 pt-14">{done && <CompletedStamp className="completed-stamp-card pointer-events-none absolute top-0 right-0 z-10" />}<LabelChips adventure={adventure} className="justify-center" effortAccessory={<AdventureRating slug={adventure.slug} />} /></div>
     </>
@@ -36,7 +39,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
 
   if (!canOpenAdventure(adventure, store.getDemoSettings().demoOpenAll)) {
     return (
-      <div className="relative flex flex-col rounded-2xl border bg-muted/50 p-4 opacity-80" aria-disabled>
+      <div className={cn(cardClass(done ? "lime" : "category"), CATEGORY_TONES[adventure.category], "flex flex-col p-5 opacity-80")} aria-disabled>
         {content}
         <div className="mt-4"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>
       </div>
@@ -47,9 +50,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
     <Link
       to="/adventures/$slug"
       params={{ slug: adventure.slug }}
-      className={adventure.isOpen
-        ? "relative flex flex-col rounded-2xl border bg-card p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
-        : "relative flex flex-col rounded-2xl border bg-muted/50 p-4 opacity-80 transition hover:-translate-y-0.5 hover:border-primary/40"}
+      className={cn(cardClass(done ? "lime" : "category", true), CATEGORY_TONES[adventure.category], "flex flex-col p-5 pb-6", !adventure.isOpen && "opacity-80")}
     >
       {content}
       <div className="mt-4"><ItineraryToggle slug={adventure.slug} highlight={highlightAdd} /></div>

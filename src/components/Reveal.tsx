@@ -50,20 +50,19 @@ export function RevealObserver() {
 }
 
 /** FLIP helper: animate elements keyed by data-flip-key from their previous to their new position. */
-export function flipFrom(container: HTMLElement | null, previous: Map<string, DOMRect>) {
+export function flipFrom(container: HTMLElement | null, previous: Map<string, number>) {
   if (!container || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   container.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => {
     const before = previous.get(el.dataset.flipKey!);
-    if (!before) return;
-    const after = el.getBoundingClientRect();
-    const dy = before.top - after.top;
+    if (before === undefined) return;
+    const dy = before - el.offsetTop;
     if (!dy) return;
     el.animate([{ transform: `translateY(${dy}px)` }, { transform: "none" }], { duration: 300, easing: "ease-out" });
   });
 }
 
 export function measureFlip(container: HTMLElement | null) {
-  const map = new Map<string, DOMRect>();
-  container?.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => map.set(el.dataset.flipKey!, el.getBoundingClientRect()));
+  const map = new Map<string, number>();
+  container?.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => map.set(el.dataset.flipKey!, el.offsetTop));
   return map;
 }
