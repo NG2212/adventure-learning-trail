@@ -30,11 +30,12 @@ function Welcome() {
     <div className="mx-auto max-w-6xl px-5 py-12">
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-8">
         <div className="min-w-0">
+          <p className="eyebrow mb-2">AI Adventure · Home</p>
           <h1 className="text-3xl sm:text-4xl">Welcome, {person.firstName}</h1>
           <p className="mt-2 mb-6 text-muted-foreground">How would you like to start?</p>
           <WelcomeChoices />
           <JourneyPanel className="mt-6 lg:hidden" />
-          <div className="mt-8 flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-3xl bg-stone">
+          <div className="mt-8 flex aspect-video w-full flex-col items-center justify-center gap-4 ui-card">
             <span className="flex size-20 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <Play className="ml-1 size-8" fill="currentColor" />
             </span>

@@ -34,7 +34,7 @@ function Questions() {
   const q = QUESTIONS[step];
   if (!q) {
     const recs = recommend(ADVENTURES, answers as OnboardingAnswers);
-    return <div className="mx-auto max-w-6xl px-5 py-12"><h1 className="text-3xl">Your suggested journey</h1><div className="my-6 flex flex-wrap gap-3"><Button asChild><Link to="/welcome">Home</Link></Button><Button variant="outline" asChild><Link to="/my-journey">Go to My journey</Link></Button><Button variant="ghost" onClick={() => setStep(0)}>Edit answers</Button></div><div className="grid gap-4 md:grid-cols-3 xl:grid-cols-4">{recs.map(({ adventure }) => <AdventureCard key={adventure.slug} adventure={adventure} />)}</div></div>;
+    return <div className="mx-auto max-w-6xl px-5 py-12"><p className="eyebrow mb-2">AI Adventure · Your journey</p><h1 className="text-3xl">Your suggested journey</h1><div className="my-6 flex flex-wrap gap-3"><Button asChild><Link to="/welcome">Home</Link></Button><Button variant="outline" asChild><Link to="/my-journey">Go to My journey</Link></Button><Button variant="ghost" onClick={() => setStep(0)}>Edit answers</Button></div><div className="grid gap-4 md:grid-cols-3 xl:grid-cols-4">{recs.map(({ adventure }) => <AdventureCard key={adventure.slug} adventure={adventure} />)}</div></div>;
   }
   const value = answers[q.key];
   const multiple = MULTI_KEYS.includes(q.key);
@@ -47,12 +47,12 @@ function Questions() {
   };
   return <div className="mx-auto max-w-2xl px-5 py-12">
     <div className="flex gap-2" aria-label={`Question ${step + 1} of 8`}>{QUESTIONS.map((_, i) => <span key={i} className={cn("h-2 flex-1 rounded-full", i < step ? "bg-primary" : i === step ? "bg-sunny" : "bg-stone")} />)}</div>
-    <p className="mt-6 text-sm text-muted-foreground">Question {step + 1} of 8</p><h1 className="mt-2 text-3xl">{q.prompt}</h1>{multiple && <p className="mt-2 text-sm text-muted-foreground">Choose one or more.</p>}
+    <p className="eyebrow mt-6">Question {step + 1} of 8</p><h1 className="mt-2 text-3xl">{q.prompt}</h1>{multiple && <p className="mt-2 text-sm text-muted-foreground">Choose one or more.</p>}
     <div className="mt-8 grid gap-3">
-      {free ? <><label htmlFor="team" className="text-sm font-medium">Team</label><input id="team" list="team-suggestions" value={answers.team ?? ""} onChange={(e) => setAnswers({ ...answers, team: e.target.value })} className="rounded-lg border bg-card px-4 py-3" placeholder="Your team" /><datalist id="team-suggestions">{["Product", "Engineering", "Marketing", "Design", "Customer Success", "People", "Finance"].map((team) => <option key={team} value={team} />)}</datalist></> : q.options.map((label, i) => {
+      {free ? <><label htmlFor="team" className="text-sm font-medium">Team</label><input id="team" list="team-suggestions" value={answers.team ?? ""} onChange={(e) => setAnswers({ ...answers, team: e.target.value })} className="rounded-xl border-2 border-navy bg-card px-4 py-3" placeholder="Your team" /><datalist id="team-suggestions">{["Product", "Engineering", "Marketing", "Design", "Customer Success", "People", "Finance"].map((team) => <option key={team} value={team} />)}</datalist></> : q.options.map((label, i) => {
         const option = ("values" in q ? q.values[i] : label) ?? label;
         const selected = multiple ? listValue.includes(option) : value === option;
-        return <Button key={label} variant="outline" aria-pressed={Boolean(selected)} onClick={() => setAnswers({ ...answers, [q.key]: multiple ? selected ? listValue.filter((v) => v !== option) : [...listValue, option] : option })} className={cn("h-auto min-h-14 justify-start whitespace-normal rounded-lg border-2 px-5 py-4 text-left", selected && "border-primary bg-primary-soft")}>{multiple && <span className={cn("size-4 shrink-0 rounded border", selected && "bg-primary")} />}{label === "Managers" ? "I manage a team" : label}</Button>;
+        return <Button key={label} variant="outline" aria-pressed={Boolean(selected)} onClick={() => setAnswers({ ...answers, [q.key]: multiple ? selected ? listValue.filter((v) => v !== option) : [...listValue, option] : option })} className={cn("ui-card h-auto min-h-14 justify-start whitespace-normal px-5 py-4 text-left text-navy hover:bg-card active:translate-y-0", selected && "bg-primary-soft hover:bg-primary-soft")}>{multiple && <span className={cn("size-4 shrink-0 rounded border", selected && "bg-primary")} />}{label === "Managers" ? "I manage a team" : label}</Button>;
       })}
       {q.key === "aspirations" && <><label htmlFor="aspiration-text" className="mt-3 text-sm font-medium">Anything else?</label><textarea id="aspiration-text" rows={2} value={answers.aspirationText ?? ""} onChange={(e) => setAnswers({ ...answers, aspirationText: e.target.value })} className="rounded-lg border bg-card px-4 py-3" /></>}
     </div>

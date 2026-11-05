@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Activity, CheckCircle2, Gauge, ListPlus, Percent, Users, type LucideIcon } from "lucide-react";
+import { Activity, CheckCircle2, Clock, Gauge, ListPlus, Percent, Users, type LucideIcon } from "lucide-react";
 
-const KPI_ICONS: LucideIcon[] = [Users, CheckCircle2, Gauge, Percent, ListPlus, Activity];
+const KPI_ICONS: LucideIcon[] = [Users, CheckCircle2, Gauge, Percent, ListPlus, Clock];
 import { store, useStoreState } from "@/store";
 import type { AdminFilters, GroupMetric } from "@/store/adminTypes";
 import { Disc } from "@/components/AdventureIcon";
