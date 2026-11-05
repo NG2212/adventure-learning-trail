@@ -13,6 +13,8 @@
 
 @theme inline {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-navy: var(--navy);
   --radius-sm: calc(var(--radius) - 8px);
   --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
@@ -63,7 +65,8 @@
 
 :root {
   --radius: 1.25rem;
-  --background: #ffffff;
+  --background: #f6f1ea;
+  --navy: #1c1f3b;
   --foreground: #242424;
   --card: #ffffff;
   --card-foreground: #242424;
@@ -84,7 +87,7 @@
   --input: #e3d9cf;
   --ring: #9450fd;
   --stone: #e3d9cf;
-  --surface: #fbf9f6;
+  --surface: #f6f1ea;
   --info: #1e77fd;
   --coral: #ff644d;
   --success: #06a24b;
@@ -103,6 +106,7 @@
     font-family: var(--font-sans);
   }
   h1, h2, h3, h4 {
+    color: var(--navy);
     font-weight: 700;
     letter-spacing: 0;
   }
@@ -242,3 +246,95 @@
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 .completed-stamp-card { width: 52px; height: 52px; font-size: 6px; gap: 2px; }
+
+/* ── Card language and motion (Monday deck template) ───────────────────── */
+@layer components {
+  .ui-card {
+    --card-accent: var(--primary);
+    position: relative;
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 2px solid var(--navy);
+    border-radius: 20px;
+    box-shadow: 0 6px 0 var(--navy);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  /* Accent strip sits just above the ledge, inside the outline. */
+  .ui-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 -4px 0 var(--card-accent);
+    pointer-events: none;
+  }
+  .ui-card-accent-category { --card-accent: var(--category-colour, var(--primary)); }
+  .ui-card-accent-lime { --card-accent: var(--lime); }
+  .ui-card-accent-muted { --card-accent: var(--stone); }
+  .ui-card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--navy); }
+
+  .ui-press {
+    border: 2px solid var(--navy);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 var(--navy);
+    transition: transform 100ms ease-out, box-shadow 100ms ease-out, background-color 150ms;
+  }
+  .ui-press:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 0 0 var(--navy); }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--tile-colour, var(--primary));
+    color: var(--primary-foreground);
+  }
+  .icon-tile-category { --tile-colour: var(--category-colour, var(--primary)); }
+}
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes draw-down { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes stamp-down { 0% { opacity: 0; transform: rotate(-12deg) scale(1.35); } 100% { opacity: 1; transform: rotate(-12deg) scale(1); } }
+
+/* Scroll reveal: set by the shared Reveal observer; backwards fill leaves hover transforms free. */
+[data-reveal="pending"] { opacity: 0; }
+[data-reveal="in"] { animation: rise-in 280ms ease-out backwards; animation-delay: var(--reveal-delay, 0ms); }
+
+/* Step change: each block of the incoming section rises in turn. */
+.step-reveal > *, .step-reveal-blocks > * > * { animation: rise-in 280ms ease-out backwards; }
+.step-reveal > :nth-child(2), .step-reveal-blocks > * > :nth-child(2) { animation-delay: 50ms; }
+.step-reveal > :nth-child(3), .step-reveal-blocks > * > :nth-child(3) { animation-delay: 100ms; }
+.step-reveal > :nth-child(4), .step-reveal-blocks > * > :nth-child(4) { animation-delay: 150ms; }
+.step-reveal > :nth-child(5), .step-reveal-blocks > * > :nth-child(5) { animation-delay: 200ms; }
+.step-reveal > :nth-child(6), .step-reveal-blocks > * > :nth-child(6) { animation-delay: 250ms; }
+.step-reveal > :nth-child(n+7), .step-reveal-blocks > * > :nth-child(n+7) { animation-delay: 300ms; }
+.step-fade { animation: fade-in 200ms ease-out backwards; }
+
+/* Trail panel draws in item by item; the dotted path draws downward. */
+.adventure-trail-item { animation: rise-in 280ms ease-out backwards; animation-delay: calc(var(--trail-i, 0) * 50ms); }
+.adventure-trail-path::before { transform-origin: top; animation: draw-down 300ms ease-out backwards; animation-delay: calc(var(--trail-i, 0) * 50ms + 100ms); }
+.adventure-trail-item:nth-child(2) { --trail-i: 1; } .adventure-trail-item:nth-child(3) { --trail-i: 2; }
+.adventure-trail-item:nth-child(4) { --trail-i: 3; } .adventure-trail-item:nth-child(5) { --trail-i: 4; }
+.adventure-trail-item:nth-child(6) { --trail-i: 5; } .adventure-trail-item:nth-child(n+7) { --trail-i: 6; }
+
+.completed-stamp { animation: stamp-down 260ms cubic-bezier(.3,1.4,.6,1) backwards; }
+.rail-item { transition: background-color 200ms ease-out, border-color 200ms ease-out, transform 200ms ease-out; }
+.rail-item[aria-current="step"] { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal="pending"] { opacity: 1; }
+  .ui-card-hover:hover, .ui-press:active:not(:disabled), .rail-item[aria-current="step"] { transform: none; }
+}
