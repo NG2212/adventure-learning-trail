@@ -27,7 +27,7 @@ export function RevealObserver() {
         group.sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
         group.forEach((el, i) => {
           el.style.setProperty("--reveal-delay", `${Math.min(i, MAX_STAGGER) * STAGGER_MS}ms`);
-          el.dataset.reveal = "in";
+          el.dataset["reveal"] = "in";
         });
       }
     }, { rootMargin: "0px 0px -40px 0px" });
@@ -36,7 +36,7 @@ export function RevealObserver() {
       for (const el of nodes) {
         if (seen.has(el) || (el as HTMLElement).closest("[data-no-reveal]")) continue;
         seen.add(el);
-        (el as HTMLElement).dataset.reveal = "pending";
+        (el as HTMLElement).dataset["reveal"] = "pending";
         io.observe(el);
       }
     };
@@ -54,7 +54,7 @@ export function RevealObserver() {
 export function flipFrom(container: HTMLElement | null, previous: Map<string, number>) {
   if (!container || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   container.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => {
-    const before = previous.get(el.dataset.flipKey!);
+    const before = previous.get(el.dataset["flipKey"]!);
     if (before === undefined) return;
     const dy = before - el.offsetTop;
     if (!dy) return;
@@ -64,6 +64,6 @@ export function flipFrom(container: HTMLElement | null, previous: Map<string, nu
 
 export function measureFlip(container: HTMLElement | null) {
   const map = new Map<string, number>();
-  container?.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => map.set(el.dataset.flipKey!, el.offsetTop));
+  container?.querySelectorAll<HTMLElement>("[data-flip-key]").forEach((el) => map.set(el.dataset["flipKey"]!, el.offsetTop));
   return map;
 }
