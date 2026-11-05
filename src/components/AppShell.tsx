@@ -102,7 +102,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
   const isSignIn = pathname === "/";
   return (
-    <div className={isSignIn ? "flex min-h-screen flex-col" : "relative isolate flex min-h-screen flex-col bg-surface"}>
+    <div className={isSignIn ? "flex min-h-screen flex-col" : "relative isolate flex min-h-screen overflow-x-clip flex-col bg-surface"}>
       <DiscFilters />
       {!isSignIn && <FootprintBackdrop />}
       {!isSignIn && <AppHeader />}

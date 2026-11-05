@@ -50,7 +50,7 @@ function Questions() {
     <p className="mt-6 text-sm text-muted-foreground">Question {step + 1} of 8</p><h1 className="mt-2 text-3xl">{q.prompt}</h1>{multiple && <p className="mt-2 text-sm text-muted-foreground">Choose one or more.</p>}
     <div className="mt-8 grid gap-3">
       {free ? <><label htmlFor="team" className="text-sm font-medium">Team</label><input id="team" list="team-suggestions" value={answers.team ?? ""} onChange={(e) => setAnswers({ ...answers, team: e.target.value })} className="rounded-lg border bg-card px-4 py-3" placeholder="Your team" /><datalist id="team-suggestions">{["Product", "Engineering", "Marketing", "Design", "Customer Success", "People", "Finance"].map((team) => <option key={team} value={team} />)}</datalist></> : q.options.map((label, i) => {
-        const option = "values" in q ? q.values[i] : label;
+        const option = ("values" in q ? q.values[i] : label) ?? label;
         const selected = multiple ? listValue.includes(option) : value === option;
         return <Button key={label} variant="outline" aria-pressed={Boolean(selected)} onClick={() => setAnswers({ ...answers, [q.key]: multiple ? selected ? listValue.filter((v) => v !== option) : [...listValue, option] : option })} className={cn("h-auto min-h-14 justify-start whitespace-normal rounded-lg border-2 px-5 py-4 text-left", selected && "border-primary bg-primary-soft")}>{multiple && <span className={cn("size-4 shrink-0 rounded border", selected && "bg-primary")} />}{label === "Managers" ? "I manage a team" : label}</Button>;
       })}
