@@ -124,6 +124,10 @@ Dialog: required built text, optional learned text, required five-footprint inte
 
 Platform-computed, not authored: first saved journey stop not completed and not current (no schedule test on this branch); otherwise schedule-open incomplete candidates scored using saved answers or role-based defaults. Slot order breaks fallback ties and zero scores. Otherwise Browse all adventures. Related adventures stays authored/title-matched below the computed panel. Neither is a rail item. Celebration uses the same selection.
 
+## Card style and motion (presentation note)
+
+Presentation only; no data or API impact. Every box uses one shared card style: white fill, 2px dark navy #1C1F3B outline, ~20px radius, hard 6px navy ledge, and a 4px accent strip (category colour for adventure cards/heads/journey stops, lime for completed items, purple otherwise). Buttons have a navy outline, ~12px radius and a 4px ledge that disappears on press. Purple uppercase mono eyebrow labels sit above page titles, section headings and steps ("STEP N OF M"); Home choice cards, Admin KPI tiles and Go further cards use solid rounded-square icon tiles. Page surface is cream #F6F1EA, headings navy. Motion: cards rise and fade in on first view with a 50ms stagger, step changes reveal blocks in turn, trail items and connector footprints draw in, journey reordering animates, hover lifts cards 2px, the Completed stamp lands with a stamp-down scale; transforms and opacity only, at most 400ms, no loops. Reduced motion shows every final state instantly.
+
 ## Disc, badge and Completed stamp rules
 
 ### Card and page discs

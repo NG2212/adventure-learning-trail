@@ -4,9 +4,9 @@ Current-state frontend specification for the Big Brain Studio port. Each feature
 
 Shared rules for every feature:
 
-- Purple #9450FD is the strong interface colour; white #FFFFFF, near-black #242424 text, stone #E3D9CF panels and warm #FBF9F6 page surfaces support it. Category chips use 12% light tints and dark text, with colour confined to a small dot and catalogue section underline. No saturated pink/blue/green/yellow chip fills. Lime #D8F81E marks Completed and completion checks; existing artwork and celebration accents remain.
-- Poppins, rounded surfaces, subtle shadows, no gradients except a faint lime celebration glow, no emojis or stock imagery. Reuse existing controls and tokens.
-- Motif: flat footprints with sole and heel. Respect reduced-motion preferences.
+- Purple #9450FD is the strong interface colour; white #FFFFFF card fills, dark navy #1C1F3B headings, outlines and ledges, near-black #242424 body text, stone #E3D9CF and a warm cream #F6F1EA page surface support it. Category chips use 12% light tints and dark text, with colour confined to a small dot and catalogue section underline. No saturated pink/blue/green/yellow chip fills. Lime #D8F81E marks Completed and completion checks; existing artwork and celebration accents remain.
+- Poppins; every box uses the one shared deck-style card (see Visual system: card language); buttons use the pressable outlined style; no soft drop shadows; no gradients except a faint lime celebration glow; no emojis or stock imagery. Reuse existing controls and tokens.
+- Motif: flat footprints with sole and heel. Motion is light (transforms and opacity only, at most 400ms, never looping); with reduced motion everything appears instantly in its final state.
 - Show approved effort estimates. No streaks, employee rankings, leaderboards, personal scores or competitive elements. Titles describe distance travelled, never ability. Admin session-time analytics are explicitly estimated.
 - Footer on every page: “AI Adventure · Built for monday.com by Nufar Gaspar”.
 - Data access uses one AdventureStore interface; see docs/backend-requirements.md.
@@ -167,6 +167,18 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 ## Visual system: logo, icons and states
 
+**Surface:** warm cream page background #F6F1EA with the sparse footprint pattern at low opacity; headings dark navy #1C1F3B; cards are white.
+
+**Card language (one shared style for every box):** white fill, 2px #1C1F3B outline, ~20px radius, and a hard 6px #1C1F3B ledge under the card (no blur) that follows the bottom radius. A 4px accent strip sits inside the card just above the ledge: the category colour for adventure cards, adventure page heads and journey stops; lime for completed items (completed cards, completed journey stops, Completed list, own proof of work, celebration, share card frame); purple for everything else. Generous padding, semibold navy titles, muted grey supporting text and an optional hairline rule under it. Used by adventure cards, journey stops and Completed entries, title ladder tiles, the Your journey panel, the trail panel, prompt windows' outer frame, proof of work, What's next, collapsibles and Go further cards, the three Home choice cards, onboarding option tiles, Profile's Your answers, badge-group panels, the share card frame, all dialogs (completion and celebration), and Admin KPI tiles, panels, table containers and drawers. Chips and tooltips keep their own style. Hover on an interactive card lifts it 2px and grows the ledge to 8px.
+
+**Buttons and controls:** filled or outlined buttons (primary, outline, secondary, destructive) have a 2px navy outline, ~12px radius and a hard 4px navy ledge; outline buttons are white, primary stays purple. On press the button moves down 4px and the ledge disappears. Applies to buttons, More filters, rail completion control, journey reorder controls, Back/Next and dialog actions. Ghost and link buttons (category pills, rail step items) stay flat.
+
+**Eyebrow labels:** small uppercase, letter-spaced mono label in purple above page titles and section headings, e.g. "AI ADVENTURE · ALL ADVENTURES", "AI ADVENTURE · HOME", "MY JOURNEY · THE TRAIL". Adventure page heads show "AI ADVENTURE · <CATEGORY>"; steps show "STEP N OF M" (core steps only) or "GO FURTHER"; onboarding shows "QUESTION N OF 8".
+
+**Icon tiles:** a card's small leading icon sits in a solid ~14px-radius rounded square in the accent colour with a white glyph: Home choice cards, Admin KPI tiles and Go further cards. Adventure discs keep their round badge art.
+
+**Motion:** cards rise 12px and fade in (280ms ease-out) the first time they scroll into view, staggered 50ms within a grid, list or section. On a step change (rail, Next, Back) the section fades and its blocks (eyebrow and heading, paragraphs, tables, prompt windows, callouts, collapsibles) rise in one after another with the same stagger. The trail panel's numbered items and footprints rise in turn on first view while each dotted path segment draws downward. On My journey stops and connector footprints appear one after the other along the trail, and reordering animates stops to their new positions. The active rail item slides its highlight 4px (desktop). The Completed stamp lands with a short stamp-down scale; the existing celebration is unchanged. Transforms and opacity only, no layout shift, nothing over 400ms, nothing loops. With prefers-reduced-motion there is no movement: content, hovers and presses show their final state instantly.
+
 **Logo:** shared MondayLogo left of the AI Adventure wordmark (~22px); light-surface artwork as supplied, inverted wordmark on the entry shell with original coloured marks. Favicon uses the marks.
 
 **Icons:** Lucide stroke 1.75, centred at about 58% of card disc. Frontmatter mapping: sponge→Eraser, masks→Drama, robot→Bot, scale/balance→Scale, compass→Compass, book→BookOpen, toolbox→Wrench, magnifier→Search, document→FileText, chat→MessageSquare, palette→Palette, calendar→CalendarCheck, id-card→IdCard, map-pin→MapPin, brain→Brain, briefcase→Briefcase, gauge→Gauge, layers→Layers, shield→ShieldCheck, clock→Clock, terminal→Terminal, newspaper→Newspaper, chart→BarChart3, loop→Repeat, network→Network, people→Users. Category fallback applies to unknown names.
@@ -177,7 +189,7 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 **Completed stamp:** round passport treatment described in §7; Ready/Draft review marks remain separate.
 
-**Backgrounds and links:** warm signed-in surface with sparse low-opacity footprint pattern; white reading surface. Slug lookup is case-insensitive with canonical lowercase redirect; unknown slugs show a friendly not-found state linking to All adventures. Direct routes and refresh must work.
+**Backgrounds and links:** cream signed-in surface with sparse low-opacity footprint pattern; reading content sits in white cards. Slug lookup is case-insensitive with canonical lowercase redirect; unknown slugs show a friendly not-found state linking to All adventures. Direct routes and refresh must work.
 
 ## Badge art and state treatments
 
