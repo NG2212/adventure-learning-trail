@@ -174,7 +174,7 @@ export function Section({
   action?: ReactNode;
 }) {
   return (
-    <section className="min-w-0 border-t py-6">
+    <section className="ui-card mt-6 min-w-0 p-5 pb-7">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-lg">{title}</h2>
         {action}

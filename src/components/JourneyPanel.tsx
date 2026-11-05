@@ -22,8 +22,8 @@ export function JourneyPanel({ className }: { className?: string }) {
   const lastAdventure = last ? ADVENTURES.find((a) => a.slug === last.slug) : undefined;
   const LastIcon = lastAdventure ? ICONS[lastAdventure.icon] : null;
   return (
-    <aside aria-label="Your journey" className={cn("rounded-lg border bg-card p-5 shadow-soft", className)}>
-      <h2 className="text-lg">Your journey</h2>
+    <aside aria-label="Your journey" className={cn("ui-card p-5 pb-7", className)}>
+      <p className="eyebrow mb-1">AI Adventure · You</p><h2 className="text-lg">Your journey</h2>
       <p className="mt-1 text-sm font-semibold text-primary">{title ?? "Ready to set off"}</p>
       <p className="text-xs text-muted-foreground">{completions.length} of {TOTAL_ADVENTURES} completed</p>
       <div className="mt-4 border-t pt-4">

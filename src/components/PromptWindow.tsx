@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export function PromptWindow({ text, title = "Prompt" }: { text: string; title?: string }) {
   const [copied, setCopied] = useState(false);
   return (
-    <div data-prompt-window className="my-5 rounded-2xl bg-stone p-5">
+    <div data-prompt-window className="ui-card my-5 p-5 pb-7">
       <div className="mb-3 flex items-start justify-between gap-3">
         <span className="min-w-0 font-semibold text-foreground/80">{title}</span>
         <Button variant="ghost"
@@ -22,7 +22,7 @@ export function PromptWindow({ text, title = "Prompt" }: { text: string; title?:
           {copied ? "Copied" : "Copy"}
         </Button>
       </div>
-      <pre className="whitespace-pre-wrap font-sans text-[15px] leading-relaxed">{text}</pre>
+      <pre className="rounded-xl bg-muted p-4 whitespace-pre-wrap font-sans text-[15px] leading-relaxed">{text}</pre>
     </div>
   );
 }

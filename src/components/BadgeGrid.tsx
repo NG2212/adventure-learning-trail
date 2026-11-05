@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function BadgeGrid({ title = "Badges" }: { title?: string }) {
   const { completions } = useStoreState();
   const earned = new Set(completions.map((c) => c.slug));
-  return <section aria-label={title} className="mt-12"><h2 className="text-2xl">{title}</h2>{CATEGORIES.map((category) => <section key={category} className="mt-7"><h3 className="mb-5 text-sm font-semibold">{category}</h3><div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5 lg:grid-cols-6">{ADVENTURES.filter((a) => a.category === category).map((a) => {
+  return <section aria-label={title} className="mt-12"><p className="eyebrow mb-2">AI Adventure · Badges</p><h2 className="text-2xl">{title}</h2>{CATEGORIES.map((category) => <section key={category} className="ui-card mt-7 p-5 pb-7"><h3 className="mb-5 text-sm font-semibold">{category}</h3><div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5 lg:grid-cols-6">{ADVENTURES.filter((a) => a.category === category).map((a) => {
     const has = earned.has(a.slug);
     const state = badgeStateFor(a, earned);
     const Icon = ICONS[a.icon];

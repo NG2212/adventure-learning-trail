@@ -25,7 +25,7 @@ export function AdminLayout() {
   return (
     <AdminViewContext.Provider value={{ managerView, setManagerView }}>
       <div className="mx-auto max-w-7xl px-5 py-10">
-        <PageHeading title="Programme admin" subtitle="AI Adventure · monday.com">
+        <PageHeading eyebrow="AI Adventure · Admin" title="Programme admin" subtitle="AI Adventure · monday.com">
           <label className="flex items-center gap-3 text-sm">
             <ShieldCheck className="size-4 text-primary" />
             {managerView ? "Manager view" : "L&D view"}

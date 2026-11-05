@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Activity, CheckCircle2, Clock, Gauge, ListPlus, Percent, Users, type LucideIcon } from "lucide-react";
+
+const KPI_ICONS: LucideIcon[] = [Users, CheckCircle2, Gauge, Percent, ListPlus, Clock];
 import { store, useStoreState } from "@/store";
 import type { AdminFilters, GroupMetric } from "@/store/adminTypes";
 import { Disc } from "@/components/AdventureIcon";
@@ -83,7 +86,8 @@ export function AdminOverview() {
       <AdminFiltersBar filters={filters} onChange={setFilters} />
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
         {kpis.map(([label, value, detail]) => (
-          <div key={label} className="rounded-lg border bg-card p-4">
+          <div key={label} className="ui-card p-4 pb-6">
+            {(() => { const Icon = KPI_ICONS[kpis.findIndex((k) => k[0] === label)] ?? Activity; return <span className="icon-tile mb-3 size-9 rounded-xl"><Icon className="size-5" /></span>; })()}
             <p className="min-h-10 text-xs font-medium text-muted-foreground">{label}</p>
             <p className="mt-2 text-2xl font-bold tabular-nums" data-kpi={label}>
               {value}

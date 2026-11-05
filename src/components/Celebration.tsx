@@ -17,7 +17,7 @@ export function Celebration({ result, adventureTitle, slug, onClose }: { result:
 
   return (
     <Dialog open onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-lg rounded-3xl border-0 p-8 text-center">
+      <DialogContent className="ui-card ui-card-accent-lime max-w-lg p-8 text-center">
         {sharing ? (
           <>
             <DialogTitle>Share your progress</DialogTitle>

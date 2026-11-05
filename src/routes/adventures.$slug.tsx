@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronDown, Rocket } from "lucide-react";
 import { ADVENTURES, adventureBody, canOpenAdventure, getAdventure, WAVES } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
@@ -11,7 +11,7 @@ import { AdventureRating } from "@/components/AdventureRating";
 import { AdventureTrail } from "@/components/AdventureTrail";
 import { PreviewVideo, FeatureVideo } from "@/components/PreviewVideo";
 import { ReviewStamp } from "@/components/ReviewStamp";
-import { Chip, LabelChips } from "@/components/LabelChips";
+import { CATEGORY_TONES, Chip, LabelChips } from "@/components/LabelChips";
 import { ItineraryToggle } from "@/components/ItineraryToggle";
 import { PromptWindow } from "@/components/PromptWindow";
 import { Celebration } from "@/components/Celebration";
@@ -132,11 +132,11 @@ function Md({ text }: { text: string }) {
 
 const WHY = /^why this adventure\??$/i;
 
-function Collapsible({ title, children }: { title: string; children: ReactNode }) {
+function Collapsible({ title, icon, children }: { title: string; icon?: ReactNode; children: ReactNode }) {
   return (
-    <details className="group my-4 rounded-2xl border bg-background">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-semibold">
-        {title}
+    <details className="ui-card group my-4 pb-1">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-semibold text-navy">
+        <span className="flex items-center gap-3">{icon && <span className="icon-tile size-9 rounded-xl">{icon}</span>}{title}</span>
         <ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" />
       </summary>
       <div className="border-t px-5 pb-3">{children}</div>
@@ -150,7 +150,7 @@ function StepBody({ body, goFurther }: { body: string; goFurther?: boolean }) {
   return (
     <>
       {intro && <Md text={intro} />}
-      {cards.map((c, i) => <Collapsible key={i} title={c.title}><Md text={c.body} /></Collapsible>)}
+      {cards.map((c, i) => <Collapsible key={i} title={c.title} icon={<Rocket className="size-5" />}><Md text={c.body} /></Collapsible>)}
     </>
   );
 }
@@ -174,7 +174,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const videoFirst = !!adventure.video && introduction.some((section) => WHY.test(section.heading));
   const [current, setCurrent] = useState(0);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLElement>(null);
   const shouldScroll = useRef(false);
   const selectStep = (index: number) => {
@@ -218,7 +218,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
-      <header className="relative flex flex-col gap-5 rounded-3xl bg-primary-soft p-6 sm:flex-row sm:items-center sm:p-8">
+      <header className={cn("ui-card ui-card-accent-category flex flex-col gap-5 p-6 pb-8 sm:flex-row sm:items-center sm:p-8 sm:pb-10", CATEGORY_TONES[adventure.category])}>
         <ReviewStamp adventure={adventure} />
         <AdventureIcon adventure={adventure} size="xl" />
         <div className="min-w-0 flex-1">
@@ -227,6 +227,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
             {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
             {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>
+          <p className="eyebrow mb-2">AI Adventure · {adventure.category}</p>
           <h1 className="text-3xl sm:text-4xl">{adventure.title}</h1>
           <AdventureRating slug={slug} className="mt-2" />
           <p className="mt-2 text-lg">{adventure.walkaway}</p>
@@ -237,7 +238,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
       </header>
 
       {introduction.length > 0 && (
-        <div aria-label="Adventure introduction" className="mt-8 space-y-6 bg-card px-6 py-6 sm:px-8">
+        <div aria-label="Adventure introduction" className="ui-card mt-8 space-y-6 px-6 pt-6 pb-8 sm:px-8">
           {introduction.map((section) => (
             /^the trail$/i.test(section.heading) ? (adventure.video && !videoFirst ? <div key={section.heading} className="flex flex-col gap-6 lg:flex-row lg:items-start"><div className="min-w-0 flex-1"><AdventureTrail heading={section.heading} body={section.body} /></div><PreviewVideo url={adventure.video} title={adventure.title} /></div> : <AdventureTrail key={section.heading} heading={section.heading} body={section.body} />) :
             videoFirst && adventure.video && WHY.test(section.heading) ? <section key={section.heading} className="max-w-3xl">
@@ -260,7 +261,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
               {steps.map((s, i) => (
                 <li key={`${i}-${s.title}`}>
                   <Button variant="ghost" onClick={() => selectStep(i)} aria-label={s.title} aria-current={i === current ? "step" : undefined}
-                    className={cn("h-auto w-full justify-start whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
+                    className={cn("rail-item h-auto w-full justify-start whitespace-nowrap rounded-full px-3 py-2 text-left text-sm md:-ml-0.5 md:whitespace-normal md:rounded-none md:border-l-2 md:pl-4",
                       i === current ? "bg-primary-soft font-semibold text-primary md:border-primary md:bg-transparent" : "text-muted-foreground hover:text-foreground md:border-transparent")}>
                     <span className="md:hidden">{s.title.match(/^Step\s+\d+/i)?.[0] ?? s.title}</span>
                     <span className="hidden md:inline">{s.title}</span>
@@ -274,7 +275,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
                   <TooltipTrigger asChild>
                     <span className="inline-flex md:w-full" tabIndex={preview ? 0 : undefined}>
                       <Button variant="outline" size="sm" disabled={preview || !open} onClick={() => setProofDialog(true)}
-                        className="text-primary shadow-none md:w-full">
+                        className="text-primary md:w-full">
                         {done && <Check className="rounded-full bg-lime p-0.5 text-foreground" />}
                         <span className="hidden md:inline">{done ? "Completed" : "Complete this adventure"}</span>
                         <span className={done ? "sr-only md:hidden" : "md:hidden"}>{done ? "Completed" : "Complete"}</span>
@@ -290,19 +291,20 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
           </nav>
         )}
         <div className="min-w-0">
-          <article aria-label="Adventure section" className="adventure-step-content bg-card p-6 sm:p-8">
-            {step?.title && <h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl">{step.title}</h2>}
-            <div className="max-w-3xl">
+          <article aria-label="Adventure section" className="ui-card adventure-step-content p-6 pb-8 sm:p-8 sm:pb-10">
+            <div key={current} className="step-fade">{step?.title && <div ref={headingRef} className="step-reveal"><p className="eyebrow">{step.goFurther ? "Go further" : `Step ${current + 1} of ${lastCoreStep + 1}`}</p><h2 className="mb-4 text-2xl sm:text-3xl">{step.title}</h2></div>}
+            <div className="step-reveal-blocks max-w-3xl">
               <StepBody body={step?.body ?? ""} goFurther={step?.goFurther ?? false} />
-            </div>
+            </div></div>
 
             {showProof && (
               <div className="mt-8">
-                {proof && <section aria-label="Proof of work" className="rounded-2xl border-l-4 border-primary bg-primary-soft p-5">
+                {proof && <section aria-label="Proof of work" className="ui-card p-5 pb-7">
+                  <p className="eyebrow">The finish line</p>
                   <h2 className="text-xl">Proof of work</h2>
                   <Md text={proof.body} />
                 </section>}
-                {done && entry && !preview && <section aria-label="Your proof of work" className="mt-4 rounded-lg border p-5">
+                {done && entry && !preview && <section aria-label="Your proof of work" className="ui-card ui-card-accent-lime mt-4 p-5 pb-7">
                   <div className="flex items-center justify-between gap-3">
                     <h3 className="text-lg">Your proof of work</h3>
                     <Button variant="link" size="sm" onClick={() => setProofDialog(true)}>Edit</Button>
@@ -312,7 +314,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
                   <p className="mt-1 whitespace-pre-wrap break-words text-sm">{entry.built}</p>
                   {entry.learned && <><p className="mt-4 text-xs font-semibold text-muted-foreground">What you learned</p><p className="mt-1 whitespace-pre-wrap break-words text-sm">{entry.learned}</p></>}
                 </section>}
-                {open && !preview && !entry && <Button className="mt-4 h-auto max-w-full whitespace-normal rounded-full px-6 py-3 font-semibold"
+                {open && !preview && !entry && <Button className="mt-4 h-auto max-w-full whitespace-normal px-6 py-3 font-semibold"
                   onClick={() => setProofDialog(true)}>
                   {done && <Check className="size-4" />}
                   Mark this adventure complete
@@ -322,12 +324,12 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
             )}
 
             <div className="mt-8 flex justify-between gap-3 border-t pt-6">
-              {current > 0 ? <Button variant="outline" onClick={() => selectStep(current - 1)} className="rounded-full px-5"><ArrowLeft />Back</Button>
+              {current > 0 ? <Button variant="outline" onClick={() => selectStep(current - 1)} className="px-5"><ArrowLeft />Back</Button>
                 : <Button variant="ghost" asChild><Link to="/adventures"><ArrowLeft />All adventures</Link></Button>}
-              {current < steps.length - 1 && <Button onClick={() => selectStep(current + 1)} className="rounded-full px-5">Next<ArrowRight /></Button>}
+              {current < steps.length - 1 && <Button onClick={() => selectStep(current + 1)} className="px-5">Next<ArrowRight /></Button>}
             </div>
           </article>
-          <footer aria-label="Adventure next destinations" className="mt-8 bg-card p-6 sm:p-8">
+          <footer aria-label="Adventure next destinations" className="ui-card mt-8 p-6 pb-8 sm:p-8 sm:pb-10">
             <WhatsNextPanel currentSlug={slug} />
             {related && <section className="mt-6 max-w-3xl border-t pt-5 text-sm">
               <h2 className="text-lg">{related.heading}</h2>

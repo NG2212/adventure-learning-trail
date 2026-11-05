@@ -5,7 +5,7 @@ import { FootprintShape } from "./Footprints";
 /** Shared trail presentation for reader pages and admin previews; Markdown stays authored. */
 export function AdventureTrail({ heading, body }: { heading: string; body: string }) {
   return (
-    <section className="max-w-3xl rounded-2xl bg-muted px-5 py-4" aria-label={heading}>
+    <section className="ui-card max-w-3xl px-5 pt-4 pb-6" aria-label={heading}>
       <h2 className="mb-2 text-xl">{heading}</h2>
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
         ol: ({ children, start }) => <ol start={start} className="adventure-trail my-3">{children}</ol>,
