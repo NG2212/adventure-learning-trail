@@ -10,6 +10,7 @@ professions: [Everyone]
 audience: []
 tool: Any AI tool
 effort: Moderate
+video: /videos/understanding-ai-agents.mp4
 outcome: Learn something
 pattern: TOUR
 wave: W1
