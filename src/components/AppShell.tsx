@@ -6,6 +6,7 @@ import { titleFor } from "@/lib/titles";
 import { Footprint, FootprintShape } from "./Footprints";
 import { MondayLogo } from "./MondayLogo";
 import { DiscFilters } from "./AdventureIcon";
+import { RevealObserver } from './Reveal';
 import { ADMIN_TODAY } from '@/store/adminTypes';
 
 const NAV = [
@@ -104,6 +105,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className={isSignIn ? "flex min-h-screen flex-col" : "relative isolate flex min-h-screen overflow-x-clip flex-col bg-surface"}>
       <DiscFilters />
+      <RevealObserver />
       {!isSignIn && <FootprintBackdrop />}
       {!isSignIn && <AppHeader />}
       <main className="flex-1">{children}</main>
@@ -116,10 +118,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function PageHeading({ title, subtitle, children }: { title: string; subtitle?: string; children?: React.ReactNode }) {
+/** Small uppercase mono label above titles and section headings, e.g. "AI ADVENTURE · ALL ADVENTURES". */
+export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <p className={["eyebrow mb-2", className].filter(Boolean).join(" ")}>{children}</p>;
+}
+
+export function PageHeading({ title, subtitle, eyebrow, children }: { title: string; subtitle?: string; eyebrow?: string; children?: React.ReactNode }) {
   return (
     <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <div>
+        <Eyebrow>{eyebrow ?? `AI Adventure · ${title}`}</Eyebrow>
         <h1 className="text-3xl sm:text-4xl">{title}</h1>
         {subtitle && <p className="mt-2 max-w-2xl text-muted-foreground">{subtitle}</p>}
       </div>
