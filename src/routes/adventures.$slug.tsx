@@ -130,6 +130,8 @@ function Md({ text }: { text: string }) {
   );
 }
 
+const WHY = /^why this adventure\??$/i;
+
 function Collapsible({ title, children }: { title: string; children: ReactNode }) {
   return (
     <details className="group my-4 rounded-2xl border bg-background">
@@ -170,6 +172,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
   const preview = !adventure.isOpen && !!previewRequested && person.isAdmin;
   const parsed = useMemo(() => parseAdventure(adventureBody(adventure, preview, demoOpenAll), ADVENTURES), [adventure, preview, demoOpenAll]);
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
+  const videoFirst = !!adventure.video && introduction.some((section) => WHY.test(section.heading));
   const [current, setCurrent] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const railRef = useRef<HTMLElement>(null);
