@@ -24,8 +24,8 @@ export type LearningStyle = "quick" | "steady" | "deep";
 const MULTI = ["weeklyTools", "goal", "learningStyle"] as const;
 
 /** Older saves stored one value; wrap any single value as a one-item array. */
-export function normaliseAnswers<T extends Record<string, unknown>>(raw: T): T {
-  const out: Record<string, unknown> = { ...raw };
+export function normaliseAnswers<T extends object>(raw: T): T {
+  const out = { ...raw } as Record<string, unknown>;
   for (const key of MULTI) {
     const v = out[key];
     out[key] = Array.isArray(v) ? v : typeof v === "string" && v ? [v] : [];
