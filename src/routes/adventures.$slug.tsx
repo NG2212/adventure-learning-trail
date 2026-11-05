@@ -174,7 +174,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
   const { steps, introduction, proof, related, lastCoreStep, hasNumberedSteps } = parsed;
   const videoFirst = !!adventure.video && introduction.some((section) => WHY.test(section.heading));
   const [current, setCurrent] = useState(0);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLElement>(null);
   const shouldScroll = useRef(false);
   const selectStep = (index: number) => {
@@ -292,7 +292,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         )}
         <div className="min-w-0">
           <article aria-label="Adventure section" className="ui-card adventure-step-content p-6 pb-8 sm:p-8 sm:pb-10">
-            <div key={current} className="step-fade">{step?.title && <div className="step-reveal"><p className="eyebrow">{step.goFurther ? "Go further" : `Step ${current + 1} of ${lastCoreStep + 1}`}</p><h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl">{step.title}</h2></div>}
+            <div key={current} className="step-fade">{step?.title && <div ref={headingRef} className="step-reveal"><p className="eyebrow">{step.goFurther ? "Go further" : `Step ${current + 1} of ${lastCoreStep + 1}`}</p><h2 className="mb-4 text-2xl sm:text-3xl">{step.title}</h2></div>}
             <div className="step-reveal-blocks max-w-3xl">
               <StepBody body={step?.body ?? ""} goFurther={step?.goFurther ?? false} />
             </div></div>
