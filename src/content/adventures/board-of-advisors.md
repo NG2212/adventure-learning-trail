@@ -181,7 +181,7 @@ Stay in the same chat and paste the prompt below. Answer its questions in writin
 Interview me to create a Stakeholder Dynamics file for my Board of Advisors. Ask as a batch: the five to seven people or groups who matter most to my decisions; what each cares about and what makes them resist; the tensions between them; how decisions really get made. Use only work behaviour. Write it under 500 words for my board skill's folder, and add a line to the skill telling the board to read it.
 ```
 
-**Give each member an independent mind with sub-agents** when members start to agree because they read each other's answers. A sub-agent is a separate AI worker with its own context. Use Claude Code, Cursor or Codex, or Cowork where it offers sub-agents.
+**Give each member an independent mind with sub-agents** when members start to agree because they read each other's answers. A sub-agent is a separate AI worker with its own context. Use Claude Code, Cursor or Codex, or Claude where it offers sub-agents.
 
 **What this does:** converts your board skill so each member answers alone.
 

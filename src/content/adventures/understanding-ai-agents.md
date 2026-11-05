@@ -45,7 +45,7 @@ Open items
 
 ## Why this adventure
 
-You work with agents every week: Claude with your connectors, Cowork, monday agents, agents your teammates built. When one returns a weak result, the cause is usually something you control: a vague goal, a skipped source, or a guess where it should have asked.
+You work with agents every week: Claude with your connectors, monday agents, agents your teammates built. When one returns a weak result, the cause is usually something you control: a vague goal, a skipped source, or a guess where it should have asked.
 
 Here you watch an agent work on one of your real tasks and explain itself as it goes. You see the **agentic loop**: the cycle of plan, act, check and adjust that every agent runs. Then you practise writing goals and leave with your own rules for any agent, yours or someone else's.
 
