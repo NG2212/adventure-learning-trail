@@ -17,9 +17,10 @@ export function RevealObserver() {
       const visible = entries.filter((e) => e.isIntersecting).map((e) => e.target as HTMLElement);
       const byParent = new Map<Element | null, HTMLElement[]>();
       for (const el of visible) {
-        const group = byParent.get(el.parentElement) ?? [];
+        const key = el.closest("[data-reveal-group]") ?? el.parentElement;
+        const group = byParent.get(key) ?? [];
         group.push(el);
-        byParent.set(el.parentElement, group);
+        byParent.set(key, group);
         io.unobserve(el);
       }
       for (const group of byParent.values()) {
