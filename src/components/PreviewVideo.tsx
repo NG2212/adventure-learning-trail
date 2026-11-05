@@ -22,3 +22,18 @@ export function PreviewVideo({ url, title }: { url?: string | undefined; title: 
     </figure>
   );
 }
+
+/** Poster by convention: same path with .jpg in place of the extension. */
+export function posterFor(url: string): string {
+  return url.replace(/\.[a-z0-9]+(?=$|[?#])/i, ".jpg");
+}
+
+/** Full-width 16:9 player used as the main element of "Why this adventure". */
+export function FeatureVideo({ url, title }: { url: string; title: string }) {
+  const embed = embedUrl(url);
+  return (
+    <div className="aspect-video w-full overflow-hidden rounded-lg bg-stone">
+      {embed ? <iframe src={embed} title={`${title} video`} className="size-full" allow="fullscreen; picture-in-picture" allowFullScreen loading="lazy" /> : <video src={url} poster={posterFor(url)} controls playsInline preload="metadata" className="size-full" aria-label={`${title} video`} />}
+    </div>
+  );
+}
