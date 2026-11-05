@@ -331,7 +331,7 @@
 
 .completed-stamp { animation: stamp-down 260ms cubic-bezier(.3,1.4,.6,1) backwards; }
 .rail-item { transition: background-color 200ms ease-out, border-color 200ms ease-out, transform 200ms ease-out; }
-.rail-item[aria-current="step"] { transform: translateX(4px); }
+@media (min-width: 768px) { .rail-item[aria-current="step"] { transform: translateX(4px); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
