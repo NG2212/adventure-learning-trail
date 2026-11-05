@@ -10,6 +10,7 @@ professions: [Everyone]
 audience: []
 tool: Any AI tool
 effort: Moderate
+video: /videos/de-slop.mp4
 outcome: Work differently
 pattern: SPOT + BUILD
 wave: W1

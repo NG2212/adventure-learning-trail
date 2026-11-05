@@ -10,6 +10,7 @@ professions: [Everyone, Customer Facing, Product]
 audience: [Managers]
 tool: Any AI tool
 effort: Moderate
+video: /videos/board-of-advisors.mp4
 outcome: Build something
 pattern: INT + PANEL
 wave: W1
