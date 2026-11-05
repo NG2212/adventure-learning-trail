@@ -27,6 +27,7 @@ describe("second L&D review rules", () => {
       ["de-slop", "/videos/de-slop.mp4"],
       ["board-of-advisors", "/videos/board-of-advisors.mp4"],
       ["skills-when-how-and-how-well", "/videos/skills-when-how-and-how-well.mp4"],
+      ["creating-apps-with-ai-done-right", "/videos/creating-apps-with-ai-done-right.mp4"],
       ["making-decisions-with-ai", "/videos/making-decisions-with-ai.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
     ]);
