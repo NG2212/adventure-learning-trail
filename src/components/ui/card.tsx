@@ -2,11 +2,17 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
+/** Shared deck-style box: navy outline, hard ledge, accent strip. Use `cardClass` for non-div elements. */
+export type CardAccent = "primary" | "category" | "lime" | "muted";
+export function cardClass(accent: CardAccent = "primary", interactive = false) {
+  return cn("ui-card", accent !== "primary" && `ui-card-accent-${accent}`, interactive && "ui-card-hover");
+}
+
+const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { accent?: CardAccent; interactive?: boolean }>(
+  ({ className, accent, interactive, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("rounded-xl border bg-card text-card-foreground shadow", className)}
+      className={cn(cardClass(accent, interactive), className)}
       {...props}
     />
   ),
@@ -24,7 +30,7 @@ const CardTitle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivE
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("font-semibold leading-none tracking-tight", className)}
+      className={cn("font-semibold leading-none tracking-tight text-navy", className)}
       {...props}
     />
   ),
