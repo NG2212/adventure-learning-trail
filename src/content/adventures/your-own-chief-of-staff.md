@@ -3,214 +3,232 @@ slug: your-own-chief-of-staff
 emoji: 🗓️
 icon: calendar
 title: "Your Own Chief of Staff"
-walkaway: "A personal assistant that knows your context and your tools, running one scheduled job and one on-demand job for you"
+walkaway: "An AI chief of staff built for you: it organizes your workload, runs your to-do list, helps you prioritize and moves your work forward"
 category: Automate and delegate
 levels: [Intermediate, Advanced]
 professions: [Everyone, Customer Facing]
 audience: [Managers]
 tool: Any AI tool
 effort: Ambitious
+video: /videos/your-own-chief-of-staff.mp4
 outcome: Build something
 pattern: INT + SCHED
 wave: W1
 slot: 19
 next: [automation-done-right, the-daily-dispatch]
-source: "Adapted from summer-challenge/labs/set-it-and-summer.md and summer-challenge/labs/daily-dispatch.md (prove by hand, then schedule; scheduled runs start fresh; pause what you stop reading); catch-up-may/content/week-3/project-9-operations-personal-assistance.md (morning briefing, meeting prep, read-only first) and catch-up-may/content/week-4/project-11-chief-of-staff-agent.md (task interview, autonomy boundaries). Catch-Up cross-references and tool menus dropped. Never edit the originals from this engagement."
+review: ready
+source: "Adapted from appsflyer/Managers/exercises/exercise-1-agent-architecture.md (Step 2 interview, Chief of Staff archetype only; 'Hire the librarian', heavily shortened; the Chief of Staff test question; 'Diagnose by layer') and Nufar's seed prompt content/reference/todo-artifact-seed-prompt.md (to-do and weekly-load board, compressed). Prove-by-hand discipline from summer-challenge/labs/set-it-and-summer.md. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
-Adaptation note (2026-10-22, slot 19 [Inbar 21])
-- Kept: the Set It and Summer discipline (prove by hand, fix until you would read it, schedule, check the first unattended run, pause what you stop reading); "scheduled runs start fresh"; P9 morning briefing and meeting prep jobs; P9 "read-only first"; P11 task interview and autonomy question, recast as the approval line.
-- Cut: all Catch-Up worker / fleet / Dream Team cross-references, per-tool scheduling tables, Path A / Path B, Sarah Chen, watch list, memory, email triage.
-- Added for Monday: boards as source and destination, Kremer for CRM and internal data, Cowork and monday agents as two unranked install paths, Customer Facing account research and manager status pull in Go further (team level only).
-- Morning briefing and meeting prep are the worked example; Prompts 2-4 stay generic enough for any two jobs the reader picks.
+Changed 2026-11-05, from Nufar's first review
+- New arc, full rewrite: create it (one interview, then save right away) · context · skills or automations · to-do board · use it and keep improving. The old jobs table, morning briefing and meeting prep worked example, and the recipe prompts in Go further are gone. Monday has its own meeting prep tools, so meeting prep is not named.
+- Step 1 adapts the AppsFlyer Exercise 1 Step 2 prompt with the Chief of Staff archetype only, plus personality. Same discipline: read and do not re-ask, the opening line, under 20 lines, every line changes behavior. "Identity" and "brain" are replaced by "instructions" and "context".
+- Step 2 adapts "Hire the librarian": documents, interview for what documents never capture, short pages, TBD for gaps, inferred labelled. Page rules kept in one line. Build a Personal Brain is the pointer for going deeper.
+- Step 3 is one prompt that interviews, proposes three options and builds the chosen one. Automation discipline kept in two lines. Skills and Automation Done Right are the pointers.
+- Step 4 compresses Nufar's seed prompt. Kept: read and tag, short interview rounds with multiple choice, one-page design with a stop, seed from the calendar, plan tomorrow as a table, the four ground rules, "if it is not available here, say so". Dropped as briefed: prep-stage scale, other agents, plain-text mirror, multi-file setup. Also dropped to reach the length: the per-item checkbox rule, daily routines, planning habits, language and dark mode, links to where work happens, the two proposed skills.
+- Step 5 uses the AppsFlyer Chief of Staff test question, "Diagnose by layer" as a small table, the keep-and-change feedback rule from Skills, and the done line.
+
+Judgment calls
+- Chat: Steps 1 to 4 run in one chat, because they build on each other. Step 5 opens a new chat inside the chief of staff, because the test only proves something if the saved instructions and context do the work.
+- Before you start holds the one calendar and email line. The standing "If you have never built a skill" pointer (learnings, 23 Oct) moved into Step 3 because the brief allows one line here and Step 3 lets people choose an automation instead.
+- The Step 3 page holds the examples and the prompt does not, so the prompt proposes from the person's answers without anchoring on the list.
+- The board prompt says "interactive artifact", without "Claude", so it still works in other tools through the "say so and propose the closest option" clause.
+- A row in the Step 5 table covers a chat that misses board items, because it is not confirmed that a new chat can read the board's stored data.
+- Customer-data rule sits once, in Step 2, written generally, and Go further points to Monday's own data for the account brief.
+- Related adventures unchanged and matches `next`; Build a Personal Brain and Skills are linked inside their steps.
+- Left out to save length: the "already have one" line in the hook (the Step 1 prompt covers it), and "you approve each app the first time" (the tool asks at that moment). The Share item in Go further has no do-this-when opener for the same reason.
 
 Open items
-- Keren Q6: is Cowork's scheduled-tasks feature enabled at Monday? Step 4 assumes yes.
-- Google Calendar connector: the standing rules list Drive, Gmail, Slack and monday; the Cowork install line also names Google Calendar because the morning briefing needs it. Confirm.
-- monday agents: confirm an agent takes a brief/instructions field and can be run from a recurring board automation. Wording is provisional.
-- Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026, the day after launch; the "In Claude Cowork" lines may need a freshness sweep.
-- Cowork scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 4 tells people to match permissions to the approval boundary. Hands-on check pending.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-- 23 Oct: do-this line on every prompt
+- Keren Q6: are scheduled tasks in Claude enabled at Monday? Step 3 assumes yes.
+- Google Calendar connector: confirm it is on at Monday. The Step 4 prompt seeds the board from the calendar (the artifact facts come from support.claude.com, read 5 Nov 2026; only personal storage and the "sharing within the organization" line reach the page).
+- monday agents details: confirm skills in the Profile tab and running an agent from a board automation; wording follows Skills and Automation Done Right. Scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 3 tells people to match permissions to the boundaries.
+- Big Brain Studio access: can every employee start an app, or only on request? Same open item as Creating Apps.
+- Can Claude add or change an artifact's stored data from a chat, and can a new chat read it? Not confirmed. The prompt keeps Nufar's clause and asks Claude to say so; Step 5 has a row for it.
+- Fresh-chat prompt test pending (playbook step 4), especially the Step 4 prompt in Claude: storage, seeding, saved rules.
 -->
 
 # 🗓️ Your Own Chief of Staff
 
-**Build a personal assistant that knows your work and your tools, and runs one job on a schedule and one job when you ask.**
+**Build an AI chief of staff that organizes your work, keeps track of your commitments and helps you decide what comes first.**
 
 ## Why this adventure
 
-Much of a busy week is the same preparation again and again: checking what changed on your boards, rereading the last thread before a customer call, collecting a status for your manager. A chief of staff does that preparation, so you walk into each meeting ready.
+Your workload keeps growing, your to-do list is spread across many places, and every morning you decide again what matters most. Senior leaders have a chief of staff for this: someone who organizes the work, keeps track of commitments and moves work forward.
 
-In this adventure you design that assistant around the tasks you repeat, give it your context and tools, prove one job by hand, then put it on a schedule.
-
-Already have such an assistant? The Step 1 prompt builds on its instructions.
+In this adventure you build one for yourself. It knows how you work, executes the tasks you repeat, and works from a to-do board that shows your week. You choose its personality, so it never annoys you.
 
 ## The trail
 
-1. **Decide what your chief of staff should do**, so it works on the tasks that cost you the most time.
-2. **Give it your context and your tools**, so its output is about your work.
-3. **Run one job by hand until it is right**, because a scheduled job runs while you are elsewhere.
-4. **Put it on a schedule and add an on-demand job**, so the preparation is ready before you ask.
+1. **Create your chief of staff**, so it knows its job and how to sound.
+2. **Give it your context**, so its advice fits your real work.
+3. **Give it skills or automations**, so it can execute.
+4. **Build your to-do board**, so your commitments and load sit on one page.
+5. **Use it, then keep improving**, because every correction makes it better.
 
 ## Before you start
 
-Have your calendar, mail and the monday boards you work from available to connect.
+Know what you want your chief of staff to do about your calendar and email.
 
-## Step 1: Decide what your chief of staff should do
+## Step 1: Create your chief of staff
 
-Start from your week. A good job passes three checks:
+### Prompt: Your chief of staff's instructions
 
-| Ask yourself | A good job for a chief of staff |
+**What this does:** the AI interviews you and writes your chief of staff's instructions.
+
+We recommend doing this adventure in Claude, and other tools work too. Open a new chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+I am building an AI agent for my work: my chief of staff, who handles execution, tracking, follow-ups and coordination.
+
+Read what you already know about me and do not re-ask it. If I already have a similar agent, ask for its instructions and build on them.
+
+Interview me in two rounds at most:
+- How proactive it should be, and what it tracks without being asked
+- My format for plans and digests, and what it may draft
+- Role and mandate, and what is out of scope
+- Priority areas, as categories
+- Ways of working: read my saved context first, flag risks, when to ask before acting
+- Boundaries: what it never does without my approval
+- Personality: how it should sound so it never annoys me
+
+Then write its instructions as one block. Open with "You are my chief of staff. Your job is..." Under 20 lines. Every line must change its behavior.
+```
+
+**Save the instructions now.** Paste them as project instructions or agent instructions, including a monday agent. In a folder, save them as CLAUDE.md if you use Claude, or as AGENTS.md if you use Claude Code or Cursor.
+
+## Step 2: Give it your context
+
+A chief of staff prioritizes well only when it knows your world. Your live sources are the monday boards and Slack channels where you work, and internal data through Kremer.
+
+### Prompt: Build its context
+
+**What this does:** the AI reads a few documents, interviews you, and writes short pages about your work.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Build the context my chief of staff reads before it works. Use only what my documents and I say. Mark gaps as TBD. Label anything you inferred.
+
+1. Ask me to add a few documents relevant to my role.
+2. Interview me about what documents never capture: informal dynamics, unwritten priorities, who really owns what.
+3. Write short pages, one topic per page, for example team and how we work, and current priorities. Add a page listing my live sources. Ask me which monday boards and Slack channels belong there.
+
+Show me the pages, say what is thin, and ask me to correct one thing you guessed.
+```
+
+Read each page and remove anything sensitive. Data that Monday's customers uploaded to their own monday boards stays out of Claude; Monday's own data about customers is fine.
+
+Save the pages in the project, agent or folder that holds the instructions. To go deeper, use **Build a Personal Brain for Your AI**.
+
+## Step 3: Give it skills or automations
+
+Your chief of staff needs things to execute. For example:
+
+- prioritize my week
+- turn my Slack and mail into tasks
+- a weekly review
+- a status from a monday board
+
+### Prompt: Choose what it executes
+
+**What this does:** the AI interviews you about what repeats, helps you pick, and builds your choice.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Help me give my chief of staff one thing to execute. Use what you know about me. Ask one question at a time about what repeats in my work. Do not choose for me.
+
+Propose three options. For each, say whether it should be a skill (saved instructions I start when I need them) or an automation (a job on a schedule or a trigger), and why. Wait for my choice.
+
+Then check my tool's current documentation and build it. Give the complete instructions in one block: sources, output format, what to do when a source is missing, and what it must show me before acting. Tell me how to add it and, for a skill, to close and reopen the tool.
+```
+
+**For a skill:** if you have never built one, use **Skills: When, How and How Well**.
+
+**For an automation:** run it by hand until it is right, because scheduled runs start fresh and remember only their instructions. Set its permissions to match the boundaries you set in Step 1. For the method, use **Automation Done Right**.
+
+**In Claude:** add a skill under Customize → Skills, then close and reopen Claude. Ask Claude to schedule an automation, and check that it appears under Scheduled.
+
+**In monday agents:** add a skill in the agent's Profile tab. Run the agent from a board automation.
+
+## Step 4: Build your to-do board
+
+Your chief of staff needs one page that shows your tasks, your week and how full each day is. If you already manage your list somewhere you trust, skip to Step 5.
+
+We recommend a Claude artifact. Other tools work. For example, you can build the board in Big Brain Studio, Monday's internal app platform, which has Monday login and its own database, through its plugin in Cursor or Claude Code.
+
+### Prompt: Build my to-do board
+
+**What this does:** the AI learns how you plan, shows you a design, builds the board and plans tomorrow with you.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Help me build a personal to-do and weekly-load board as an interactive artifact, plus the rules that keep it working later.
+
+1. Learn me. Read what you already know: instructions, memory, this chat, my connected calendar, mail, Slack and monday boards. Summarize my role, work streams, hours and commitments. Tag each line [instructions], [memory], [calendar] or [guess]. Ask me to correct it. Never ask what these sources answer.
+
+2. Interview me. Three or four questions per round, multiple choice with a "something else" option. Cover:
+- Work streams on the board, and dated deliveries that need preparation
+- Workdays, hours, protected time, and what happens to unfinished items
+- My priority words, which wins in a conflict, how to show load
+- Statuses I need, for example waiting on someone
+- Where my tasks come from, and which of those you can reach
+- The views I want, and what must never appear
+Stop once you can build.
+
+3. Design. Show one page: the data, the views, my rules numbered in my words. Wait for my OK.
+
+4. Build. Use personal storage, so my data stays between sessions. Seed it from my next two or three weeks of calendar and my open items, and mark seeded items. Keep the rules as saved instructions or a skill. Tell me whether you can change the board's data from a chat. If something is not available here, say so and propose the closest option.
+
+5. First run. Plan tomorrow with me. Ask for my time blocks, slot tasks, flag conflicts, and show a table: Time, Block, Items. Ask what felt off and fix it.
+
+Ground rules: my priority words win. When you add something, tell me what it competes with. Use absolute dates. Nothing I marked private goes on the board.
+```
+
+## Step 5: Use it, then keep improving
+
+### Prompt: Test your chief of staff
+
+**What this does:** shows whether your chief of staff can prioritize your real work.
+
+Open a new chat inside your chief of staff (the project, agent or folder that holds its instructions), so your saved setup does the work. Paste the prompt below.
+
+```
+What should I focus on this week given my workload and deadlines? Prioritized top five.
+```
+
+Then keep going: test it, add more, improve it. Add rules, context and skills. Improve the skills, and so on.
+
+| What do you see? | What could you do? |
 | --- | --- |
-| How often does it repeat? | Every day, every week, or before every meeting of one kind |
-| Where does the information live? | Places the AI can read: monday boards, mail, calendar, Drive, Slack, or internal data through Kremer |
-| What happens if it is wrong? | You see the mistake before anyone else does |
+| Generic, or out of date | Add a context page, or refresh one |
+| Wrong tone, format or length | Add a rule to its instructions |
+| Misses items on your board | Ask what it can see, and for the closest option |
+| You keep asking for the same thing | Build a skill, as in Step 3 |
 
-Typical jobs at Monday: a morning briefing on your boards, preparation before a QBR or a renewal call, a weekly status from a team board, a summary of release updates.
+Concrete feedback says what to keep as well as what to change: "Keep the top five format. You ranked the renewal too low; it is due this Thursday." Ask for the complete new instructions or skill, and replace the old version.
 
-### Prompt: Three jobs for your chief of staff
-
-**What this does:** the AI interviews you about your week, proposes three jobs and helps you pick two.
-
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
-
-```
-Help me design a personal chief of staff: an AI tool that does my recurring preparation work. Use what you know about me; ask only for what is missing, one question at a time. If I already have such an assistant, ask me to paste its instructions and build on them.
-
-Ask about my week: the meetings I prepare for, the information I gather again and again, the accounts or projects I track, the updates I write, what I already automate, and where a mistake would be costly. If I answer vaguely, ask for a recent example.
-
-Then propose three jobs. For each job give:
-1. Inputs: which monday boards, mail, calendar and documents it reads
-2. Output: what it produces
-3. Cadence: scheduled (when) or on demand
-4. Approval line: what it may do alone, and what it must show me first
-
-Help me pick one scheduled job and one on-demand job. Stop and wait.
-```
-
-Many people pick a morning briefing (scheduled) and meeting prep (on demand); this page uses those two as the example.
-
-## Step 2: Give it your context and your tools
-
-Your chief of staff is as good as what it can see. Give it three kinds of context: who you are (your AI Identity, if you built one in the Your AI Identity adventure), where your work lives (the monday boards, Drive folders and Slack channels it may read), and internal data such as account history, through Kremer. Connect your tools so it reads each source itself.
-
-### Prompt: Standing instructions
-
-**What this does:** turns the two jobs you picked in Step 1 into the standing instructions your chief of staff follows every time it runs.
-
-Stay in the same chat and paste the prompt below.
-
-```
-Write standing instructions for my chief of staff, based on the two jobs I picked earlier in this chat. If they are missing, ask for them.
-
-Include these sections:
-1. Role: who I am and what this assistant does for me.
-2. Sources: which monday boards, mail, calendar, Drive folders and Slack channels it reads, and in what order.
-3. Output for each job. For a morning briefing: what changed on my boards since the last working day, today's meetings with one line of preparation each, and what needs my decision. For meeting prep: who is attending, what we last agreed, open items from the board, and three questions to ask. For any other job, propose a format of similar length.
-4. Approval boundary: the approval lines we agreed, as two lists: what it may do alone (read, summarise, draft) and what it must show me first (send a message, change a board item).
-5. Missing sources: name the source it could not reach and continue.
-
-Keep it to one page. Ask me to approve it.
-```
-
-**In Claude Cowork:** create a project named Chief of Staff, paste the standing instructions into its instructions, and connect Drive, Gmail, Google Calendar, Slack and monday.
-
-**In monday agents:** create an agent, paste the same standing instructions as its brief, and give it access to the boards it reads.
-
-## Step 3: Run one job by hand until it is right
-
-A scheduled job runs alone, so prove it by hand first.
-
-### Prompt: Run the scheduled job now
-
-**What this does:** runs your scheduled job once, now, with the source of each line.
-
-Open a new chat in the chief of staff from Step 2, so it uses the standing instructions, and paste the prompt below.
-
-```
-Run my scheduled job now, for today, exactly as your standing instructions describe. After the output, list the sources you used: each board, mail thread, calendar entry and document. Mark any line you could not confirm from a source as UNVERIFIED. Then ask me what to change.
-```
-
-Read the output as you would on a busy morning. When something is off, say exactly what: "the renewal on my Renewals board is missing", "one line per meeting, please; I got a paragraph", "you listed a meeting I already declined".
-
-Ask it to write every fix into the standing instructions. Scheduled runs start fresh and remember only those instructions. Run the job again on a second day. You are ready to schedule when you would read the output every morning as it is.
-
-## Step 4: Put it on a schedule and add an on-demand job
-
-Schedule the job for the moment you would read it, for example before your morning meetings start.
-
-**In Claude Cowork:** in the Chief of Staff project, ask Claude to run the scheduled job every weekday at that time, check that it appears under Scheduled, and set its permissions to match the approval boundary in your standing instructions.
-
-**In monday agents:** run the agent from a recurring automation on your board. A daily calendar reminder to run the job yourself also works, in any AI tool.
-
-### Prompt: Prep me for my next meeting
-
-**What this does:** prepares you for one meeting from the board and your last conversation with the attendees.
-
-Stay in the same chat and paste the prompt below.
-
-```
-Prep me for my next meeting, using the meeting prep format in your standing instructions. First show me my next three meetings from my calendar and ask which one. Use the related monday board and the last email or Slack thread with the attendees. List the sources you used, and mark anything you could not confirm as UNVERIFIED.
-```
-
-If you picked a different on-demand job, ask for it by name in the same way.
-
-The next morning, open the first unattended run. Check three things: it ran on time, it read the right sources, and you would act on it. Put any fix into the standing instructions; if you stop reading it, pause it. You are done when an unattended run arrives and you act on it.
+You are done when you open your chief of staff and act on what it tells you.
 
 ## Go further
 
-**Research an account before a call.** Do this before a renewal, QBR or escalation call, when the context is spread across a board, the CRM and your mail.
+**Add another scheduled job.** Do this when another task repeats, for example a team-level status from your team's monday board.
 
-**What this does:** collects one account's context into a one-page brief.
+**Prepare for customer calls.** Do this when the context is spread out, for example a pre-call account brief from Monday's own data, through Kremer.
 
-Stay in the same chat and paste the prompt below.
-
-```
-Research one account before my call. Ask me which account and what the call is for.
-
-Read the account's items on my monday boards, its CRM history through Kremer, and my recent mail and Slack threads about it. Then write a one-page brief:
-1. The account in three lines: what they use, renewal date, main contact
-2. What changed since our last conversation
-3. Risks, each with its source
-4. Three questions to ask on the call
-
-Mark anything you could not confirm as UNVERIFIED. If a source is unavailable, name it and continue.
-```
-
-Once it proves useful, add it to your standing instructions.
-
-**Pull a weekly status from your team board.** Do this when you write the same weekly update from your team's board.
-
-**What this does:** drafts a weekly status from what changed on one board.
-
-Stay in the same chat and paste the prompt below.
-
-```
-Write my weekly team status from my team's monday board. Ask me which board and who reads the update.
-
-Read the items that changed this week and report on the work at team level:
-1. The most important progress, in three lines
-2. At risk: items that are late or stuck, with owner and due date
-3. Decisions I need to make or ask for
-
-Keep only what the reader needs to act on. Show me the draft; I will send it myself.
-```
-
-**Add a second scheduled job with a filter.** Do this when another job repeats, such as a Friday summary of release updates. A filter keeps each run focused and saves tokens.
-
-In the job's instructions, name exactly what it reads: one board, one group, items changed in the last seven days, or mail with one label. Prove it by hand twice, as in Step 3, then schedule it.
+**Share the board.** Artifacts start private and can be shared within the organization. Check what yours shows first.
 
 ## Proof of work
 
-In "what I built", name your scheduled job and your on-demand job, and one thing the first unattended run got right or wrong.
+In "what I built", name where your chief of staff lives, one thing it executes, and one thing you acted on.
 
-For example: "Morning briefing from my Renewals and QBR boards, plus meeting prep on demand. The first unattended run flagged a renewal I had missed, and listed a meeting I had declined."
+For example: "In a Claude project, with a to-do board and a weekly review skill. It moved a renewal to the top of my week."
 
 ## Related adventures
 
-- **Automation Done Right**: design, run and monitor any automation properly.
-- **The Daily Dispatch**: a personal briefing on a topic you follow, on your own schedule.
+- **Automation Done Right**: design, run and monitor any automation.
+- **The Daily Dispatch**: a personal briefing on a topic you follow.
