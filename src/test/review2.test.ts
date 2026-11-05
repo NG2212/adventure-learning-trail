@@ -26,6 +26,7 @@ describe("second L&D review rules", () => {
       ["understanding-ai-agents", "/videos/understanding-ai-agents.mp4"],
       ["de-slop", "/videos/de-slop.mp4"],
       ["board-of-advisors", "/videos/board-of-advisors.mp4"],
+      ["making-decisions-with-ai", "/videos/making-decisions-with-ai.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
