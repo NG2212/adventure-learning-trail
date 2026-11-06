@@ -15,6 +15,7 @@ pattern: SPAR
 wave: W1
 slot: 12
 next: [board-of-advisors, managing-with-ai]
+video: /videos/hard-conversations.mp4
 source: "New (SPAR pattern). Prep brief adapted from the monday Champions 2026 Conversation Prep challenge (monday-client/Champions/2026/Exercises/Challenge Brief/The Conversation Prep AI Context Spec Challenge.md: facts vs interpretations, behaviour and impact over labels, calibrated confidence, when to involve HR); rehearsal rules adapted from the AppsFlyer Managers OS Difficult Conversation Rehearsal (appsflyer/Managers/exercises/build-menus.md: stay in character, chosen toughness, debrief only at the end). Never edit the originals from this engagement."
 ---
 
@@ -33,51 +34,53 @@ Open items
 - next: managing-with-ai slug is provisional until that file exists.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 23 Oct: do-this line on every prompt
+Changed 2026-11-05: think-first opener per the 23 Oct rule.
+Changed 2026-11-06: removed the one-counterpart assumption per videos/hard-conversations/notes.md, in prose and prompts. The AI simulates the actual conversation with whoever is in the room and asks who that is; it no longer "plays the other person". "Why this adventure" now names internal hard conversations and external critical meetings, and says the same chat helps afterwards, so the script's "after" stays true. The debrief stays in Go further (her open decision). HR lines and the Monday Talent AI Coach item untouched. Also: American spelling (behavior, practice) and "agreed on" in touched lines.
 -->
 
 # 💬 Hard Conversations
 
-**Walk into a difficult conversation with your facts straight, your message clear and the hardest moments already rehearsed.**
+**Walk into a difficult conversation or a critical meeting with your facts straight, your message clear and the hardest moments already rehearsed.**
 
 ## Why this adventure
 
-Some conversations matter more than others: feedback that is hard to give, a customer pushing back on renewal terms, a negotiation, a "no" to a senior stakeholder. Good preparation makes them calmer and more useful for both sides.
+Some conversations matter more than others. Internal ones include feedback that is hard to give or a "no" to a senior stakeholder. External critical meetings include a customer pushing back on renewal terms, a negotiation, or a review with three stakeholders. Good preparation makes them calmer and more useful for everyone in the room.
 
-In this adventure you prepare properly: you separate facts from opinions, shape one clear message, and rehearse the conversation with the AI playing the other person, with coaching after each run.
+In this adventure you prepare properly: you separate facts from opinions, shape one clear message, and use AI to simulate the actual conversation, with coaching after each run. Afterwards, the same chat helps you debrief and follow up.
 
 This complements your HR partner and your manager. They know the people, the history and the policies; this helps you arrive prepared.
 
 ## The trail
 
 1. **Get the facts straight**, because facts keep the conversation on solid ground.
-2. **Shape your core message**, so you know the one point they must leave with.
+2. **Shape your core message**, so you know the one point everyone must leave with.
 3. **Rehearse and get coached**, so the hardest moment is familiar before it happens.
 
 ## Before you start
 
-Pick one real conversation you have coming up.
+Pick one real conversation or meeting you have coming up, with one person or several.
 
 ## Step 1: Get the facts straight
 
-**Think first, without AI.** Close the chat. Write down what happened, what you want to be true after the conversation, what worries you, and what you know about the other person. Messy is fine.
+**Think first for yourself, without AI.** What happened? What should be true after the conversation? What worries you? Who will be in the conversation, and what do you know about each of them? Messy is fine.
 
 | What to prepare | Why it matters |
 | --- | --- |
-| **Facts**, with dates and sources | The other person can check them, so the talk stays on solid ground. |
-| **Behaviour and its impact** | A label such as "difficult" or "not proactive" starts a defence. A described event starts a discussion. |
+| **Facts**, with dates and sources | Anyone in the conversation can check them, so the talk stays on solid ground. |
+| **Behavior and its impact** | A label such as "difficult" or "not proactive" starts a defence. A described event starts a discussion. |
 | **Your goal** | It tells you when the conversation has done its job. |
 | **Who else should be involved** | Possible misconduct, legal risk, health, or anything that could affect someone's employment goes to your HR partner first. A decision above your level goes to your manager. |
 
-**For managers:** describe work behaviour and its impact; leave out health, family and other personal details, and stay within Monday's norms on people data.
+**For managers:** describe work behavior and its impact; leave out health, family and other personal details, and stay within Monday's norms on people data.
 
 ### Prompt: Prep brief
 
-**What this does:** the AI asks about gaps in your notes, reads the sources you name, and writes a one-page brief that keeps facts and opinions apart.
+**What this does:** the AI interviews you about your thoughts, reads the sources you name, and writes a one-page brief that keeps facts and opinions apart.
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me prepare for a hard conversation at work. I will paste or dictate my notes. Use what you know about me; ask only for what is missing, one question at a time, five questions at most. If I give a vague answer, ask for a specific recent example.
+Help me prepare for a hard conversation or critical meeting at work. Ask me to brain dump or paste all my thoughts on this before you start. Use what you know about me; ask only for gaps, one question at a time, five questions at most. Make sure you know who will be in the conversation, whether one person or several. If I give a vague answer, ask for a specific recent example.
 
 If I name a monday board, an email or Slack thread, or account data, read it and list what you used.
 
@@ -85,7 +88,7 @@ Then write a one-page prep brief:
 1. The situation in three lines
 2. Facts, with dates and sources
 3. My interpretations, labelled as opinions, each with what would confirm or change it
-4. The other person's likely view, in their words
+4. The likely view of each person in the conversation, in their words
 5. Risks in the conversation
 6. Whether my HR partner (possible misconduct, legal risk, health, employment) or my manager (decisions above my level) should be involved first
 7. My goal: what should be true afterwards
@@ -104,11 +107,11 @@ Mark anything without a source as UNVERIFIED. Stop and wait for my corrections.
 Stay in the same chat and paste the prompt below.
 
 ```
-Using the prep brief we agreed in this chat, help me shape my message.
+Using the prep brief we agreed on in this chat, help me shape my message.
 
-1. My core message in one sentence: the point the other person must leave with.
-2. Three different openings of two or three sentences each: one direct, one warm, one that starts with a question. Each names a specific event and its impact, with no labels about the person.
-3. The three hardest things the other person could say, each with a short, honest reply that keeps to my goal.
+1. My core message in one sentence: the point everyone in the conversation must leave with.
+2. Three different openings of two or three sentences each: one direct, one warm, one that starts with a question. Each names a specific event and its impact, with no labels about anyone.
+3. The three hardest things anyone in the conversation could say, naming who would say each, with a short, honest reply that keeps to my goal.
 4. What I can offer, and where I will hold firm.
 
 Ask which opening I prefer and why. Then write a message card of half a page with my chosen opening, the core message, the three replies and my next step.
@@ -118,21 +121,21 @@ Read the openings out loud. Choose the one that sounds like you.
 
 ## Step 3: Rehearse and get coached
 
-Speak your replies, so you practise the words you will actually say: press Fn twice on a Mac, or Windows key + H on Windows, to dictate.
+Speak your replies, so you practice the words you will actually say: press Fn twice on a Mac, or Windows key + H on Windows, to dictate.
 
-### Prompt: Rehearsal with coaching
+### Prompt: Conversation simulation with coaching
 
-**What this does:** the AI plays the other person, then steps out of the role and coaches you on what you said.
+**What this does:** the AI simulates the actual conversation with everyone who will be in it, then stops and coaches you on what you said.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Rehearse this conversation with me. Play the other person, based on the prep brief and message card in this chat. Before we start, ask me to choose the difficulty: easy, realistic or tough.
+Simulate this conversation with me, based on the prep brief and message card in this chat. Before we start, confirm with me who is in the room, and ask me to choose the difficulty: easy, realistic or tough.
 
 Rules:
-- Respond as this person realistically would, including pushback, emotion and silence.
+- Have each person respond as they realistically would, including pushback, emotion and silence. With several people, name who is speaking and let them interrupt or disagree with each other.
 - Keep each reply short, as people speak in real conversations.
-- Stay in character until I write "end".
+- Stay in the simulation until I write "end".
 
 After "end", coach me:
 1. What landed, quoting my words
@@ -143,13 +146,13 @@ After "end", coach me:
 Then offer to rerun the hardest moment.
 ```
 
-If the AI plays the role too gently, say exactly what is unrealistic: "my customer would mention the outage in the first sentence", "he would go quiet here". Specific feedback gets a more useful rehearsal.
+If the simulation is too gentle, say exactly what is unrealistic: "my customer would mention the outage in the first sentence", "their finance lead would cut in here". Specific feedback gets a more useful rehearsal.
 
 Rerun at least once on tough. Then ask the AI to update the message card with the two phrases you changed. You are ready when you reach your goal in a tough run.
 
 ## Go further
 
-**Rehearse from the other side.** Do this when their reaction is hard to predict. Write "Swap roles: you play me using my message card; I play the other person." Hearing your own message from their seat shows you what lands and what stings.
+**Rehearse from another seat.** Do this when the reaction in the room is hard to predict. Write "Swap seats: you speak as me, using my message card; I speak as someone else in the conversation." Hearing your own message from their seat shows you what lands and what stings.
 
 **Debrief after the real conversation.** Do this to learn from what actually happened and to follow up the same day. After the conversation, go back to the same chat and paste the prompt below.
 
@@ -163,7 +166,7 @@ For a customer conversation, add the agreed next steps to the account's item on 
 
 In "what I built", name the kind of conversation (without names), the line that changed most in rehearsal, and one thing you learned about yourself.
 
-For example: "Renewal pushback call after two incidents. My opening moved from the contract to the incidents. I learned that I concede too early when the other person goes quiet."
+For example: "Renewal pushback call after two incidents. My opening moved from the contract to the incidents. I learned that I concede too early when the room goes quiet."
 
 ## Related adventures
 

@@ -23,13 +23,18 @@ describe("second L&D review rules", () => {
     expect(toAdventure(raw('video: "https://example.com/a.mp4"\n')).video).toBe("https://example.com/a.mp4");
     expect(toAdventure(raw("")).video).toBeUndefined();
     expect(ADVENTURES.filter((a) => a.video).map((a) => [a.slug, a.video])).toEqual([
+      ["your-ai-identity", "/videos/your-ai-identity.mp4"],
       ["understanding-ai-agents", "/videos/understanding-ai-agents.mp4"],
       ["de-slop", "/videos/de-slop.mp4"],
+      ["use-case-discovery", "/videos/use-case-discovery.mp4"],
       ["board-of-advisors", "/videos/board-of-advisors.mp4"],
+      ["hard-conversations", "/videos/hard-conversations.mp4"],
       ["skills-when-how-and-how-well", "/videos/skills-when-how-and-how-well.mp4"],
       ["your-own-chief-of-staff", "/videos/your-own-chief-of-staff.mp4"],
       ["creating-apps-with-ai-done-right", "/videos/creating-apps-with-ai-done-right.mp4"],
       ["making-decisions-with-ai", "/videos/making-decisions-with-ai.mp4"],
+      ["research-done-right", "/videos/research-done-right.mp4"],
+      ["automation-done-right", "/videos/automation-done-right.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
