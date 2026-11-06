@@ -10,6 +10,7 @@ professions: [Everyone]
 audience: []
 tool: Any AI tool
 effort: Moderate
+video: /videos/build-a-personal-brain-for-your-ai.mp4
 outcome: Build something
 pattern: INSTALL
 wave: W2

@@ -3,7 +3,7 @@ slug: use-case-discovery
 emoji: 🧭
 icon: map-pin
 title: "Use-Case Discovery"
-walkaway: "More AI ideas across your day-to-day and growth opportunities, ranked with FVI, with a feasibility check and a plan for each core one"
+walkaway: "More AI ideas across your day-to-day and growth opportunities, ranked with FVI (Feasibility, Value, Investment), with a plan for each core one"
 category: Set up your AI
 levels: [Foundations, Intermediate]
 professions: [Everyone]
@@ -30,15 +30,14 @@ Adaptation note (2026-10-22, slot 6 [Inbar 14])
 - Effort is Quick win: the guide budget is under 1,000 words; this file is slightly above (see final report).
 
 Open items
-- The "simplest form" list (better prompt, saved instructions, skill, scheduled job, app) is described in plain words and not named as a framework. Nufar to confirm it sits well next to the six shapes in her approved Pango deck.
-- "monday AI features" and "monday agents" as existing capabilities: wording is generic; confirm which built-in features Monday wants named.
-- Scheduled jobs depend on Keren Q6 (Cowork scheduled tasks).
-- next: slugs provisional until sibling files exist.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-- 23 Oct: do-this line on every prompt
+- monday workflows is named from monday.com's public pages (monday.com/features/workflows) and from Nufar's note; the course files do not name it. It is worded as "for example". Confirm with Monday that employees can build with it, and whether Automation Done Right, which names board automations and monday agents, should name it too.
+- "monday's own AI features" stays generic; confirm which built-in features Monday wants named.
+- Scheduled tasks depend on Keren Q6.
+- Prompt test in a fresh Claude chat: pending (playbook step 4), especially the web search and the match in the Step 3 prompt.
 
 Changed 2026-11-05: think-first opener per the 23 Oct rule.
 Changed 2026-11-06: rewritten to Nufar's theme (videos/use-case-discovery/notes.md) so the page delivers the approved script. Most people use AI intuitively; the value sits in things they always meant to do, never thought to do with AI, tried once and dropped, and in growth opportunities. The interview now digs there and the AI adds ideas of its own. Larger and multi-month ideas stay in; what gets dropped is anything too small to matter. Value means size of effect; Investment is an honest estimate. "Simplest form that works" is gone, so the open item on that list no longer applies: Step 4 thinks through how to address each core use case, in plain words with no named framework. "Use what exists" survives as the first question in that step, which replaces the old "Ask your team" Go further item. Added the customer-boards line to the Data lens because bigger ideas reach further into data. next: your-own-chief-of-staff replaced by creating-apps-with-ai-done-right; Related adventures now points to Planning with AI. Inventory row 6 and design-notes row still say "keep it simple; build only with justification": flagged to Nufar, not edited.
+Changed 2026-11-06, from Nufar's page review: old Steps 1 and 2 merged into one step, the three-places table then straight to the interview; her note overrides the 23 Oct think-first rule for this page, and the prompt's brain-dump line stays. Growth opportunities moved into the interview. Sentence after the prompt now sends people to the Your AI Identity adventure. Old Step 4 is now Step 3: ambition stays in discovery and FVI, simplicity applies to how they build. The prompt runs a quick web search on the person's tools, matches each use case to the simplest thing that does the job, and lays out what can be built at Monday only when the job truly requires an artifact or an application. The adventures table follows the same order. Interview prompt now opens in a new chat in a tool that can search the web, because Steps 1 and 3 need the search. To stay under the old length, the FVI table became one line, since the Step 2 prompt carries the same definitions; restore it if she misses it.
 -->
 
 # 🧭 Use-Case Discovery
@@ -49,43 +48,38 @@ Changed 2026-11-06: rewritten to Nufar's theme (videos/use-case-discovery/notes.
 
 Most of us use AI intuitively: for things that come our way, use cases we heard about, or things our teammates shared. There is much more value to discover in three other places: things you always meant to do, things you never thought to do with AI, and things you tried a while back that did not work and never tried again.
 
-In this adventure, an AI interviews you to find more use cases, meaning specific ways AI can drive value in your work, both in your day-to-day and in non-trivial growth opportunities. Then you prioritize them with FVI and think through how to address the core ones.
+In this adventure, an AI interviews you to find more use cases, meaning specific ways AI can drive value in your work, both in your day-to-day and in non-trivial growth opportunities. Then you prioritize them with FVI (Feasibility, Value, Investment) and think through how to address the core ones.
 
 ## The trail
 
-1. **Think through where to look**, so you go beyond what you already do with AI.
-2. **Get interviewed for more ideas**, across your day-to-day and your growth opportunities.
-3. **Prioritize with FVI**, so you know which ideas are your core use cases.
-4. **Think through how to address the core ones**, so each has a realistic way forward.
+1. **Get interviewed for more ideas**, so you go beyond what you already do with AI.
+2. **Prioritize with FVI (Feasibility, Value, Investment)**, so you know which ideas are your core use cases.
+3. **Think through how to address the core ones**, so each has a realistic way forward.
 
 ## Before you start
 
 Have your goals and your main monday boards open.
 
-## Step 1: Think through where to look
+## Step 1: Get interviewed for more ideas
 
-**Think first for yourself, without AI.** Go through the three places most of us skip. Messy is fine.
+The interview digs into these three places, and into your growth opportunities.
 
-| Where to look | What to ask yourself | For example |
+| Where to look | What does the interview ask? | For example |
 | --- | --- | --- |
 | **Things you always meant to do** | What stays on your list because nobody has the time? | An analysis of why deals were lost last year |
 | **Things you never thought to do with AI** | Which work do you consider too complex or too human for AI? | Preparing for a negotiation from every past call with an account |
 | **Things you tried a while back** | What disappointed you, so you dropped it? | An analysis that came back with wrong numbers |
 
-Then think bigger. Which growth opportunities could you pursue with many more hands, for example a new customer segment, a new market to test, or a capability your team has never had?
-
-## Step 2: Get interviewed for more ideas
-
 ### Prompt: Use-case discovery interview
 
-**What this does:** the AI interviews you about your thoughts, adds ideas you would not reach alone, and lists them for your review.
+**What this does:** the AI interviews you, adds ideas you would not reach alone, and lists them for your review.
 
-Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat in an AI tool that can search the web, for example Claude, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Run a use-case discovery interview with me, to find more ways AI could drive value in my work at monday.com. Ask me to brain dump or paste all my thoughts before you start. Use what you know about me; ask only for gaps, and say so if your context on me is thin. Do not decide my goals or which work matters.
 
-Ask one question at a time, at most seven, and ask for a recent example when I am vague. Cover: my goals and growth opportunities; things I always meant to do; things I tried with AI a while back that did not work, and when; work I consider too complex or too human for AI; what I already use AI for.
+Ask one question at a time, at most seven, and ask for a recent example when I am vague. Cover: my goals; growth opportunities I could pursue with many more hands, for example a new customer segment or a new market to test; things I always meant to do; things I tried with AI a while back that did not work, and when; work I consider too complex or too human for AI; what I already use AI for.
 
 For anything I tried before, check current official docs for what has changed, and say so if you cannot.
 
@@ -94,17 +88,11 @@ Then list 10 to 15 ideas, one sentence each with its value, across my day-to-day
 Ask me what to add, remove or sharpen. Then stop and wait.
 ```
 
-If the ideas could fit anyone with your job title, your AI needs more context about you: build it in **Your AI Identity**, then run this prompt again.
+If the ideas could fit anyone with your job title, your AI needs more context about you. Do the **Your AI Identity** adventure, then run this prompt again.
 
-## Step 3: Prioritize with FVI
+## Step 2: Prioritize with FVI
 
-Judge every idea with **FVI**: Feasibility, Value, Investment.
-
-| Question | What to look for |
-| --- | --- |
-| **Feasibility:** can it work? | The problem is clear, and the data, tools and people it needs are within reach |
-| **Value:** is it worth it? | How much it moves your goals, your team or the business; how often it happens is only one part |
-| **Investment:** what would it take? | An honest estimate of time, people and upkeep; a big idea can carry a big investment |
+Judge every idea with **FVI**: **Feasibility** (can it work?), **Value** (is it worth it?) and **Investment** (what would it take?).
 
 ### Prompt: My core use cases
 
@@ -121,13 +109,13 @@ Rate the ideas we settled on in this chat with FVI: High, Medium or Low, with a 
 Show one ranked table: rank, use case in one sentence, Feasibility, Value, Investment. Mark the top 5 as my core use cases. Ask me what I would rank differently, and change the table as I say. Then stop and wait.
 ```
 
-## Step 4: Think through how to address the core ones
+## Step 3: Think through how to address the core ones
 
-A core use case can need anything from good standing instructions to a real build with other people. Check first that it can work, then decide what it needs.
+Keep each idea at its full size, and find the simplest way to build it. Often a skill, a project or a scheduled task can do the job. An artifact or an application comes in when the job truly requires it.
 
 ### Prompt: Feasibility check and how to address it
 
-**What this does:** checks each core use case for feasibility, then thinks through what it needs and the first step.
+**What this does:** checks each core use case for feasibility, then matches it to the simplest thing that does the job.
 
 Stay in the same chat and paste the prompt below.
 
@@ -140,27 +128,32 @@ Check feasibility through three lenses. Answer each with Go, Unclear or No-go an
 3. Execution: is the tool approved at Monday, can it be done in a realistic time and size, does it fit the tools we already use?
 Ask me about anything you cannot judge. For a No-go, say what would have to change.
 
-Then think with me about how to address each one: what already exists that I can use or join (team skills, monday's own AI features, another team's work); what it needs (standing instructions, a skill, an automation, an agent, an app, a larger project with other people) and why; who else is involved; the first step and what it will tell me.
+Then run a quick web search on recent features of the AI tools I work in. Ask me which tools if you do not know, and say so if you cannot search.
 
-End with one table covering all of this. Ask which one I want to go deeper on.
+Think with me about each one, at its full size:
+- What already exists that I can use or join (team skills, monday's own AI features, another team's work)?
+- What is the simplest thing that does the job? Start with a skill, a project or a scheduled task.
+- Recommend an artifact or an application only when the job truly requires it, and say why simpler will not do. Then lay out the full spectrum I can build at Monday, for example a Claude artifact, monday vibe, monday workflows, a monday agent, Big Brain Studio (Monday's internal app platform), or a larger project with other people.
+- Who else is involved, and the first step?
+
+End with one table. Ask which one I want to go deeper on.
 ```
 
-You are done when each core use case has a feasibility answer and a first step, and you have taken the first step for your number 1. For a bigger idea, that step may be a data check, a conversation with the team that owns the process, or a rough prototype.
+You are done when each core use case has a feasibility answer and a first step, and you have taken the first step for your number 1. For a bigger idea, that step may be a data check or a conversation with the process owner.
 
-These adventures teach what a use case may need:
+These adventures teach each way to build:
 
-| What the use case needs | Where to learn it |
+| What does the use case need? | Where can you learn it? |
 | --- | --- |
-| Standing instructions | Your AI Identity |
 | A skill | Skills: When, How and How Well |
-| An automation | Automation Done Right |
-| An agent | Your Own Chief of Staff, or Build Your Professional Partner |
-| An app or dashboard | Creating Apps with AI, Done Right |
+| A project or a monday agent | Your Own Chief of Staff, or Build Your Professional Partner |
+| A scheduled task or a monday workflow | Automation Done Right |
+| An artifact or an application, for example in monday vibe or Big Brain Studio | Creating Apps with AI, Done Right |
 | A larger project with other people | Planning with AI, or Your Team's AI Blueprint |
 
 ## Go further
 
-**Keep your list on a monday board.** Do this so the list stays alive. Add each use case as an item with FVI, first step and status columns, and run the Use-case discovery interview prompt again every quarter, because what AI can do keeps changing.
+**Keep your list on a monday board.** Do this so the list stays alive. Add each use case as an item with FVI, first step and status columns, and run the Use-case discovery interview prompt again every quarter.
 
 ## Proof of work
 
@@ -171,4 +164,4 @@ For example: "Analysis of why renewals were lost last year, something I always m
 ## Related adventures
 
 - **Planning with AI**: turn your biggest use case into a plan that has already been challenged.
-- **Redesign Your Week with AI**: review the work already on your plate, and make room for your core use cases.
+- **Redesign Your Week with AI**: make room for your core use cases.
