@@ -15,6 +15,7 @@ pattern: INT
 wave: W1
 slot: 2
 next: [build-a-personal-brain-for-your-ai, your-own-chief-of-staff]
+review: ready
 video: /videos/your-ai-identity.mp4
 source: "Adapted from summer-challenge/labs/pack-your-id.md (find the right home in the tool, interview, install, fresh-chat test) and catch-up-may/content/week-1/project-3-your-identity.md + project-3-reference-card.md (six layers, Personal Context Statement interview, Voice Profile, behavioral rules, before/after test, deeper context, keep it current). Never edit the originals from this engagement."
 ---
