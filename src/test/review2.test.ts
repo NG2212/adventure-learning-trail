@@ -29,11 +29,13 @@ describe("second L&D review rules", () => {
       ["use-case-discovery", "/videos/use-case-discovery.mp4"],
       ["board-of-advisors", "/videos/board-of-advisors.mp4"],
       ["hard-conversations", "/videos/hard-conversations.mp4"],
+      ["claude-in-your-docs-sheets-and-slides", "/videos/claude-in-your-docs-sheets-and-slides.mp4"],
       ["skills-when-how-and-how-well", "/videos/skills-when-how-and-how-well.mp4"],
       ["your-own-chief-of-staff", "/videos/your-own-chief-of-staff.mp4"],
       ["creating-apps-with-ai-done-right", "/videos/creating-apps-with-ai-done-right.mp4"],
       ["making-decisions-with-ai", "/videos/making-decisions-with-ai.mp4"],
       ["research-done-right", "/videos/research-done-right.mp4"],
+      ["build-a-personal-brain-for-your-ai", "/videos/build-a-personal-brain-for-your-ai.mp4"],
       ["automation-done-right", "/videos/automation-done-right.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
     ]);
