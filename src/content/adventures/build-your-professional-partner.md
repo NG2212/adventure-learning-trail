@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Build something
 pattern: INSTALL
 wave: W4

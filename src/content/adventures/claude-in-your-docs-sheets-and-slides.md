@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate]
 professions: [Everyone, Finance]
 audience: []
 tool: Claude
-effort: Quick win
+effort: 1 hour
 video: /videos/claude-in-your-docs-sheets-and-slides.mp4
 outcome: Learn something
 pattern: TOUR + BUILD

@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/de-slop.mp4
 outcome: Work differently
 pattern: SPOT + BUILD

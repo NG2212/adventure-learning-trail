@@ -42,7 +42,7 @@ weeklyTools, goal and learningStyle are arrays (multi-select). Reads and saves m
 | professions | Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text allowed (filters as "Other") |
 | audience | Managers (shows a neutral stone “For managers” chip right after the category chip on cards and page heads) |
 | tool | Any AI tool, Claude, Agentic coding tool |
-| effort | Quick win, Moderate, Ambitious |
+| effort | 30 minutes, 1 hour, Longer |
 | video | Optional URL; when absent nothing renders |
 | time | Optional free text, e.g. ~1 h; overrides the effort duration default |
 | review | Optional demo-only frontmatter; exact ready shows Ready, other/missing values show Draft while showReviewState is true |
@@ -55,7 +55,7 @@ Filter semantics: "Everyone" matches every profession filter; the "Managers" fil
 
 ### Effort duration and label presentation
 
-Shared effortLabel defaults: Quick win · ~15 min; Moderate · ~45 min; Ambitious · 1.5–2 h. An authored time override replaces only duration (Moderate + ~1 h → Moderate · ~1 h). No learning-duration tracking field is required.
+effortLabel returns the effort value as written: 30 minutes, 1 hour or Longer. No learning-duration tracking field is required.
 
 Category chips everywhere use about 12% soft tint and #242424 text, with a small category dot: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow. Strong category colour appears only in dots/section underlines; other metadata is neutral stone. Label hints support hover, focus and touch. This is presentation derived from existing categories, not additional data.
 
@@ -163,7 +163,7 @@ Local src/lib/recommend.ts is the replacement boundary for a production AI call.
 | Comfort | maps to level (new → Foundations, some → Intermediate, confident → Advanced) | +2 |
 | Weekly tools | maps to tool (office → Any AI tool, Claude → Claude, coding → Agentic coding tool); "Any AI tool" always matches once | +1 per selected matching tool |
 | AI use today | maps to category | +1 |
-| Learning style | maps to effort (one sitting → Quick win, steady → Moderate, big → Ambitious) | +1 per selected matching style |
+| Learning style | maps to effort (one sitting → 30 minutes, steady → 1 hour, big → Longer) | +1 per selected matching style |
 | Open now | wave is open | +1 |
 
 Seed for the demo person: completed `de-slop`; itinerary `board-of-advisors`, `your-ai-identity`, `skills-when-how-and-how-well`.

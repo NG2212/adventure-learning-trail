@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Learn something
 pattern: TOUR
 wave: W3

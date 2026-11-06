@@ -75,9 +75,9 @@ const TOOLS_TO_TOOL: Record<WeeklyTool, Tool> = {
   coding: "Agentic coding tool",
 };
 const STYLE_TO_EFFORT: Record<LearningStyle, Effort> = {
-  quick: "Quick win",
-  steady: "Moderate",
-  deep: "Ambitious",
+  quick: "30 minutes",
+  steady: "1 hour",
+  deep: "Longer",
 };
 
 export function scoreAdventure(a: Adventure, input: OnboardingAnswers): { score: number; why: string } {

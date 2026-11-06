@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone, Customer Facing]
 audience: [Managers]
 tool: Any AI tool
-effort: Ambitious
+effort: Longer
 video: /videos/your-own-chief-of-staff.mp4
 outcome: Build something
 pattern: INT + SCHED

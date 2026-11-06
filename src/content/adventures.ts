@@ -15,7 +15,7 @@ export const PROFESSIONS = [
   "Customer Facing", "Marketing", "Engineering", "Product", "Design", "HR", "Finance", "Other", "Managers",
 ] as const;
 export const TOOLS = ["Any AI tool", "Claude", "Agentic coding tool"] as const;
-export const EFFORTS = ["Quick win", "Moderate", "Ambitious"] as const;
+export const EFFORTS = ["30 minutes", "1 hour", "Longer"] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 export type Level = (typeof LEVELS)[number];
@@ -65,7 +65,6 @@ export interface Adventure {
   audience: string[];
   tool: Tool;
   effort: Effort;
-  time?: string | undefined;
   /** Optional preview video URL (file or hosted page such as YouTube/Vimeo/Loom). */
   video?: string | undefined;
   outcome: string;
@@ -81,7 +80,7 @@ interface Frontmatter {
   review?: unknown;
   slug?: string; icon?: string; title?: string; walkaway?: string;
   category?: Category; levels?: Level[]; professions?: string[]; audience?: string[];
-  tool?: Tool; effort?: Effort; time?: unknown; video?: unknown; outcome?: string; wave?: number | string; slot?: number; next?: string[];
+  tool?: Tool; effort?: Effort; video?: unknown; outcome?: string; wave?: number | string; slot?: number; next?: string[];
 }
 
 function splitFrontmatter(raw: string): { data: Frontmatter; body: string } {
@@ -121,8 +120,7 @@ export function toAdventure(raw: string): Adventure {
     professions: data.professions ?? [],
     audience: data.audience ?? [],
     tool: data.tool ?? "Any AI tool",
-    effort: data.effort ?? "Moderate",
-    time: typeof data.time === "string" ? data.time.trim() || undefined : undefined,
+    effort: data.effort ?? "1 hour",
     video: typeof data.video === "string" ? data.video.trim() || undefined : undefined,
     outcome: String(data.outcome ?? ""),
     wave,
@@ -172,9 +170,8 @@ export function reviewState(a: Pick<Adventure, "review">): "Ready" | "Draft" {
   return a.review === "ready" ? "Ready" : "Draft";
 }
 
-export const EFFORT_TIMES: Record<Effort, string> = { "Quick win": "~15 min", Moderate: "~45 min", Ambitious: "1.5–2 h" };
-export function effortLabel(a: Pick<Adventure, "effort" | "time">): string {
-  return `${a.effort} · ${a.time?.trim() || EFFORT_TIMES[a.effort]}`;
+export function effortLabel(a: Pick<Adventure, "effort">): string {
+  return a.effort;
 }
 
 export function adventureBody(a: Adventure, adminPreview = false, demoOpenAll = false): string {

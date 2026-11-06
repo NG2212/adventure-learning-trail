@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/build-a-personal-brain-for-your-ai.mp4
 outcome: Build something
 pattern: INSTALL

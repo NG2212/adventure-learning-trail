@@ -9,7 +9,7 @@ levels: [Advanced]
 professions: [Everyone]
 audience: []
 tool: Agentic coding tool
-effort: Ambitious
+effort: Longer
 outcome: Build something
 pattern: LOOP
 wave: W4

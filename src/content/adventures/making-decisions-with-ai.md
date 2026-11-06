@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/making-decisions-with-ai.mp4
 outcome: Work differently
 pattern: PANEL

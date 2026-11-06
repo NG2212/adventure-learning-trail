@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/ai-as-your-tutor.mp4
 outcome: Build something
 pattern: INT

@@ -9,7 +9,7 @@ levels: [Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Ambitious
+effort: Longer
 outcome: Work differently
 pattern: AUD
 wave: W3

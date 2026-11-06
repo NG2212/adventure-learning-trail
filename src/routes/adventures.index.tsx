@@ -18,7 +18,7 @@ type FilterKey = "level" | "profession" | "tool" | "effort" | "outcome";
 type Filters = Record<FilterKey, string[]>;
 const EMPTY: Filters = { level: [], profession: [], tool: [], effort: [], outcome: [] };
 const GROUPS: { key: Exclude<FilterKey, "category">; label: string; options: readonly string[] }[] = [
-  { key: "level", label: "Level", options: LEVELS }, { key: "profession", label: "Profession", options: PROFESSIONS }, { key: "tool", label: "Works with", options: TOOLS }, { key: "effort", label: "Effort", options: EFFORTS }, { key: "outcome", label: "Outcome", options: [...new Set(ADVENTURES.map((a) => a.outcome))] },
+  { key: "level", label: "Level", options: LEVELS }, { key: "profession", label: "Profession", options: PROFESSIONS }, { key: "tool", label: "Works with", options: TOOLS }, { key: "effort", label: "Time", options: EFFORTS }, { key: "outcome", label: "Outcome", options: [...new Set(ADVENTURES.map((a) => a.outcome))] },
 ];
 export function matchesFilters(a: Adventure, f: Filters) {
   const any = (sel: string[], vals: string[]) => !sel.length || sel.some((s) => vals.includes(s));

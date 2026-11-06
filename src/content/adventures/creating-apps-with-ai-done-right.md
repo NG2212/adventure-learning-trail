@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Ambitious
+effort: Longer
 video: /videos/creating-apps-with-ai-done-right.mp4
 outcome: Build something
 pattern: BUILD

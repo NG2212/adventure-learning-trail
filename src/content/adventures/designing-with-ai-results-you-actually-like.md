@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Design, Marketing, Product, Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Build something
 pattern: BUILD
 wave: W3

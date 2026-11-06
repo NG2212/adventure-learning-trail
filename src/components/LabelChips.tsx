@@ -18,7 +18,7 @@ export const LABEL_HINTS = {
   level: "Level: how much AI experience the adventure assumes",
   profession: "Profession: the roles this adventure is designed for",
   tool: "Works with: the AI tools you can use for this adventure",
-  effort: "Effort: the size of the task and its estimated duration",
+  effort: "Time: roughly how long this takes",
   audience: "Audience: written for people who manage a team",
   outcome: "Outcome: what you will take away from this adventure",
 };
