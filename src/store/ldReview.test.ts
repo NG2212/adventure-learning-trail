@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { ADVENTURES, effortLabel, toAdventure } from "@/content/adventures";
+import { ADVENTURES, effortLabel } from "@/content/adventures";
 import { recommend, type OnboardingAnswers } from "@/lib/recommend";
 import { createLocalStore } from "./localStore";
 import { badgeStateFor } from "@/components/AdventureIcon";
