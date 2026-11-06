@@ -10,6 +10,7 @@ professions: [Everyone, Finance]
 audience: []
 tool: Claude
 effort: Quick win
+video: /videos/claude-in-your-docs-sheets-and-slides.mp4
 outcome: Learn something
 pattern: TOUR + BUILD
 wave: W1
