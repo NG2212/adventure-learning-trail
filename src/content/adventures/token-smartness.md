@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Quick win
+effort: 30 minutes
 outcome: Work differently
 pattern: AUD
 wave: W3

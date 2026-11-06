@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Quick win
+effort: 30 minutes
 outcome: Build something
 pattern: INT
 wave: W1

@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate]
 professions: [Everyone, Customer Facing, HR]
 audience: [Managers]
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Work differently
 pattern: SPAR
 wave: W1

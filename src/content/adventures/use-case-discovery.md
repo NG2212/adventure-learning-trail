@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Learn something
 pattern: INT
 wave: W1

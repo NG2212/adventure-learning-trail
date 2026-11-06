@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: [Managers]
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 outcome: Build something
 pattern: INT
 wave: W3

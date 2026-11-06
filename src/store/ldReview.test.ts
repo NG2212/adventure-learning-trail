@@ -45,11 +45,7 @@ describe("approved L&D review rules", () => {
     expect(store.getCompletions()).toEqual(completions);
     expect(store.getProofOfWork("de-slop")).toEqual(proof);
   });
-  it.each([["Quick win", "Quick win · ~15 min"], ["Moderate", "Moderate · ~45 min"], ["Ambitious", "Ambitious · 1.5–2 h"]] as const)("%s uses the approved default", (effort, expected) => {
-    expect(effortLabel({ effort })).toBe(expected);
-  });
-  it("the authored free-text time overrides the effort default", () => {
-    const adventure = toAdventure('---\nslug: test\ntitle: Test\neffort: Moderate\ntime: "~1 h"\n---\n');
-    expect(effortLabel(adventure)).toBe("Moderate · ~1 h");
+  it.each(["30 minutes", "1 hour", "Longer"] as const)("%s is shown as written", (effort) => {
+    expect(effortLabel({ effort })).toBe(effort);
   });
 });

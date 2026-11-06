@@ -9,7 +9,7 @@ levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone, Customer Facing, Product]
 audience: [Managers]
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/board-of-advisors.mp4
 outcome: Build something
 pattern: INT + PANEL

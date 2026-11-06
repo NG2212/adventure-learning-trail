@@ -39,7 +39,7 @@ function newAdventure(): AdminAdventure {
     professions: ["Everyone"],
     audience: [],
     tool: TOOLS[0],
-    effort: "Moderate",
+    effort: "1 hour",
     outcome: "Build something",
     wave: 1,
     slot: 31,
@@ -183,7 +183,7 @@ export function AdminAdventures() {
                 "Professions",
                 "Audience",
                 "Works with",
-                "Effort",
+                "Time",
                 "Wave",
                 "Status",
                 "Opens",
@@ -396,7 +396,7 @@ export function AdminAdventures() {
                       onChange={(v) => update({ tool: v as AdminAdventure["tool"] })}
                     />
                     <SelectField
-                      label="Effort"
+                      label="Time"
                       value={draft.effort}
                       options={[...EFFORTS]}
                       all={null}

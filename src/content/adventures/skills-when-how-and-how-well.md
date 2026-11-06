@@ -9,7 +9,7 @@ levels: [Intermediate]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/skills-when-how-and-how-well.mp4
 outcome: Build something
 pattern: INSTALL

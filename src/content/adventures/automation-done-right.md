@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: Moderate
+effort: 1 hour
 video: /videos/automation-done-right.mp4
 outcome: Build something
 pattern: SCHED

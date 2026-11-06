@@ -19,7 +19,7 @@ Shared rules for every feature:
 - Levels: Foundations, Intermediate, Advanced.
 - Professions: Everyone, Customer Facing, Marketing, Engineering, Product, Design, HR, Finance; free text matches Other. Managers matches audience: [Managers]. Adventures with audience: [Managers] (e.g. Managing with AI, Your Team's AI Blueprint, Hard Conversations) show a neutral stone “For managers” chip immediately after the category chip on cards and page heads.
 - Works with: Any AI tool, Claude, Agentic coding tool.
-- Effort: Quick win, Moderate, Ambitious. Default labels: `Quick win · ~15 min`, `Moderate · ~45 min`, `Ambitious · 1.5–2 h`. Optional free-text `time: "~1 h"` gives, for example, `Moderate · ~1 h`; the same derived effortLabel is used on cards and page heads.
+- Effort: 30 minutes, 1 hour, Longer. The chip shows the value as written, and the same derived effortLabel is used on cards and page heads.
 - Outcomes: Build something, Learn something, Work differently.
 - Waves: W1 open, W2 opens 23 Nov, W3 opens 7 Dec, W4 opens 4 Jan; actual schedule comes from wave data.
 - Icons: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown icons fall back by category: compass, palette, toolbox, robot, people respectively.
@@ -75,7 +75,7 @@ Profile shows name/role, a “Your answers” card displaying the owner's saved 
 
 **Build:** one sticky category-navigation/selection row under the measured header: five pills with a small category dot and dark text. Directly beneath it, a second line, left-aligned: a “More filters” button followed on the same line by the disc legend (the legend wraps below on phones). Active filter chips sit under that line. Pills jump to their category section and highlight the section in view; they do not hide other sections. On phones the pills scroll horizontally; More filters stays on its own line. No separate Category filter row or Category in the panel.
 
-More filters opens Level, Profession, Works with, Effort, Outcome. OR within a family, AND between families. Everyone matches any profession; Managers reads audience; Other matches free-text professions. Active selections appear as removable labelled chips below the More filters line, with Clear filters. Five sections are initially expanded, collapsible, and have matching coloured heading dots/underlines. Grid: four cards desktop, three tablet, one phone; compact spacing, padding and icons. Empty results show footprints and Clear filters.
+More filters opens Level, Profession, Works with, Time, Outcome. OR within a family, AND between families. Everyone matches any profession; Managers reads audience; Other matches free-text professions. Active selections appear as removable labelled chips below the More filters line, with Clear filters. Five sections are initially expanded, collapsible, and have matching coloured heading dots/underlines. Grid: four cards desktop, three tablet, one phone; compact spacing, padding and icons. Empty results show footprints and Clear filters.
 
 Category chips on cards, page heads, journey stops and the bar use about 12% category-colour tint with #242424 text: Work smarter purple, Create pink, Set up blue, Automate green, Lead yellow. Colour itself appears as the dot and section underline; other metadata chips are neutral stone. Label-family explanations are available on hover, focus and touch.
 

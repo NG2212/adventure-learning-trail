@@ -9,7 +9,7 @@ levels: [Advanced]
 professions: [Engineering]
 audience: []
 tool: Agentic coding tool
-effort: Ambitious
+effort: Longer
 outcome: Build something
 pattern: INSTALL
 wave: W2

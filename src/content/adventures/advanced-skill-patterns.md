@@ -9,7 +9,7 @@ levels: [Intermediate, Advanced]
 professions: [Everyone, Engineering]
 audience: []
 tool: Claude
-effort: Ambitious
+effort: Longer
 outcome: Build something
 pattern: INSTALL
 wave: W3
