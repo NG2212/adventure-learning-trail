@@ -10,6 +10,7 @@ professions: [Everyone]
 audience: []
 tool: Any AI tool
 effort: Moderate
+video: /videos/automation-done-right.mp4
 outcome: Build something
 pattern: SCHED
 wave: W2

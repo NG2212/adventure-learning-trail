@@ -3,7 +3,7 @@ slug: your-ai-identity
 emoji: 🪪
 icon: id-card
 title: "Your AI Identity"
-walkaway: "Standing instructions and a voice profile, so your AI knows who you are in every chat"
+walkaway: "Standing instructions and a voice profile, so your AI works the way you like"
 category: Set up your AI
 levels: [Foundations, Intermediate]
 professions: [Everyone]
@@ -15,6 +15,7 @@ pattern: INT
 wave: W1
 slot: 2
 next: [build-a-personal-brain-for-your-ai, your-own-chief-of-staff]
+video: /videos/your-ai-identity.mp4
 source: "Adapted from summer-challenge/labs/pack-your-id.md (find the right home in the tool, interview, install, fresh-chat test) and catch-up-may/content/week-1/project-3-your-identity.md + project-3-reference-card.md (six layers, Personal Context Statement interview, Voice Profile, behavioral rules, before/after test, deeper context, keep it current). Never edit the originals from this engagement."
 ---
 
@@ -31,22 +32,24 @@ Adaptation note (2026-10-22, slot 2 [Inbar 13])
 Open items
 - Claude settings path: "Settings → Instructions for Claude" mirrors the De-Slop file; confirm the label on Monday's Claude Enterprise, and whether the field has a length limit (instructions + voice profile stay near 550 words).
 - Keren Q7: is Claude memory enabled? Prompts say "memory, past chats or saved instructions" and work either way.
-- Whether Cowork reads the same personal instructions as chat (Unified Claude reaches all orgs 10 Nov 2026). The Drive copy covers the gap; confirm and possibly simplify Step 4.
 - next: build-a-personal-brain-for-your-ai is W2; the platform shows "coming soon".
 - Length: ~1,440 words including prompts, within the factory cap of 1,800 and above the guide's Quick win target of 1,000. First cut if needed: the "Keep it current" item in Go further, then the six-area table.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 - 23 Oct: do-this line on every prompt
+
+Changed 2026-11-05: chat and Cowork treated as one surface.
+Changed 2026-11-06: "Why this adventure" and the subtitle reworked per videos/your-ai-identity/notes.md and the approved script. The page no longer argues from "you explain yourself in every chat", because memory already eases that; it argues from deliberately giving AI standing instructions, with her image of the colleague you work best with. Steps and prompts unchanged.
 -->
 
 # 🪪 Your AI Identity
 
-**Teach your AI who you are and how you work, so every new chat starts from there.**
+**Teach your AI your preferences, your communication style and the things that annoy you, so it becomes a tool you enjoy working with.**
 
 ## Why this adventure
 
-When your AI knows nothing about you, it answers for an average person in an average company. You then explain your role, your customers and the format you want in every chat.
+The colleague you work best with is the one who learned your preferences, your communication style and the things that annoy you. You can teach your AI tool to be that colleague.
 
-Standing instructions solve this. They are a short text saved in your AI tool's settings, which the AI reads before every chat. A voice profile is a short description of how you write, so drafts sound like you.
+Memory may pick up a few things along the way. Standing instructions are something you choose: a short text saved in your AI tool's settings, which the AI reads before every chat. A voice profile is a short description of how you write, so drafts sound like you. Together they turn the generic version of the tool into one you enjoy working with, and you stop repeating your working preferences.
 
 Here the AI interviews you and writes both; you save them and test the difference on a real request. Already have instructions? The interview improves them.
 
@@ -129,18 +132,18 @@ Build a voice profile for me: a short description of how I write, so any AI tool
 
 Then describe my style in under 150 words:
 1. Tone: how formal or casual
-2. Structure: how I organise information
+2. Structure: how I organize information
 3. Vocabulary: words I use often and words I avoid
 4. Sentences: short, long or mixed
 5. Languages: which languages I write in, and when
-6. What makes my writing recognisably mine
+6. What makes my writing recognizably mine
 
 Ask me "Does this sound like you?" and revise until I approve.
 ```
 
 ## Step 4: Save them and test the difference
 
-Paste your approved standing instructions and voice profile into the place your AI tool reads before every chat. Also save both in one Google Doc named "My AI Identity", so you can add them to a Cowork project, a monday agent or any other AI tool.
+Paste your approved standing instructions and voice profile into the place your AI tool reads before every chat. Also save both in one Google Doc named "My AI Identity", so you can add them to a Claude project, a monday agent or any other AI tool.
 
 **In Claude:** go to Settings → Instructions for Claude, paste both, and save.
 

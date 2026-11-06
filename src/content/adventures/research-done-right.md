@@ -10,6 +10,7 @@ professions: [Everyone, Marketing, Product, Customer Facing, Finance]
 audience: []
 tool: Any AI tool
 effort: Moderate
+video: /videos/research-done-right.mp4
 outcome: Learn something
 pattern: INT + PANEL
 wave: W2
