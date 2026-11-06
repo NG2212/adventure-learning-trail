@@ -15,6 +15,7 @@ pattern: INT
 wave: W1
 slot: 6
 next: [skills-when-how-and-how-well, creating-apps-with-ai-done-right]
+review: ready
 video: /videos/use-case-discovery.mp4
 source: "Adapted from summer-challenge/labs/where-to-next.md (discovery interview, use what you know, filter before ranking, top-5 table, first experiment, generic answers as a context signal) and catch-up-may/content/week-3/project-7-professional-specialist.md Step 1 (tell the AI what already exists so it avoids duplicates; direct and indirect questions) and its Use-Case Bank (Monday examples in Step 1). FVI and the feasibility go/no-go lenses (Business, Data, Execution) are Nufar's own frameworks, used verbatim. Never edit the originals from this engagement."
 ---

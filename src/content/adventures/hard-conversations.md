@@ -15,6 +15,7 @@ pattern: SPAR
 wave: W1
 slot: 12
 next: [board-of-advisors, managing-with-ai]
+review: ready
 video: /videos/hard-conversations.mp4
 source: "New (SPAR pattern). Prep brief adapted from the monday Champions 2026 Conversation Prep challenge (monday-client/Champions/2026/Exercises/Challenge Brief/The Conversation Prep AI Context Spec Challenge.md: facts vs interpretations, behavior and impact over labels, calibrated confidence, when to involve HR); rehearsal rules adapted from the AppsFlyer Managers OS Difficult Conversation Rehearsal (appsflyer/Managers/exercises/build-menus.md: stay in character, chosen toughness, debrief only at the end). Never edit the originals from this engagement."
 ---
