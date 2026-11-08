@@ -16,6 +16,7 @@ wave: W4
 slot: 25
 next: [agent-teams-and-orchestration, token-smartness]
 review: ready
+video: /videos/the-loop.mp4
 source: "Adapted from summer-challenge/labs/the-loop.md (three ingredients, Goal Card anatomy, sandbox first, turn caps, the four failure modes, /goal vs /loop per tool, five-line debrief, verification stretch) and the Agentic Loops for Knowledge Workers webinar, Aug 2026 (supertraining/from-loops-to-org-charts/: reference-card.md gate and failure modes, lab-handout.md design interview and judge-the-card checks, giveaways/goal-designer.md DONE WHEN rules and stall rule, research/loop-tooling-brief.md verified command mechanics). Never edit the originals from this engagement."
 ---
 
