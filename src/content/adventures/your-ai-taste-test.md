@@ -16,6 +16,7 @@ wave: W3
 slot: 1
 next: [de-slop, token-smartness]
 review: ready
+video: /videos/your-ai-taste-test.mp4
 source: "Adapted from summer-challenge/labs/taste-test.md (blind judging, fairness rules, hold-constant design, thinking setting as a contestant, routing card, taste notes, retest ritual) and personal-model-benchmark/ (README, WEBSITE-SPEC, lab-handout.md Parts 1-2 and 'From here on', reference-card.md: the Work Mix, scoring guide before answers, made-up material, read all before judging, clear or close, must-haves / answers / tie-breakers, Switch / Split / Stay, refresh triggers, test on day one, strict AI judge). Never edit the originals from this engagement."
 ---
 
