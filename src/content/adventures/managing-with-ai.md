@@ -16,6 +16,7 @@ wave: W1
 slot: 20
 next: [your-team-s-ai-blueprint, hard-conversations]
 review: ready
+video: /videos/managing-with-ai.mp4
 source: "Adapted from appsflyer/Managers/exercises/: archetype-cards.md Card 3 Management Co-Pilot (mandate, identity emphasis, team page with growth threads, starter automation, test question); exercise-1-agent-architecture.md Phase A Step 2 (identity interview: read and do not re-ask, opening line, under 20 lines) and the Phase B running record (dated notes page); build-menus.md People Management (1:1 Prep Pack, Feedback Drafter, Performance Review Prep, Recognition Writer, Career Development Planner seeds); automation-menu.md People Management (1:1 Prep Pack, Monthly Feedback Nudge). Kept from monday-client/monday-managers-training/: the Session 2 skill menu as the task table (planning, team status, 1:1 preparation, feedback, record of work) and 'never invent facts about a person'. Skill first, tested by hand, then automated: Nufar's method, as in Automation Done Right; the Build a skill prompt is linked from Skills: When, How and How Well. Never edit the originals from this engagement."
 ---
 
