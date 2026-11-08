@@ -42,6 +42,7 @@ describe("second L&D review rules", () => {
       ["your-ai-taste-test", "/videos/your-ai-taste-test.mp4"],
       ["token-smartness", "/videos/token-smartness.mp4"],
       ["advanced-skill-patterns", "/videos/advanced-skill-patterns.mp4"],
+      ["the-daily-dispatch", "/videos/the-daily-dispatch.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
