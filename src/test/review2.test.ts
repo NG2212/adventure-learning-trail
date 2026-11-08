@@ -32,6 +32,7 @@ describe("second L&D review rules", () => {
       ["claude-in-your-docs-sheets-and-slides", "/videos/claude-in-your-docs-sheets-and-slides.mp4"],
       ["skills-when-how-and-how-well", "/videos/skills-when-how-and-how-well.mp4"],
       ["your-own-chief-of-staff", "/videos/your-own-chief-of-staff.mp4"],
+      ["managing-with-ai", "/videos/managing-with-ai.mp4"],
       ["creating-apps-with-ai-done-right", "/videos/creating-apps-with-ai-done-right.mp4"],
       ["making-decisions-with-ai", "/videos/making-decisions-with-ai.mp4"],
       ["research-done-right", "/videos/research-done-right.mp4"],
