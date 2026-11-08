@@ -10,194 +10,223 @@ professions: [Everyone]
 audience: []
 tool: Any AI tool
 effort: 1 hour
-video: /videos/automation-done-right.mp4
 outcome: Build something
 pattern: SCHED
 wave: W2
 slot: 14
 next: [your-own-chief-of-staff, the-daily-dispatch]
-source: "Adapted from summer-challenge/labs/set-it-and-summer.md (one job you would open, unattended runs need defaults and never-dos, prove by hand before scheduling, scheduled runs start fresh, switch off what you stop opening, report-to-draft stretch) and summer-challenge/labs/daily-dispatch.md (filters beat more sources, empty-day rule, review before scheduling, live-tuning checklist); EnterpriseClaw/week-3/build/29-commercial-automation-setup.md (read-and-report first, test on different days and volumes, plan for failure before enabling, monthly review, common issues) and EnterpriseClaw/week-5/learn/41-advanced-automation-and-scheduling.md (pitfalls: silent failures, cost multiplication, drift, overlapping runs; a shared task board as the hand-off between automations). Your Own Chief of Staff is linked for the assistant build. Never edit the originals from this engagement."
+review: ready
+video: /videos/automation-done-right.mp4
+source: "Adapted from summer-challenge/labs/set-it-and-summer.md (one job you would open, unattended runs need defaults and never-dos, prove by hand before scheduling, scheduled runs start fresh, switch off what you stop opening) and summer-challenge/labs/daily-dispatch.md (filters beat more sources, empty-day rule, review before scheduling, live-tuning checklist); EnterpriseClaw/week-3/build/29-commercial-automation-setup.md (read-and-report first, test on different days and volumes, plan for failure before enabling, monthly review, common issues) and EnterpriseClaw/week-5/learn/41-advanced-automation-and-scheduling.md (pitfalls: silent failures, cost multiplication, drift, overlapping runs). Skill first, tested by hand, then automated: Nufar's method (8 Nov 2026 review). Go further uses Nufar's error-tolerance framework verbatim (guardrails as autopilot, human in the loop as co-pilot), worded as in silverfort/Champions/site/public/exercises/ex8-scoping-and-evaluation.md. Your Own Chief of Staff is linked for the assistant build; Skills: When, How and How Well for the Build a skill prompt; Use-Case Discovery for a broader search. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
 Adaptation note (2026-10-22, slot 14 [Inbar 22])
-- Kept: the Set It and Summer discipline (narrow scope, self-contained unattended instructions, prove by hand, then schedule, check early runs, switch off what nobody opens); Daily Dispatch "filters beat more sources" and the empty-day rule (here: quiet run); EAL BUILD 29 read-and-report first, test on busy and quiet days and at the planned time, monthly keep-or-stop review; EAL LEARN 41 pitfalls (silent failure, drift, collisions, cost) and the shared task board as hand-off (Go further).
+- Kept: the Set It and Summer discipline (narrow scope, self-contained unattended instructions, prove by hand, then schedule, check early runs, switch off what nobody opens); Daily Dispatch "filters beat more sources" and the empty-day rule (here: quiet run); EAL BUILD 29 read-and-report first, test on busy and quiet days and at the planned time, monthly keep-or-stop review; EAL LEARN 41 pitfalls (silent failure, drift, collisions, cost).
 - Cut: per-tool capability tables and web-search-your-tool prompts, Lanes A/B/C, cost arithmetic and provider cost alerts (no prices), workflow platforms (n8n, Make, Zapier), fleet orchestration, Tier framework, local-machine scheduling.
-- Added for Monday: Step 1 reviews the automations people already run (the design-notes framing: inefficient, unverified, low value) with a Keep / Fix / Stop verdict; six design decisions table with Monday examples; filters as the main token saver, with Kremer for narrow internal-data questions; a run report in the hand runs that exposes what the automation read and left unused; boards as trigger (status change), destination (update, new item) and approval gate (Go further hand-off).
+- Added for Monday: a Keep / Fix / Stop verdict on what people already run; six design decisions table with Monday examples; filters as the main token saver, with Kremer for narrow internal-data questions; a run report in the hand runs that exposes what the automation read and left unused.
 - Distinct from Your Own Chief of Staff: that adventure builds a personal assistant; this one teaches the method for any automation and links there instead of repeating the assistant build.
 
 Open items
-- Keren Q6: is Cowork's scheduled-tasks feature enabled at Monday? Step 4 assumes yes.
-- monday agents: confirm an agent takes instructions as its brief and can be run from a board automation (status change or recurring). Wording follows Your Own Chief of Staff and is provisional; the Go further hand-off depends on the same capability.
-- Cowork scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 4 tells people to match permissions to the approval line. Hands-on check pending.
-- Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; the "In Claude Cowork" lines may need a freshness sweep before W2 (23 Nov).
+- Keren Q6: are scheduled tasks in Claude enabled at Monday? Step 4 assumes yes.
+- monday agents: confirm an agent takes instructions as its brief and can be run from a board automation (status change or recurring). Wording follows Your Own Chief of Staff and is provisional.
+- Scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 4 tells people to match permissions to the approval line. Hands-on check pending.
+- Can a Claude scheduled task and a monday agent run a skill by name? Steps 2 and 3 assume the automation runs the skill built in Step 2 (Claude: skills added under Customize → Skills; monday agents: Profile tab → skills). Hands-on check pending; if a tool cannot, the design-card prompt still writes complete self-contained instructions.
 - Model choice per scheduled run (routine runs on Sonnet) left out until Keren Q3 confirms which models employees can pick.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
+- Prompt test in a fresh Claude chat: pending (playbook step 4), especially the audit prompt with a real scheduled task and the guardrails prompt on instructions that send messages.
 23 Oct: do-this line on every prompt
+Changed 2026-11-05: think-first opener per the 23 Oct rule; chat and Cowork treated as one surface.
+Changed 2026-11-06: light pass for Nufar's review: American spelling; "Why this adventure" brought into line with the live video script (radio image stays video-only); monday workflows added to the opening definition and Steps 1 and 4, worded from monday.com's public pages (trigger, AI and agent blocks, approval checkpoints, run history). Exact in-product labels and the menu path are not hands-on checked. Prompt logic unchanged.
+Changed 2026-11-08, from Nufar's first review (videos/automation-done-right/notes.md):
+- Trail is now her four steps: review and audit what you run; select a use case; design it properly; test it by hand, then over time.
+- Step 1: the AI-run review prompt is gone, because the AI cannot know who acted on an output, when it last ran, or whether anyone checked it. A yes/no self-check the person answers alone replaces it; any no marks the automation for audit, pick one or two. The new audit prompt asks which automation and what its challenge is, then suggests fitting improvements and ends with the Keep / Fix / Stop verdict (Stop = deactivate), so the video line stays true. People with no automations or scheduled tasks skip to Step 2. "Scheduled tasks" named alongside automations.
+- Step 2 (new): three tests for a task that suits automation (repeats on a schedule or a change, no judgment call mid-run, output someone acts on) in a short verdict prompt; Use-Case Discovery for a broader search; skill first via the Skills adventure's Build a skill prompt (linked, not copied), tested by hand.
+- Step 3: six decisions table kept (middle column now "What does it settle?", shorter Monday examples) and the design-card prompt kept; the design starts from the tested skill; narrow app lists replaced with "a change in a connected application" and generic sources in every prompt.
+- Step 4: old Steps 3 and 4 merged: three hand runs with the run report (busy day, quiet day, planned time in a fresh chat), then switch on per tool, first three runs, pitfalls, checklist (now covers the three tests, skill first and the monthly self-check).
+- Go further: both items (report to draft, hand-off through a board) replaced by guardrails and human in the loop, her framework verbatim, carried inside one prompt.
+- Length: the new step and the Go further prompt pushed the first draft to 2,654 words; cut to 1,800 by compressing every prompt, putting the framework in the prompt only (no separate table), trimming the pitfalls table to three rows (nobody reads it, fails silently, acts beyond the approval line; "runs too often" and "drifts" are now covered by the monthly self-check), dropping "limit it to the boards on your design card" from the monday agents line, and dropping Token Smartness from Related adventures.
+Judgment calls: the four self-check questions (acted on in the last two weeks, checked against the source this month, runs only as often as used, reads only what it needs) are drawn from the old review prompt's three tests; the audit stays inside Step 1 because her trail step 1 is "review/audit what you run"; Step 2 says an automation marked Fix is a good candidate, so a rebuild flows into Steps 2 to 4 and the video's "build one automation properly" holds for both paths; the use-case verdict has three outcomes (Automate it, Keep it on request, Something else); "Anything that sends, spends, deletes or speaks for me or my company gets a person in the loop" in the guardrails prompt is her rule from the Silverfort ex8 prompt; Before you start now carries the standard skill prerequisite line; the monday-workflow example in Why this adventure ("starts when a board changes") stays, because her note was about prompts and the line defines the tool. Self-review (first-time reader, swap, cold-start, busy-Tuesday) run by the writer; fresh-chat prompt test not run.
+Changed 2026-11-08 (second review, approved): audit prompt question 2 is now her directive questions (used recurrently, accurate and how do I know, consistent, plus runs or reads more than needed) and question 3 asks for other changes not yet mentioned; "If you have no current automations, skip directly to Step 2"; Step 2 renamed "Select a use case for your next automation" with "If you already have a good idea, skip to Step 3"; the skill-first paragraph moved to the top of Step 3 so the skip keeps it. Length trims: Step 2 paste line, busy/quiet repetition in Step 4. 1,823 words by lint. Stamped Ready on her word.
 -->
 
 # ⏰ Automation Done Right
 
-**Design, test and monitor an automation so it starts at the right moment, reads only what it needs and produces something people act on.**
+**Choose, design and test an automation that starts at the right moment, reads only what it needs, and gets acted on.**
 
 ## Why this adventure
 
-An automation is any AI job that runs without you starting it: a scheduled task in Claude Cowork, a monday agent that runs when a board changes, a weekly summary that lands in Slack.
+An automation is any AI job that runs without you starting it, for example a scheduled task in Claude, a monday agent, or a monday workflow that starts when a board changes.
 
-Most people already run one or two. Many run too often, read far more than they use, and produce output nobody checks. Every run costs tokens, and an unchecked one can put wrong information on a board your team trusts.
+Most people already run one or two. A weekly summary keeps arriving in Slack, and nobody acts on it. Every run costs tokens, and an unchecked one can put wrong information on a board your team trusts.
 
-Here you review what you already run, then design, test and switch on one automation properly, new or rebuilt, and keep a checklist for the next one.
+An automation runs while you are elsewhere, with nobody to answer its questions. So here you keep, fix or stop what you already run, then build one automation properly, and keep a checklist. You are done when a run arrives and someone acts on it.
 
 ## The trail
 
-1. **Review what you already run**, so you keep, fix or stop each automation on purpose.
-2. **Design one automation on purpose**, because trigger, frequency and filters decide most of its value and cost.
-3. **Prove it by hand**, because an automation runs while you are elsewhere, with nobody to answer its questions.
-4. **Switch it on and watch it**, so you catch failures early and stop it when it stops paying off.
+1. **Review and audit what you already run**, to keep, fix or stop each one on purpose.
+2. **Select a use case for your next automation**, since only some tasks run well alone.
+3. **Design it properly**, because trigger, frequency and filters decide its value and cost.
+4. **Test it by hand, then over time**, to catch failures early.
 
 ## Before you start
 
-Have the monday boards, mail and Slack channels your automations read from available to connect.
+If you have never built a skill, start with Skills: When, How and How Well.
 
-## Step 1: Review what you already run
+## Step 1: Review and audit what you already run
 
-**Start without AI.** Close the chat. Write down every automation you run today: what starts it, how often, what it reads, where the result lands, and when someone last acted on it. If you run none yet, write down the two reports or updates you produce by hand most often.
+Automations include Claude's scheduled tasks. If you have no current automations, skip directly to Step 2.
 
-**In Claude Cowork:** your scheduled tasks are listed under Scheduled.
+**In Claude:** your scheduled tasks are under Scheduled. **In monday agents:** check your agents and the Automations on boards you own. **In monday workflows:** open each workflow's run history.
 
-**In monday agents:** list your agents, and open the Automations on each board you own.
+Take a look at your existing automations and ask yourself the following, without AI:
 
-### Prompt: Review my automations
+- Did someone act on its output in the last two weeks?
+- Has anyone checked its output against the source this month?
+- Does it run only as often as its output is used?
+- Does it read only what it needs?
 
-**What this does:** checks each automation on your list for value, verification and efficiency, and gives it a verdict.
+If some or all answers are no, that automation needs an audit. Select one or two to audit below.
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+### Prompt: Audit and improve my automation
+
+**What this does:** asks direct questions about one automation, then suggests fixes and a verdict.
+
+Open a new chat in an AI tool and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me review the AI automations I run: AI jobs that start without me, on a schedule or when something changes on a monday board, in mail or in Slack. I will paste or dictate my list. Ask only for what is missing, one automation at a time.
+Help me audit one of my AI automations: a job that runs without me starting it, on a schedule or when something changes in a connected application. Ask me one question at a time:
+1. Which automation would you like to audit and improve? Ask me to paste its instructions.
+2. Direct questions: To the best of my knowledge, is it being used recurrently? Is it accurate, and how do I know? Is it consistent from run to run? Does it run or read more than its output needs?
+3. Are there other changes or things I want to improve that I haven't mentioned yet?
 
-Check each one on three questions:
-1. Value: when did someone last act on its output?
-2. Verified: has anyone compared its output with the source in the last month?
-3. Efficient: does it run more often, or read more, than the output needs?
-
-Show a table: automation, value, verified, efficient, verdict (Keep, Fix or Stop), one line of reason.
-
-Then recommend one automation to rebuild. If my list is empty or everything passes, propose a new one for work I repeat weekly, with its information on monday boards. Stop and wait for my choice.
+Then suggest two or three improvements that fit my answers, for example: deactivate it, run it less often, read less, or check its output against the source. End with a verdict: Keep, Fix or Stop. For Fix, rewrite the complete instructions with the improvements I choose.
 ```
 
-Pause every automation marked Stop today.
+Deactivate every automation you marked Stop.
 
-## Step 2: Design one automation on purpose
+## Step 2: Select a use case for your next automation
 
-Six decisions shape every automation; most waste comes from the first three.
+If you already have a good idea, skip to Step 3. An automation you marked Fix is a good candidate.
 
-| Decision | Ask yourself | A good answer at Monday |
+### Prompt: Does this task suit an automation?
+
+**What this does:** checks your task on three tests, then gives a verdict.
+
+Paste the prompt below in the chat from Step 1, or in a new chat. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me pick one task to automate with AI. Do not choose the task for me. If I have none in mind, suggest three from my work and let me pick.
+
+Ask one question at a time about the task, then check three tests:
+1. It repeats, on a schedule or when something changes in a connected application.
+2. It needs no judgment call from me in the middle of a run.
+3. Someone acts on its output.
+
+Give a verdict with a one-line reason: Automate it, Keep it on request, or Something else that fits better.
+```
+
+For a broader search, do the Use-Case Discovery adventure.
+
+## Step 3: Design it properly
+
+**Build it as a skill first**, so the automation runs a tested skill. Use the **Build a skill** prompt from the Skills adventure, add the skill, close and reopen your tool, and run it by hand on real cases until you would act on its output as it is.
+
+Six decisions shape how it runs.
+
+| Decision | What does it settle? | A good answer at Monday |
 | --- | --- | --- |
-| **Trigger** | What should start it: a time, a change on a board, or my request? | "When an item on the Escalations board moves to Stuck" |
-| **Frequency** | How often does the source change, and how often do I act? | "Every Monday at 8:00, before the team sync" |
-| **Inputs and filters** | What exactly must it read? | "Renewals board, Q4 group, items changed in the last 7 days, columns Status, Owner, Due date" |
-| **Destination** | Where will the person who acts see it? | "An update on the board item" or "a new item on my Follow-ups board" |
-| **Quiet run** | What should it say when nothing changed? | "One line: nothing new on the Renewals board" |
-| **Approval line** | What may it do alone, and what must a person see first? | "Read, summarise and draft alone; anything that reaches a customer or changes a status waits for me" |
+| **Trigger** | What starts it | "When an Escalations item moves to Stuck" |
+| **Frequency** | How often it runs | "Every Tuesday at 8:00" |
+| **Inputs and filters** | Exactly what it reads | "Renewals board, Q4 group, last 7 days" |
+| **Destination** | Where the person who acts sees it | "An update on the board item" |
+| **Quiet run** | What it says when nothing changed | "One line: nothing new on Renewals" |
+| **Approval line** | What it does alone, and what a person sees first | "Drafts alone; anything for a customer waits for me" |
 
-**Filters save the most tokens.** A connector pulls in everything you point it at. Name one board, one group, the columns that matter and a time window. For internal data, ask Kremer one narrow question, such as "renewal date and open support tickets for this account".
+**Filters save the most tokens:** one source, the parts that matter, a time window. For internal data, ask Kremer one narrow question.
 
 ### Prompt: Design card for my automation
 
-**What this does:** interviews you through the six decisions, then writes a design card and the instructions the automation will follow.
+**What this does:** interviews you on the six decisions, then writes a design card and the automation's instructions.
 
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me design the AI automation I chose earlier in this chat (if it is missing, ask). Interview me one question at a time on six decisions:
-1. Trigger: a time, a change on a monday board, or my request.
-2. Frequency: as often as the source changes and I act on the output; challenge anything higher.
-3. Inputs and filters: exact boards, groups, columns, time window, mail labels, channels. Push me to read less.
-4. Destination: where the person who acts will see the output.
-5. Quiet run: what it says when nothing changed.
-6. Approval line: what it does alone (read, summarise, draft) and what it shows me first (messages, board changes).
+Help me design an AI automation for the task I chose in this chat (if it is missing, ask). If I built a skill for it, the automation runs that skill. Interview me one question at a time on six decisions: trigger (a time, a change in a connected application, or my request); frequency (challenge anything more often than I act); inputs and filters (exact sources and a time window; push me to read less); destination; quiet run (what it says when nothing changed); approval line (what it does alone, what it shows me first).
 
-If an answer is vague, ask for a recent example.
-
-Write a design card with my six answers, then complete, self-contained instructions for an unattended run, since each run starts with no memory. Stop and wait for my approval.
+Write a design card with my answers, then complete instructions for an unattended run, since each run starts with no memory of this chat. Wait for my approval.
 ```
 
-## Step 3: Prove it by hand
+## Step 4: Test it by hand, then over time
 
 Before any schedule or trigger, run the instructions yourself three times: on a busy day, a quiet day, and at the planned time.
 
 ### Prompt: Dry run with a run report
 
-**What this does:** runs the instructions once and reports what it read and what it would have done.
+**What this does:** runs the instructions once and reports what it read and would have done.
 
-For the busy-day and quiet-day runs, stay in the same chat and paste the prompt below. Do the run at the planned time in a new chat with only the instructions and this prompt, because that is all the automation will see.
+Do the planned-time run in a new chat with only the instructions and this prompt, because that is all the automation will see.
 
 ```
-Run the automation instructions we approved in this chat once, now, exactly as written (if they are missing, ask me to paste them). Describe any action that needs my approval instead of doing it.
+Run the approved automation instructions in this chat once, exactly as written (if they are missing, ask me to paste them). Describe any action that needs my approval instead of doing it.
 
-After the output, write a run report:
-1. Sources: each board, group, thread and channel you read, with how many items or messages.
-2. Filtered out: what the filters made you skip.
-3. Unconfirmed: any line you could not confirm from a source, marked UNVERIFIED.
-4. Actions: what you would have done, and which of those need my approval.
-5. Unused: anything you read and then left out of the output.
+Then write a run report: sources you read, with how many items; what the filters skipped; any line you could not confirm from a source, marked UNVERIFIED; what you would have done; anything you read and left out.
 
-Then ask me what to change, and write each fix into the instructions.
+Ask what to change, and write each fix into the instructions.
 ```
 
-Give specific feedback: "it read all 400 items; only the Q4 group matters". It is ready when three runs in a row produce output you would act on as it is, from the sources on your design card only.
+It is ready when three runs in a row produce output you would act on as it is.
 
-## Step 4: Switch it on and watch it
+**Then switch it on.** **In Claude:** ask Claude to schedule it, with permissions that match your approval line. **In monday agents:** paste the instructions as the agent's brief, and run it from a board automation. **In monday workflows:** set the trigger, give the instructions to an AI or agent block, and add an approval checkpoint.
 
-**In Claude Cowork:** ask Claude to schedule the instructions at the frequency on your design card, check that the task appears under Scheduled, and set its permissions to match your approval line.
-
-**In monday agents:** paste the instructions as the agent's brief, give it access to the boards on your design card only, and run it from a board automation, for example when a status changes or every Monday.
-
-Open the first three unattended runs and check: it ran on time, read the right sources, and someone acted on it. Then watch for these pitfalls:
+Check the first three unattended runs: on time, right sources, acted on. Then watch for these pitfalls:
 
 | Pitfall | How can you tell? | What to do |
 | --- | --- | --- |
-| **Nobody reads it** | Two weeks with no action on the output | Pause it, or deliver where people already look |
-| **It runs too often** | Most runs report nothing new | Lower the frequency, or use a board trigger |
-| **It reads too much** | It pulls in sources outside the design card | Tighten the filters |
-| **It fails silently** | The output stops arriving, or arrives empty | Check connector access; tell it to name any source it could not reach |
-| **It acts beyond the approval line** | A board item changed or a message went out without you | Pause it, tighten its permissions |
-| **It drifts** | A board was renamed, a group archived, or the need changed | Review it every month |
+| **Nobody reads it** | Two weeks with no action on it | Pause it, or deliver where people look |
+| **It fails silently** | The output stops arriving, or arrives empty | Check connector access |
+| **It acts beyond the approval line** | Something changed or went out without you | Pause it, tighten its permissions |
 
 ### Prompt: My automation checklist
 
-**What this does:** turns your design card and hand-run lessons into a checklist for every future automation.
+**What this does:** turns this adventure into a checklist for every future automation.
 
-Go back to the chat where you designed the automation and paste the prompt below.
+Paste the prompt below in the chat where you designed the automation.
 
 ```
-From this chat, write my one-page automation checklist, for building any future AI automation and for a monthly review of the ones I run. Sections:
-1. Before building: the six design decisions (trigger, frequency, inputs and filters, destination, quiet run, approval line), one question each.
-2. Before switching on: the hand-run checks and the run report (sources, filtered out, unconfirmed, actions, unused).
-3. First week: what to check on the first three unattended runs.
-4. Every month: Keep, Fix or Stop for each automation, judged on value, verification and efficiency.
-Add the two lessons from my own hand runs I am most likely to forget.
+From this chat, write my one-page checklist for future AI automations and a monthly review of the ones I run: choosing the task (the three tests, then a skill tested by hand); the six design decisions; three hand runs and the run report; the first three unattended runs; every month, four yes/no questions per automation (acted on, checked against the source, runs only as often as used, reads only what it needs), where any no means an audit ending in Keep, Fix or Stop. Add the two lessons from my hand runs I am most likely to forget.
 ```
 
-Pin the checklist on your team's monday board. Set a monthly reminder to run the Review my automations prompt. You are done when an unattended run arrives and someone acts on it.
+Pin the checklist on your team's monday board, and set a monthly reminder for the Step 1 self-check. You are done when an unattended run arrives and someone acts on it.
 
 ## Go further
 
-**Move from report to draft.** Do this when the output always leads to the same next step, such as a customer follow-up. Ask the automation to prepare that step as a draft. The approval line stays: you send, and you change the status.
+**Add guardrails and human-in-the-loop steps.** Do this when your automation changes shared work or reaches people.
 
-**Hand work between automations through a board.** Do this when one job feeds another. The first automation adds items to a board with the status "Ready for review". You check each item and set it to "Approved", and that status change triggers the second automation, for example one that drafts the customer follow-up.
+### Prompt: Guardrails and human in the loop
+
+**What this does:** adds a guardrail or an intervention point to each action your automation takes.
+
+Paste the prompt below in the chat where you designed the automation. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Add guardrails and human-in-the-loop steps to the AI automation in this chat (if its instructions are missing, ask me to paste them). Two options:
+- Guardrails (autopilot): it runs alone within limits, such as max iterations, moderation, forbidden behaviors and cost limits.
+- Human in the loop (co-pilot): it stops for me at intervention points, such as specific tool calls, specific user behavior, a failure to perform the task, or an out-of-scope scenario. Safest for high-stakes tasks.
+
+For each action the instructions allow, one at a time, ask me how much error I can tolerate, then propose a guardrail or an intervention point. Anything that sends, spends, deletes or speaks for me or my company gets a person in the loop. Show the complete updated instructions.
+```
+
+Update the automation, then do one hand run.
 
 ## Proof of work
 
 In "what I built", name the automation you built or rebuilt, its trigger and frequency, and one thing the hand runs changed.
 
-For example: "Rebuilt my renewals digest: weekly on Monday at 8:00, reads only At risk items changed in the last 7 days on the Renewals board. The run report showed it had been reading all 400 items every day."
+For example: "Rebuilt my renewals digest: weekly, At risk items only. The run report showed it was reading all 400 items."
 
 ## Related adventures
 
-- **Your Own Chief of Staff**: a personal assistant with a scheduled job and an on-demand job, built with this method.
-- **The Daily Dispatch**: a personal briefing on a topic you follow, on your own schedule.
-- **Token Smartness**: learn where your tokens go and which habits save the most.
+- **Your Own Chief of Staff**: a personal assistant with a scheduled job.
+- **The Daily Dispatch**: a scheduled personal briefing.
