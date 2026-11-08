@@ -16,6 +16,7 @@ wave: W3
 slot: 27
 next: [automation-done-right, your-own-chief-of-staff]
 review: ready
+video: /videos/the-daily-dispatch.mp4
 source: "Adapted from summer-challenge/labs/daily-dispatch.md (a personal newsletter on what you care about, filters beat more sources, web-suggested sources approved one by one, review of the first edition before anything is scheduled, empty-day rule, second source for surprising claims, skill it then schedule it, designed-and-shared stretch, tighten the filters from what you skipped). Rebuilt on 8 Nov 2026 to Nufar's brief (videos/the-daily-dispatch/notes.md): her six decisions (frequency, topics, sources with date ranges and filters, format, purpose, destination), skill first then scheduled task (her method), run it for a while then revisit and optimize. The skill and scheduling prompts are written for this page, in line with Automation Done Right. Never edit the original from this engagement."
 ---
 
