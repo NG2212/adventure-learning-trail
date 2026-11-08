@@ -251,4 +251,4 @@ For example: "Rebuilt my renewals digest: weekly, At risk items only. The run re
 ## Related adventures
 
 - **Your Own Chief of Staff**: a personal assistant with a scheduled job.
-- **The Daily Dispatch**: a scheduled personal briefing.
+- **Your Personal Newsletter**: your own newsletter, arriving on a schedule.

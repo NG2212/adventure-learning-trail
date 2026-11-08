@@ -16,6 +16,7 @@ wave: W3
 slot: 9
 next: [automation-done-right, your-ai-taste-test]
 review: ready
+video: /videos/token-smartness.mp4
 source: "Rebuilt 2026-11-08 from Nufar's braindump (videos/token-smartness/notes.md, 8 Nov page review). Facts and exercise ideas from token-gym/ (read only): README.md (design rule: nothing rewards spending fewer tokens; tokens that teach, produce or spin), reference-build/token-gym.html station copy (Guess the Weight ranges for the ballpark prompt; the Weigh-In on connector descriptions and on-demand loading; the Language Meter idea that languages split into more pieces; the Marathon Conversation fresh-chat habit; Choose Your Trainer and the Thinking Dial on cost per finished task and when thinking earns its cost; the Locker Room on topic files opened on demand), fitness-assessment.md (the idle-folder trap behind progressive disclosure, the cheaper-model trap, teach / produce / spin receipts), home-audit/token-audit-prompt.md (characters per token estimate, read-only local measurement and the 100-200:1 calibration, the coaching rule never to recommend spending less), data/measured-findings.md (calibration ratios), lovable-spec.md (the scoring rule). summer-challenge/labs/token-gym-session.md for the lab shape. No Token Gym embed, links, brand or gym language. Never edit the originals from this engagement."
 ---
 

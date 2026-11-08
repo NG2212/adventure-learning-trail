@@ -36,7 +36,7 @@ Judgment calls
 - Before you start holds the one calendar and email line. The standing "If you have never built a skill" pointer (learnings, 23 Oct) moved into Step 3 because the brief allows one line here and Step 3 lets people choose an automation instead.
 - The Step 3 page holds the examples and the prompt does not, so the prompt proposes from the person's answers without anchoring on the list.
 - The board prompt says "interactive artifact", without "Claude", so it still works in other tools through the "say so and propose the closest option" clause.
-- A row in the Step 5 table covers a chat that misses board items, because it is not confirmed that a new chat can read the board's stored data.
+- A row in the Step 5 table covers a chat that misses board items, for tools or plans where a new chat cannot read the board's stored data. It worked in Nufar's test in Claude on 5 Nov 2026.
 - Customer-data rule sits once, in Step 2, written generally, and Go further points to Monday's own data for the account brief.
 - Related adventures unchanged and matches `next`; Build a Personal Brain and Skills are linked inside their steps.
 - Left out to save length: the "already have one" line in the hook (the Step 1 prompt covers it), and "you approve each app the first time" (the tool asks at that moment). The Share item in Go further has no do-this-when opener for the same reason.
@@ -46,7 +46,7 @@ Open items
 - Google Calendar connector: confirm it is on at Monday. The Step 4 prompt seeds the board from the calendar (the artifact facts come from support.claude.com, read 5 Nov 2026; only personal storage and the "sharing within the organization" line reach the page).
 - monday agents details: confirm skills in the Profile tab and running an agent from a board automation; wording follows Skills and Automation Done Right. Scheduled tasks created by Claude reportedly default to automatic approval (Oct 2026); Step 3 tells people to match permissions to the boundaries.
 - Big Brain Studio access: can every employee start an app, or only on request? Same open item as Creating Apps.
-- Can Claude add or change an artifact's stored data from a chat, and can a new chat read it? Not confirmed. The prompt keeps Nufar's clause and asks Claude to say so; Step 5 has a row for it.
+- Can Claude add or change an artifact's stored data from a chat, and can a new chat read it? Yes. Nufar ran the two-chat test in Claude on 5 Nov 2026 and reported that it works. Which account she used was not recorded, so a run on a Monday account is still worth doing. The prompt keeps her clause and Step 5 keeps its row, both harmless if a tool or plan behaves differently.
 - Fresh-chat prompt test pending (playbook step 4), especially the Step 4 prompt in Claude: storage, seeding, saved rules.
 -->
 
@@ -231,4 +231,4 @@ For example: "In a Claude project, with a to-do board and a weekly review skill.
 ## Related adventures
 
 - **Automation Done Right**: design, run and monitor any automation.
-- **The Daily Dispatch**: a personal briefing on a topic you follow.
+- **Your Personal Newsletter**: your own newsletter on the topics you care about.
