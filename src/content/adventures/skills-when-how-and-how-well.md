@@ -16,6 +16,7 @@ pattern: INSTALL
 wave: W1
 slot: 17
 next: [advanced-skill-patterns, de-slop]
+review: ready
 source: "Adapted from the Summer Adventure lab Skills To Go (summer-challenge/labs/skills-to-go.md): when-to-build signals, skill anatomy, the five ways skills break, the near-miss test. Interview-extracts-the-workflow rule from the skill-exercise design learnings (Amdocs, Jul 2026). Start-with-the-end-in-mind route from Nufar (5 Nov 2026). Never edit the originals from this engagement."
 ---
 
