@@ -16,6 +16,7 @@ pattern: TOUR + BUILD
 wave: W1
 slot: 13
 next: [creating-apps-with-ai-done-right, de-slop]
+review: ready
 source: "New (inventory row: no earlier source). Built on the launch facts of Claude for Google Workspace (public beta, 6 Oct 2026) and the TOUR skeleton in BUILD-PLAYBOOK.md. Borrowed moves: plan-then-approve gates and the specific-feedback line from content/adventures/de-slop.md; 'list what you could not confirm' from content/adventures/your-own-chief-of-staff.md."
 ---
 
