@@ -42,6 +42,7 @@ Changed 2026-11-05: closing rule in Step 4 per the 23 Oct think-first rule.
 2026-11-06: revised to match the live video and Nufar's framing (same surface with peers, file-or-chat rule widened to shared work); dropped the copy-and-paste argument; checked facts against support.claude.com (add-on article 16951679, connectors article 10166901): menu path, what peers see, Ask before edits, cards, comments, connector names. To hold the cap: removed the second Go further item (folded into Step 4) and the third related adventure.
 Changed 2026-11-08 (Nufar's second review, videos/claude-in-your-docs-sheets-and-slides/notes.md): known pitfalls per app (Sheets table in Step 1, one line each in Steps 2 and 3, all-three points in Step 1 and the reference-files point in Step 4), facts checked 8 Nov against support.claude.com 16951679, the 6 Oct announcement and claude.com/claude-for-google-workspace; over-complication in Sheets is Nufar's experience, stated without a source. New Step 1 prompt "Check how Claude did it", adapted from superplay/content/finance-agent-os-reference.md §5 ("Check how Claude got there"), plus tabs read and root cause; works in all three apps. Step 2 refocused on work that ends in finished text, with a writing skill (Skills or Stay Original adventures) or standards set in the prompt, one prompt, edits as cards; the shared-file table and the "section nobody else is working in" habit are gone, so the peer-editing open item is dropped. Go further: best-practices starter prompt (Search the web toggle, off by default) and the skill stretch (built in a Claude chat, run in the side panel by name, no / menu promised) replacing the inherited-Sheet item. To hold the cap (1,820 → 1,797 by the lint): trimmed the hook and every prompt, removed the Sheet "Ask Claude for" table (the prompt already asks for each point), folded Kremer into the connectors row of the Step 4 table, turned the Step 4 "Build a Google Doc from several sources" prompt into a two-sentence prompt-free instruction, and dropped Stay Original from Related adventures (Step 2 names it; it stays in next:).
 Orchestrator, same day: the skill stretch now points to the Skills adventure's "Build a skill" prompt (link, don't repeat), and the words saved restore the Step 4 "Build a Google Doc from several sources" prompt block. Further trims: Step 4 intro, connectors row, deck examples, account and Office-file lines. Lint 1,801.
+Changed 2026-11-08: self-contained skill prompt replaces the pointer to another adventure (HARD RULE).
 -->
 
 # 📄 Claude in Your Docs, Sheets and Slides
@@ -196,7 +197,19 @@ Turn on **Search the web** in the side panel first; it is off by default. Then p
 I want to do a piece of work in this Google file. Ask me what it is and who it is for, one question at a time; do not choose the task for me. Then search the web for the most up-to-date best practices for this kind of work in this app, and list the five that matter most, with source and date. Propose a plan that follows them and wait for my approval.
 ```
 
-**Run your own skill in the side panel.** Do this for a task you repeat in Sheets, Docs or Slides, for example a monthly forecast check or a deck review. In a Claude chat, build the skill with the **Build a skill** prompt from the Skills: When, How and How Well adventure. Add it under **Customize → Skills** and reload your Google file. Then ask Claude in the side panel to use the skill by name.
+**Run your own skill in the side panel.** Do this for a task you repeat in Sheets, Docs or Slides, for example a monthly forecast check or a deck review.
+
+**What this does:** Claude interviews you about one task you repeat in a Google file, then writes a skill you can run from the side panel.
+
+Open a new Claude chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me build a skill for a task I repeat in Google Sheets, Docs or Slides: saved instructions Claude follows for one recurring task. Ask me to brain dump the task first. Do not choose it for me or decide what good means. If I already answered a question earlier in this chat, don't ask it again. Then ask one question at a time for what is missing: the app and kind of file, the words I would use to start it, which tabs, sections or slides it reads, what it changes and what it leaves untouched, the output format, and what to check before showing me anything.
+
+Build in two rules: propose a plan and wait for my approval before any edit, and use the simplest method that works. Check Claude's current documentation for the skill format. Write the complete skill in one block: a short name in lowercase with hyphens, a description in my words so it starts when I need it, the steps, the output as a literal template, the checks, and one test request.
+```
+
+Add it under **Customize → Skills** and reload your Google file. Then ask Claude in the side panel to use the skill by name.
 
 ## Proof of work
 

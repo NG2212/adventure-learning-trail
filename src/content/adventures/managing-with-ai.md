@@ -17,7 +17,7 @@ slot: 20
 next: [your-team-s-ai-blueprint, hard-conversations]
 review: ready
 video: /videos/managing-with-ai.mp4
-source: "Adapted from appsflyer/Managers/exercises/: archetype-cards.md Card 3 Management Co-Pilot (mandate, identity emphasis, team page with growth threads, starter automation, test question); exercise-1-agent-architecture.md Phase A Step 2 (identity interview: read and do not re-ask, opening line, under 20 lines) and the Phase B running record (dated notes page); build-menus.md People Management (1:1 Prep Pack, Feedback Drafter, Performance Review Prep, Recognition Writer, Career Development Planner seeds); automation-menu.md People Management (1:1 Prep Pack, Monthly Feedback Nudge). Kept from monday-client/monday-managers-training/: the Session 2 skill menu as the task table (planning, team status, 1:1 preparation, feedback, record of work) and 'never invent facts about a person'. Skill first, tested by hand, then automated: Nufar's method, as in Automation Done Right; the Build a skill prompt is linked from Skills: When, How and How Well. Never edit the originals from this engagement."
+source: "Adapted from appsflyer/Managers/exercises/: archetype-cards.md Card 3 Management Co-Pilot (mandate, identity emphasis, team page with growth threads, starter automation, test question); exercise-1-agent-architecture.md Phase A Step 2 (identity interview: read and do not re-ask, opening line, under 20 lines) and the Phase B running record (dated notes page); build-menus.md People Management (1:1 Prep Pack, Feedback Drafter, Performance Review Prep, Recognition Writer, Career Development Planner seeds); automation-menu.md People Management (1:1 Prep Pack, Monthly Feedback Nudge). Kept from monday-client/monday-managers-training/: the Session 2 skill menu as the task table (planning, team status, 1:1 preparation, feedback, record of work) and 'never invent facts about a person'. Skill first, tested by hand, then automated: Nufar's method, as in Automation Done Right; the Build a managerial skill prompt adapts the Build a skill prompt from Skills: When, How and How Well. Never edit the originals from this engagement."
 ---
 
 <!--
@@ -44,6 +44,7 @@ Open items
 - Keren Q6: are scheduled tasks in Claude enabled at Monday? Step 3 assumes yes.
 - Keren Q2 (how skills are added at Monday) affects the Customize → Skills line in Step 2.
 - Fresh-chat prompt test pending (playbook step 4), especially the companion prompt's three outputs and the scheduled-task prompt in Claude.
+Changed 2026-11-08: self-contained skill prompt replaces the pointer to another adventure (HARD RULE).
 -->
 
 # 👥 Managing with AI
@@ -119,7 +120,27 @@ Help me choose two or three managerial tasks to turn into skills: saved instruct
 Then propose up to five in a table: the task, when I start it, its sources, its output format (for 1:1 preparation, for example: recent work and wins, open items from last time, blockers, the growth thread, one question beyond status), and what stays mine. Leave out anything that scores, ranks or compares people. Help me pick, then stop and wait.
 ```
 
-Build each one with the **Build a skill** prompt from the Skills: When, How and How Well adventure, in the same chat. Add each skill, then close and reopen your tool. **In Claude:** add it under Customize → Skills.
+### Prompt: Build a managerial skill
+
+**What this does:** the AI interviews you about one managerial task you picked, then writes the complete skill with three test requests.
+
+Stay in the same chat, so it knows the tasks you picked, and paste the prompt below once for each skill. Answer its questions in writing or by voice.
+
+```
+Help me build a skill for one of the managerial tasks I picked in this chat: saved instructions an AI tool follows for one recurring task. Ask which task to build first. Do not choose it for me, do not narrow it, and do not decide what good means. Ask me to brain dump how I do this task today first. If I already answered a question earlier in this chat, don't ask it again.
+
+Then interview me one question at a time on what is missing. If an answer is vague, ask for a recent example.
+1. When it starts: the moment, and the words I would use, for example "prep my 1:1 with Dana".
+2. Its sources: my notes page, the team page, boards, calendar, Slack, and what to leave out.
+3. The output format, section by section, and its length.
+4. What stays my decision, and what the skill only prepares.
+
+Rules the skill must carry: never invent facts about a person; every claim about someone points to my notes or a source, and gaps are marked "not in my notes"; never score, rank or compare people; every decision stays mine.
+
+Show a short brief and wait for my approval. Then check my tool's current documentation for its skill format, and tell me if you cannot. Write the complete skill in one block: a short name in lowercase with hyphens; a description of what it does and when to use it, in my words, so it starts when I need it; steps a new manager could follow; the output as a literal template; the rules above; and three test requests to try it with. Then tell me how to add it, and to close and reopen my tool afterwards.
+```
+
+Add each skill, then close and reopen your tool. **In Claude:** add it under Customize → Skills.
 
 Run each skill on real work. When the output is off, say exactly what: "put Dana's topics before mine", "this draft judges attitude; keep it to what happened and its effect". Ask the AI to rewrite the skill with each fix, until you would use its output with light edits only.
 
