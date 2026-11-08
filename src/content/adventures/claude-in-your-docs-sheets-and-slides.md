@@ -23,100 +23,118 @@ source: "New (inventory row: no earlier source). Built on the launch facts of Cl
 DESIGN NOTES (not rendered)
 
 Adaptation note (2026-10-22, slot 13 [Inbar 9])
-- New adventure; the inventory names no reuse source. Shape = TOUR (three hands-on capabilities on real work) ending in a personal routing rule (Step 4), plus one BUILD move (a Doc created from several sources in a chat).
+- New adventure; the inventory names no reuse source. Shape = TOUR (three hands-on capabilities on real work) ending in a personal routing rule (Step 4), plus one BUILD move (a Doc created from several sources in a chat; prompt-free since 8 Nov).
 - Kept from siblings: approve-a-plan-before-edits gates, "say exactly what is wrong" feedback line (Stay Original), "list what you could not confirm" (Chief of Staff).
-- Added for Monday: forecast, renewal list and campaign Sheets; QBR summary, release notes, incident write-up Docs; QBR and team update decks; monday boards and Kremer in the file-or-chat table and the chat prompt. Inbar's comment c4 ("people use the Google connector a lot") is answered by the chat fallback in Step 1 and by Step 4.
-- Teaching per step: Sheets = describe the data first, formulas that point to source cells, results in a new tab; Docs = plan, approve, edit section by section, facts untouched; Slides = one message per slide, titles as messages, detail to speaker notes; Step 4 = where each kind of work belongs.
-- Length: ~1,540 words by the lint count, inside the writer brief's 1,800 cap and above the guide's ~1,000 Quick win budget, because the promise to Inbar names four moves (Sheet, Doc, deck, file-or-chat), each with its own prompt. Cut candidates if Nufar wants a true Quick win: the second Go further item and the third related adventure. Every step works from a chat with the Google Drive connector as a fallback.
+- Added for Monday: forecast, renewal list and campaign Sheets; QBR summary, release notes, incident write-up Docs; QBR and team update decks; monday boards and Kremer in the file-or-chat table and the Step 4 chat line. Inbar's comment c4 ("people use the Google connector a lot") is answered by the chat fallback in Step 1 and by Step 4.
+- Teaching per step: Sheets = describe the data first, formulas that point to source cells, results in a new tab, then check how Claude did it; Docs = a writing skill or standards set in the prompt, plan, approve, edit section by section as cards, facts untouched; Slides = one message per slide, titles as messages, detail to speaker notes; Step 4 = where each kind of work belongs. Known pitfalls sit in the step for each app; the all-three points sit in Step 1.
+- Length: inside the guide's 1,800 cap by the lint count (1,797 on 8 Nov), because the promise to Inbar names four moves (Sheet, Doc, deck, file-or-chat). Every step works from a chat with the Google connectors as a fallback.
 
 Open items
 - Keren Q1: is Claude for Google Workspace installed at Monday, and from when? Steps are written as if it is, with the chat fallback in Step 1. If it is not installed by 9 Nov, either move the adventure to a later wave or lead with the chat path.
-- Exact way to open Claude in a file ("the side panel on the right of the file") is provisional; confirm the menu path or icon hands-on.
-- Can people choose the model (Opus) and extended thinking inside the side panel? The standard model sentence assumes yes.
-- Can the side panel write formulas into a new tab and edit speaker notes in Slides? Both follow from "reads, selects and edits the open file"; hands-on check pending.
-- Google Drive connector at Monday: name as it appears, and whether it creates Docs in the person's Drive (Step 4 prompt).
-- Unified Claude reaches all orgs 10 Nov 2026; wording of "a regular Claude chat" may need a sweep.
+- Extended thinking inside the side panel: Anthropic's help article names a model picker and does not mention extended thinking.
+- Writing to speaker notes from the side panel: the help article names speaker notes only as a source; hands-on check pending (Step 3 prompt).
+- Google Docs, Sheets and Slides connectors at Monday: Anthropic says an owner must enable them on Enterprise, and they carry the chat fallback and the Step 4 chat path. Confirm with Keren alongside Q1. Anthropic also lists Zero Data Retention and third-party gateways as unsupported for the add-on; confirm neither applies to Monday's Claude Enterprise.
+- Skills in the side panel (Go further, Step 2): admins control which skills reach the add-on, and how a skill is called there is undocumented. The page says "ask Claude to use the skill by name" and promises no / menu. Hands-on check: does a skill saved under Customize → Skills appear in an already-open panel, or only after a reload? The page says to reload the file as a precaution.
 - Prompt test in a fresh Claude chat and in the side panel: pending (playbook step 4).
 23 Oct: do-this line on every prompt
+Changed 2026-11-05: closing rule in Step 4 per the 23 Oct think-first rule.
+2026-11-06: revised to match the live video and Nufar's framing (same surface with peers, file-or-chat rule widened to shared work); dropped the copy-and-paste argument; checked facts against support.claude.com (add-on article 16951679, connectors article 10166901): menu path, what peers see, Ask before edits, cards, comments, connector names. To hold the cap: removed the second Go further item (folded into Step 4) and the third related adventure.
+Changed 2026-11-08 (Nufar's second review, videos/claude-in-your-docs-sheets-and-slides/notes.md): known pitfalls per app (Sheets table in Step 1, one line each in Steps 2 and 3, all-three points in Step 1 and the reference-files point in Step 4), facts checked 8 Nov against support.claude.com 16951679, the 6 Oct announcement and claude.com/claude-for-google-workspace; over-complication in Sheets is Nufar's experience, stated without a source. New Step 1 prompt "Check how Claude did it", adapted from superplay/content/finance-agent-os-reference.md §5 ("Check how Claude got there"), plus tabs read and root cause; works in all three apps. Step 2 refocused on work that ends in finished text, with a writing skill (Skills or Stay Original adventures) or standards set in the prompt, one prompt, edits as cards; the shared-file table and the "section nobody else is working in" habit are gone, so the peer-editing open item is dropped. Go further: best-practices starter prompt (Search the web toggle, off by default) and the skill stretch (built in a Claude chat, run in the side panel by name, no / menu promised) replacing the inherited-Sheet item. To hold the cap (1,820 → 1,797 by the lint): trimmed the hook and every prompt, removed the Sheet "Ask Claude for" table (the prompt already asks for each point), folded Kremer into the connectors row of the Step 4 table, turned the Step 4 "Build a Google Doc from several sources" prompt into a two-sentence prompt-free instruction, and dropped Stay Original from Related adventures (Step 2 names it; it stays in next:).
+Orchestrator, same day: the skill stretch now points to the Skills adventure's "Build a skill" prompt (link, don't repeat), and the words saved restore the Step 4 "Build a Google Doc from several sources" prompt block. Further trims: Step 4 intro, connectors row, deck examples, account and Office-file lines. Lint 1,801.
 -->
 
 # 📄 Claude in Your Docs, Sheets and Slides
 
-**Work with Claude inside the Google file you have open, and know when a chat is the better place.**
+**Work with Claude and your peers in the same Google file, and know when a Claude chat is the better place.**
 
 ## Why this adventure
 
-A lot of your work at Monday lives in Google files: the forecast in a Sheet, the QBR summary in a Doc, the team update in a deck. Working on them with Claude used to mean copying content into a chat and pasting the answer back.
+Most of us love working inside Claude. Real work happens mostly with others, and often in the Google Suite: the forecast in a Sheet, the QBR summary in a Doc, the team update in a deck.
 
-Claude for Google Workspace removes that step. It opens in a side panel next to the file you have open in Google Docs, Sheets or Slides, reads the file, and edits it in place. It is new (a public beta since October 2026), so this adventure helps you learn it properly on three pieces of real work, and learn when a regular Claude chat is still the better place.
+Claude for Google Workspace opens in a side panel next to your file, reads it and edits it there: you, your peers and Claude, all on the same surface. This adventure helps you get the most out of it on real work, and identify which scenarios are better done directly in the Google ecosystem, with Claude as a companion.
 
 ## The trail
 
-1. **Analyse a Sheet**, because numbers are where checking Claude's work matters most.
-2. **Improve a Doc in place**, to practise approving a plan before Claude edits.
+1. **Analyze a Sheet**, because numbers are where checking Claude's work matters most.
+2. **Improve the writing in a Doc**, with your writing skill or clear standards.
 3. **Tidy a deck**, so every slide carries one clear message.
 4. **Choose the file or the chat**, so you know where each kind of work belongs.
 
 ## Before you start
 
-Have three real files you are working on this week: a Sheet, a Doc and a Slides deck.
+Have three real files you are working on this week: a Sheet, a Doc and a Slides deck, ideally ones your peers work in too.
 
-## Step 1: Analyse a Sheet
+## Step 1: Analyze a Sheet
 
-Open a Sheet with real data, for example a forecast, a renewal list, campaign results or survey answers. Open Claude from the side panel on the right of the file. Claude for Google Workspace is installed by Monday's Google Workspace admin. Every step on this page also works in a regular Claude chat with the Google Drive connector: name the file and paste the same prompt.
+Open a Sheet with real data, for example a forecast or a renewal list. Open Claude from the menu: **Extensions → Claude → Open Claude**. Every step on this page also works in a regular Claude chat with the Google connectors: name the file and paste the same prompt.
 
-Before Claude edits anything, know how to undo: **File → Version history → See version history** returns any Google file to an earlier version.
+Know how to undo before Claude edits: Undo for a recent change, and **File → Version history → See version history** for the whole file, which also removes your peers' later work.
 
-| Ask Claude for | Why it matters |
-| --- | --- |
-| A description of the data before any analysis | You see early if Claude read the wrong tab or misread a column |
-| Formulas that refer to the source cells | The numbers update with the data, and you can check each one |
-| Results in a new tab | Your original data stays exactly as it was |
+**Good to know in all three apps:** chat history stays with the file in one browser, so **Make a copy**, another browser or a private window starts empty. Use one Google account per browser profile. Convert Office files to Google files first, from the **File** menu.
 
-### Prompt: Analyse this Sheet
+### Prompt: Analyze this Sheet
 
-**What this does:** Claude describes the data, asks what decision it should support, and writes its findings with formulas in a new tab after you approve the plan.
+**What this does:** Claude describes the data, agrees on a plan with you, then writes findings with formulas in a new tab.
 
-Paste the prompt below into the Claude side panel of your Sheet. Answer its questions in writing, or by voice if your tool has dictation.
+Paste the prompt below into the side panel of your Sheet. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me analyse the data in this Sheet. First describe it in three lines: the tabs, the columns, the date range and the number of rows. List anything that looks wrong, such as empty cells, duplicates or mixed formats.
+Help me analyze this Sheet. First describe the data in three lines: tabs, columns, date range, number of rows, and anything that looks wrong, such as empty cells or duplicates.
 
 Then ask me, one question at a time, what decision this data should support and who will read the result.
 
-Propose an analysis plan in up to five lines. Stop and wait for my approval. Then write the results in a new tab named "Claude analysis":
-1. The three findings that matter most for that decision, one sentence each
-2. Next to each finding, a formula that refers to the source cells
-3. Questions this data cannot answer
-
-Keep the original tabs exactly as they are.
+Propose a plan in up to five lines and wait for my approval. Then, in a new tab named "Claude analysis", write the three findings that matter most, one sentence each, each beside a formula that refers to the source cells, plus the questions this data cannot answer. Leave the original tabs untouched.
 ```
 
-Check two results by hand: click the cell and read its formula. When a number is wrong, say exactly what: "Q3 includes the cancelled deals in column F". Specific feedback gets a better fix than "check again".
+Check two results by hand: click the cell and read its formula. When one is wrong, say exactly what: "Q3 includes the canceled deals in column F".
 
-## Step 2: Improve a Doc in place
+**Known pitfalls in Sheets:**
 
-Open a Doc you are working on: a QBR summary, release notes, an incident write-up or a customer follow-up.
+| What can go wrong? | What to do |
+| --- | --- |
+| Claude over-complicates: more tabs, steps or formulas than needed | Run the prompt below |
+| Tabs connected to BigQuery cannot be read or edited | Use **Data → Data connectors → Extract** first |
+| A long job stops: "Exceeded maximum execution time" | Ask Claude to continue, or go one tab at a time |
 
-### Prompt: Improve this document
+### Prompt: Check how Claude did it
 
-**What this does:** Claude asks about the reader, proposes an edit plan for your approval, then edits the Doc one section at a time.
+**What this does:** Claude explains its method and offers a simpler one if it exists.
+
+Paste it into the same side panel after any piece of work, in Sheets, Docs or Slides.
+
+```
+Before I accept this: explain in three lines how you did it, including which tabs, ranges or sections you read. If you fixed an error, name its root cause. Name the simplest method that would also work, and what you could not verify. If that method differs from yours, show it and wait for my approval before you redo the work that way.
+```
+
+## Step 2: Improve the writing in a Doc
+
+Open a Doc whose work ends in finished text, for example a QBR summary or an incident write-up. Rough notes work too.
+
+The side panel has the same skills you use in Claude, so a writing skill from the Skills or Stay Original adventures works here. Without one, the prompt sets the standards.
+
+**Known pitfalls in Docs:** Claude's edits land under your name. The panel cannot read, reply to or resolve comments, or accept existing suggestions; Step 4 shows where to handle comments. It cannot create, rename or reorder document tabs.
+
+### Prompt: Improve the writing in this Doc
+
+**What this does:** Claude edits with your skill or clear writing standards, section by section, as cards you accept or reject.
 
 Open Claude in the side panel of your Doc and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me improve this document where it is. Ask me, one question at a time: who reads it, what they should do after reading it, and what bothers me about it now.
+Help me turn this document into finished text its readers can act on. First ask which of my skills to use, if any. If none, use these standards: lead with the point, one idea per paragraph, short sentences, specific facts over general claims, nothing the reader does not need.
 
-Then give me an edit plan of up to five changes. For each change, name the section and say why it helps the reader. Stop and wait for my approval.
+Ask me, one question at a time, who reads it and what they should do next. Then propose up to five changes, each with its section and why it helps, and wait for my approval.
 
-After I approve, edit the document one section at a time and tell me what you changed. Keep all facts, numbers, names and dates exactly as they are. If you think a fact is wrong, tell me here in the panel and leave the text as it is.
+Edit one section at a time, as cards I accept or reject. Keep facts, numbers, names and dates as they are, and flag any that look wrong. End with a two-line note for my peers: what changed and why.
 ```
 
-Read every change before you share the Doc. To work on one part only, name its heading in your request.
+Accept or reject each card, then send the note to your peers.
 
 ## Step 3: Tidy a deck
 
-Open a deck you will present soon, for example a QBR deck or a team update.
+Open a deck you will present soon.
+
+**Known pitfalls in Slides:** charts Claude creates are inserted as images and do not update with the data. Linked charts update only when you click **Update**.
 
 ### Prompt: Tidy this deck
 
@@ -125,66 +143,66 @@ Open a deck you will present soon, for example a QBR deck or a team update.
 Open Claude in the side panel of your deck and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Review this deck as its audience will see it. Ask me who the audience is and the one thing they should remember. Wait for my answers.
+Review this deck as its audience will see it. Ask me who the audience is, the one thing they should remember, and which slides belong to someone else.
 
-Then show me a table with one row per slide: slide number, the slide's message in one sentence, and its main problem (too much text, a title that names a topic and states no message, two messages on one slide, a format that differs from the other slides). End with the slides you would merge or cut.
+Then show a table, one row per slide: number, its message in one sentence, and its main problem (too much text, a title with no message, two messages, an inconsistent format). Name the slides you would merge or cut.
 
-Stop and wait for my approval. Then fix only the slides I approve, one at a time: make each title the slide's message, keep the text the audience needs, and move the rest into the speaker notes.
+After my approval, fix only the approved slides, one at a time: make each title the slide's message, keep what the audience needs, and move the rest to the speaker notes.
 ```
 
-Click through the deck once from the first slide to the last, reading only the titles. If the titles tell the story, the deck is ready.
+Click through the deck once, reading only the titles. If the titles tell the story, the deck is ready.
 
 ## Step 4: Choose the file or the chat
 
-The side panel sees the file you have open. A Claude chat with connectors sees many sources at once.
+The side panel works on the open file, plus reference files you add. A chat reaches many sources at once. So ask: how many sources does this work need, and is it shared?
 
 | What is the work? | Where should you do it? | Why there? |
 | --- | --- | --- |
-| Analyse, edit or tidy one file | Claude in the side panel of that file | Claude sees the file and changes it in place |
-| Combine monday boards, mail, Slack and several files | A Claude chat with connectors | The chat reads all the sources together |
-| Create a new Google file from those sources | A Claude chat with the Google Drive connector | It creates the file in your Drive and gives you the link |
-| Use internal data such as account history from Salesforce | A Claude chat, through Kremer | Kremer is Monday's path to internal data, with permissions |
+| One file, especially a shared one | Its side panel | You, your peers and Claude share one surface |
+| Working through your peers' comments on a Doc | A chat with the Google Docs connector | The chat can read comments and suggestions |
+| A draft that is not ready for your peers | A Claude chat | It stays with you until you put it in a file |
+| Combining monday boards, mail, Slack, files or internal data through Kremer | A chat with connectors | It reads every source at once |
 
-Try the chat path once, on a document you would otherwise assemble by hand.
+Try the chat path once.
 
 ### Prompt: Build a Google Doc from several sources
 
-**What this does:** Claude collects information from several places, shows you an outline for approval, then creates the Doc in your Drive.
+**What this does:** Claude gathers your sources, gets your approval on an outline, and creates the Doc in your Drive.
 
-Open a new Claude chat with the Google Drive connector on, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new Claude chat with the Google Drive and Google Docs connectors on, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
 Help me create one Google Doc from information that lives in several places. Ask me, one question at a time: what the document is for, who reads it, and which sources to use: monday boards, Drive files, mail threads, Slack channels, or internal data through Kremer.
 
-Read the sources. Show me an outline with the source of each section, and stop and wait for my approval.
+Read the sources. Show me an outline with the source of each section, and wait for my approval.
 
 Then create the Doc in my Google Drive and give me the link. At the end of the Doc, list anything you could not confirm from a source.
 ```
 
-Now close the chat and write your rule in one sentence: which work you will do in the side panel from now on, and which in a chat.
+Then share it and keep working in its side panel.
+
+Then decide your rule in one sentence: which work goes in the side panel, and which in a chat.
 
 ## Go further
 
-**Understand a Sheet you inherited.** Do this when you take over someone else's model or tracker and need to trust it before you change it.
+**Start with current best practices.** Do this before a kind of work you have not done in that app yet.
 
-**What this does:** Claude explains how the Sheet works and points to the cells that could break.
+**What this does:** Claude searches the web for current best practices, then plans your task by them.
 
-Open Claude in the side panel of the inherited Sheet and paste the prompt below.
+Turn on **Search the web** in the side panel first; it is off by default. Then paste the prompt below into the panel. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Explain this Sheet to me as its new owner. Describe each tab in one line, how the tabs connect, and the five formulas that matter most, in plain words. List cells that look fragile: numbers typed inside formulas, broken references, ranges that miss new rows. Change nothing.
+I want to do a piece of work in this Google file. Ask me what it is and who it is for, one question at a time; do not choose the task for me. Then search the web for the most up-to-date best practices for this kind of work in this app, and list the five that matter most, with source and date. Propose a plan that follows them and wait for my approval.
 ```
 
-**Draft in the chat, polish in the file.** Do this for a document you write every month, such as forecast commentary or a board update. Build it with the Build a Google Doc from several sources prompt, then open the new Doc and run the Improve this document prompt in the side panel.
+**Run your own skill in the side panel.** Do this for a task you repeat in Sheets, Docs or Slides, for example a monthly forecast check or a deck review. In a Claude chat, build the skill with the **Build a skill** prompt from the Skills: When, How and How Well adventure. Add it under **Customize → Skills** and reload your Google file. Then ask Claude in the side panel to use the skill by name.
 
 ## Proof of work
 
-In "what I built", name the three files you worked on, one change Claude made in each, and your rule for file or chat.
+In "what I built", name the three files, one change Claude made in each, and your rule for file or chat.
 
-For example: "Forecast Sheet: a new tab with the three movements behind the change, each with its formula. QBR summary: the renewal risk moved to the top. Team update deck: eleven slides became seven. My rule: one file in the side panel; boards plus mail in a chat."
+For example: "Forecast Sheet: three findings with formulas. QBR summary: renewal risk moved to the top. Team deck: eleven slides became seven. My rule: one shared file in the side panel; several sources in a chat."
 
 ## Related adventures
 
-- **Creating Apps with AI, Done Right**: when the analysis in your Sheet should become a dashboard your team uses.
-- **Stay Original with AI**: check your Doc and your deck before they reach their readers.
-- **Voice of Customers and Employees**: when your Sheet holds feedback you need to turn into actions.
+- **Creating Apps with AI, Done Right**: when your Sheet analysis should become a dashboard your team uses.
