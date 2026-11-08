@@ -44,6 +44,7 @@ describe("second L&D review rules", () => {
       ["advanced-skill-patterns", "/videos/advanced-skill-patterns.mp4"],
       ["the-daily-dispatch", "/videos/the-daily-dispatch.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
+      ["the-loop", "/videos/the-loop.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
   });
