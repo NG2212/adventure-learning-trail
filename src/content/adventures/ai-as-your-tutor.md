@@ -203,4 +203,4 @@ For example: "A tutor in a Claude project. Topic: net revenue retention. The exa
 ## Related adventures
 
 - **Your AI Identity**: a tutor that knows your role teaches at your level from the start.
-- **The Daily Dispatch**: a personal briefing on a topic you follow.
+- **Your Personal Newsletter**: your own newsletter on the topics you care about.

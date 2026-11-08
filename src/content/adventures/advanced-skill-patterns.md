@@ -16,6 +16,7 @@ wave: W3
 slot: 18
 next: [personalising-claude-code, audit-and-improve-your-ai-system]
 review: ready
+video: /videos/advanced-skill-patterns.mp4
 source: "Rebuilt 2026-11-08 from Nufar's review (videos/advanced-skill-patterns/notes.md): her six skill problems, the audit list, the audit-first proposal recorded with her notes, and her 8 Nov addition (sub-agents to parallelize or run a part on a named model; a skill that detects which skills to build). Fixes and Go further from her pattern library (appsflyer/Managers/exercises/advanced-pattern-library.md): knowledge file, script, chain, dispatcher, delegation, fan-out, fallback, 'the simplest pattern that solves the problem', combined skills compound tokens, the checkable validation rule. Company and shared skills in the audit and the 'prefer the company skill' routing idea from appsflyer/Managers/exercises/exercise-2-skills-advanced-patterns.md (Stretch). Atomic skills, the dispatcher with no job knowledge, and the per-fix failure tests from the Summer Adventure lab Pack Like a Pro (summer-challenge/labs/pack-like-a-pro.md). Basics live in content/adventures/skills-when-how-and-how-well.md and the token habits in content/adventures/token-smartness.md; both are linked, never repeated. Never edit the originals from this engagement."
 ---
 
