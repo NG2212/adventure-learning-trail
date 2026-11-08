@@ -17,7 +17,7 @@ slot: 14
 next: [your-own-chief-of-staff, the-daily-dispatch]
 review: ready
 video: /videos/automation-done-right.mp4
-source: "Adapted from summer-challenge/labs/set-it-and-summer.md (one job you would open, unattended runs need defaults and never-dos, prove by hand before scheduling, scheduled runs start fresh, switch off what you stop opening) and summer-challenge/labs/daily-dispatch.md (filters beat more sources, empty-day rule, review before scheduling, live-tuning checklist); EnterpriseClaw/week-3/build/29-commercial-automation-setup.md (read-and-report first, test on different days and volumes, plan for failure before enabling, monthly review, common issues) and EnterpriseClaw/week-5/learn/41-advanced-automation-and-scheduling.md (pitfalls: silent failures, cost multiplication, drift, overlapping runs). Skill first, tested by hand, then automated: Nufar's method (8 Nov 2026 review). Go further uses Nufar's error-tolerance framework verbatim (guardrails as autopilot, human in the loop as co-pilot), worded as in silverfort/Champions/site/public/exercises/ex8-scoping-and-evaluation.md. Your Own Chief of Staff is linked for the assistant build; Skills: When, How and How Well for the Build a skill prompt; Use-Case Discovery for a broader search. Never edit the originals from this engagement."
+source: "Adapted from summer-challenge/labs/set-it-and-summer.md (one job you would open, unattended runs need defaults and never-dos, prove by hand before scheduling, scheduled runs start fresh, switch off what you stop opening) and summer-challenge/labs/daily-dispatch.md (filters beat more sources, empty-day rule, review before scheduling, live-tuning checklist); EnterpriseClaw/week-3/build/29-commercial-automation-setup.md (read-and-report first, test on different days and volumes, plan for failure before enabling, monthly review, common issues) and EnterpriseClaw/week-5/learn/41-advanced-automation-and-scheduling.md (pitfalls: silent failures, cost multiplication, drift, overlapping runs). Skill first, tested by hand, then automated: Nufar's method (8 Nov 2026 review). Go further uses Nufar's error-tolerance framework verbatim (guardrails as autopilot, human in the loop as co-pilot), worded as in silverfort/Champions/site/public/exercises/ex8-scoping-and-evaluation.md. Your Own Chief of Staff is linked for the assistant build; the Step 3 skill prompt adapts the Build a skill prompt from Skills: When, How and How Well; Use-Case Discovery for a broader search. Never edit the originals from this engagement."
 ---
 
 <!--
@@ -49,6 +49,7 @@ Changed 2026-11-08, from Nufar's first review (videos/automation-done-right/note
 - Length: the new step and the Go further prompt pushed the first draft to 2,654 words; cut to 1,800 by compressing every prompt, putting the framework in the prompt only (no separate table), trimming the pitfalls table to three rows (nobody reads it, fails silently, acts beyond the approval line; "runs too often" and "drifts" are now covered by the monthly self-check), dropping "limit it to the boards on your design card" from the monday agents line, and dropping Token Smartness from Related adventures.
 Judgment calls: the four self-check questions (acted on in the last two weeks, checked against the source this month, runs only as often as used, reads only what it needs) are drawn from the old review prompt's three tests; the audit stays inside Step 1 because her trail step 1 is "review/audit what you run"; Step 2 says an automation marked Fix is a good candidate, so a rebuild flows into Steps 2 to 4 and the video's "build one automation properly" holds for both paths; the use-case verdict has three outcomes (Automate it, Keep it on request, Something else); "Anything that sends, spends, deletes or speaks for me or my company gets a person in the loop" in the guardrails prompt is her rule from the Silverfort ex8 prompt; Before you start now carries the standard skill prerequisite line; the monday-workflow example in Why this adventure ("starts when a board changes") stays, because her note was about prompts and the line defines the tool. Self-review (first-time reader, swap, cold-start, busy-Tuesday) run by the writer; fresh-chat prompt test not run.
 Changed 2026-11-08 (second review, approved): audit prompt question 2 is now her directive questions (used recurrently, accurate and how do I know, consistent, plus runs or reads more than needed) and question 3 asks for other changes not yet mentioned; "If you have no current automations, skip directly to Step 2"; Step 2 renamed "Select a use case for your next automation" with "If you already have a good idea, skip to Step 3"; the skill-first paragraph moved to the top of Step 3 so the skip keeps it. Length trims: Step 2 paste line, busy/quiet repetition in Step 4. 1,823 words by lint. Stamped Ready on her word.
+Changed 2026-11-08: self-contained skill prompt replaces the pointer to another adventure (HARD RULE).
 -->
 
 # ⏰ Automation Done Right
@@ -131,7 +132,28 @@ For a broader search, do the Use-Case Discovery adventure.
 
 ## Step 3: Design it properly
 
-**Build it as a skill first**, so the automation runs a tested skill. Use the **Build a skill** prompt from the Skills adventure, add the skill, close and reopen your tool, and run it by hand on real cases until you would act on its output as it is.
+**Build it as a skill first**, so the automation runs a tested skill.
+
+### Prompt: Build a skill that can run on its own
+
+**What this does:** the AI interviews you about the task you chose, then writes a complete skill built for runs where nobody is there to answer its questions.
+
+Stay in the chat from Step 2, or open a new chat, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me build a skill for a task that will later run as an automation, with nobody there to answer questions: saved instructions an AI tool follows for one recurring task. Use the task I chose in this chat; if there is none, ask which task. Do not choose it for me, do not narrow it, and do not decide what good means. Ask me to brain dump how I do this task today first. If I already answered a question earlier in this chat, don't ask it again.
+
+Then interview me one question at a time on what is missing. If an answer is vague, ask for a real example.
+1. The inputs it needs on every run: exact sources, filters and time window.
+2. The output: format, length, and who acts on it.
+3. What it says when there is nothing to report.
+4. What it does when a source is missing or empty.
+5. The checks it runs on its own output before it finishes, for example every number traced to a source and nothing outside the time window.
+
+Show a short brief and wait for my approval. Then check my tool's current documentation for its skill format, and tell me if you cannot. Write the complete skill in one block: a short name in lowercase with hyphens; a description of what it does and when to use it; steps that never wait for an answer from me; the output as a literal template, including the nothing-to-report line; the checks; and three test requests: a typical case, a case with nothing to report, and a missing source. Then tell me how to add it, and to close and reopen my tool afterwards.
+```
+
+Add the skill, then close and reopen your tool. **In Claude:** add it under Customize → Skills. Run it by hand on its three test requests and on real cases until you would act on its output as it is.
 
 Six decisions shape how it runs.
 
@@ -153,7 +175,7 @@ Six decisions shape how it runs.
 Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me design an AI automation for the task I chose in this chat (if it is missing, ask). If I built a skill for it, the automation runs that skill. Interview me one question at a time on six decisions: trigger (a time, a change in a connected application, or my request); frequency (challenge anything more often than I act); inputs and filters (exact sources and a time window; push me to read less); destination; quiet run (what it says when nothing changed); approval line (what it does alone, what it shows me first).
+Help me design an AI automation for the task I chose in this chat (if it is missing, ask). If I built a skill for it, the automation runs that skill. If I already answered a question earlier in this chat, don't ask it again. Interview me one question at a time on six decisions: trigger (a time, a change in a connected application, or my request); frequency (challenge anything more often than I act); inputs and filters (exact sources and a time window; push me to read less); destination; quiet run (what it says when nothing changed); approval line (what it does alone, what it shows me first).
 
 Write a design card with my answers, then complete instructions for an unattended run, since each run starts with no memory of this chat. Wait for my approval.
 ```
