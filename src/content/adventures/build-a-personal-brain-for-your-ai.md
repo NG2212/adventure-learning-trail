@@ -3,7 +3,7 @@ slug: build-a-personal-brain-for-your-ai
 emoji: 🧠
 icon: brain
 title: "Build a Personal Brain for Your AI"
-walkaway: "A personal brain your AI works from, and a light routine to maintain it"
+walkaway: "A personal brain in a folder or Obsidian, fed by the sources you choose and kept current by your own brain skills and a scheduled task"
 category: Set up your AI
 levels: [Intermediate, Advanced]
 professions: [Everyone]
@@ -16,7 +16,8 @@ pattern: INSTALL
 wave: W2
 slot: 8
 next: [your-own-chief-of-staff, your-team-s-ai-blueprint]
-source: "Adapted from summer-challenge/labs/personal-brain.md (interview builds the files, install where the AI reads them, golden questions, maintenance habit); personal-company-brain/article-1-personal-brain.md (identity file written as onboarding, index with a standing upkeep rule, dated facts, layered cadences, archive instead of delete, golden questions); personal-company-brain/article-3-the-bridge.md (three-question propagation filter, used in the team edition); catch-up-may/content/week-3/project-7-professional-specialist.md Step 4 (one topic per file, short files, summarise long documents, link live sources). Never edit the originals from this engagement."
+review: ready
+source: "Adapted from summer-challenge/labs/personal-brain.md (interview builds the files, install where the AI reads them, golden questions, maintenance habit); personal-company-brain/article-1-personal-brain.md (identity file written as onboarding, index with a standing upkeep rule, dated facts, layered cadences, archive instead of delete, golden questions, an inbox for raw sources, the magic sentence and scheduled mining as capture lanes, folder or Obsidian as the home); catch-up-may/content/week-3/project-7-professional-specialist.md Step 4 (one topic per file, short files, summarize long documents, link live sources). Skill first, tested by hand, then a scheduled task: Nufar's method (8 Nov 2026). The Build my brain skills prompt adapts the craft of the Build a skill prompt in Skills: When, How and How Well (interview, brief, docs check, complete skill, add and reopen) and carries Nufar's three brain questions (sources, frequency, one or two skills). Never edit the originals from this engagement."
 ---
 
 <!--
@@ -24,190 +25,228 @@ DESIGN NOTES (not rendered)
 
 Adaptation note (2026-10-22, slot 8 [Inbar 16])
 - Kept: the summer lab's interview → files → install → golden-questions arc; the article's start-here file written like onboarding a new colleague, the index plus the rule "update the index when a file changes", dated facts, layered cadences (session / weekly / quarterly), archive instead of delete, golden questions answered in a fresh chat; Catch-Up P7 Step 4 file rules (one topic per file, short, link live sources).
-- Middle ground (design note): the brain stops at curated files + index + a light routine. Held back on purpose: the LLM-wiki compile/ingest model, raw/wiki/schema layers, scheduled lint, forgetting levers, tiered reading order, scheduled mining of transcripts, the complexity ladder. These stay for EAL.
+- Middle ground (design note): the brain stops at curated files + index + brain skills and one scheduled task. Held back on purpose: the LLM-wiki compile/ingest model, raw/wiki/schema layers, scheduled lint, forgetting levers, tiered reading order, the complexity ladder. These stay for EAL.
 - Cut: home vs work brains, the tool landscape table, the A/B scorecard, statistics and named practitioners.
-- Added for Monday: monday boards and Kremer as linked live sources, Monday examples per profession, Cowork folder as the home where the AI can edit the files, the Your AI Identity link, and the team edition Inbar asked for (comment c6: "would love a version of a team brain"), using the Bridge article's three-question filter plus one owner, one home, suggestions through a monday board.
+- Added for Monday: monday boards and Kremer as linked live sources, Monday examples per profession, the Your AI Identity link. The team edition Inbar asked for (comment c6) was dropped on Nufar's 8 Nov second review; Your Team's AI Blueprint in Related adventures covers shared team context.
 
 Open items
-- Confirm that Claude Cowork on Monday's Enterprise plan reads a CLAUDE.md file in the folder you choose and can edit files there (Team and Enterprise kept local folders after the Oct 2026 Pro/Max cloud change). Unified Claude reaches all orgs 10 Nov 2026; the "In Claude Cowork" lines may need a freshness sweep.
-- "Customize" / project knowledge wording in the Claude chat callout mirrors the sibling files; confirm labels on Monday's plan.
-- Scheduling the weekly update in Cowork depends on Keren Q6 (Cowork scheduled tasks enabled at Monday).
-- Team edition: confirm Monday's preferred home for shared team context (shared Drive folder vs shared Claude project) with Inbar; wording offers both.
-- Overlap check with slot 24 (Your Team's AI Blueprint), whose design note lists "team edition of a brain page" as a layer: this file covers the personal-to-team step; the Blueprint should link here.
+- Confirm that Claude on Monday's Enterprise plan reads a CLAUDE.md file in the folder you choose and can edit files there (Team and Enterprise kept local folders after the Oct 2026 Pro/Max cloud change).
+- Confirm Obsidian can be installed on Monday computers (Step 1 recommends it alongside a plain folder, on Nufar's word).
+- Confirm the meaning of "ticker notes" and "Brandonpour" with Nufar (read as quick notes, for example sticky notes, and a raw-notes inbox: a brain-dump file or an Inbox folder).
+- Scheduling housekeeping in Claude depends on Keren Q6 (scheduled tasks in Claude enabled at Monday). Hands-on check: can a Claude scheduled task run a skill by name and reach the Brain folder and the chosen sources (same open item as Automation Done Right).
+- Skills: Keren Q2 (are skills added by each employee under Customize → Skills, or provisioned by an admin). Affects the Step 4 table and the add-and-test line.
+- Reading monday's notetaker notes, Slack and email from Claude depends on the connectors being enabled at Monday; the sources table names them as examples only.
+- Overlap check with slot 24 (Your Team's AI Blueprint), whose design note lists "team edition of a brain page" as a layer: this page no longer has a team edition, so the Blueprint owns the team brain.
 - Prompt test in a fresh Claude chat: pending (playbook step 4).
 23 Oct: do-this line on every prompt
+Changed 2026-11-05: think-first opener per the 23 Oct rule; chat and Cowork treated as one surface.
+Changed 2026-11-08: her review (where it lives: folder with index or Obsidian; sources decision; upkeep by skill then scheduled task; Why aligned with the live video).
+- Trail: decide where it lives; choose what goes in and what feeds it; write the files and test them; keep it current with a skill and a scheduled task.
+- Step 1 (new): a two-row table (folder with an index, Obsidian), a monday board possible but not recommended, setup per tool (CLAUDE.md for Claude, AGENTS.md for Claude Code or Cursor). The Claude project home is dropped: the skill and the scheduled task cannot edit project knowledge, so it does not fit the upkeep method.
+- Step 2: sources table (monday's notetaker, quick notes, monday boards with Kremer, Slack, email, a raw-notes inbox). "Customer personal data" corrected to the Monday rule (content from customers' own monday boards).
+- Why: "Every new chat starts from zero" removed; now follows the live script (memory and business knowledge exist, the AI's picture goes stale, a context system for one person that taps into your systems and working processes, done when it answers like a well-informed colleague).
+Changed 2026-11-08 (second review): self-contained opinionated brain skill prompt (sources, frequency, one or two skills); where the skill lives; fewer test questions; team edition replaced by evolve your brain.
+- Step 4: the pointer to the Skills adventure's Build a skill prompt is gone. "Build my brain skills" interviews for sources (shows what the start-here file lists and asks what to add, so Step 2 keeps owning the first choice), frequency, and one skill or two (recommends two: capture runs on request, housekeeping on a schedule), then writes each skill with the required steps, rules, frequency and three test requests. A three-row "where does each part live" table answers her "where does the housekeeping skill reside". The scheduled task reads the frequency from the skill.
+- Step 3: eight golden questions became three to five test questions the reader already knows the answers to, picked by the reader (no AI generation step). The write prompt also creates the Archive folder and the raw-notes inbox the skills use.
+- Before you start: the "start with Skills: When, How and How Well" line is replaced by the one real prerequisite (a few work documents), since this page now carries its own skill prompt. The "For the full method, do Automation Done Right" line is cut.
+- Go further: team edition (prompt, Bridge three-question filter, owner and suggestions board) replaced by "Evolve your brain", a step added to the housekeeping skill that finds gaps (to-dos no file captures, people who appear often in your sources but nowhere in your brain, undated decisions) and proposes a new source, a new file or a new rule. Grow the structure kept.
+- Length: first draft 2,462 words (over the 2,300 cap); trimmed to 2,281 by tightening the two new prompts, the Step 4 intro, the Obsidian row and Proof of work. Nothing self-contained was cut. Line-by-line check done for the over-1,850 flag: the extra length is the brain skills prompt and the where-it-lives table.
 -->
 
 # 🧠 Build a Personal Brain for Your AI
 
-**Give your AI a small, well-kept set of files about your work, so every chat starts with the context it needs.**
+**Give your AI a small set of files about your work, fed by your sources and kept current by skills you build.**
 
 ## Why this adventure
 
-Every new chat starts from zero. You explain your team, your accounts and your internal terms again, and the AI still answers like an outsider.
+If you have used AI for a while, you know context makes it your own; without it, you get a mediocre result. Maybe you already use memory and keep business knowledge in some of your working environments. Still, you often explain yourself again, or correct the AI's outdated picture of your world, and at a company as dynamic as monday.com that picture ages fast.
 
-A personal brain is a small set of short files about your work, plus a start-here file with an index, so your AI opens only the file it needs. A light routine keeps it current, so you can trust its answers.
+A personal brain is a context system built to serve one person: you. It is a set of short files and an index, fed by the sources you choose. It taps into your systems and working processes, to help you hold a clear picture and manage your day-to-day.
 
-Already built Your AI Identity? It covers who you are and how you work. The brain adds what you work on.
+Here you build yours and keep it current. You are done when your AI answers like a well-informed colleague.
 
 ## The trail
 
-1. **Choose what goes in**, so the brain holds the context you keep repeating.
-2. **Write the files and the index**, so your AI finds the right context quickly.
-3. **Save it where your AI reads it and test it**, to prove it answers like a well-informed colleague.
-4. **Keep it current with a light routine**, because an out-of-date brain gives confident wrong answers.
+1. **Decide where your brain lives**, so you and your AI share one place.
+2. **Choose what goes in and what feeds it**, so it holds the context you keep repeating.
+3. **Write the files and test them**, to prove your AI answers like a well-informed colleague.
+4. **Keep it current with skills and a scheduled task**, because a stale brain gives confident wrong answers.
 
 ## Before you start
 
-Have the documents you rely on most at hand, for example your team's quarterly plan, an account plan or a product spec.
+Have a few real documents about your work at hand, for example your team's goals, a project plan or recent meeting notes.
 
-## Step 1: Choose what goes in
+## Step 1: Decide where your brain lives
 
-**Think first, without AI.** Close the chat. In a note, list what you explained to an AI, or to a new colleague, more than once this month.
+We recommend one of two homes. Your AI reads and edits both.
 
-Check your list against this table.
+| Where does it live? | What is it? |
+| --- | --- |
+| **A folder with an index** | The simplest setup: a folder named Brain on your computer, where the start-here file lists every file and when to read it. |
+| **Obsidian** | A free note-taking app that keeps notes as plain text files in a folder on your computer. You read and edit the brain there; your AI reads the same folder. |
+
+A monday board can hold it too, but we do not recommend it: files your AI reads as one place are easier to keep current and search.
+
+Create a folder named Brain on your computer. For Obsidian, open it as a vault (Obsidian's name for a folder of notes).
+
+The start-here file is what your AI reads first: who you are at work, the index and the rules. **In Claude:** choose the Brain folder when you start a chat, and name the start-here file CLAUDE.md. Claude can then update the files. **In Claude Code or Cursor:** open the folder and name the start-here file AGENTS.md.
+
+## Step 2: Choose what goes in and what feeds it
+
+**Think first for yourself, without AI.** What did you explain to an AI, or to a new colleague, more than once this month? Where does new information about your work show up first?
 
 | What belongs in the brain? | Example at Monday |
 | --- | --- |
 | **Your team and its goals** | This quarter's goals, the launch you own |
-| **How your team works** | The review steps before a release, the format of the weekly team update |
-| **Projects and accounts** | The account plan before a renewal call, a feature's history (one file each) |
+| **How your team works** | Release review steps, the weekly update format |
+| **Projects and accounts** | One file each, for example an account plan |
 | **Decisions and the reasons** | "Release moved to January because of the data migration", dated |
-| **Internal terms** | Product names, team names and acronyms an outside AI would get wrong |
-| **Where the live data is** | Links to the monday boards you track, your Drive folders, account data through Kremer |
-| **What stays out** | Passwords, customer personal data, opinions about colleagues |
+| **Internal terms** | Product names and acronyms an outsider gets wrong |
+| **What stays out** | Passwords, content from customers' own monday boards, opinions about colleagues |
+
+Its sources are part of the brain. Pick the ones that hold your work.
+
+| Where does it come from? | What does it add? |
+| --- | --- |
+| **monday's notetaker** | Meeting notes and decisions |
+| **Quick notes** | Ideas you jot down, such as sticky notes |
+| **monday boards** | Live project status; account data through Kremer |
+| **Slack** | Decisions from your channels and threads |
+| **Email** | Commitments and customer context |
+| **A raw-notes inbox** | A file in your Brain folder for brain dumps and raw notes, sorted later |
 
 ### Prompt: Plan my brain
 
-**What this does:** the AI turns your list into a plan of files and asks about gaps.
+**What this does:** the AI interviews you about your thoughts and plans your files and sources.
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat in your AI tool (in Claude, choose your Brain folder) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me plan a personal brain: short files about my work that my AI tool reads in every chat. I will paste or dictate a list of what I keep explaining.
+Help me plan a personal brain: short files about my work that my AI tool reads. First ask me to brain dump or paste all my thoughts on what I keep explaining and where my information comes from.
 
-Use what you already know about me. Ask only about gaps, one question at a time. If an item is vague, ask for a recent example.
+Use what you know about me and ask only about gaps, one question at a time. If I already answered a question earlier in this chat, don't ask it again. If an item is vague, ask for a recent example.
 
-Propose at most six files: a start-here file (who I am at work, an index of the other files, rules for using them), plus topic files such as team and goals, how my team works, one file per main project or account, a decisions log, a glossary.
+Propose at most six files: the start-here file (who I am at work, the index, rules) plus topic files, for example goals, how my team works, one per main project or account, decisions, a glossary. For each: name, contents, documents I should give you, how often it changes.
 
-For each file give its name, what goes in it, which documents I should give you, and how often it changes. Leave out passwords, customer personal data and opinions about colleagues. For live data (monday boards, account data in Kremer), plan a link.
-
-Stop and wait for my approval.
+Then ask which sources I chose and say which files each one feeds, with links for live data. Leave out passwords, content from customers' own monday boards and opinions about colleagues. Wait for my approval.
 ```
 
-## Step 2: Write the files and the index
-
-Short files on one topic are easy for your AI to find and for you to keep current.
+## Step 3: Write the files and test them
 
 ### Prompt: Write my brain files
 
-**What this does:** the AI writes each file from your documents, then the start-here file and your test questions.
+**What this does:** the AI writes each file from your documents, then the start-here file.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Write the files for the brain plan I approved in this chat. If the plan is missing, ask me for it.
-
-Work one file at a time. Ask for the documents that file needs, read them, and ask about anything unclear. Write each file for a future AI colleague:
+Write the files for the brain plan I approved in this chat (if it is missing, ask me for it). One file at a time: ask for the documents it needs and about anything unclear. Write each for a future AI colleague:
 - Under 500 words, headings and bullets, one topic
 - Date every fact that can change ("decided 14 Oct 2026")
 - Mark anything you inferred with (check)
-- Link to live sources (monday boards, Drive, Kremer) instead of copying their numbers
+- Link to live sources for numbers that change
 
-Wait for my approval after each file.
+After I approve a file, save it in my Brain folder, or give it to me in full if you cannot. Also create an Archive folder for finished work, and the raw-notes inbox if I chose one.
 
-Write the start-here file last, like a page that onboards a new colleague: who I am at work, what I work on now, the index (each file and one line on when to read it), and these rules: read the index first and open only the files a task needs; tell me when something is missing or out of date; when you create, rename or archive a file, update the index. If I have standing instructions from Your AI Identity, point to them.
-
-Finally, write eight golden questions a well-informed colleague could answer about my work, covering every file. Questions only.
+Write the start-here file last, like a page that onboards a new colleague: who I am at work, what I work on now, my chosen sources and where each one is, the index (each file and when to read it), and these rules: read the index first and open only the files a task needs; tell me when something is missing or out of date; update the index whenever a file is created, renamed or archived.
 ```
 
-Save the golden questions in a note outside the brain, for Step 3.
-
-## Step 3: Save it where your AI reads it and test it
-
-Save all the files in one place your AI reads.
-
-**In Claude Cowork:** create a folder named Brain on your computer, save the files there, and name the start-here file CLAUDE.md. Choose the Brain folder when you start a task; Claude reads CLAUDE.md first and can update the files for you.
-
-**In Claude:** create a project named Brain, paste the start-here file into the project instructions, and add the topic files to the project knowledge.
-
-**In Claude Code:** open Claude Code in the Brain folder; it reads CLAUDE.md at the start of every session.
+Now think of three to five questions about your work that you already know the answers to, for example why a release moved or who owns an account. You will paste them into Test my brain.
 
 ### Prompt: Test my brain
 
-**What this does:** your AI answers your golden questions from the brain alone and helps you fix what is wrong.
+**What this does:** your AI answers your test questions from the brain alone, then helps you fix it.
 
-Open a **new** chat or task with the brain loaded. Paste the prompt below, then your golden questions.
-
-```
-Test my brain. I will paste eight golden questions about my work. Answer each in two lines or less, using only my brain files. After each answer, name the file you used, or write NOT IN MY BRAIN.
-
-Then wait. I will mark each answer right, wrong, out of date or missing. For each one that is not right, propose the exact change to a file, and wait for my approval before you change anything.
-```
-
-You know the right answers, so you are the judge. You are done when your AI answers like a well-informed colleague.
-
-## Step 4: Keep it current with a light routine
-
-Context changes at different speeds, so each kind gets its own schedule.
-
-| When | What you do |
-| --- | --- |
-| **During any chat** | When a decision or new fact comes up, say "save this to my brain". The AI adds it to the right file, dated. |
-| **Every week** | Run the Weekly brain update prompt below. |
-| **Every quarter, or when your role changes** | Run Test my brain with fresh golden questions; archive finished projects. |
-
-### Prompt: Weekly brain update
-
-**What this does:** collects this week's changes and proposes exact updates for your approval.
-
-Each week, open a new chat or task with the brain loaded and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a **new** chat with your Brain folder chosen. Paste the prompt below, then your test questions.
 
 ```
-Run my weekly brain update. Read my start-here file and its index first.
+Test my brain. I will paste a few test questions. Answer each in two lines or less, using only my brain files. After each answer, name the file you used, or write NOT IN MY BRAIN.
 
-1. Ask me, one question at a time, what changed this week: decisions, new projects or accounts, finished work, new terms.
-2. If you can read the monday boards linked in my brain, list the relevant items that changed this week.
-3. Propose the changes as a table: file, change (add, edit or archive), exact new text, date.
-
-Stop and wait for my approval. Then make the approved changes, move finished work to a folder named Archive (outside the index), and update the index. If you cannot edit files, give me each changed file in full.
+Then wait. I will mark each answer right, wrong, out of date or missing. For each answer that is not right, propose the exact change to a file and wait for my approval.
 ```
+
+You are done when your AI answers like a well-informed colleague.
+
+## Step 4: Keep it current with skills and a scheduled task
+
+Updating files by hand is the first habit to slip, so upkeep runs on skills: saved instructions your AI follows. The skills live in your AI tool and work on the files in your Brain folder. You build them and test them by hand; then a scheduled task runs the housekeeping at the frequency you chose.
+
+| What is it? | Where does it live? | What does it do? |
+| --- | --- | --- |
+| **Your brain files** | Your Brain folder (or Obsidian vault) | Hold the context |
+| **Your brain skills** | Your AI tool. In Claude: Customize → Skills. In other tools, the prompt tells you where. | Read and update your brain files |
+| **The scheduled task** | Your AI tool. In Claude: Scheduled | Runs your housekeeping skill on schedule |
+
+### Prompt: Build my brain skills
+
+**What this does:** the AI interviews you about how your brain should stay current, then writes your brain skills, ready to add to your AI tool.
+
+Open a new chat in Claude with your Brain folder chosen, so it can read your start-here file, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me build the skills that keep my personal brain current. A skill is saved instructions my AI tool follows for a recurring task. My brain is the folder of short files you can see. Read its start-here file (CLAUDE.md or AGENTS.md) first.
+
+First ask me to brain dump how I want my brain kept current. Then interview me one question at a time, only about gaps. If I already answered a question earlier in this chat, don't ask it again.
+1. Where my brain's information comes from: monday's notetaker, monday boards, Slack, email, and which other sources. Start from the sources my start-here file lists.
+2. How often to run housekeeping: daily, weekly or another frequency, and on which day.
+3. One skill or two: one that captures brain dumps and after-meeting notes whenever I ask, and one for housekeeping at that frequency. Recommend two, since they run at different moments.
+4. The phrases I would use to start each one, and what a great update looks like.
+
+Show a short brief and wait for my approval.
+
+Then check my AI tool's current documentation for its skill format. Write each complete skill:
+- A short name in lowercase with hyphens.
+- A description that makes it fire: what it does and when to use it, in my phrases.
+- Steps: read the start-here file and its index first; open only what the task needs; propose dated changes as a table (file, add, edit or archive, exact new text); name any source you could not read; wait for my approval; move finished work to the Archive folder; update the index.
+- For housekeeping: my frequency, reading my sources and my raw-notes inbox file, if I have one, since the last run.
+- Never save passwords, content from customers' own monday boards or opinions about colleagues.
+- Three test requests I can run by hand.
+
+Show each skill in one block, then tell me how to add it in my tool and to close and reopen the tool.
+```
+
+**Add and test the skills.** In Claude, add each skill under Customize → Skills, then close and reopen Claude so it finds them. In a new chat with your Brain folder chosen, run each test request. When a proposal is off, say exactly what was wrong, for example "that decision belongs in decisions.md", and ask Claude to rewrite the skill. Schedule once you would approve its proposals as they are.
+
+### Prompt: Schedule my brain housekeeping
+
+**What this does:** turns your housekeeping skill into a scheduled task that proposes changes and waits for you.
+
+Open a new chat in Claude with your Brain folder chosen and paste the prompt below.
+
+```
+Create a scheduled task that runs my brain housekeeping skill at the frequency written in it (if it does not say, ask me). Each run starts fresh and follows the skill, so it reads my start-here file first and changes nothing until I approve. Show me the instructions before you save the task.
+```
+
+Check that the task appears under Scheduled, and review its first run.
+
+**Every quarter, or when your role changes,** run Test my brain with new test questions.
 
 ## Go further
 
-**Grow the structure.** Do this when the brain passes about fifteen files and answers come from the wrong file. Ask your AI to group the files into folders by area (Accounts, Projects, Team), each with a short index that the start-here file points to.
+**Grow the structure.** Do this when the brain passes about fifteen files and answers come from the wrong file: ask your AI to group them into folders by area, each with its own index.
 
-**Make capture automatic.** Do this when busy days leave no time to say "save this to my brain". Add one rule to your start-here file: "At the end of a working session, propose up to three updates to my brain, and wait for my approval." **In Claude Cowork:** ask Claude to run the Weekly brain update every Friday in the Brain folder, and check that it appears under Scheduled.
+**Evolve your brain.** Do this once housekeeping runs smoothly, to find what your brain still misses.
 
-**A team edition.** Do this when your teammates explain the same accounts, release process and terms to their own AI. A team brain holds the shared part once. Keep it about the work, in line with Monday's norms on people data.
+**What this does:** adds a step to your housekeeping skill that finds gaps and proposes how to close them.
 
-**What this does:** keeps what the team needs, strips personal notes, and sets up an owner and a way to suggest changes.
-
-Open a new chat or task with your brain loaded and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat in Claude with your Brain folder chosen and paste the prompt below.
 
 ```
-Help me create a team edition of my personal brain: shared files my team's AI tools read. I will share my brain files.
+Add an "evolve my brain" step to my brain housekeeping skill. Read the skill and my start-here file first, and ask me how often the step should run, for example monthly.
 
-Test every piece of content with three questions:
-1. Is it about the work or about a person? Decisions, conventions, customer context and terms pass. Personal notes and anything about a colleague stay out.
-2. Would at least three teammates act differently if they knew it?
-3. Will it stay true for at least a month?
+The step looks for what my brain still misses, for example to-dos in my sources that no file captures, people who appear often in my sources but nowhere in my brain, and decisions with no date. For each gap it proposes one fix, with the reason: a new source, a new file or a new rule in the start-here file. It changes nothing until I approve.
 
-Show me what passes, with personal notes removed, and wait for my approval.
-
-Then ask me, one at a time: who is the one owner who approves changes, where the team brain lives, and how teammates suggest a change. Write a team start-here file with the index and those answers.
+Show me the updated skill in one block, then tell me how to replace it in my tool and to close and reopen the tool.
 ```
-
-A good setup: one owner, one home (a shared Drive folder or a shared Claude project), and a "Brain suggestions" group on your team's monday board that the owner reviews every week.
 
 ## Proof of work
 
-In "what I built", name your brain files, where you saved them, and one golden question your brain now answers that a fresh chat could not.
+In "what I built", name where your brain lives, its sources and skills, and one test question it answers that a fresh chat could not.
 
-For example: "Five files in a Cowork Brain folder: start-here, Q4 goals, renewal accounts, decisions log, glossary. It now knows why our largest EMEA renewal moved to January."
+For example: "Five files in Obsidian, fed by meeting notes, Slack and the Launch board, with a capture skill and weekly housekeeping. It now knows why our EMEA renewal moved to January."
 
 ## Related adventures
 
-- **Your AI Identity**: who you are and how you work; the brain builds on it.
-- **Your Own Chief of Staff**: an assistant that uses your brain to prepare your week.
-- **Your Team's AI Blueprint**: shared context, skills and a use-case backlog for your whole team.
+- **Your AI Identity**: who you are and how you work.
+- **Your Own Chief of Staff**: an assistant that works from your brain.
+- **Your Team's AI Blueprint**: shared context for your team.

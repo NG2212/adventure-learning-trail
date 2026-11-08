@@ -3,174 +3,224 @@ slug: token-smartness
 emoji: 🪙
 icon: gauge
 title: "Token Smartness"
-walkaway: "Your token report card and two habits that get better results from the same tools"
+walkaway: "A feel for what your AI work costs in tokens, and one real task that gets more value from them"
 category: Set up your AI
 levels: [Foundations, Intermediate, Advanced]
 professions: [Everyone]
 audience: []
 tool: Any AI tool
-effort: 30 minutes
+effort: 1 hour
 outcome: Work differently
 pattern: AUD
 wave: W3
 slot: 9
-next: [your-ai-taste-test, automation-done-right]
-source: "Adapted from summer-challenge/labs/token-gym-session.md (tokens that teach, ship or spin, recast as learning / shipping / waste; routing and clear briefs cut waste; the report card; diagnose one real case) and token-gym/ for the method only: README.md design rules (nothing rewards frugality), fitness-assessment.md (the receipts behind the habits table: the immortal conversation, the mega-file setup, the hourly automation, the cheaper-model trap, under-using AI) and home-audit/token-audit-prompt.md (report card fields, the four verdicts, the coaching rule, and the read-only local measurement with calibration in Go further). No Token Gym embed, links or gym language. Never edit the originals from this engagement."
+next: [automation-done-right, your-ai-taste-test]
+review: ready
+source: "Rebuilt 2026-11-08 from Nufar's braindump (videos/token-smartness/notes.md, 8 Nov page review). Facts and exercise ideas from token-gym/ (read only): README.md (design rule: nothing rewards spending fewer tokens; tokens that teach, produce or spin), reference-build/token-gym.html station copy (Guess the Weight ranges for the ballpark prompt; the Weigh-In on connector descriptions and on-demand loading; the Language Meter idea that languages split into more pieces; the Marathon Conversation fresh-chat habit; Choose Your Trainer and the Thinking Dial on cost per finished task and when thinking earns its cost; the Locker Room on topic files opened on demand), fitness-assessment.md (the idle-folder trap behind progressive disclosure, the cheaper-model trap, teach / produce / spin receipts), home-audit/token-audit-prompt.md (characters per token estimate, read-only local measurement and the 100-200:1 calibration, the coaching rule never to recommend spending less), data/measured-findings.md (calibration ratios), lovable-spec.md (the scoring rule). summer-challenge/labs/token-gym-session.md for the lab shape. No Token Gym embed, links, brand or gym language. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
-Adaptation note (2026-10-22, slot 9 [Inbar 18])
-- Kept: the three buckets (teach / produce / spin, renamed learning / shipping / waste in plain words); the coaching rule "never recommend spending less overall; name the waste and spend the savings on learning and shipping"; the report card fields and the four verdicts (heavy and healthy, balanced, waste signals, under-using AI) from the Home Audit; the fitness-assessment receipts as the habits table; the Home Audit's read-only local measurement, cut to one prompt in Go further, with its calibration (100-200:1, mostly cache = healthy).
-- Cut: the Token Gym embed, links and all gym vocabulary (spin, weight, stations, eras); the AIDB episode framing; dollar figures and measured spend; telemetry file paths (the AI finds them, so no hidden-folder step is needed); the JSON export; the era quiz.
-- Added for Monday: the four kinds of tokens and how each is priced (input, cached input, output, thinking) with relative prices only and a "check the current price list" line; model tier judged by the cost of a finished task; Hebrew uses more tokens; Kremer for narrow internal-data questions; boards as the exact source; Monday recurring work as the real task (QBR summary, release notes, incident write-up, forecast commentary, team update); "prove it on a real task" step from the Inbar promise.
-- Design-notes row: advanced company, not novice-toned. The tone assumes daily users; Foundations readers still get every term defined.
-- Judgment call: effort is Quick win (seed), and the guide puts Quick wins under 1,000 words. The "full treatment" asked in design notes lands at about 1,680 words including prompts; the writer brief's ceiling is 1,800. Nufar to decide: keep, relabel effort Moderate, or cut Go further. The re-explaining-yourself habit was cut (Your AI Identity covers it).
-- The report card is a personal self-assessment that stays in the person's chat (guide section 11); proof of work carries only the habits and the task result, never the verdict.
+Rebuilt 2026-11-08 from Nufar's braindump (videos/token-smartness/notes.md, page review of 8 Nov: "almost nothing follows my thoughts", "not accurate at all"). Earlier design notes (the four priced token kinds, the report card, the seven-habit audit table, the redo-with-two-habits step) are retired with the old page.
+
+Changed 2026-11-08 (her review): Step 2 rewritten: progressive disclosure explained on the person's own multi-topic project, question habits that help it; paste-everything comparison removed.
+
+What landed where
+- Goal, said plainly in Why this adventure: more value from tokens, never frugality; value = produces work, teaches you, teaches the tool about you; spin = automations nobody uses, unfiltered connector pulls. Her script wording ("test and refine some of your habits... where they just spin") is reused.
+- Step 1: the OpenAI tokenizer, with a try-this table (sentence, long email, own language and English, a table, code); "Claude counts a little differently, the idea is the same". Per Nufar's correction (8 Nov): employees speak many languages, so no single language or country is named; people try their own language, English and code.
+- Step 2: progressive disclosure, explained on the person's own multi-topic project or folder ("Explain how you read my files": four kinds of question, files opened, order, rough tokens), then a question-habits table with before/after examples; the filter demo with an estimate-before-you-fetch prompt and a Monday filter table (Slack, boards, mail, Kremer) plus the customer-boards line.
+- Step 3: ballpark prompt for repeated tasks with Guess the Weight ranges inside the prompt, marked rough; model = level of intelligence, effort = how long it spends; cost per finished task; Opus first can cost less than many rounds on a lighter model.
+- Step 4: her token habits as a table (new chats, disconnect unused connectors, repeated instructions as skills, project instructions and context files, filters, model and effort), then "Make one task smarter" with a before-and-after table. Done-when is quality plus every source earning its place; nothing celebrates fewer tokens.
+- Go further: one item, Claude Code users ask for usage and what fills the context (/context named as the example). A read-only local measurement prompt from the Home Audit and a teach-the-tool item were drafted and cut for length. Monday's usage dashboard is not mentioned (she finds it less interesting).
+
+From Token Gym: Guess the Weight ranges (email 500-700, web-search answer 6K-15K, 10-page summary 10K-15K, deep research 70K-300K, agentic coding task 400K-2M; all industry-reported in the gym, marked rough here); the four-characters-per-token estimate (Home Audit Step 3); the Weigh-In point that connectors can load their descriptions upfront while idle files cost nothing; the Thinking Dial (thinking counts like output, earns its cost on hard multi-step work); Choose Your Trainer and fitness Q4/Q10 (cost per finished task, each round re-reads the chat); the Marathon fresh-chat habit with a summary; the Home Audit read-only rules and calibration. Not used: dollar figures, era archetypes, the language multipliers (2.4x etc.), the 70/20/10 routing stat, gym names and badges.
+
+Judgment calls for Nufar
+- Effort changed from 30 minutes to 1 hour: four steps with three interview prompts plus two comparison runs.
+- Progressive disclosure is shown on a project or folder with several topics; the page says a small project may load every file each time (Claude projects load all knowledge until it nears the limit, then switch to retrieval), so a large project works similarly and a small one may not show the effect.
+- Step 4's done-when and proof of work measure quality plus sources that earn their place; fewer tokens is never the score.
+- The agentic-coding range (400K-2M) was dropped from the ballpark prompt for length; Monday's chat users rarely need it.
+- Habits table says connectors add descriptions "depending on the tool": some tools load connector descriptions on demand (tool search), so the disconnect habit is worded to hold either way.
+- The token estimates come from the AI itself; every prompt tells it to mark numbers as rough and say how it estimated.
 
 Open items
-- Usage views: whether Monday's Claude Enterprise shows employees a usage view is unconfirmed; Step 2 asks "whether I can see a usage view" so the prompt works either way.
-- Why this adventure says people feel tokens "as usage limits and slower answers": confirm Monday's Enterprise seats have usage limits employees can hit.
-- In Claude Code callout: /context and /cost (or /usage on a subscription) are written from product knowledge; confirm on Monday's setup, and Keren Q4 (who has Claude Code).
-- Cached input: "changing the instructions or the model in the middle of a session starts the cache again" holds for the Claude API and Claude Code; how the Claude apps cache project files is not documented in detail. Hands-on check.
-- Extended thinking toggle availability on Monday's plan (Keren Q3 covers model choice).
-- next: your-ai-taste-test is provisional until that file exists.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-23 Oct: do-this line on every prompt
+- /doctor: her braindump says "/doctor". In Claude Code, /doctor checks the installation; /context shows what fills the context window and /usage (or /cost, depending on plan) shows usage. The page says "ask Claude Code to show your usage and what fills its context, for example with the /context command". Confirm with Nufar.
+- Is the OpenAI tokenizer link acceptable at Monday (an external OpenAI page; nothing is signed in, but people paste text there)? The page says to paste text you would be comfortable sharing outside Monday.
+- Folder access in Claude at Monday: Step 2 offers a folder Claude reads as one option next to a Claude project; confirm the label and that it is enabled (Keren).
+- Effort setting in the Claude apps: worded conditionally ("depending on the model, turn on extended thinking or set the effort"); hands-on check.
+- Prompt test in a fresh Claude chat: pending (playbook step 4), especially whether "Explain how you read my files" gives usable per-question file lists and estimates in a project chat and a folder chat.
 -->
 
 # 🪙 Token Smartness
 
-**Learn what your AI use really costs, find the habits that waste it, and get better results from the same tools.**
+**Get more value from every token: see what a token is, watch what your AI reads, and make one real task smarter.**
 
 ## Why this adventure
 
-Every AI tool reads and writes in tokens: small pieces of text, about three quarters of an English word each. Hebrew needs more tokens than English for the same text. You feel tokens as usage limits, slower answers and a bill the company pays.
+Every AI tool reads and writes in tokens: small pieces of words, numbers and symbols. Everything the AI reads counts: your message, its instructions, your files, what connectors bring back, and the chat so far.
 
-Tokens also measure the model's attention. The more it reads, the easier it is to lose the one fact that matters. So the habits that waste tokens usually hurt your results too.
+This adventure teaches best practices to get more out of your tokens. Using AI less is never the goal. You will test and refine some of your habits, and learn where your tokens are a good use of your time and money and where they just spin.
 
-This adventure finds those habits in your own work and replaces two of them. The goal is better results from the same tools: spend freely on learning and on finished work, and cut only the waste. The most expensive habit of all is under-using AI.
+| What kind of token? | Example at monday |
+| --- | --- |
+| **Produces work** with business value | A QBR summary your account team uses in the meeting |
+| **Teaches you** something about using AI, even when the experiment fails | Testing whether a skill can draft your release notes |
+| **Teaches the tool about you** | Writing your project instructions |
+| **Spins**, producing nothing anyone uses | An automation nobody reads; a connector pull with no filter |
+
+The first three are value. Spin is the only waste.
 
 ## The trail
 
-1. **Understand what tokens cost**, because four kinds of tokens are priced very differently.
-2. **Get your token report card**, to see where your own habits spend them.
-3. **Prove two better habits on a real task**, so you keep the habits that change your results.
+1. **See what a token is**, so the numbers mean something.
+2. **Watch what your AI reads**, because reading is where most tokens go, and learn to ask so it opens what your question needs.
+3. **Know the ballpark of your regular work**, including the model and effort.
+4. **Make one real task smarter**, with habits that turn spin into value.
 
 ## Before you start
 
-Have last week's AI work at hand: your longest chats, your biggest pastes, and any scheduled jobs you run.
+Have a Claude project or a folder with several of your work files on different topics. Step 2 says what to use if you have none.
 
-## Step 1: Understand what tokens cost
+## Step 1: See what a token is
 
-Each time you send a message, the model reads the whole conversation again: your instructions, the files, the connector results, the full chat history. Then it thinks and writes. Each part is priced differently.
+A token is a piece of text the AI counts: often a short word, sometimes part of a word, a space or a symbol. In English, one token is roughly four characters.
 
-| Kind of token | What is it? | How is it priced? | What does it mean for you? |
-| --- | --- | --- | --- |
-| **Input** | Everything the model reads on each turn | The base price, paid again on every turn | A long chat sends its whole history again with each message. |
-| **Cached input** | Input the tool stored very recently, such as a project's instructions and files | A small fraction of fresh input | A stable start is cheap. Changing the instructions or the model mid-session starts the cache again. |
-| **Output** | What the model writes | Several times the price of input | Ask for the shortest form that does the job. |
-| **Thinking** | The reasoning before the answer, when extended thinking is on | Priced like output, often longer than the answer | It pays off for judgment and hard problems. For formatting or a lookup, it adds cost for the same result. |
+Open the OpenAI tokenizer at https://platform.openai.com/tokenizer. Paste each item below, nothing confidential, and watch the count and how the colored pieces split your text.
 
-The model tier matters too: Opus costs more per token than Sonnet. Judge a model by the cost of a finished task. A cheaper model that needs five rounds often costs more than a strong model that gets it right once. Exact ratios change; when you need them, ask your AI to check the provider's current pricing page.
+| What to try | What to notice |
+| --- | --- |
+| A short sentence, then a long email | Real work adds up to hundreds of tokens quickly |
+| One sentence in your own language and in English (or another language you know) | Many languages split into more pieces, so they use more tokens |
+| A table copied from a monday board or a sheet | Separators and repeated headers count too |
+| A few lines of code | Symbols and indentation become tokens of their own |
 
-## Step 2: Get your token report card
+Claude counts a little differently, but the idea is the same. In a chat, the AI rereads every piece with each new message.
 
-Your tokens fall into three groups. **Learning** tokens taught you something, including an experiment that failed and that you wrote down. **Shipping** tokens produced work someone used. **Waste** tokens produced nothing anyone used. The report card protects the first two and finds the third.
+## Step 2: Watch what your AI reads
 
-These habits create most of the waste:
+AI tools usually work by **progressive disclosure**: they first see a short list of what is available (file names, an index, skill descriptions) and open a file in full only when your question needs it. The way you ask decides how much they open.
 
-| Habit | What happens | What works better |
+Work where several files on different topics already live, for example a Claude project with knowledge files, or a folder Claude reads, such as your personal brain folder or a team folder. If you have neither, create a folder with four or five short files from your work, each on a different topic: for example a project plan, meeting notes, a team process and your quarterly goals.
+
+**In Claude:** start the chat inside the project, or give Claude the folder to work in.
+
+### Prompt: Explain how you read my files
+
+**What this does:** the AI explains progressive disclosure on your own files: for four kinds of question, which files it would open, in what order, and roughly how much it would read.
+
+Open a new chat in that project or folder and paste the prompt below.
+
+```
+Progressive disclosure means an AI tool first sees a short list of what is available (file names, an index, short descriptions) and opens a file in full only when a question needs it. A token is a small piece of text an AI counts; in English, about four characters.
+
+Explain progressive disclosure using the files in this project or folder and the work they are about. Open only what you need for this explanation. First list the files you can see, one line each on its topic. Then make a table for four kinds of question, with a real example question drawn from my files for each: a narrow fact that one file answers; a question that spans two topics; a broad summary of everything; a question none of the files answer. For each, show which files you would open, in what order, in full or in part, and a rough token estimate of what you would read. Then say when you would read every file, and whether this project is small enough that you load all of it every time anyway. Describe how you usually work, say where you are unsure, and mark every number as rough.
+```
+
+Then ask one of its example questions for real, and end it with "Tell me which files you opened." A small project may load every file each time (Claude projects do until their knowledge nears the size limit); the habits below still lead the AI to the right part of the right file.
+
+### Ask so your AI opens the right files
+
+Each habit tells the AI which file to open, or lets it stop after one.
+
+| Habit | What you might ask | What works better |
 | --- | --- | --- |
-| **The chat that runs for days** | Every turn sends the history again; answers get slower and vaguer | Ask for a summary of decisions and open items, then continue in a fresh chat |
-| **The giant paste** | A whole Salesforce export or a full board for one question | Point to the exact file, board group or columns; for internal data, ask Kremer one narrow question |
-| **The overloaded setup** | One long instructions file, read with every message | A short instructions page, plus topic files the AI opens when relevant |
-| **The vague brief** | Many rounds of corrections | Say who the reader is and what done looks like before the first draft |
-| **The strongest setting for everything** | Opus with extended thinking for formatting and lookups | A strong model and thinking for judgment; a lighter setting for mechanical work |
-| **The job nobody reads** | An hourly check for updates that arrive twice a day | Match the schedule to the source, or run it when the board changes |
-| **Under-using AI** | Research and drafting done by hand to save tokens | Give the AI a real task with a rich brief |
+| **Name the topic or the file** | "What did we decide?" | "In the pricing test notes, what did we decide about the trial length?" |
+| **Say what you need, and in what form** | "Tell me about the Q3 launch" | "List the open risks for the Q3 launch, one line each" |
+| **Narrow by date or scope** | "Summarize the meeting notes" | "Summarize the October meeting notes, decisions only" |
+| **Ask one thing at a time** | "Summarize the plan, check the budget and draft an update" | "What is still open in the budget section of the plan?" Then ask the next question |
+| **Point to the index first** (a short file that says what each file holds) | "Find everything about onboarding" | "Read the index, then open only the files about onboarding" |
+| **Ask which files it used** | "What were the action items?" | "What were the action items from the last team meeting? Tell me which files you used." |
 
-### Prompt: Your token report card
+**Connectors work the same way.** "Bring everything from my Slack" makes the AI read every message it can reach. A filter makes it read what your question needs.
 
-**What this does:** the AI interviews you about real examples from last week, rates your habits, and writes a one-page report card with two habits to change.
+| Unfiltered request | Filtered request |
+| --- | --- |
+| "All my Slack about the renewal" | "The renewals channel, last two weeks, messages that mention the customer" |
+| "Everything on the Escalations board" | "The Stuck group, status and owner columns" |
+| Internal data from many systems | One narrow question to Kremer |
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Customer boards (content monday's customers upload to their own boards) never go into Claude.
 
-```
-Help me write my token report card: an honest look at how I spend AI tokens, so I get better results from the same tools. Use what you know about me; ask only for what is missing, one question at a time.
+### Prompt: Estimate before you fetch
 
-Definitions:
-- Learning tokens taught me something. Shipping tokens produced work someone used. Waste tokens produced nothing anyone used.
-- Habits to check: chats that run for days; giant pastes; one overloaded instructions file; vague briefs that need many rounds; the strongest model and extended thinking for every task; scheduled jobs nobody reads; under-using AI.
+**What this does:** before fetching anything, the AI estimates what an unfiltered and a filtered request would read.
 
-Ask what I use AI for, in which tools, and whether I can read numbers from a usage view. Then ask about each habit through a real example from last week. If an answer is vague, ask for the example.
-
-Then write the report card:
-1. Where my tokens go: my top three kinds of work
-2. One real example each of learning, shipping and waste
-3. Each habit: working well or worth fixing, with the evidence
-4. Verdict in one sentence: heavy and healthy, balanced, waste signals, or under-using AI
-5. Two habits to change, chosen for their effect on my results, each as a concrete moment in my week
-6. What was measured and what was guessed
-
-Never recommend spending less overall. Name the waste and move those tokens to learning and shipping.
-```
-
-The report card is only for you and stays in your chat. Keep it open; Step 3 uses its two habits.
-
-**In Claude Code:** run `/context` to see what fills the context window, and `/cost` (or `/usage` on a subscription) for the current session's tokens.
-
-## Step 3: Prove two better habits on a real task
-
-Pick a task you do often and know well: a QBR summary, release notes, an incident write-up, forecast commentary, or a weekly team update from your board. Recall how it went last time: how many rounds it took, what you pasted, and how good the result was.
-
-### Prompt: Redo a task with two better habits
-
-**What this does:** the AI builds a short brief with you, works only from the sources the task needs, then compares this run with your last one.
-
-Open a fresh chat and paste the prompt below, because your report card chat is already long. Answer its questions in writing, or by voice if your tool has dictation.
+Open a new chat with your connectors on and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-I want to redo one task I do often, using two habits from my token report card. Ask me which task and which two habits, one question at a time.
-
-Then interview me for a short brief: who reads the result, what done looks like, and the exact sources you need (one file, one board group, a few columns, one thread). Show me the brief and wait for my approval.
-
-Do the task from the brief. Then ask me how the task went last time, and compare the two runs in a table: rounds until the result was usable, how much material you read, quality of the result, what I would keep. End with my two habits written as two short rules I can save in my standing instructions.
+Show me how a filter changes what you read through a connector. Do not fetch anything yet. Ask me one question at a time: which connector, and what I want to know. Then help me write a filter: only the sources, people, dates and fields my question needs. In a table, estimate roughly how many tokens each version would read (a token is a small piece of text an AI counts; in English, about four characters) and how you estimated. Then ask whether to run the filtered version, and afterwards tell me if anything my question needed was missing.
 ```
 
-You are done when the redo gives you a result you would use, in fewer rounds than last time. Save the two rules where your AI reads them in every chat, and use them for a week.
+## Step 3: Know the ballpark of your regular work
 
-**In Claude:** paste them into Settings → Instructions for Claude, or into the instructions of the project you use for this kind of work.
+### Prompt: The ballpark of my regular AI work
+
+**What this does:** interviews you about tasks you repeat, then estimates rough tokens and value for each.
+
+Open a new chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me see the rough token cost of the AI tasks I do regularly (a token is a small piece of text an AI counts; in English, about four characters). If I already answered a question earlier in this chat, don't ask it again.
+
+Start by asking me to brain dump the AI tasks I repeat (for example a weekly status, a meeting summary, a scheduled task). Then ask one question at a time about what is missing for each: how often I run it, what it reads, how many rounds it takes, which model and effort. Never guess how often; ask me.
+
+Then show a table: task, rough tokens per run and per month, what drives it, and whether it produces work, teaches me, teaches you about me, or spins. Rough reference ranges: a routine email 500 to 700 tokens; an answer with web search 6,000 to 15,000; a summary of a 10-page document 10,000 to 15,000; a deep research report 70,000 to 300,000. Each extra round reads the whole chat again. Never suggest using AI less; suggest where the same tokens could produce more.
+```
+
+**The model and the effort are part of the cost.** The model is the level of intelligence; the effort is how long it spends on the task, and its thinking tokens count like written words. Judge both by the cost of a finished task: a lighter model that needs many rounds and more effort can cost more than starting with Opus and finishing in one or two, plus your time.
+
+| What is the task? | Which model and effort? |
+| --- | --- |
+| Sorting, formatting, a lookup | A lighter model, low effort |
+| Summarizing a long document | Sonnet, low to medium effort |
+| A judgment call, a plan, a hard analysis | A strong model, for example Opus, high effort |
+
+**In Claude:** pick the model in the model menu; depending on the model, turn on extended thinking or set the effort.
+
+## Step 4: Make one real task smarter
+
+These habits turn spin into value.
+
+| Habit | Why does it help? |
+| --- | --- |
+| **Start a new chat when the topic changes** | Every message rereads the whole chat; carry over a summary of decisions |
+| **Disconnect connectors you do not use** | Depending on the tool, each connector can add its descriptions to what the AI reads |
+| **Turn repeated instructions into skills** | The AI loads a skill in full only when it needs it |
+| **Use project instructions and context files** | Standing context, written once, with no pasting |
+| **Filter what connectors fetch** | The AI reads what the question needs |
+| **Match the model and effort to the task** | You pay for a finished task |
+
+Pick a task from your ballpark table, ideally one using several connectors.
+
+### Prompt: Make one task smarter
+
+**What this does:** reviews one task, proposes changes from the habits, and writes the improved version.
+
+Stay in the chat from Step 3 and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Help me get more value from the tokens one of my regular AI tasks uses. Do not choose the task, and do not decide what a good result is; ask me. If I already answered a question earlier in this chat, don't ask it again.
+
+First ask which task. Then ask me to brain dump how I run it today and paste its instructions or skill. Then ask one question at a time about what is missing: sources and filters, model and effort, rounds, what a good result looks like.
+
+Then propose changes: filters on each connector request, fewer sources, a skill or project instructions for repeated context, fresh chats, the right model and effort. Never lower my quality bar or suggest using AI less. Show a before-and-after table (what it reads, rough tokens per run, expected rounds, risk to quality), then write the complete improved instructions or skill and wait for my approval.
+```
+
+Run the improved version on real work. You are done when the result is at least as good as your last run and every source it reads earns its place. If it became a skill, add it, then close and reopen your tool.
 
 ## Go further
 
-**Measure your real usage.** Do this if you work in an agentic coding tool (Claude Code, Cursor or Codex). These tools log tokens, so your report card can use measured numbers instead of guesses.
-
-**What this does:** reads your local usage logs without changing anything and reports the numbers that show waste.
-
-Open your coding tool on the machine you work on and paste the prompt below.
-
-```
-Measure my token usage from the logs on this machine. Rules: read-only; nothing leaves this machine; report numbers and project names only, never conversation content; never open credential files.
-
-Find the session logs of the coding tools I use and check their format before you count. If a tool keeps its numbers only in an online dashboard, tell me where to export them and wait.
-
-Report for the last 30 days: input tokens (fresh, cache reads, cache writes), output tokens, the ratio between them, cache-read share, the peak day and what I worked on, the top three projects, and anything that ran on days I did not work.
-
-Calibration: heavy agentic work often reads 100 to 200 tokens per token it writes, mostly from cache, and that is healthy. A high ratio with nothing shipped, or steady usage on days off, is a waste signal.
-```
-
-**Check your scheduled jobs.** Do this if you run automations or a scheduled assistant: a job that runs when nothing changed, or that nobody reads, is the quietest waste of all. For each job, ask when you last acted on its output. Then match its schedule to how often the source changes, run it when the board changes, or pause it.
+**See your real usage in Claude Code.** Do this if you work in Claude Code, which keeps exact usage. Ask Claude Code to show your usage and what fills its context, for example with the /context command.
 
 ## Proof of work
 
-In "what I built", name the two habits you chose and what changed on the real task.
+In "what I built", name the task you made smarter, what changed, and one thing you learned about tokens.
 
-For example: "Fresh chat with a summary, and one board group instead of the whole board. My weekly team update took two rounds instead of five, and it caught a blocked item I had missed."
+For example: "My weekly renewals status reads one channel and the At risk group, as a skill. Same quality in one round; pasted files ride along with every message."
 
 ## Related adventures
 
-- **Your AI Taste Test**: compare models on your own tasks by the cost and quality of a finished task.
-- **Automation Done Right**: design scheduled jobs that read only what they need.
-- **Build a Personal Brain for Your AI**: organise your context so the AI reads the right file at the right time.
+- **Automation Done Right**: find the automations that spin, then fix or stop them.
+- **Your AI Taste Test**: compare models on your own tasks.
+- **Skills: When, How and How Well**: turn repeated instructions into a skill.
