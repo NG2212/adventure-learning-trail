@@ -16,6 +16,7 @@ pattern: BUILD
 wave: W1
 slot: 22
 next: [designing-with-ai-results-you-actually-like, automation-done-right]
+review: ready
 source: "Adapted from summer-challenge/labs/build-a-beach-house.md (plan before build, thin working slice, one change at a time, retest the core path, fresh chat when stuck); catch-up-may/content/week-2/project-6-data-scientist.md (the 8 vibe-coding rules: MVP, 2-3 versions, checkpoint, new chat, point and show, test again; the 'keep asking until everything is covered' interview; spot-check numbers) and catch-up-may/content/week-3/project-7-professional-specialist.md Step 6 (build the one tool, MVP first). Sharing step adapted from the Silverfort Champions kit (silverfort/Champions/content/kit/materials/builders-checklist.md, art-of-the-possible.md, building-for-others.md: a domain expert checks the numbers, check before you share, a prototype going wide needs an owner and a review, the duties of data quality, maintenance and ownership), with everything Silverfort-specific removed. Method from Nufar's vibe-coding practices (grill-me spec, behavior and look, multi-version first draft, visual language as a file). Never edit the originals from this engagement."
 ---
 
@@ -75,7 +76,7 @@ The result depends mostly on the method, and the method is the same in every too
 
 1. **Plan your build and let the tool grill you**, because every question answered now is a fix you avoid later.
 2. **Build 2 or 3 high-level drafts**, so you choose a direction early.
-3. **Build gradually and test as you go**, starting with an MVP (minimum viable product).
+3. **Build gradually and test as you go**, starting with an MVP (minimum viable product): the smallest version that does the main job, so you can use it on real work before you add more.
 4. **Share it so people can trust it**, because they will act on what it shows.
 
 ## Before you start
