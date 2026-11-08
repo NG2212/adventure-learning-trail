@@ -3,7 +3,7 @@ slug: advanced-skill-patterns
 emoji: 🧩
 icon: layers
 title: "Advanced Skill Patterns"
-walkaway: "A skill system proven on real work: one pattern (knowledge files, code, a chain or a router) built on a workflow you repeat"
+walkaway: "An audited skill set, with a fix or a new advanced skill tested on real work"
 category: Set up your AI
 levels: [Intermediate, Advanced]
 professions: [Everyone, Engineering]
@@ -15,196 +15,217 @@ pattern: INSTALL
 wave: W3
 slot: 18
 next: [personalising-claude-code, audit-and-improve-your-ai-system]
-source: "Adapted from the Summer Adventure lab Pack Like a Pro (summer-challenge/labs/pack-like-a-pro.md): the inventory-then-choose flow, the routes (packed skill split into knowledge files and code, relay recast as chain, front desk recast as router, kit inspection moved to Go further), the build interview and the happy-path plus failure-path test. Basics (anatomy, five failure modes, near-miss test) live in content/adventures/skills-when-how-and-how-well.md and are linked, never repeated. Never edit the originals from this engagement."
+review: ready
+source: "Rebuilt 2026-11-08 from Nufar's review (videos/advanced-skill-patterns/notes.md): her six skill problems, the audit list, the audit-first proposal recorded with her notes, and her 8 Nov addition (sub-agents to parallelize or run a part on a named model; a skill that detects which skills to build). Fixes and Go further from her pattern library (appsflyer/Managers/exercises/advanced-pattern-library.md): knowledge file, script, chain, dispatcher, delegation, fan-out, fallback, 'the simplest pattern that solves the problem', combined skills compound tokens, the checkable validation rule. Company and shared skills in the audit and the 'prefer the company skill' routing idea from appsflyer/Managers/exercises/exercise-2-skills-advanced-patterns.md (Stretch). Atomic skills, the dispatcher with no job knowledge, and the per-fix failure tests from the Summer Adventure lab Pack Like a Pro (summer-challenge/labs/pack-like-a-pro.md). Basics live in content/adventures/skills-when-how-and-how-well.md and the token habits in content/adventures/token-smartness.md; both are linked, never repeated. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
-Adaptation note (2026-10-22, slot 18 [Inbar 19])
-- Kept from Pack Like a Pro: inventory first, then one route chosen by friction; the Skill-System Brief with an approval gate; build prompt that states the hand-off contract inside both skills and a router that says when nothing matches; the failure-path tests per route (missing hand-off, unmatched request, rule that lives only in the reference file); one refine pass.
-- Cut: the multi-tool map (Claude only), travel language, "Shape of the excursion" table, Layers/Stretch/Postcard, thinking tiers, hired helpers / sub-agents (Agent Teams and Orchestration and Personalising Claude Code own them), the scheduling stretch (Automation Done Right owns it).
-- Changed: "packed skill" split into two plain patterns, knowledge files and code, because the client promise names both; kit inspection became the library check in Go further; "how Claude picks a skill" became the Step 1 signals table, which carries the routing teaching.
-- Added for Monday: Monday and Engineering examples per pattern (release notes, QBR summary, forecast commentary, incident write-up, PR description); the rule that changing data stays on the monday board or behind Kremer while reference files hold what changes rarely; Claude Code path with hidden-folder steps; team sharing through the repository.
-- Skills themselves are never defined for the reader. Prompt 1 gives the AI one line so the prompt is self-contained.
+Rebuilt 2026-11-08 to Nufar's six problems and audit-first design (videos/advanced-skill-patterns/notes.md). The earlier map-then-choose-a-pattern page (knowledge files, code, chain, router) is retired with its design notes.
+
+Changed 2026-11-08 (her review): fix or build with the same patterns; the knowledge row broadened; Step 4 condensed.
+
+What landed where
+- Why this adventure: her six problems in plain words, as bullets with examples; the closing line offers the build path.
+- Step 1: one audit prompt run where the tool already sees the skills (no pasting). The AI counts, groups, flags unclear triggers, confusing pairs (company and shared skills included), repeated parts and unfiltered connector use. It asks the person only what the person knows: inconsistent skills, skills that need knowledge they lack, skills only they can run, skills they forget. Output: findings table with the matching fix, or "nothing worth fixing".
+- Step 2: prompt-free. Problem-to-fix table with an example per row, which doubles as the pattern menu for a new skill; pick one or two findings, starting with the costliest, or a pattern for a new skill; save a before result when fixing.
+- Step 3: one self-contained Fix or build my skill prompt: asks fix or build first, defines every pattern it may use, plan for approval, files in full, one stop-safely case, install lines for Claude and Claude Code.
+- Step 4: prompt-free. Her one-line instruction, then three short lines: a new chat, one real request with the skills and sub-agents used listed, one missing-input run that should stop with a clear message, and a one-sentence compare ask when a Step 2 result was saved. The Prove the fix prompt, the per-fix tests and the audit rerun are cut (keeps the page under the 2,300 cap after the build path was added).
+- Go further: a skill-finder prompt and a monthly-audit prompt, both complete on this page (self-contained rule, 8 Nov). Fallback lives in the Fix or build my skill prompt.
+
+Nufar's addition (8 Nov, after the first draft)
+- Sub-agents to parallelize parts of the work or to run a part on a named model: placed in the fix menu under "Skills are slow and heavy" (audit prompt, Step 2 table, apply prompt), because the audit can point to it (a slow skill with independent parts, or one step that needs a stronger model). Worded "only if my tool supports them"; the table says they need a tool such as Claude Code. Step 4's run lists sub-agents used.
+- A skill that detects which skills to build: the first Go further item ("Find the skills you still need"), with its own complete Build my skill-finder prompt that lists repeated tasks and builds the one the person picks.
+- Self-contained rule (Nufar, 8 Nov): no prompt on this page points to a prompt in another adventure. The skill-finder and the monthly audit each carry a full prompt; the apply prompt now states what every new or rewritten skill must contain (name, description in the person's phrases, steps, output format, check, missing-information handling). Related adventures and the Token Smartness 'see' link stay as further reading; Before you start keeps the pointer for people new to skills.
+- Cut for length: the Go further "Delegation and fan-out, in Claude Code" item (its point now lives in the fix menu; the context: fork detail is gone), the Go further fallback paragraph (fallback is now a fix in the apply prompt with a Step 4 test), the three core prompts tightened (audit 304 → about 235 words, apply 336 → about 280 before the skill-contents line), the Step 1 rationale, Step 2 examples, the Why closing sentence, the Automation Done Right pointer in Go further, and the dictation line shortened to the Token Smartness form.
+
+From the pattern library: "the simplest pattern that solves the problem" and "every skill another skill calls adds its tokens" inside the apply prompt; the chain's fixed-name hand-off and existence check (as atomic skills with a calling skill); the dispatcher that owns no job logic and says when nothing fits; the routing section in instructions (as the skill index); knowledge file and script (as consistency and packaging); delegation and fan-out (as sub-agents in the slow-and-heavy fix); fallback with a checkable validation rule (in the Fix or build my skill prompt). Not used: model tier per skill (folded into "the right model and effort" and the named-model sub-agent), the worked SKILL.md examples, context: fork, "combining patterns" as its own item (cut for length).
+
+Judgment calls for Nufar
+- "Skills you forget" is asked of the person in the audit, next to inconsistent and only-I-can-run: the AI cannot know what you forget, only which triggers are unclear.
+- Company and shared skills: the audit and the apply prompt say the person cannot edit them, so their fixes go into the person's own skills and instructions (rename yours, or "prefer the company skill for X" in the index).
+- Step 2 is prompt-free (read the findings, pick); the before result is saved there so Step 4 has a real baseline.
+- Her term "atomic task units" appears once, in the table, next to "atomic skills".
+- Token tune-up row links Token Smartness; the habits are not repeated.
+- The skill-finder reads "recent chats if your tool can search them" (memory and chat search at Monday unconfirmed, Keren Q7).
+- pattern stays INSTALL; AUD (audit → fix → re-score) now fits the page better if the field matters.
+- Step 4 uses a new chat so the updated skills load.
 
 Open items
-- Keren Q2: are skills added by each employee under Customize → Skills (ZIP upload of the skill folder), or provisioned by an admin? Affects the Step 3 install line and the team-sharing item in Go further.
-- Scripts in Claude chat skills rely on code execution, reported as approved at Monday (Claude-at-Monday slide, per the Voice of Customers notes). Confirm before launch.
-- Chain hand-off location: written as "the folder you work in" for Claude Code and Cowork, "the same chat" for Claude chat. Hands-on check pending for Cowork; Unified Claude reaches all orgs 10 Nov 2026 and may change the Cowork wording.
-- next: personalising-claude-code exists; audit-and-improve-your-ai-system is provisional until that file exists.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-23 Oct: do-this line on every prompt
+- Fresh-chat prompt test pending (playbook step 4): can Claude at Monday read the full text of every skill, including company and shared ones, or only names and descriptions? Does a calling skill reliably run other skills in order in Claude chat? Does the skill-finder find real candidates from recent chats?
+- How company and shared skills appear in Claude at Monday (listed with the person's own? editable or not?).
+- Keren Q2: are skills added by each employee under Customize → Skills, or provisioned by an admin? Affects the Step 3 install line.
+- Sub-agents in Claude chat at Monday: the page names Claude Code as the sure case; confirm whether Claude chat can run a skill's parts as sub-agents on a named model.
+- Scripts in Claude chat skills rely on code execution, reported as approved at Monday. Confirm before launch.
+- Scheduled tasks in Claude at Monday (Keren Q6) for the monthly audit in Go further.
+- next: audit-and-improve-your-ai-system is provisional until that file exists.
 -->
 
 # 🧩 Advanced Skill Patterns
 
-**Make your skills work as a system: skills that carry their own knowledge and run code, skills that hand work to each other, and descriptions that help Claude pick the right one.**
+**Audit the skills you have, then fix the problems that come with having many, or build a more sophisticated skill, with the pattern that matches.**
 
 ## Why this adventure
 
-After a few skills, new problems appear. The wrong skill runs. You still paste the naming guide into the chat. A skill gets a total slightly wrong. Two skills each do half a job, and you copy output between them by hand. These are system problems.
+Once you have a number of skills (your own, ones shared with you, company skills), predictable problems appear:
 
-Here you choose one pattern that fixes the friction you feel most, build it on a workflow you repeat, and prove it on real work.
+- **The same parts repeat across skills**, for example three deck skills that each do their own research.
+- **Similar skills confuse the tool**, so the wrong one runs.
+- **Skills do not start when you expect**, and you forget you have them.
+- **Some skills are slow and heavy**, and use many tokens.
+- **Results are inconsistent**: a different format, or a slightly wrong number, each time.
+- **A skill needs more knowledge**, or needs to come with its own set of knowledge (rules, reference material, examples), to run well for you or for others.
 
-New to skills? Start with **Skills: When, How and How Well**. Already build skills well? Aim for this bar: a teammate starts the workflow with one sentence, the right skill runs, every number is exact, and a missing input stops it with a clear message.
+In this adventure you audit your skills and fix the problem that costs you most. If nothing needs fixing, or you have an idea for a more sophisticated skill, you build one with the same patterns.
 
 ## The trail
 
-1. **Map the skills you have**, because a system starts from what works and where it collides.
-2. **Choose one pattern for one real workflow**, so you build what your work needs next.
-3. **Build and install it**, with the knowledge files, code or hand-off it needs.
-4. **Prove it on real work**, including the moment it should stop safely.
+1. **Audit your skills**, so you know what actually causes trouble.
+2. **Choose a fix or a pattern**: fix the finding that costs you most, or pick a pattern for a new skill.
+3. **Fix or build**, with one prompt that does either.
+4. **Test it on real work**, against your earlier results if you have them.
 
 ## Before you start
 
-Have at least two working skills in Claude, and one workflow you repeat where they disappoint you.
+If you have never built a skill, start with **Skills: When, How and How Well**. You need several skills already added in your AI tool.
 
-## Step 1: Map the skills you have
+## Step 1: Audit your skills
 
-Claude picks a skill by matching your request to each skill's description. The description is the signal; most collisions start there.
+The audit runs where your skills already are, so you paste nothing. It asks you only what the skills cannot show.
 
-| What a good description names | Example |
-| --- | --- |
-| **The phrases you actually say** | "Use when I say 'write the release notes'" |
-| **The input it works on** | "Works from merged tickets or a monday board export" |
-| **The output it produces** | "Produces customer-facing release notes" |
-| **Where its job ends** | "Internal changelogs go to the changelog skill" |
+### Prompt: Audit my skills
 
-Skills that share verbs and inputs ("summarise the account", "summarise the QBR") collide.
+**What this does:** the AI reads your skills, flags problems, asks what only you know, and matches each finding to a fix.
 
-### Prompt: Map my skills
-
-**What this does:** maps your skills and shows where they collide, where you move work by hand, and where a result must be exact.
-
-Open a new chat in Claude, where your skills are installed, and paste the prompt below.
+Open a new chat in the AI tool where your skills are added, for example Claude, or open Claude Code in your project folder, and paste the prompt below. Use a strong model, for example Opus. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Help me see my skills as a system. A skill is saved instructions Claude follows for one recurring task; Claude picks a skill by reading each skill's description.
+Audit my skills. A skill is saved instructions an AI tool follows for one recurring task; the tool picks one by its description. Read every skill you can see here, including company skills and skills shared with me. If you cannot see them, say so and stop.
 
-List every skill you can see here. If you cannot see them, ask me to paste each name and description until I say I am done.
+Count and group them. Flag: descriptions unclear about when to use the skill; pairs the tool could confuse, each with a request that would start the wrong one; parts repeated across skills; heavy connector reads with no filter.
 
-Show one table: skill name, its job in one line, the phrases that start it, what I still paste by hand when I use it, and any skill whose description overlaps with it.
+Then ask me to brain dump what bothers me about my skills, and ask one question at a time about what is missing: which skills give inconsistent results, which need more knowledge, which only I can run, and which I forget to use. If I already answered a question earlier in this chat, don't ask it again.
 
-Then list:
-1. Pairs of skills Claude could confuse, each with a request that would start the wrong one.
-2. Places where I move output from one skill into another by hand.
-3. Steps where the result must be exact every time: counts, totals, dates, formats.
-
-Use only what you can see or what I tell you. Stop and wait.
+Show a findings table: finding, skills involved, problem, matching fix. If nothing is worth fixing, say so. The matching fixes:
+- Repeated parts: one atomic skill per part, and one skill that calls them in order.
+- Confusing pairs: sharper descriptions; merge, rename or retire; a dispatcher (a skill that only picks the right skill).
+- Not starting or forgotten: a skill index in my instructions, or a dispatcher.
+- Slow and heavy: filtered connector calls, knowledge read only when needed, the right model and effort, sub-agents.
+- Inconsistent: examples, a template, a checklist, code for exact parts.
+- Needs more knowledge, or only I can run it: knowledge files (rules, reference material, examples) and code for exact parts, packaged with the skill.
+I cannot edit company or shared skills; fix them through my own skills and instructions.
 ```
 
-## Step 2: Choose one pattern for one real workflow
+## Step 2: Choose a fix or a pattern
 
-Pick by the friction in the skill map from Step 1.
+From the findings table, pick one or two findings to fix now, starting with the one that costs you most.
 
-| Pattern | Choose it when | Monday example |
+If the audit found nothing worth fixing, or you have an idea for a more sophisticated skill, build a new one. Pick the pattern that fits it, for example knowledge files for a skill that needs your team's rules.
+
+| What is the problem? | What is the fix, or the pattern for a new skill? | Example |
 | --- | --- | --- |
-| **Knowledge files** | You keep pasting the same rules, template or glossary | Release notes that open the product naming guide and the release template |
-| **Code** | A step must be exact every time | Forecast commentary that runs a script to calculate the change against last quarter |
-| **Chain** | The work has two stages you sometimes run separately | Incident write-up → customer summary, joined by a hand-off file |
-| **Router** | You have several skills and the wrong one runs | Customer requests routed to the follow-up, QBR summary or escalation reply skill |
+| **The same parts repeat in many skills** | **Atomic skills** (atomic task units): one skill per atomic part of the work, and one skill that calls them in order | Research-to-deck runs the research, summary and deck skills in order |
+| **Similar skills confuse the tool** | Sharper descriptions and triggers; merge, rename or retire; a dispatcher, a skill whose only job is to pick the right skill | Rename your "account summary" to "QBR prep", so it stops colliding with the company "account brief" |
+| **Skills do not start, or you forget them** | A skill index in your global or project instructions, or a dispatcher | "For release notes, use release-notes-from-tickets" |
+| **Skills are slow and heavy** | A token tune-up (see **Token Smartness**): filtered connector calls, knowledge read only when needed, the right model and effort. In a tool with sub-agents, such as Claude Code, they run independent parts in parallel, or a part on a named model | An account review sends five accounts to five sub-agents on a lighter model, and a strong model writes the final judgment |
+| **Results are inconsistent** | Examples, an output template, a checklist, and code for the parts that must be exact | Forecast commentary runs a script for the change against last quarter |
+| **A skill needs more knowledge, or its own set of knowledge, to run well for you or for others** | Knowledge files packaged with the skill (rules, reference material, examples), and code for the parts that must be exact | An incident write-up skill carries the severity rules and two past write-ups, so a teammate gets the same result you do |
 
-A reference file holds what changes rarely: rules, templates, naming. Data that changes, such as account history, stays on your monday board or behind Kremer, and the skill reads it at run time.
+If you are fixing an existing skill, run it on one real request before you change anything, and save the result for Step 4.
 
-### Prompt: Write the skill-system brief
+## Step 3: Fix or build
 
-**What this does:** the AI interviews you about one workflow, recommends a pattern and writes a brief for your approval.
+### Prompt: Fix or build my skill
 
-Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+**What this does:** the AI asks whether you are fixing or building, interviews you, builds it with the chosen pattern, and says where to add each part.
 
-```
-Help me choose one skill pattern for one real workflow, using the skill map in this chat. The four patterns:
-- Knowledge files: the skill carries reference files (rules, templates, glossaries, examples) and opens each one only when a step needs it.
-- Code: the skill carries a small script for a step that must be exact every time, runs it and uses the result.
-- Chain: two skills with a hand-off. Skill one saves a file with a fixed name and fixed sections; skill two starts by reading it.
-- Router: sharper descriptions, or one routing skill that only chooses a skill and says so when nothing matches.
-
-Interview me one question at a time: which workflow disappoints me most, how I do it step by step, and what went wrong last time. If I answer vaguely, ask for a recent example. Recommend one pattern and say why.
-
-Then write a one-page brief: pattern, workflow, skills it builds on or adds, files needed, hand-off contract (for a chain), what done looks like, one failure test. Stop and wait for my approval.
-```
-
-## Step 3: Build and install it
-
-A skill can be a folder of files. Claude reads only the description until the skill is needed, so long reference files cost nothing in other chats.
-
-| Part | What goes there | When Claude reads it |
-| --- | --- | --- |
-| **SKILL.md** | The skill itself: description, steps, format, gotchas | The description always; the rest when the skill runs |
-| **Reference files** | Rules, templates, glossaries, examples | When a step says to open one |
-| **Scripts** | A small program for one exact step | Claude runs it and reads the result |
-| **Hand-off file** (chains) | What skill one saves for skill two | At the first step of skill two |
-
-### Prompt: Build the skill system
-
-**What this does:** turns the brief you approved in Step 2 into every file the system needs, with install steps.
-
-Stay in the same chat and paste the prompt below.
+Stay in the chat from Step 1, so it sees your findings, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
 
 ```
-Build the skill system in the brief I approved in this chat. First check Claude's current documentation on skill folders (SKILL.md, reference files, scripts) and follow it.
+Help me fix a skill or build a new one with an advanced pattern. A skill is saved instructions an AI tool follows for one recurring task. If I already answered a question earlier in this chat, don't ask it again.
 
-Write every file in full:
-1. Each SKILL.md, with a description that opens with my trigger phrases and names its input.
-2. Reference files from my answers. Each step names the file it opens.
-3. Scripts: short, plainly commented, with one sample input and its exact expected output. Run the sample and show me the result.
-4. Chain: the hand-off file's name and sections stated in both skills; skill two stops and asks for skill one when the file is missing.
-5. Router: it only chooses; when nothing matches, it says so.
+First ask whether I want to fix a finding from my skill audit or build a new skill; do not choose for me.
+- To fix: ask which finding. If there is no audit in this chat, ask which skills and which problem.
+- To build: ask what the skill should do and which pattern I chose. If I am unsure, suggest the simplest pattern that fits and say why.
+Then ask me to brain dump how I do this work and what a good result looks like, and ask one question at a time about what is missing.
 
-Show the folder tree, then each file, then install steps for my Claude surface. Remind me to close and reopen Claude. Do not say it is installed until I confirm.
+Patterns you may use. Use the simplest that works; every skill or sub-agent another skill calls adds its own tokens.
+- Atomic skills: each does one part and saves its result under a fixed name; a calling skill runs them in order and stops when a result is missing.
+- Sharper descriptions: my phrases, the input, the output, where the job ends. Merge, rename or retire overlaps.
+- Dispatcher: a skill that only picks the right skill, and says so when none fits.
+- Skill index: lines in my instructions, "for this request, use this skill".
+- Token tune-up: filtered connector calls, knowledge opened only when needed, the right model and effort. If my tool supports sub-agents: independent parts in parallel, or one part on a named model.
+- Consistency: a worked example, a template, a checklist, a script for exact parts.
+- Knowledge: the rules, reference material and examples the skill needs, as knowledge files in its folder, plus scripts for exact parts, each named where it is used.
+- Fallback: use a saved snapshot while a check holds, for example "less than a day old"; otherwise fetch fresh data and save a new snapshot; say which path ran.
+
+Every new or rewritten skill has a short name in lowercase with hyphens, a description in my phrases saying when to use it, steps a new teammate could follow, the output format, a check before showing results, and what to do when information is missing.
+
+Show a short plan and wait for my approval. Check my tool's current documentation, then write every file in full. Test any script on a known answer. Include one case where it stops with a clear message. List each change in one line, say where to add each part, and remind me to close and reopen the tool.
 ```
 
 Read each file before you save it.
 
-**In Claude:** upload each skill folder as a ZIP file under Customize → Skills. For a chain, run both skills in the same chat; in Claude Cowork, the hand-off file lives in the folder you work in.
+**In Claude:** add or update the skills under Customize → Skills, and add a skill index where the prompt tells you.
 
-**In Claude Code:** save each skill folder, with its files, inside `.claude/skills/` in the project folder. The `.claude` folder is hidden: on Mac, press Cmd+Shift+. in Finder; on Windows, open File Explorer and choose View → Show → Hidden items.
+**In Claude Code:** save each skill folder inside `.claude/skills/` in your project folder, and a skill index in CLAUDE.md. The `.claude` folder is hidden: on Mac, press Cmd+Shift+. in Finder; on Windows, open File Explorer and choose View → Show → Hidden items.
 
-Then close and reopen Claude so it finds the new skills.
+Then close and reopen your tool.
 
-## Step 4: Prove it on real work
+## Step 4: Test it on real work
 
-Each pattern has a moment where it should stop safely; this prompt tests it.
+Test your new and improved skill and compare it against the previous results if you have them.
 
-### Prompt: Prove the skill system
+Open a new chat, so the updated skills load, and run the skill on one real request. Ask it to list the skills, files and sub-agents it used. Then run it once with missing input: it should stop with a clear message.
 
-**What this does:** runs one real request, then the failure test for your pattern, and proposes one improved version.
-
-Open a new chat, so Claude works from the installed skills alone, and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
-
-```
-I installed a skill system. Ask me its pattern (knowledge files, code, chain or router) and for one real request from my work. Use the installed skills only.
-
-1. Run the request. List the skills, reference files and scripts it used.
-2. Run the failure test for my pattern:
-   - Knowledge files: quote where the output follows a rule that lives only in a reference file.
-   - Code: run the script on an input whose answer I know; I will check the result.
-   - Chain: run skill two with the hand-off file missing. It should stop and ask for skill one.
-   - Router: ask me for a request that matches no skill. It should say so.
-3. Review in a table: right skill chosen, reference opened, numbers exact, hand-off read, output usable as-is (ask me).
-
-Then propose one improved version, each change explained in one line.
-```
-
-Save the improved version, close and reopen Claude, and run the request again. You are done when a one-sentence request starts the right skill and the failure test stops with a clear message.
+If you saved a result in Step 2, paste it into the same chat and ask: "Compare this earlier result with the new one in a table: what improved, what got worse, and what to change next."
 
 ## Go further
 
-**Combine two patterns.** Do this to see how patterns work together: a router in front of a chain, or a chain whose second skill runs a script. Test it with the Step 4 prompt.
+**Find the skills you still need.** Do this so your system keeps finding new reusable capabilities.
 
-**Check your whole library.** Do this when some skills feel fragile or duplicated. Ask Claude to review every skill against the five failure modes from **Skills: When, How and How Well**, and to propose merges, splits and sharper descriptions. Approve the plan before it rewrites anything.
+### Prompt: Build my skill-finder
 
-**Share the system with your team.** Do this when teammates repeat the workflow. Watch one teammate use it and fix what confused them. **In Claude Code:** commit the skill folders to the repository's `.claude/skills/`.
+**What this does:** writes a skill that looks at your recent work, lists tasks you repeat that deserve a skill, and builds the one you pick.
+
+Open a new chat in the AI tool where your skills are added and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+
+```
+Build me a skill-finder: a skill that spots tasks I repeat that should become skills. A skill is saved instructions an AI tool follows for one recurring task; the tool picks one by its description. If I already answered a question earlier in this chat, don't ask it again.
+
+Ask me one question at a time: where you can see my recent work (for example recent chats, if you can search them, or a folder), how far back to look, and the phrases I would use to start the skill-finder.
+
+Then check my tool's current documentation for its skill format and write the complete skill:
+- A short name in lowercase with hyphens, and a description in my phrases.
+- Steps: read my recent work from the sources I named; find tasks that came up more than once; drop tasks an existing skill already covers, including company and shared skills.
+- Output: a table, most frequent first, at most ten rows: task, how often, where it came up, an example request, and whether it suits a skill or a plain request.
+- Then offer to build the one I pick: interview me one question at a time about how I do it and what a good result looks like, and write that skill in the same format.
+- If a source cannot be read, say so.
+
+Show the whole skill in one block, tell me how to add it, and remind me to close and reopen the tool.
+```
+
+**Audit every month.** Do this because skills keep arriving.
+
+### Prompt: Turn the audit into a monthly skill
+
+**What this does:** turns Audit my skills into a skill you run by hand once, then on a schedule.
+
+Go back to the chat from Step 1, where the audit prompt is, and paste the prompt below.
+
+```
+Turn the Audit my skills prompt in this chat into a skill. If you cannot see it, ask me to paste it. A skill is saved instructions an AI tool follows for one recurring task. Keep every step, the problems and fixes list, and the findings table. Check my tool's current documentation for its skill format. Give it a short name in lowercase with hyphens and a description in my words. Show the whole skill in one block and tell me how to add it. After I run it by hand once, tell me how to make it a scheduled task that runs every month in my tool. In the scheduled run, list the questions to me at the end.
+```
 
 ## Proof of work
 
-In "what I built", name your pattern, the workflow it serves and one thing the failure test taught you.
+In "what I built", name the skill you fixed or built, the pattern you used, and what the test showed.
 
-For example: "Chain: incident-write-up hands a summary file to customer-incident-note. Skill two guessed when the file was missing; now it stops and asks."
+For example: "Research, summary and deck are now atomic skills that research-to-deck calls in order. With no research result, it stops and asks for it."
 
 ## Related adventures
 
-- **Skills: When, How and How Well**: the craft of one strong skill.
-- **Personalising Claude Code**: skills alongside sub-agents and hooks in a real repository.
-- **Automation Done Right**: put a proven skill system on a schedule.
+- **Skills: When, How and How Well**: build one strong skill.
+- **Token Smartness**: the habits behind the token tune-up.
+- **Automation Done Right**: put a proven skill on a schedule.
