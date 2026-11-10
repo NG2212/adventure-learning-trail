@@ -15,6 +15,7 @@ pattern: INT
 wave: W3
 slot: 24
 review: ready
+video: /videos/your-team-s-ai-blueprint.mp4
 next: [managing-with-ai, skills-when-how-and-how-well]
 source: "Adapted from appsflyer/Managers/exercises/exercise-4-team-os-sprint.md (Team OS components, 'every build gets an owner and a first step', the This Week close, swap / Monday-morning / people tests); appsflyer/Managers/exercises/team-os-interviewer-skill.md (quarterly review run: changes since last review, honest about what stalled); appsflyer/Managers/exercises/archive/2026-07-cohort-1/rnd-exercise-4-team-command-center.md Path B (Change Rituals: a sharing format, a learning cadence, recognition, small verifiable wins for skeptics); monday-client/monday-managers-training/Session 4/session-4-exercise-2-build-team-os.md Option B (minimum version to start this week; Innovation radar 'flags duplications'; team message from the stretch goals); Session 4/session-4-exercise-1-strategic-conversation.md and session-4-speaker-notes.md (the innovation map: what exists, what is duplicated, visibility gaps; 'visibility before control'; employees may be ahead of their manager); monday-managers-training/AGENTS.md (Nufar's AI Manifesto: what you believe, expect and allow; her Agent Tier Framework for what needs outside review). The shared-knowledge tests in Step 3 adapt the team edition from build-a-personal-brain-for-your-ai.md (three tests, one owner, one home, a start-here index). Never edit the originals from this engagement."
 ---
