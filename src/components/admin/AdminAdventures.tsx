@@ -45,6 +45,7 @@ function newAdventure(): AdminAdventure {
     slot: 31,
     next: [],
     body: TEMPLATE,
+    opensOn: "2026-11-09",
     isOpen: false,
     status: "Draft",
   };
