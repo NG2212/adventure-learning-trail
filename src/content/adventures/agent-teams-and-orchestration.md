@@ -15,6 +15,7 @@ pattern: INSTALL
 wave: W4
 slot: 26
 review: ready
+video: /videos/agent-teams-and-orchestration.mp4
 next: [personalising-claude-code, audit-and-improve-your-ai-system]
 source: "Rebuilt 2026-11-10 from Nufar's first-principles review (videos/agent-teams-and-orchestration/notes.md). Method adapted from supertraining/from-loops-to-org-charts/giveaways/graph-designer.md and reference-card.md: the five signals, the four-question check with its 0-1 / 2-3 / 4 verdicts, the fresh-context reviewer as the first addition, handoffs as contracts, model tier per agent, one human gate where consequences leave your hands, the GRAPH SPEC format and the honest cost paragraph. From summer-challenge/labs/assemble-your-crew.md: reuse what you already run before building, people stay on the chart. Evaluation at three levels (the result, the path, each agent) from Nufar's approved Evaluate at Three Levels. Every product claim comes from content/research/multi-agent-facts-2026-11-10.md (code.claude.com sub-agents, workflows, agent teams, costs and routines docs; cursor.com/docs subagents and automations; learn.chatgpt.com Codex subagents; developer.monday.com MCP client docs). Never edit the originals from this engagement."
 ---
