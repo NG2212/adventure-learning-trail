@@ -6,7 +6,7 @@ Current-state data and behavior contract for the Big Brain Studio port. The curr
 
 | Entity | Fields | Notes |
 | --- | --- | --- |
-| Person | id, name, firstName, role, isAdmin, onboardingAnswers? | Mock person now; company SSO identity in production. Answers are private to the owner and recommendation logic. |
+| Person | id, name, firstName, role, isAdmin, onboardingAnswers?, welcomeSeen? | Mock person now; company SSO identity in production. Answers are private to the owner and recommendation logic. |
 | Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, time?, video?, outcome, wave, slot, next[], body, review?, iconAsset? | Markdown/frontmatter content. time is optional free text; video is an optional preview URL (file or hosted YouTube/Vimeo/Loom page) shown beside the trail panel and editable in the Admin adventure editor; review is demo-only, not production status. iconAsset is derived badge-art path. Extra author fields and design comments are never displayed. |
 | Wave | number, opensOn | Wave data defines schedule. W1 open; W2 23 Nov, W3 7 Dec, W4 4 Jan in the demo. Production uses actual dates. |
 | ItineraryItem | personId, adventureSlug, position | Internal ordered model behind employee-facing My journey. |
@@ -15,6 +15,10 @@ Current-state data and behavior contract for the Big Brain Studio port. The curr
 | Title | name, threshold | First Steps 1, Day Tripper 3, Frequent Flyer 11, Globetrotter 20; derived from completion count. |
 | Announcement | id, text, linkTo, activeFrom, activeTo | Active announcement with date window. |
 | AnnouncementDismissal | personId, announcementId | Employee dismissal. |
+
+### Person.welcomeSeen
+
+Boolean, default false. Set by markWelcomeSeen when the person presses Continue on the first-run welcome screen (opening video `/videos/ai-adventure-opening.mp4`, poster `.jpg`), shown before onboarding question 1 only when answers are absent and the flag is unset. Persist per person (production: keyed to SSO identity) so the screen shows once across devices. Home always offers a replay link in a dialog; replaying does not change the flag. Not reported in Admin.
 
 ### Person.onboardingAnswers
 

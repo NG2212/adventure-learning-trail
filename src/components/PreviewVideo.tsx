@@ -10,15 +10,15 @@ export function embedUrl(url: string): string | null {
 }
 
 /** Small 16:9 preview from the optional `video:` frontmatter field. Renders nothing without a URL. */
-export function PreviewVideo({ url, title }: { url?: string | undefined; title: string }) {
+export function PreviewVideo({ url, title, poster, caption = "A short preview", className = "w-full shrink-0 lg:w-80" }: { url?: string | undefined; title: string; poster?: string; caption?: string | null; className?: string }) {
   if (!url) return null;
   const embed = embedUrl(url);
   return (
-    <figure className="w-full shrink-0 lg:w-80">
+    <figure className={className}>
       <div className="aspect-video overflow-hidden rounded-lg bg-stone">
-        {embed ? <iframe src={embed} title={`${title} preview`} className="size-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen loading="lazy" /> : <video src={url} controls preload="metadata" className="size-full" aria-label={`${title} preview`} />}
+        {embed ? <iframe src={embed} title={`${title} preview`} className="size-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen loading="lazy" /> : <video src={url} poster={poster} controls playsInline preload="metadata" className="size-full" aria-label={`${title} preview`} />}
       </div>
-      <figcaption className="mt-2 text-xs text-muted-foreground">A short preview</figcaption>
+      {caption && <figcaption className="mt-2 text-xs text-muted-foreground">{caption}</figcaption>}
     </figure>
   );
 }
