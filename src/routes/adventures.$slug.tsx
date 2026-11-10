@@ -3,7 +3,7 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight, Check, ChevronDown, Rocket } from "lucide-react";
-import { ADVENTURES, adventureBody, canOpenAdventure, getAdventure, WAVES } from "@/content/adventures";
+import { ADVENTURES, adventureBody, canOpenAdventure, getAdventure, opensLabel } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import type { CompletionResult } from "@/store/types";
 import { AdventureIcon } from "@/components/AdventureIcon";
@@ -224,7 +224,7 @@ function AdventureContent({ adventure }: { adventure: NonNullable<ReturnType<typ
         <div className="min-w-0 flex-1">
           <div className="mb-2 flex gap-2">
             {done && <Chip>Completed</Chip>}
-            {!adventure.isOpen && <Chip tone="neutral">{WAVES[adventure.wave]?.label}</Chip>}
+            {!adventure.isOpen && <Chip tone="neutral">{opensLabel(adventure)}</Chip>}
             {preview && <Chip tone="primary">Admin preview</Chip>}
           </div>
           <p className="eyebrow mb-2">AI Adventure · {adventure.category}</p>

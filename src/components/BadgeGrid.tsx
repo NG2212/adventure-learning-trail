@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ADVENTURES, CATEGORIES, WAVES } from "@/content/adventures";
+import { ADVENTURES, CATEGORIES, opensLabel } from "@/content/adventures";
 import { useStoreState } from "@/store";
 import { ICONS, badgeStateFor } from "./AdventureIcon";
 import { LabelHint } from "./LabelHint";
@@ -13,6 +13,6 @@ export function BadgeGrid({ title = "Badges" }: { title?: string }) {
     const state = badgeStateFor(a, earned);
     const Icon = ICONS[a.icon];
     const content = <Link to="/adventures/$slug" params={{ slug: a.slug }} data-badge-state={state} className={cn("flex max-w-36 flex-col items-center gap-2 text-center", state === "later" && "opacity-45")}><span className={cn("flex size-14 shrink-0 items-center justify-center rounded-full", state === "earned" ? "bg-primary text-primary-foreground" : state === "open" ? "bg-card text-primary ring-1 ring-primary/40" : "bg-card text-muted-foreground ring-1 ring-stone")}><Icon className="size-8" strokeWidth={1.75} /></span><span className={cn("text-xs", state === "later" && "text-muted-foreground")}>{a.title}</span></Link>;
-    return !a.isOpen && !has ? <LabelHint key={a.slug} text={WAVES[a.wave]?.label ?? "Opens later"}>{content}</LabelHint> : <div key={a.slug}>{content}</div>;
+    return !a.isOpen && !has ? <LabelHint key={a.slug} text={opensLabel(a)}>{content}</LabelHint> : <div key={a.slug}>{content}</div>;
   })}</div></section>)}</section>;
 }
