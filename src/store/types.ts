@@ -41,6 +41,8 @@ export interface StoreState {
   opensOn: Record<string, string>;
   /** Wave dates (ISO); they only seed adventure defaults. */
   waveDates: Record<number, string>;
+  /** Admin wave reassignments by slug; missing slugs keep their frontmatter wave. */
+  waves: Record<string, number>;
 }
 
 export interface CompletionResult {
