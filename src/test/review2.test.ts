@@ -46,8 +46,10 @@ describe("second L&D review rules", () => {
       ["planning-with-ai", "/videos/planning-with-ai.mp4"],
       ["advanced-skill-patterns", "/videos/advanced-skill-patterns.mp4"],
       ["audit-and-improve-your-ai-system", "/videos/audit-and-improve-your-ai-system.mp4"],
+      ["your-team-s-ai-blueprint", "/videos/your-team-s-ai-blueprint.mp4"],
       ["the-daily-dispatch", "/videos/the-daily-dispatch.mp4"],
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
+      ["redesign-your-week-with-ai", "/videos/redesign-your-week-with-ai.mp4"],
       ["the-loop", "/videos/the-loop.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
