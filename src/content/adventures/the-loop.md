@@ -199,5 +199,5 @@ For example: "Release notes from 34 pull requests. DONE WHEN: every pull request
 ## Related adventures
 
 - **Understanding AI Agents**: how agents work and how to write goals, if this is new to you.
-- **Agent Teams and Orchestration**: when one loop needs a separate reviewer or parallel workers.
+- **Multi-Agent Workflows**: when one loop needs a separate reviewer or parallel workers.
 - **Token Smartness**: loops use many tokens; learn where they go.

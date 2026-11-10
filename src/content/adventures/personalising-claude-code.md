@@ -238,5 +238,5 @@ In "what I built", name the project folder, your before-and-after numbers (instr
 ## Related adventures
 
 - **Advanced Skill Patterns**: make a single skill better.
-- **Agent Teams and Orchestration**: many agents on one piece of work.
+- **Multi-Agent Workflows**: many agents on one piece of work.
 - **Audit and Improve Your AI System**: the same audit across every AI tool.
