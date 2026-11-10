@@ -1,6 +1,7 @@
 // Builds the adventure index at startup from Markdown frontmatter.
 // Each file in ./adventures/*.md is one adventure. Add a file, it appears everywhere.
 import { parse as parseYaml } from "yaml";
+import { formatOpensDate, formatOpensLabel, isOpenOn, opensOnFor } from "./schedule";
 
 export const CATEGORIES = [
   "Work smarter with AI",
@@ -39,13 +40,8 @@ export const CATEGORY_ICON: Record<Category, IconName> = {
   "Lead with AI": "people",
 };
 
-/** Waves: W1 open now, later waves open on a fixed date. */
-export const WAVES: Record<number, { label: string; opensOn: string | null }> = {
-  1: { label: "Open now", opensOn: null },
-  2: { label: "Opens 23 Nov", opensOn: "23 Nov" },
-  3: { label: "Opens 7 Dec", opensOn: "7 Dec" },
-  4: { label: "Opens 4 Jan", opensOn: "4 Jan" },
-};
+/** Wave seed dates (placeholders); each adventure's live date comes from the store. */
+export { WAVE_DEFAULT_DATES } from "./schedule";
 
 /** Total adventures planned for the programme. */
 export const TOTAL_ADVENTURES = 30;
@@ -72,7 +68,10 @@ export interface Adventure {
   slot: number;
   next: string[];
   body: string;
-  isOpen: boolean;
+  /** Live opening date (ISO) read from the store; seeded from the wave. */
+  readonly opensOn: string;
+  /** Today is on or after opensOn. */
+  readonly isOpen: boolean;
 }
 
 /** Raw frontmatter as written in the Markdown files. Extra fields (emoji, pattern, source) are ignored. */
@@ -109,7 +108,7 @@ export function toAdventure(raw: string): Adventure {
   const { data, body } = splitFrontmatter(raw);
   const category = data.category ?? "Work smarter with AI";
   const wave = parseWave(data.wave);
-  return {
+  const a = {
     slug: String(data.slug),
     review: typeof data.review === "string" ? data.review : undefined,
     icon: isIconName(data.icon) ? data.icon : CATEGORY_ICON[category],
@@ -127,9 +126,18 @@ export function toAdventure(raw: string): Adventure {
     slot: Number(data.slot ?? 0),
     next: data.next ?? [],
     body,
-    isOpen: wave === 1,
     iconAsset: iconAssetFor(String(data.slug)),
   };
+  Object.defineProperties(a, {
+    opensOn: { enumerable: true, get: () => opensOnFor(a.slug, a.wave) },
+    isOpen: { enumerable: true, get: () => isOpenOn(opensOnFor(a.slug, a.wave)) },
+  });
+  return a as Adventure;
+}
+
+/** "Opens 23 Nov" (year added when not the current year). */
+export function opensLabel(a: Pick<Adventure, "opensOn">): string {
+  return formatOpensLabel(a.opensOn);
 }
 
 /**
@@ -178,7 +186,7 @@ export function adventureBody(a: Adventure, adminPreview = false, demoOpenAll = 
   const open = canOpenAdventure(a, demoOpenAll);
   if ((open || adminPreview) && a.body) return a.body;
   if (open) return `## Content coming\n\n${a.walkaway}\n\nThe full adventure is being written. Add it to your itinerary and it will be here soon.`;
-  return `## This adventure opens on ${WAVES[a.wave]?.opensOn ?? "a later date"}\n\n${a.walkaway}`;
+  return `## This adventure opens on ${formatOpensDate(a.opensOn)}\n\n${a.walkaway}`;
 }
 
 /** Shared links may arrive with capitals, spaces, underscores or a trailing slash; adventure slugs are lowercase-hyphenated. */
