@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { createFileRoute, useNavigate, useHydrated } from "@tanstack/react-router";
-import { Play } from "lucide-react";
 import { useStoreState } from "@/store";
 import { WelcomeChoices } from "@/components/WelcomeChoices";
 import { BadgeGrid } from "@/components/BadgeGrid";
 import { JourneyPanel } from "@/components/JourneyPanel";
-import { OpeningVideoLink } from "@/components/OpeningVideo";
+import { PreviewVideo } from "@/components/PreviewVideo";
+import { OPENING_VIDEO, OPENING_POSTER } from "@/components/OpeningVideo";
 
 export const Route = createFileRoute("/welcome")({
   head: () => ({
@@ -33,15 +33,11 @@ function Welcome() {
         <div className="min-w-0">
           <p className="eyebrow mb-2">AI Adventure · Home</p>
           <h1 className="text-3xl sm:text-4xl">Welcome, {person.firstName}</h1>
-          <div className="mt-2 mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"><p className="text-muted-foreground">How would you like to start?</p><OpeningVideoLink /></div>
+          <p className="mt-2 mb-6 text-muted-foreground">How would you like to start?</p>
           <WelcomeChoices />
           <JourneyPanel className="mt-6 lg:hidden" />
-          <div className="mt-8 flex aspect-video w-full flex-col items-center justify-center gap-4 ui-card">
-            <span className="flex size-20 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <Play className="ml-1 size-8" fill="currentColor" />
-            </span>
-            <p className="font-semibold">A welcome from L&amp;D</p>
-          </div>
+          <h2 className="mt-8 text-xl font-semibold text-navy">Welcome to the AI Adventure</h2>
+          <PreviewVideo url={OPENING_VIDEO} poster={OPENING_POSTER} title="Welcome to the AI Adventure" caption={null} className="mt-3 w-full" />
           <p className="mt-8 max-w-3xl text-lg">
             AI Adventure is a set of short, hands-on destinations. Each one ends with something real you built and keep:
             a prompt, a document, a working setup. Go at your own pace, in any order, and choose the path that fits your work.

@@ -18,7 +18,7 @@ Current-state data and behavior contract for the Big Brain Studio port. The curr
 
 ### Person.welcomeSeen
 
-Boolean, default false. Set by markWelcomeSeen when the person presses Continue on the first-run welcome screen (opening video `/videos/ai-adventure-opening.mp4`, poster `.jpg`), shown before onboarding question 1 only when answers are absent and the flag is unset. Persist per person (production: keyed to SSO identity) so the screen shows once across devices. Home always offers a replay link in a dialog; replaying does not change the flag. Not reported in Admin.
+Boolean, default false. Set by markWelcomeSeen when the person presses Continue on the first-run welcome screen (opening video `/videos/ai-adventure-opening.mp4`, poster `.jpg`), shown before onboarding question 1 only when answers are absent and the flag is unset. Persist per person (production: keyed to SSO identity) so the screen shows once across devices. Home shows the same video inline through PreviewVideo; watching it there does not change the flag. Not reported in Admin.
 
 ### Person.onboardingAnswers
 
