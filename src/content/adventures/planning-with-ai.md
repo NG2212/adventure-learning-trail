@@ -3,232 +3,260 @@ slug: planning-with-ai
 emoji: 🧭
 icon: calendar
 title: "Planning with AI"
-walkaway: "A plan you would actually present, built from real signals on your boards and already challenged"
+walkaway: "A plan built from what is really on your plate, with a living home that stays fresh"
 category: Create with AI
 levels: [Intermediate, Advanced]
-professions: [Everyone, Product, Engineering]
+professions: [Everyone]
 audience: [Managers]
 tool: Any AI tool
 effort: 1 hour
 outcome: Build something
-pattern: INT + PANEL
+pattern: INT + INSTALL
 wave: W3
 slot: 16
-next: [board-of-advisors, making-decisions-with-ai]
-source: "New adventure (inventory: New). Stress-test adapted from Executive Catch-Up Project 5 (catch-up-may/content/week-2/project-5-strategic-advisor.md: Step 7 stakeholder simulation from real evidence, Step 8 role map Decider / Influencer / Blocker / Champion / Neutral and the feared question, Step 9 scenario simulation principles: early warning signs, tripwires, cheapest action this week; Step 10 pre-mortem and quarterly priority reset) and its reference card (project-5-reference-card.md). Board of Advisors adventure (content/adventures/board-of-advisors.md) linked, never repeated. Never edit the originals from this engagement."
+review: ready
+video: /videos/planning-with-ai.mp4
+next: [your-own-chief-of-staff, automation-done-right]
+source: "New adventure (inventory: New). Pressure test adapted from Executive Catch-Up Project 5 (catch-up-may/content/week-2/project-5-strategic-advisor.md: Step 8 role map Decider / Influencer / Blocker / Champion / Neutral and the feared question; Step 9 scenario principles: early warning signs, tripwires, cheapest action this week; Step 10 pre-mortem and the mid-period priority reset) and its reference card (project-5-reference-card.md). The plan's home is Nufar's own practice: she manages her to-do list in a dedicated Claude artifact, kept current from Claude. The home-page prompt adapts her seed prompt (content/reference/todo-artifact-seed-prompt.md: design before building, seed and mark, numbered rules in her words, ground rules), shaped for plans. Artifact capabilities only from content/research/claude-artifacts-plan-facts-2026-11-10.md. Skill first, tested by hand, then scheduled: Nufar's automation method. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
-Adaptation note (2026-10-22, slot 16 [Inbar 12])
-- Kept from Catch-Up P5: the role map (Decider, Influencer, Blocker, Champion, Neutral) as the stakeholder lenses in the Step 4 stress-test; "the question you most hope nobody asks" with a calm answer; personas from real evidence (Step 7) as "use what they have said in Slack or meetings"; the pre-mortem (Step 10); the scenario principles (early warning sign, tripwire, cheapest action this week) inside the Go further scenario planning prompt; the quarterly priority reset as the mid-period plan check.
-- Cut: the Strategic Advisor worker, capability menu, decision styles, devil's advocate mode, stakeholder dynamics file, Sarah Chen, all Catch-Up cross-references. The board itself lives in Build Your Board of Advisors and is linked once in Step 4.
-- Added for Monday: a no-AI thinking step (the plan's question); monday boards, Drive, Slack and Kremer as signal sources with a signal sheet (facts / asks / commitments) so every priority traces to a signal; run work (support, on-call, bugs, incidents) in the capacity check for engineering; a deferred list; the plan goes back onto the team board as items and a "Signals to watch" group.
-- Scenario planning (the stretch) is distinct from the three-futures test in Making Decisions with AI: two key uncertainties, four scenarios, moves that work in every scenario, moves that wait for a signpost, signposts tracked on the board.
-- Design-notes rule honoured: the plan stands alone; no requirements-document step anywhere.
-- Managers: capacity is team capacity; one line keeps people data out of the plan.
+Rewritten 2026-11-10, from Nufar's page review (videos/planning-with-ai/notes.md)
+- Planning now covers three kinds of plan: the day-to-day to-do list (for yourself or your team), a project or activity (a launch, a quarter), and a large work item that AI helps scope and manage.
+- Trail: scope the planning · gather what is on your plate · draft and pressure-test · give the plan a home · keep it fresh. Step 4 (the home) is the centerpiece; Step 5 is required for recurring plans.
+- Step 1: think-first in her final form, then one interview that owns plan type, who it serves, operating principles and granularity, sources, and routines. Later steps read the brief and never ask these again (one step owns each topic).
+- Step 2: the signal sheet, widened, with a what-to-collect table per plan type (sources stay in Step 1's brief). Day-to-day types (commitment, ask, deadline, meeting) and project types (commitment, customer ask, breakage, team time, result). Independent-source count and UNVERIFIED kept. Customer-boards line kept.
+- Step 3: one prompt that branches on plan type. Day-to-day gets a reality check (load per day against time outside meetings, what is slipping, drop / delegate / move). Project and large work item keep the three directions under the "directions are nuanced" rule (work with a clear leaning; three directions only when undecided), the one-page plan with capacity at 100%, and a compact reader challenge (role map, pre-mortem, the feared question; single-source priorities are already visible in the signal sheet's source count). It ends with a list of plan items, so Step 4 has a real artifact to work on.
+- Step 4: three homes in one table (Claude artifact, monday board, another visual with Big Brain Studio and monday vibe as "for example" only), then one prompt that branches on the chosen home. The artifact branch is opinionated on fields and views and decides the output up front (design page, wait for OK); the board branch creates items through the connector after approval or gives a paste-in list; the other-tool branch hands over fields, views and items in one block. Personal or shared storage, Anyone at Monday sharing, updates from the plan's chat inside a Claude project, test once before relying on a new chat. All from the 10 Nov facts file; nothing undocumented is promised.
+- Step 5: a self-contained skill prompt for one routine (reads the brief's sources, updates the home, flags what slipped, asks before dropping or delegating, quiet-day line), then a scheduled task. Artifact refresh by a scheduled task is written as "test it once in your setup". A one-off project gets the mid-way check-in prompt instead.
+- Go further: scenario planning, compacted from the earlier prompt (same six moves in five lines); turning a personal plan into a team plan as a plain-language ask with no prompt block.
+- Removed: the Build Your Board of Advisors pointer and the reader table before the stress test (the prompt defines the roles). Dana's example replaced by Marco (day-to-day), because the artifact is the harder thing to picture.
+- Managers: capacity is team capacity; notes about individual people stay out of it (Step 3).
+
+Judgment calls
+- Overlap with Your Own Chief of Staff Step 4 (to-do board artifact from the same seed prompt): kept distinct by scope. That page builds an assistant for the whole workload; this one makes one plan, with plan-specific fields and views, and says so in Related adventures (a hook line was cut for length). Nufar may want Chief of Staff Step 4 to point here, or to keep both.
+- Two branching prompts run long: Step 3 (~235 words, both plan types plus the reader roles) and Step 4 (~240 words, three homes). Both sit near the guide's ~250 ceiling for a prompt that defines a framework; splitting them would cost more words in do-this lines and push the page past the 2,300 cap.
+- Length: first full draft 3,154 words; cut to 2,294 by merging the two Step 4 prompts, compacting the scenario prompt, turning the team plan into a plain-language ask, dropping the reader table and the where-it-lives column, and trimming every prompt. Nothing self-contained was cut. The page sits just under the cap, so any addition needs a matching cut.
+- Before you start holds only the skill prerequisite line; choosing the plan sits in Step 1, so the two never overlap.
+- The whole adventure runs in one chat, inside a Claude project, because that chat later keeps the plan updated. The check-in prompt works from that chat or from a pasted plan.
+- next changed to your-own-chief-of-staff and automation-done-right, to match Related adventures. Making Decisions with AI stays in Related adventures.
+- effort left at 1 hour; with an artifact build, a skill and a schedule, Longer may fit better (Chief of Staff is Longer). Category left at Create with AI. Both are Nufar's call.
 
 Open items
-- monday connector write access: Step 5 lets the AI create board items after approval and offers the paste-in route as the alternative. Confirm item creation through the connector is enabled at Monday.
-- Kremer access from Claude chat and Cowork for usage and revenue data: worded "if you have access", consistent with other adventures.
-- next: board-of-advisors and making-decisions-with-ai both exist.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-23 Oct: do-this line on every prompt
+- monday connector write access: Step 4 lets the AI create board items after approval and offers a paste-in list as the alternative. Confirm item creation through the connector is enabled at Monday.
+- Kremer access from Claude: worded "if I have access", consistent with other adventures.
+- Hands-on test: can a new Claude chat update an existing artifact at Monday? Not documented. The page tells people to keep the plan's chat in a project and test once. (Nufar's 5 Nov two-chat test in Your Own Chief of Staff worked; the account was not recorded.)
+- Artifact connectors and Dashboards: are they enabled at Monday? Neither is named on the page until confirmed. monday.com is not a documented artifact connector.
+- Keren Q6: scheduled tasks in Claude enabled at Monday? Step 5 assumes yes.
+- Prompt test in a fresh Claude chat: pending (playbook step 4), especially the branching Step 3 prompt and the home-page prompt's storage and seeding.
 -->
 
 # 🧭 Planning with AI
 
-**Build a quarter, project or roadmap plan from real signals, and let AI challenge it before anyone else does.**
+**Make a plan from what is really on your plate, test it, and give it a home that AI keeps fresh.**
 
 ## Why this adventure
 
-A plan is a promise about where a team's time will go. Many plans start from last quarter's plan and the loudest request in the room, while the real signals sit across monday boards, customer feedback, incident write-ups and data.
+A plan can be your to-do list for today, a project or activity, or a large piece of work that needs scoping. Often it lives in your head or a chat and goes stale within days, while the real commitments sit in monday boards, Slack, email and your calendar.
 
-In this adventure you build one real plan: a quarter, a project or a roadmap. AI helps you collect the signals, structure the plan and test it from the position of each reader. You finish with a plan you would actually present, and its items on your board.
+In this adventure you make one real plan with AI, give it a home such as a Claude artifact or a monday board, and add a routine that keeps it fresh.
 
 ## The trail
 
-1. **Decide what the plan must answer**, so it stays focused.
-2. **Gather the real signals**, so every priority rests on evidence.
-3. **Draft the plan**, with priorities, capacity and what you defer.
-4. **Stress-test it**, to hear the hard questions before the planning review.
-5. **Put it where the work lives**, so the plan guides the work.
+1. **Scope the planning**, so the plan fits how you work.
+2. **Gather what is on your plate**, so it rests on evidence.
+3. **Draft and pressure-test the plan**, before the work starts.
+4. **Give the plan a home**, where you look every day.
+5. **Keep it fresh**, so it stays true after the first week.
 
 ## Before you start
 
-Pick one real plan you owe soon, and have the monday boards behind it available to connect.
+If you have never built a skill, start with Skills: When, How and How Well.
 
-## Step 1: Decide what the plan must answer
+## Step 1: Scope the planning
 
-**Think first, without AI.** Close the chat. In a note, write: the period and scope of the plan; who approves it and who has to follow it; the main decision the plan makes (for example, which three bets get the team's time next quarter); what you already believe; and what worries you. Messy is fine.
+**Think first for yourself, without AI.** Which plan is it: your day-to-day to-do list, a project such as a launch or a quarter, or a large work item to scope? What should it do for you, and who relies on it? How do you like to plan, and in how much detail? Where does your work come from? Messy is fine.
 
-### Prompt: Your plan brief
+**In Claude:** create a project for this plan and run the whole adventure in one chat there. That chat will keep the plan updated.
 
-**What this does:** the AI interviews you about your notes and writes a short brief that every later step uses.
+### Prompt: Your planning brief
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+**What this does:** the AI interviews you about your thoughts and writes a short brief that every later step uses.
+
+Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
 
 ```
-Help me prepare a plan. I will paste or dictate my notes. Use what you already know about me and my team; ask only for what is missing, one question at a time. If I answer vaguely, ask for an example.
+Help me scope a plan. Ask me to brain dump or paste all my thoughts on this before you start. Use what you know about me; ask only for gaps, one question at a time. If I already answered a question earlier in this chat, don't ask it again. Do not choose the plan, do not narrow it, and do not decide what good means.
 
-Then write a plan brief, under 200 words:
-1. Scope and period
-2. Readers: who approves the plan, and who has to follow it
-3. The main decision the plan makes
-4. The goals it serves, and how success will be measured
-5. Fixed constraints: team size, dates, commitments already made
-6. My current leaning, and how confident I am in it (as a percentage)
+Cover:
+1. Plan type: day-to-day to-do list, project, activity or quarter, or large work item
+2. Who it serves, and who approves it
+3. Period, scope, and what done looks like
+4. Operating principles: how I plan (for example a top three a day, weekly themes, time blocks, buffer for the unplanned) and how detailed items are
+5. Sources, for example monday boards, Slack, email, calendar, Drive, Kremer if I have access
+6. Routines that keep it fresh, for example a morning plan or a weekly review
+7. Fixed constraints: dates, team size, commitments made
 
-Stop and wait for my approval.
+Write a planning brief under these seven headings, under 200 words. Wait for my approval.
 ```
 
-## Step 2: Gather the real signals
+## Step 2: Gather what is on your plate
 
-A signal is any evidence about what the plan should contain. Good plans draw on several kinds.
-
-| Which signals? | Where they live at Monday |
+| Plan type | What to collect |
 | --- | --- |
-| **Commitments already made** | Roadmap and project boards, promises in customer follow-ups |
-| **What customers ask for** | Feedback and feature-request boards, QBR summaries, renewal calls |
-| **What breaks** | Bug boards, incident write-ups |
-| **How the team actually spends its time** | Sprint and team boards: support load, on-call, unplanned work |
-| **Results and usage** | Dashboards, and internal data through Kremer |
+| **Day-to-day** | Commitments you made, asks waiting for you, deadlines, meetings to prepare |
+| **Project or work item** | Commitments, customer asks, what breaks (bug boards, incident write-ups), where team time goes, results |
 
-AI tends to treat one loud request as a trend, so the prompt counts the sources behind each signal.
+Data that Monday's customers uploaded to their own monday boards stays out of Claude; Monday's own data about customers is fine. AI tends to treat one loud request as a trend, so the prompt counts independent sources.
 
 ### Prompt: Your signal sheet
 
-**What this does:** reads your sources and builds one table of evidence, before any plan exists.
+**What this does:** reads the sources in your brief and builds one table of evidence, before any plan exists.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Build a signal sheet for the plan brief in this chat. Ask me which monday boards, Drive documents and Slack channels to read, and read them through my connectors. If I have internal data through Kremer, ask whether to use it.
+Build a signal sheet for the planning brief in this chat. Read the brief's sources through my connectors and name any you could not reach.
 
-Output one table: signal, type (commitment, customer ask, breakage, team time, result), source, number of independent sources, data or anecdote.
+One table: item, type, source, number of independent sources, due date, data or anecdote. Day-to-day types: commitment, ask, deadline, meeting. Project types: commitment, customer ask, breakage, team time, result.
 
-Below it: the three strongest signals, signals that conflict, and questions the sources could not answer.
-
-Mark anything you could not confirm from a source as UNVERIFIED. Stop after the signal sheet; the plan comes next.
+Below it: the strongest items, conflicts, and open questions. Mark anything no source confirms as UNVERIFIED. Then ask what only I know, such as a promise made in a meeting.
 ```
 
-Then add what only you know, such as a promise made in a meeting.
-
-## Step 3: Draft the plan
-
-### Prompt: Draft the plan
-
-**What this does:** offers three directions for the plan, waits for your choice, then drafts one page.
-
-Stay in the same chat and paste the prompt below.
-
-```
-Draft my plan from the plan brief and the signal sheet in this chat.
-
-First, propose three genuinely different directions: focused (fewer bets, done well), balanced, and ambitious. For each: the priorities in one line, what it gives up, and who would like it least. Stop and wait while I pick or combine.
-
-Then write the plan on one page:
-1. Goal, and how we will measure it
-2. Three to five priorities, each with the signals behind it and the measure of done. Mark a priority without a signal as "judgment call".
-3. Deferred this period, with one line of reason each
-4. Capacity: the share of team time per priority, plus run work (support, on-call, bugs, incidents), totalling 100%
-5. Milestones and dependencies on other teams
-6. Key assumptions
-7. What the readers must decide or approve
-```
-
-When something is off, say exactly what: "on-call takes a quarter of our time", "priority two has no customer signal". Specific feedback gets a better plan than "make it better".
+## Step 3: Draft and pressure-test the plan
 
 Capacity in a plan is team capacity; notes about individual people stay out of it.
 
-## Step 4: Stress-test it
+### Prompt: Draft and pressure-test my plan
 
-Test the plan from the position of each reader.
-
-| Who reads your plan? | What are they looking for? |
-| --- | --- |
-| **Decider**: approves it | Fit with the goals, and the trade-off they must defend |
-| **Influencer**: the Decider listens to them | Whether their area is covered |
-| **Blocker**: can stop it | The cost to their team, often unstated |
-| **Champion**: will argue for it | One strong reason to support it |
-| **Dependent team**: delivers a part | What you ask of them, and when |
-
-### Prompt: Stress-test my plan
-
-**What this does:** challenges the plan from each reader's position, waits for your decisions, then revises.
+**What this does:** drafts and tests the plan by its type, waits for your decisions, and ends with a list of plan items.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Stress-test the plan in this chat. First ask me who will read it, and each reader's role: Decider (approves it), Influencer (the Decider listens to them), Blocker (can stop it), Champion (will argue for it) or dependent team (delivers a part). If I paste what they have said in Slack or meetings, use it.
+Draft my plan from the planning brief and signal sheet in this chat, following the brief's operating principles and level of detail.
 
-Then report:
-1. For each reader: their main concern and the question they will ask
-2. Evidence: priorities that rest on one source or on anecdote
-3. Capacity: whether the time adds up, including run work
-4. Pre-mortem: the period is over and the plan failed. The three most likely reasons.
-5. The weakest assumption, and the question I most hope nobody asks, with a calm answer
+Day-to-day plan:
+1. Draft today, this week, and waiting on others, each item with source and due date.
+2. Reality check: real load per day against my time outside meetings, what is slipping, and what to drop, delegate or move.
 
-Stop and wait while I say which challenges I accept. Then give me the revised plan, a short change log, and the challenges I rejected, each with my reason.
+Project, activity, quarter or large work item:
+1. If my leaning is clear, work with it; offer one alternative only if clearly stronger. If I am undecided, propose three directions: focused (fewer bets, done well), balanced, ambitious, each with what it gives up. Wait for my choice.
+2. One page: goal and measure; three to five priorities with their signals ("judgment call" if none); deferred items with reasons; team time per priority plus run work (support, on-call, bugs, incidents), totalling 100%; milestones, dependencies, assumptions.
+3. Challenge it. Ask who reads it and their role: Decider (approves it), Influencer (the Decider listens to them), Blocker (can stop it), Champion (argues for it), dependent team (delivers a part). Give each one's concern and question, a pre-mortem (the three likeliest reasons it failed), and the question I most hope nobody asks, with a calm answer.
+
+Wait while I accept or reject each point. Then give the revised plan, a change log, and a list of plan items: name, section, owner if shared, absolute due date, status, source.
 ```
 
-If you built a board in the Build Your Board of Advisors adventure, convene it on the revised plan as well.
+When something is off, say exactly what, for example "Thursday already has six hours of meetings".
 
-> **Example: Dana, engineering manager, automations platform team.** Her signal sheet showed on-call and incidents taking a third of the team's time, which her draft had missed. The stress-test named a Blocker: the integrations lead, whose release needed an API change Dana had planned late in the quarter. Dana deferred one of four priorities, moved the API change earlier, and prepared for the question she feared: "What if incidents spike again?"
+## Step 4: Give the plan a home
 
-## Step 5: Put it where the work lives
+A plan that lives only in a chat gets lost. Give it one home, and have the AI update it after every change.
 
-### Prompt: Plan items for your board
+| Which home? | What do you get? | Best when |
+| --- | --- | --- |
+| **A Claude artifact** | An interactive page with views that saves what you tick and add | Your own to-do list, or a small team's plan |
+| **A monday board** | Items with owners, due dates and statuses | The team works from it daily, or a scheduled task keeps it current |
+| **Another visual** | For example an app in Big Brain Studio or monday vibe | You need a view the other two cannot give |
 
-**What this does:** turns the revised plan into items for your team's monday board, and creates them only after you approve.
+### Prompt: Give my plan its home
+
+**What this does:** asks which home you chose, shows you the design, and builds it only after your OK.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Turn the revised plan in this chat into items for my team's monday board. Ask me which board and groups to use.
+Give the plan in this chat one home. Ask me which: an interactive artifact, a monday board, or another tool. If I already answered a question earlier in this chat, don't ask it again.
 
-For each milestone: item name, the priority it serves, owner, due date, dependency. Add a group called "Deferred" with the deferred items and their reasons.
+Artifact: a page that saves its data between sessions.
+- Fields: title, section, project, absolute due date, priority in my words, status (to do, in progress, waiting on, done), waiting on what or whom, source, note.
+- Views: Today (opens first, overdue on top), This week, By project, Waiting on others, Done.
+- Show me the fields, views, and my brief's operating principles as numbered rules in my words. Wait for my OK. Then build it: personal storage if only I use it, shared storage if others do. Seed it with this chat's plan items, marked as seeded, and save my ticks and additions. Say whether you can update its data from this chat; if not, propose the closest option.
 
-Show me the list and stop. Create the items through the monday connector only after I approve; if you cannot, give me the list in a format I can paste into the board.
+monday board: ask which board and groups. Per item: name, group, owner, due date, status, dependency; for a project, a "Deferred" group with reasons. Show the list and stop. Create the items through the monday connector only after I approve; if you cannot, give me a list to paste.
+
+Another tool: give me the fields, views and items in one block to build from.
+
+My priority words win. When you add an item, say what it competes with. Nothing I mark private goes in.
 ```
 
-Keep the change log and the rejected challenges with the plan. You are done when the plan is presented or shared, and its items are on the board.
+**In Claude:** the page sits under Artifacts in the sidebar. To share it, choose Anyone at Monday with Can view or Can edit. Ask Claude to update it in this chat. Test once before you rely on a new chat to update it.
+
+## Step 5: Keep it fresh
+
+A recurring plan, such as your week or a team's sprint, stays true only when a routine refreshes it: a skill, tested by hand, then put on a rhythm. For a one-off project, go to the check-in at the end of this step.
+
+### Prompt: Build my planning routine
+
+**What this does:** the AI interviews you about one routine and writes a skill that reads your sources, updates the plan's home and flags what slipped.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Help me build a skill for one routine from my planning brief, for example "plan my day", "weekly review" or "add this to my plan". A skill is saved instructions an AI tool follows whenever I ask for that task. If I already answered a question earlier in this chat, don't ask it again. Do not choose the routine for me; ask one question at a time for what is missing.
+
+The skill must:
+1. Read the brief's sources within a fixed time window
+2. Update the plan's home, named exactly
+3. Flag what slipped: overdue, moved more than twice, waiting on others past my limit
+4. Propose next items by my operating principles, and ask before dropping or delegating anything
+5. Say "nothing new" on a quiet day, and name any source it could not reach
+
+Check my tool's current skill format. Write the complete skill in one block: a short lowercase name with hyphens, when to use it, the steps, a literal output template. Tell me how to add it, and to close and reopen my tool.
+```
+
+Add the skill (**In Claude:** Customize → Skills), then close and reopen your tool. Run it by hand for a few days, with specific feedback, until you would act on its output as is.
+
+**Then put it on a rhythm** as an automation. **In Claude:** ask Claude to run the skill as a scheduled task every weekday morning, and check that it appears under Scheduled. It can update your monday board or post the day's plan to Slack. Whether it can update an artifact is not confirmed, so test that once in your setup.
+
+> **Example: Marco, customer success team lead.** His page opens on Today with three items, and Waiting on others shows legal's contract review. His plan-my-day skill flagged that the onboarding playbook had moved three days in a row, so he delegated it.
+
+**For a one-off project,** check the plan against reality halfway through the period.
+
+### Prompt: Check the plan against reality
+
+**What this does:** compares the plan with its home and recommends one change.
+
+Paste the prompt below in the plan's chat, or in a new chat.
+
+```
+Compare my plan with its home, the monday board or page where the work is tracked. If the plan is not in this chat, ask me to paste it and name the home. Report progress per priority, changed signals, and assumptions that no longer hold. Recommend one move: keep, cut or add. Mark any point without a source as UNVERIFIED. Update the home after I approve.
+```
+
+You are done when the plan lives in its home and its routine, or its check-in, has run once on real work.
 
 ## Go further
 
-**Plan for the futures that worry you.** Do this when the plan depends on things outside your control, such as a large customer's decision or another team's delivery. Scenario planning prepares your moves in advance.
+**Plan for the futures that worry you.** Do this when the plan depends on things outside your control, such as a large customer's decision.
 
-**What this does:** builds four scenarios from two uncertainties and tells you which moves to make now and which to hold.
+**What this does:** builds four scenarios from two uncertainties and sorts your moves into now and later.
 
-Stay in the same chat and paste the prompt below.
+Stay in the plan's chat and paste the prompt below.
 
 ```
-Run scenario planning on the plan in this chat. Scenario planning means: pick the two uncertainties that would change the plan most, combine their outcomes into four scenarios, and decide in advance what to do in each.
-
+Run scenario planning on the plan in this chat: combine the outcomes of the two uncertainties that would change it most into four scenarios, and decide in advance what to do in each.
 1. Propose four uncertainties outside my control; I pick two.
-2. Describe the four scenarios in three lines each, with a short name.
-3. For each: does the plan hold, what changes, and the early warning sign that this scenario is starting.
-4. Robust moves: actions that help in every scenario. These go into the plan now.
-5. Waiting moves: actions to take only when a warning sign appears, each as a tripwire: "If this happens, we do this."
-6. The cheapest action this week that reduces the biggest risk.
+2. Each scenario: a short name, whether the plan holds, what changes, and its early warning sign.
+3. Robust moves that help in every scenario. These go into the plan now.
+4. Waiting moves, each as a tripwire: "If this happens, we do this."
+5. The cheapest action this week against the biggest risk.
 ```
 
-Add the warning signs to your board as a group called "Signals to watch", and check them at each planning review.
+Add the warning signs to the plan's home as "Signals to watch".
 
-**Check the plan against reality mid-way.** Do this halfway through the period, to see where the plan and the work have drifted apart. Open a new chat and paste the prompt below.
-
-```
-Compare my plan with my team's monday board. I will paste the plan and name the board. Report progress on each priority, signals that changed since the plan was written, and assumptions that no longer hold. End with one recommendation: keep, cut or add. Mark any point without a board item or source as UNVERIFIED.
-```
+**Turn your plan into a team plan.** Do this when your team keeps asking what is planned. In the plan's chat, ask the AI to add an owner and a By owner view, and to switch the page to shared storage or move the items to your team's board.
 
 ## Proof of work
 
-In "what I built", name the plan, the challenge that changed it most, and where its items live.
+In "what I built", name the plan, its home, and the routine that keeps it fresh (or the project check-in date).
 
-For example: "Q1 plan for the automations platform team. The capacity check showed on-call takes a third of our time, so I deferred one of four priorities. The plan is on our team board."
+For example: "My day-to-day plan, on a Claude page my team can see. My plan-my-day skill flagged a slipping playbook, so I delegated it."
 
 ## Related adventures
 
-- **Build Your Board of Advisors**: convene the perspectives your plan has to satisfy, saved for every future plan.
-- **Making Decisions with AI**: get a real challenge on the single decisions inside the plan.
+- **Your Own Chief of Staff**: an assistant for your whole workload.
+- **Automation Done Right**: design and test any scheduled task.
+- **Making Decisions with AI**: a real challenge on single decisions inside your plan.
