@@ -51,6 +51,7 @@ describe("second L&D review rules", () => {
       ["ai-as-your-tutor", "/videos/ai-as-your-tutor.mp4"],
       ["redesign-your-week-with-ai", "/videos/redesign-your-week-with-ai.mp4"],
       ["the-loop", "/videos/the-loop.mp4"],
+      ["build-your-professional-partner", "/videos/build-your-professional-partner.mp4"],
     ]);
     expect(posterFor("/videos/ai-as-your-tutor.mp4")).toBe("/videos/ai-as-your-tutor.jpg");
   });
