@@ -15,6 +15,7 @@ pattern: INT + INSTALL
 wave: W4
 slot: 28
 review: ready
+video: /videos/build-your-professional-partner.mp4
 next: [advanced-skill-patterns, your-team-s-ai-blueprint]
 source: "Adapted from catch-up-may/content/week-3/project-7-professional-specialist.md (Step 1 discovery interview, direct and indirect questions incl. the ten-years-in-my-world question, do-not-duplicate check; Step 2 craft brief and builder rules; Step 3 review like a manager and specific feedback; Step 4 context curation, folded into one line; Step 5 workflows, now skills with a quality check; Step 7 connect real data, moved into the core; Step 8 context gap / instruction gap / model limitation diagnosis and the echo trap test) and project-7-reference-card.md (worker vs task, operating rules, echo trap fix with external material). Skill-builder questions adapted from this platform's Skills: When, How and How Well page. Never edit the originals from this engagement."
 ---
