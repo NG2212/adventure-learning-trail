@@ -39,7 +39,8 @@ describe("temporary demo review rules", () => {
       expect(reviewState(adventure), adventure.slug).toBe(expected);
     }
     expect(ADVENTURES.some((a) => reviewState(a) === "Ready")).toBe(true);
-    expect(ADVENTURES.some((a) => reviewState(a) === "Draft")).toBe(true);
+    // Every adventure now carries `review: ready`, so no Draft mark remains in the demo.
+    expect(ADVENTURES.some((a) => reviewState(a) === "Draft")).toBe(false);
   });
 
   it("can hide all review marks independently of opening adventures", () => {
