@@ -14,6 +14,8 @@ outcome: Build something
 pattern: BUILD
 wave: W3
 slot: 15
+review: ready
+video: /videos/designing-with-ai-results-you-actually-like.mp4
 next: [creating-apps-with-ai-done-right, de-slop]
 source: "Adapted from summer-challenge/labs/postcards-from-the-edge.md (direct, do not one-shot; references beat adjectives; first outputs are drafts, iterate in rounds; series consistency, now Go further); Nufar's vibe-coding practices (mood board, then the look written as a visual-language file, two or three distinct first drafts, direct in rounds, opinionated on the look); pentera/Webinar Series/GPT/content/exercise-book.md use case 8 (company look plus personal favorites, brief before generating, vague-to-specific feedback table, set with a drift check). Claude Design features from content/research/claude-design-facts-2026-11-10.md: Claude help center (support.claude.com articles 12138966, 14604397, 14604406, 14604416, 17153992, 17440474, 17444462) and Claude Academy (academy.claude.com tutorials on design systems and on prototypes and UX). Never edit the originals from this engagement."
 ---
