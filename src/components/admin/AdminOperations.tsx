@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Save } from "lucide-react";
+import { Plus, RotateCcw, Save } from "lucide-react";
 import { toast } from "sonner";
 import { store, useStoreState } from "@/store";
 import { TITLES } from "@/lib/titles";
@@ -13,8 +13,28 @@ export function AdminWaves() {
   const [dates, setDates] = useState(() =>
     Object.fromEntries(store.getAdminWaves().map((w) => [w.number, w.date])),
   );
+  const [opens, setOpens] = useState<Record<string, string>>({});
   return (
     <>
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-muted-foreground">
+          Dates are placeholders until the launch date is confirmed. Each adventure opens on its own date.
+        </p>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => {
+            if (!window.confirm("Reset every adventure and wave to the default wave dates?")) return;
+            store.resetOpeningDates();
+            setOpens({});
+            setDates(Object.fromEntries(store.getAdminWaves().map((w) => [w.number, w.date])));
+            toast.success("Opening dates reset to wave defaults");
+          }}
+        >
+          <RotateCcw className="size-4" />
+          Reset all to wave defaults
+        </Button>
+      </div>
       <div className="grid gap-6 md:grid-cols-2">
         {store.getAdminWaves().map((w) => (
           <section key={w.number} className="border-t py-5">
@@ -37,8 +57,10 @@ export function AdminWaves() {
                 onClick={() => {
                   const date = dates[w.number];
                   if (date) {
-                    store.saveAdminWave({ ...w, date });
-                    toast.success("Wave date saved");
+                    const apply = window.confirm(`Apply this date to all adventures in Wave ${w.number}?`);
+                    store.saveWaveDate(w.number, date, apply);
+                    if (apply) setOpens({});
+                    toast.success(apply ? "Wave date saved and applied" : "Wave date saved");
                   }
                 }}
               >
@@ -54,12 +76,23 @@ export function AdminWaves() {
                     key={a.slug}
                     className="flex items-center justify-between gap-3 border-b py-2"
                   >
-                    <span className="text-sm">{a.title}</span>
+                    <span className="mr-auto text-sm">{a.title}</span>
+                    <Input
+                      type="date"
+                      className="h-8 w-36 text-xs"
+                      aria-label={`Opening date for ${a.title}`}
+                      value={opens[a.slug] ?? store.getOpensOn(a.slug)}
+                      onChange={(e) => setOpens({ ...opens, [a.slug]: e.target.value })}
+                    />
                     <select
                       aria-label={`Wave for ${a.title}`}
                       className="rounded border bg-background p-1 text-xs"
                       value={a.wave}
-                      onChange={(e) => store.setAdventureWave(a.slug, Number(e.target.value))}
+                      onChange={(e) => {
+                        store.setAdventureWave(a.slug, Number(e.target.value));
+                        const { [a.slug]: _drop, ...rest } = opens;
+                        setOpens(rest);
+                      }}
                     >
                       {store.getAdminWaves().map((x) => (
                         <option key={x.number} value={x.number}>
@@ -67,6 +100,25 @@ export function AdminWaves() {
                         </option>
                       ))}
                     </select>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="size-8"
+                      title={`Save opening date for ${a.title}`}
+                      aria-label={`Save opening date for ${a.title}`}
+                      onClick={() => {
+                        const date = opens[a.slug];
+                        if (!date) return;
+                        try {
+                          store.setOpensOn(a.slug, date);
+                          toast.success("Opening date saved");
+                        } catch (err) {
+                          toast.error((err as Error).message);
+                        }
+                      }}
+                    >
+                      <Save className="size-4" />
+                    </Button>
                   </li>
                 ))}
             </ul>
