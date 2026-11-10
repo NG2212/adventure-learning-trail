@@ -3,209 +3,268 @@ slug: redesign-your-week-with-ai
 emoji: ⚖️
 icon: balance
 title: "Redesign Your Week with AI"
-walkaway: "A trusted map of everything you carry and a Stop / Start / Continue / Hand-off plan, with AI already working on one hand-off"
+walkaway: "A true picture of your week, methods you chose with an AI coach, and a redesigned week: protected deep-work blocks, clear working rules, two routines, and AI already doing one task for you"
 category: Lead with AI
 levels: [Intermediate, Advanced]
 professions: [Everyone]
 audience: [Managers]
 tool: Any AI tool
-effort: 1 hour
+effort: Longer
 outcome: Work differently
-pattern: AUD + INT
+pattern: AUD + INT + SCHED
 wave: W4
 slot: 23
-next: [use-case-discovery, your-own-chief-of-staff]
-source: "Adapted from summer-challenge/labs/excess-baggage.md (first-pass Load Map, correct the map in two or three passes, Stop / Start / Continue / Hand-off with three hand-off destinations and the backlog-or-stop rule, enlist AI on the hand-offs, two ways in: conversation mirror vs observation + interview, honesty check, weekly check-in stretch). Never edit the original from this engagement."
+review: ready
+next: [planning-with-ai, your-own-chief-of-staff]
+source: "Adapted from summer-challenge/labs/excess-baggage.md (reading sources plus interview, merged into one way in; evidence tags; believe my corrections; stop / start / continue / hand-off with its pressure tests and the backlog-or-stop rule; enlist AI on the hand-offs; honesty about a flattering picture; weekly check-in). Methods attributed by name, verified 10 Nov 2026: Cal Newport, Deep Work: Rules for Focused Success in a Distracted World (2016; deep work, shallow work, the shutdown ritual); The Time-Block Planner (2020; time-block planning); Slow Productivity: The Lost Art of Accomplishment Without Burnout (2024; do fewer things, work at a natural pace, obsess over quality); his capture / configure / control framework and multi-scale planning (calnewport.com posts on weekly and full-horizon planning; his Core Idea: Time Management video). David Allen, Getting Things Done (capture, clarify, organize, reflect, engage; gettingthingsdone.com/fivesteps). The Eisenhower matrix (urgent / important). Paul Graham, "Maker's Schedule, Manager's Schedule" (essay, July 2009, paulgraham.com). Skill first, tested by hand, then scheduled: Nufar's automation method. Never edit the originals from this engagement."
 ---
 
 <!--
 DESIGN NOTES (not rendered)
 
 Adaptation note (2026-10-22, slot 23 [Inbar 30])
-- Kept: the four Excess Baggage moves as the trail; the two ways in (conversation vs observation + interview) as a table; evidence tags said / observed / inferred; "believe my corrections, push back only as a hypothesis"; the Stop / Start / Continue / Hand-off portfolio with its pressure tests (starts outnumber stops, everything to AI, vague stops); "a backlog you never review is a stop"; the honesty check; the weekly check-in and run-the-other-path layers (now Go further).
-- Cut: all fall / season / back-to-school framing (ships in January as a new-year reset; the hook names "the start of a year, a quarter or a new role, or any week that feels too full"); personal life load (work only); the Where To Next / Repack Your Bags / Set It and Summer bridges; the sub-agent observation split (length); the commitment dashboard image.
-- Added for Monday: one line separating this from Use-Case Discovery; a precise reading list on monday boards, calendar, sent mail and Slack; the customer-boards rule worded per Nufar's 22 Oct clarification with Kremer as the path for Monday's own account data; a thinking step without AI before the decisions; the Week Plan lives on a monday board; managers' line (own plate here, team's shared work in Your Team's AI Blueprint; the plan describes work only).
-- Renamed "Fall Commitments card" to "Week Plan".
+- Kept from Excess Baggage: two ways in (merged into one combined way in on 10 Nov); evidence tags; "believe my corrections"; the decision portfolio with its pressure tests; "a backlog you never review is a stop"; the honesty check; the weekly check-in.
+- Cut: season framing, personal life load (work only), bridges to summer labs, the sub-agent observation split, the commitment dashboard image.
+- Added for Monday: a precise reading list (calendar, monday boards, sent mail, Slack); the customer-boards rule per Nufar's 22 Oct clarification, with Kremer as the path for Monday's own account data; the managers' line.
+
+Rethink 2026-11-10, from Nufar's page review (videos/redesign-your-week-with-ai/notes.md)
+- Plain wording everywhere. "Map what you carry", "correct the map", "Load Map", "Week Plan" and "hand-off" as a step title are gone. Step titles, prompt names, walkaway and proof of work use plain words: "your week as it really is", "the list of your work", "My Week Redesign" (the one-page output of Step 3).
+- Now a full productivity coach at two levels. Big picture: what you own; stop, delegate, automate, keep, start. The working day: best hours, meeting-free stretches for deep work, items delivered late or finished at night, distractions, how to-dos are captured and reviewed.
+- No two-pass structure. Step 1 shows the list and corrects it in the same prompt and chat ("update the list until I say it is true").
+- Not one size fits all. Step 2's prompt runs a web search on current best practices for the person's exact issues and offers two or three named methods per pattern, with reasons, and the person chooses. A short methods table sits before the prompt so a reader recognizes the names (explanation tables go before the prompt).
+- Trail: see your week as it really is · find the patterns with a coach · decide what changes · redesign your week · make it a habit ("make it stick" read as an idiom on the non-native pass). One chat in a Claude project for the whole adventure.
+- Step 3 decisions are now stop, delegate, automate, keep, start (her words), plus working rules: deep-work blocks in best hours, meeting windows, one capture place with a review time, when to check Slack and mail.
+- Step 4 is one prompt in two parts with a gate: the week template, then "enlist AI on the hand-offs" for each automation, with skill first, tested by hand, then scheduled. Merged from two prompts for length.
+- Step 5 owns the routines (weekly review and shutdown, as two skills run by hand). Go further owns putting the weekly review on a schedule, which is where the old weekly check-in went, so the topic is not asked twice.
+- The Use-Case Discovery pointer in Go further is replaced by "Plan the quarter too" (self-contained, teaches multi-scale planning). Use-Case Discovery dropped from next and Related adventures; it still links here. "Run the other way in" cut for length (and moot since the second review: Step 1 always combines sources and interview).
+- Non-native pass replaced: earn their place → worth the time, flatter → look better than reality, heroic → ideal, crept back → came back, lighten → save you the most time, "Let the review come to you" → "Put the weekly review on a schedule".
+
+Revision 2026-11-10, from Nufar's review of the rewrite (videos/redesign-your-week-with-ai/notes.md, second section)
+- Step 1, evidence first with permission: the "two ways in" choice (conversation or reading sources) is gone. One combined way in: brain dump, then the AI asks permission and which window (last two, three or four weeks), reads only named sources with what each shows (calendar: meetings, back-to-back stretches, after-hours events; Slack and sent mail: when people ask for things, late-night activity; monday boards assigned to the reader: overdue or slipped items), tells what it opened, asks where a connector is missing, then interviews only for what sources cannot show (best hours, distractions, capture, unwritten work). Output adds "where my sources and my answers disagree". Customer-boards line kept on the page and inside the prompt. The page sentence replaces the reading-list table, so the list lives once, in the prompt.
+- Step 3, a real coach: firm and kind, hard truths said gently, never preachy. It challenges with the evidence and offers an alternative each time: a "keep" the evidence contradicts, a meeting the reader says they cannot drop (shorter, less frequent, someone else's?), the one habit that costs the most, plus the old pressure tests. After one challenge the reader's decision stands. The decision table was cut to one line (the prompt defines the groups). The Step 4 "mark meetings that clash" clause moved out, because Step 3 now owns challenging meetings.
+- Step 5 and Go further no longer overlap: Step 5 builds the weekly review and shutdown as skills, runs them by hand with specific feedback, then puts the weekly review on a schedule. The Go further scheduling item is gone; "Plan the quarter too" stays as the only item. No new item added, for length.
+- Step 4: her note ("it says that it's recommended") is unclear, so the only change is consistency: the template uses the calendar already read in Step 1 and asks for meetings it could not see. Asked her what she meant.
+- Her notes also ask for two or three persona reviewers (managers and ICs, one structured with a physical/mental view of human dynamics, one freestyle and creative with an emotional/mental view) after the rewrite. Run by the orchestrator; see the persona review below.
+
+Persona review 10 Nov (Daniela, structured engineering manager at 70% meetings, team in Tel Aviv, Kyiv and London; Theo, freestyle designer IC who works best at night; Amara, intuitive customer success lead who says yes to everyone, English as a second language). Nufar: "Apply all".
+1. Energy: Step 1 tags each item as draining or energizing and asks when the reader is in flow or overwhelmed. The Step 4 template adds recovery time after back-to-back meetings and a hard stop at the end of the working day.
+2. After hours is evidence, not a fault: Step 1 asks time zone, working days and where the team works ("Tel Aviv works Sunday to Thursday"), judges hours by these and never by office norms, and asks whether late work is chosen. Think-first splits "deliver later than planned" from "work that moves into evenings or nights".
+3. Coach tone in Step 3: starts with what works and what the reader would protect; asks why before challenging and names the value behind the habit ("you say yes because you care about your team"); asks before a blunt truth; shows the number, then the alternative; every change is a two-week experiment; one-on-ones and time with people get a different rhythm per person, never simply less. After one challenge the reader's decision stands.
+4. Scope and safety: Slack and mail = direct messages and mentions only. Customer details in Slack and mail stay out, on the page and in the prompt. Step 1 groups meetings by type (one-on-ones, team rituals, cross-team, hiring). Note for Nufar: her 22 Oct rule says Monday's own data about customers is fine; the reviewers' line is stricter for Slack and mail. Applied as asked; Kremer line unchanged. Nufar 10 Nov: customer details in Slack and mail are fine within Monday, so that part is reverted; the customer-uploaded-boards rule stays.
+5. Weekly review: runs on the reader's own review day; the scheduled run prepares a draft (baseline numbers again, focus blocks kept or broken) that the reader answers in chat; "which rules held" became "what felt good and what to tweak".
+6. Delegation: Step 3 helps prepare each conversation (why this person, what they gain, what is handed over); the reader has it. "The plan describes the work only" became "notes about individual people stay off the page", and the managers' hand-off line is kept.
+7. Staying available: Step 3 working rules add, for team leads, team office hours, what is urgent enough to interrupt, and how the team learns about focus blocks. Step 4 asks whether focus blocks are private or visible.
+8. Plain language: slipped → items past their due date; open promises → promises I still owe; buffer → dropped (anchor blocks plus open space); trusted place → one place; vague stop → a stop with no clear item; more starts than stops → more new work than work stopped; fixed rhythm and "Later" → a separate idea list, and anything postponed with no review date is a stop; "brain dump ... on this" → "about my week".
+9. Baseline numbers: Step 1 outputs meeting share, longest focus block, work sessions outside working hours, overdue items. The weekly review measures them again; proof of work names one that moved.
+10. "Up to" on every Step 3 count, zero is fine (an IC may have no delegation). The idea list sits apart from the stop rule.
+11. Smaller items: Step 1 asks which systems were tried and dropped and why, and Step 2 skips them unless it says what would differ; the week template is anchor blocks plus open space unless the reader wants a full grid; the shutdown runs "whenever your last work session ends", framed as letting go of open loops; Paul Graham's "Maker's Schedule, Manager's Schedule" (2009 essay) added to the methods table and the Step 2 examples; the shutdown skill reads the capture place, for example a monday board, if connected.
+- Not applied, by her decision: the repeated "answer in writing or by voice" line stays (house rule); the Step 2 web search stays.
+- Room made by: methods table cut to two columns with one-line cells; Step 2 prose to one line; the Step 5 routine bullets folded into its What this does line; the page sentence on sources (the prompt holds the list); the skill definition kept in Step 4 only; the "Start with the automation" line (the prompt asks); a weekly planning slot (the weekly review covers it); small trims in the hook and Go further. Nothing self-contained was cut.
+- Length: 2,298 (lint), right under the 2,300 cap. Any further addition needs a matching cut.
+
+What the research verified (10 Nov 2026, web search; calnewport.com posts, a transcript of Newport's Core Idea: Time Management video, gettingthingsdone.com, book reviews)
+- Deep work: Newport's own definition is focusing without distraction on a cognitively demanding task. Shallow work: tasks that are not cognitively demanding, create little new value, and can be done while distracted. Confirmed.
+- Time-block planning: give every minute of the workday a job, redo the plan when the day changes. His product is The Time-Block Planner (2020). Confirmed.
+- Multi-scale planning: quarterly (he uses semesters), weekly, daily. Confirmed; his blog also calls it planning at "multiple levels of refining granularity".
+- Capture: Newport's sequence is **capture, configure, control** (plus a later bonus, constrain). Capture = everything in a trusted place, a term he credits to David Allen's "full capture"; configure = organize it so you see the state of your work; control = plan your time in advance at several scales. Nufar remembered "capture, then maybe triage, then a plan": configure is the closest to her "triage". The page uses his real terms.
+- Shutdown ritual: Newport's term, from Deep Work. Check every open item is captured or planned, look at tomorrow, end with a fixed phrase ("shutdown complete"). Confirmed; the page says "a fixed phrase, such as 'shutdown complete'".
+- Slow Productivity's three principles: do fewer things, work at a natural pace, obsess over quality. Confirmed.
+- Weekly review: the term belongs to Getting Things Done (the reflect step). Newport describes a weekly planning session, not a "weekly review". The page attributes it that way.
+- Alternatives named: Getting Things Done (capture, clarify, organize, reflect, engage; the first edition used collect, process, organize, plan, do) and the Eisenhower matrix (urgent and important: do, schedule, delegate, delete).
+- Most Newport sources were secondary (summaries, transcripts). Only the definitions above went on the page; nothing quoted beyond his term names.
+
+Judgment calls
+- Title kept: "Redesign Your Week with AI" says what you get.
+- effort moved from 1 hour to Longer: five steps, a diagnosis with web search, and two skills. Nufar's call.
+- pattern now AUD + INT + SCHED. Category and outcome unchanged.
+- Before you start keeps only the standing skill prerequisite (Steps 4 and 5 create skills). The "load Your AI Identity or Personal Brain" line was cut: the Step 1 prompt already uses what the AI knows.
+- Methods table: seven rows since the persona review (Paul Graham added), each attributed to its author. It is reference for recognizing names, and the coach still chooses per person through web search. The prompt names examples only with "for example" and forbids inventing or renaming methods.
+- Length: first full draft 2,802 words; final 2,273 (lint count; prompts 888, core steps 1,835) by merging the Step 4 prompts, turning the two-ways-in table into two sentences, dropping the Step 3 think-first line and parking paragraph (both inside the prompt), and cutting one Go further item. Nothing self-contained was cut. Above the 1,800 aim because the page now carries five self-contained prompts and two skills. After the second review: 2,257 (prompts 1,019, core steps 1,872); the longer Step 1 and Step 3 prompts were paid for by cutting the reading-list table, the Step 3 table, the Go further scheduling item and small lines.
+- Calendar blocks: Step 4 adds them through the calendar connector only if the tool can and the person approves; otherwise a list. No capability is promised.
+- The managers' line keeps the rule that this is your own work and a hand-off to a person is a conversation with them. Your Team's AI Blueprint is in Related adventures.
 
 Open items
-- Google Calendar connector: the standing rules list Drive, Gmail, Slack and monday; the Cowork line in Step 1 also names Google Calendar (same open item as Chief of Staff). Confirm.
-- Keren Q6 (Cowork scheduled tasks) affects the weekly check-in in Go further.
-- Keren Q2 (how skills are added at Monday) if a hand-off becomes a skill in Step 4.
-- Unified Claude (chat + Cowork) reaches all orgs 10 Nov 2026; this ships 4 Jan 2027, so sweep the "In Claude Cowork" lines before release.
-- Prompt test in a fresh Claude chat: pending (playbook step 4).
-23 Oct: do-this line on every prompt
+- Google Calendar connector: confirm it is on at Monday, and whether Claude can create calendar events through it (Step 4).
+- Keren Q6: scheduled tasks in Claude enabled at Monday? Step 5 assumes yes.
+- Slack and mail reading through connectors in Step 1: confirm the Slack and Gmail connectors can read direct messages, mentions and their timestamps at Monday.
+- Scheduled weekly review: confirm a Claude scheduled task's result can be answered in its chat (Step 5 says so).
+- Step 4 note from Nufar ("it says that it's recommended"): meaning pending.
+- Keren Q2: how skills are added at Monday (Steps 4 and 5).
+- Prompt test pending (playbook step 4), especially the Step 2 web-search diagnosis and the Step 5 two-skill prompt.
 -->
 
 # ⚖️ Redesign Your Week with AI
 
-**Use AI as a critical eye on everything you carry, then decide what to stop, start, continue and hand off.**
+**Work with an AI productivity coach: see how your week really runs, choose methods that fit you, and redesign how you work.**
 
 ## Why this adventure
 
-A working week fills up by itself. Recurring meetings outlive their purpose, a weekly report keeps going out after its readers have moved on, and small promises pile up in Slack threads. Much of that load is habit.
+A working week fills up by itself. Meetings cut the day into small pieces, important work moves to the evening, and to-dos sit in Slack, mail and your head.
 
-In this adventure AI acts as an impartial coach. It maps what you actually carry, you correct the map until it is true, and then you decide what to stop, start, continue or hand off.
+In this adventure AI is your personal productivity coach, at two levels. The big picture: what you own, and what to stop, delegate, automate or keep. The working day: your energy, focus time without meetings, distractions, and how you capture to-dos.
 
-This adventure audits what you already carry; Use-Case Discovery finds new things to do with AI. Run it at the start of a year, a quarter or a new role, or in any week that feels too full.
+Run it at the start of a year or a new role, or in any week that feels too full. Planning with AI makes one plan and keeps it fresh; this adventure changes how you work.
 
 ## The trail
 
-1. **Map what you carry**, so your decisions rest on your real week.
-2. **Correct the map**, because the first map is always incomplete and often flattering.
-3. **Decide what to stop, start, continue and hand off**, so the load gets lighter and the important work gets room.
-4. **Enlist AI on the hand-offs**, because a plan changes your week only once the first hand-off is running.
+1. **See your week as it really is**, so every decision rests on facts.
+2. **Find the patterns with a coach**, and choose methods that fit you.
+3. **Decide what changes**, in your work and in your working rules.
+4. **Redesign your week**, and put AI to work on what you automate.
+5. **Make it a habit**, with a weekly review and an end-of-day routine.
 
 ## Before you start
 
-If you built Your AI Identity or a Personal Brain, load it first; more context gives a sharper map. If you have never built a skill, start with **Skills: When, How and How Well**.
+If you have never built a skill, start with Skills: When, How and How Well.
 
-## Step 1: Map what you carry
+## Step 1: See your week as it really is
 
-Your Load Map covers everything that takes your time and attention: projects, recurring work, meetings, admin, learning, and open loops (promises and threads still waiting for you). Choose one of two ways in:
+**Think first for yourself, without AI.**
 
-| Way in | What happens | Best when |
-| --- | --- | --- |
-| **Conversation** | The AI interviews you about a typical week | You want a focused coaching session from memory |
-| **Observation** | The AI first reads the sources you name, then interviews you about what it found | You want evidence beyond memory |
+- When do you think best, and what gives or drains your energy?
+- When did you last have two or three hours in a row without a meeting?
+- Which items do you always deliver later than planned?
+- What work moves into your evenings or nights, and is that your choice?
+- What pulls you away during the day?
+- Where do your to-dos live, and which systems have you tried and dropped?
 
-Memory forgets small recurring tasks; files miss the work you never write down. Observation followed by an interview catches both.
+Messy is fine. The prompt then reads your sources, with your permission, and interviews you about what they cannot show.
 
-**For observation:** give the AI an exact reading list, for example the last four weeks of your calendar, the monday boards where items are assigned to you, your sent mail, and the Slack channels where people ask you for things. Keep customer boards out: data that Monday's customers uploaded to their own monday boards never goes into Claude. Monday's own data about your accounts, through Kremer, is fine.
+Keep customer data out: data that Monday's customers uploaded to their own monday boards never goes into Claude. Monday's own data about your accounts, through Kremer, is fine.
 
-**In Claude Cowork:** create a project named Week Redesign, connect Google Calendar, Gmail, Slack, Drive and monday, and run the prompt there.
+**In Claude:** create a project named Week Redesign and run the whole adventure in one chat there, because each step builds on the last.
 
-### Prompt: First Load Map
+### Prompt: Your week as it really is
 
-**What this does:** builds a first map of your load, with the source of each item.
+**What this does:** with your permission, the AI reads your sources and interviews you, then shows your week and corrects it with you.
 
-Open a new chat in Claude (or the AI tool you use) and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
-
-```
-Act as an impartial coach auditing my work load. This step produces a Load Map: everything that takes my time and attention. Make no decisions yet. Use what you already know about me; ask only for gaps.
-
-First ask: conversation only, or observation (you read sources I name, then interview me)? For observation, read only my reading list and tell me what you opened.
-
-Interview me one question at a time: a typical week, recurring work, projects that never close, meetings and whether they earn their place, open loops, what I postpone. If I answer vaguely, ask for a recent example.
-
-Output the first Load Map:
-1. Items grouped as projects, recurring work, meetings, admin, learning, open loops
-2. Per item: what it is, why it exists, weight (high, medium, low), source (said, observed or inferred)
-3. What you could not see
-4. Where the map may flatter me
-
-End by asking what is wrong, missing or unfair.
-```
-
-## Step 2: Correct the map
-
-The first map is wrong somewhere: the AI misses context, invents structure, or takes your busyness at face value. Correct it with specific facts: "the Tuesday sync takes two hours with preparation, so weight it high", "you missed the onboarding I give every new joiner", "my team writes the release notes; I only review them".
-
-### Prompt: Correct the Load Map
-
-**What this does:** updates the map from your corrections, pass after pass, until you trust it.
-
-Stay in the same chat, paste the prompt below, and add your corrections after it.
+Copy the prompt below into an AI tool, ideally where you will do the actual work. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
 
 ```
-Here are my corrections to the Load Map: what is wrong, missing, too heavy, too light or biased. Update the map.
+Act as my personal productivity coach. Show me my week as it really is; make no recommendations yet.
 
-Rules:
-- Believe my corrections about my own work. Push back only when I contradict myself or seem to avoid an obvious pattern, and say it as a question.
-- Add the items I name; remove or shrink anything you invented.
-- Keep the source of every item: said, observed or inferred.
-- If I approve more sources, read them and report only what they contain.
+1. Ask me to brain dump or paste all my thoughts about my week before you start.
+2. Ask my time zone, working days, and where my team works (for example, Tel Aviv works Sunday to Thursday). Judge my hours by these, never by office norms.
+3. Ask my permission to read my sources, and whether to cover the last two, three or four weeks. Then read only: my calendar (meetings by type: one-on-ones, team rituals, cross-team, hiring; back-to-back stretches; events outside my hours), my direct messages and mentions in Slack and mail (requests to me, activity outside my hours), and the monday boards where items are assigned to me (items past their due date). Never open boards holding data Monday's customers uploaded. Tell me what you opened. If a connector is missing, ask me instead.
+4. Interview me one question at a time about what sources cannot show: what drains or energizes me, when I am in flow or overwhelmed, whether late work is my choice, distractions, where I capture to-dos, systems I tried and dropped and why. Use what you know about me. If I already answered a question earlier in this chat, don't ask it again. If I answer vaguely, ask for a recent example.
 
-Show the updated map, then ask whether it is true enough to decide from. Repeat until I say it is.
+Output:
+1. Baseline numbers: share of my hours in meetings, longest focus block, work sessions outside my hours, overdue items.
+2. My work: projects, recurring work, meetings by type, admin, promises I still owe. Per item: rough hours per week, why it exists, drains or energizes, source (my sources, I said it, or your guess).
+3. How my days run, and where my sources and my answers disagree.
+
+Then ask what is wrong or missing. Believe what I say about my own work. Update it until I say it is true.
 ```
 
-Most maps need two or three passes. You are ready for Step 3 when the map feels true, including the parts you would prefer not to see.
+Correct it with specific facts, for example "my team writes the release notes; I only review them", until the picture feels true.
 
-## Step 3: Decide what to stop, start, continue and hand off
+## Step 2: Find the patterns with a coach
 
-**Think first, without AI.** Close the chat. Read the trusted Load Map from Step 2 and write down three things: one item you already know you want to stop, one item you would protect at any cost, and one thing you keep wishing you had time for. These are your instincts; the prompt tests them.
+No single method works for everyone. Names your coach may suggest:
 
-| Decision | What it means | Watch for |
-| --- | --- | --- |
-| **Stop** | You put it down and tell the people affected | A vague stop such as "fewer meetings" |
-| **Continue** | It earns its place as it is | Items that continue only out of habit |
-| **Start** | Something worth beginning, in the room a stop made | More starts than stops |
-| **Hand off** | It moves to AI or to another person | Everything going to AI: name what you still own |
+| Method | In one line |
+| --- | --- |
+| **Deep work** (Cal Newport) | Long, focused blocks for demanding work |
+| **Time-block planning** (Cal Newport) | Every work hour gets a job in advance |
+| **Capture, configure, control** (Cal Newport, after David Allen) | Every task in one place, organized; time planned ahead |
+| **Getting Things Done** (David Allen) | Capture, clarify, organize, reflect weekly, engage |
+| **Eisenhower matrix** | Sort tasks by urgent and important |
+| **Slow productivity** (Cal Newport) | Do fewer things, at a natural pace, and obsess over quality |
+| **Maker's schedule, manager's schedule** (Paul Graham) | Makers need half days free; managers work in hour slots |
 
-Parking an item for later is fine when you review your backlog on a fixed rhythm. An item you will never get to is a stop.
+### Prompt: Your coach's diagnosis
 
-**Managers:** this audit is about your own plate. A hand-off to a team member is a conversation with that person, and the plan describes the work only.
+**What this does:** finds the patterns that cost you most and, from a web search, offers two or three named methods for each, so you choose.
 
-### Prompt: Stop, Start, Continue, Hand off
-
-**What this does:** coaches you from the trusted map to decisions and writes a one-page Week Plan.
-
-Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation.
+Stay in the same chat, with web search on, and paste the prompt below.
 
 ```
-Using my trusted Load Map in this chat, coach me to decisions. Prefer a realistic load to a heroic one. I will first share three instincts I wrote down: what to stop, protect, and make time for.
+Coach me on my numbers, my work and how my days run, from this chat.
 
-Interview me one group at a time:
-- Stop: what I put down, specifically, and who needs to know
-- Continue: what earns its place
-- Start: one or two things, only where a stop made room
-- Hand off: to AI (name the job in one line) or to a named person
-- Later: parked on purpose, only if I review a backlog on a fixed rhythm; otherwise a stop
+1. Name the three to five patterns that cost me most, with evidence, in the big picture (what I own and should not) and in the day.
+2. Search the web for current best practices on these exact issues. Prefer the authors' own books and sites, and name your sources.
+3. For each pattern, offer two or three well-known methods by name and author, for example Cal Newport's deep work, David Allen's Getting Things Done, or Paul Graham's maker's schedule. Explain each in one plain sentence, with why it fits me and what it asks of me. Skip systems I tried and dropped, unless you say what would be different this time.
+4. Never invent a method or rename a mix of methods. If no known method fits, give plain advice.
 
-Push back if starts outnumber stops, if everything goes to AI, or if a stop is vague.
-
-Then write my Week Plan on one page: up to three stops, three continues, two starts and two hand-offs, each with a first action and what done looks like in four weeks. Wait for my edits.
+Show a table: pattern, evidence, methods, why each fits. Ask me to choose one or two, and wait.
 ```
 
-## Step 4: Enlist AI on the hand-offs
+## Step 3: Decide what changes
 
-Start with the smallest AI hand-off: the one that would lighten next week.
+For each item you choose to **stop**, **delegate**, **automate**, **keep** or **start**, as a two-week experiment.
 
-### Prompt: Put the AI hand-offs to work
+**Managers:** this is about your own work. A hand-off to a team member is a conversation you have yourself, and notes about individual people stay off the page.
 
-**What this does:** turns each AI hand-off in your Week Plan into a specific form of help with a first step.
+### Prompt: Your decisions and working rules
+
+**What this does:** coaches you to decisions and working rules, challenges them with your evidence, and writes one page. You decide.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Coach me to decisions on my work and the methods I chose in this chat. Be firm and kind, and prefer a realistic week to an ideal one. If I already answered a question earlier in this chat, don't ask it again.
+
+1. Start with what already works and what I would protect at any cost.
+2. Go one group at a time: stop, delegate, automate, keep, start. Ideas I am not ready for go on a separate idea list. Anything I postpone with no review date is a stop.
+3. Before you challenge a choice, ask why I made it and name the value behind it (for example "you say yes because you care about your team"). Ask before giving a blunt truth. Show the number, then an alternative. Challenge a "keep" the evidence contradicts, a meeting I say I cannot drop, the habit that costs me most, more new work than work stopped, everything going to AI, and a stop with no clear item. For one-on-ones and time with people, suggest a different rhythm per person, never simply less. After one challenge, my decision stands.
+4. For each delegation to a person, help me prepare the conversation: why this person, what they gain, what I hand over. I have it myself.
+5. Set my working rules: deep-work blocks (how many, how long, in my best hours), when meetings happen, the one place I capture every to-do and when I review it, when I check Slack and mail. If I lead a team: team office hours, what is urgent enough to interrupt me, and how my team learns about my focus blocks.
+
+Write one page titled My Week Redesign, each change a two-week experiment: up to three stops, up to two delegations, up to two automations and up to two starts (zero is fine), each with a first action and what success looks like; my working rules; my methods; my idea list. Wait for my edits.
+```
+
+## Step 4: Redesign your week
+
+### Prompt: Your new week
+
+**What this does:** turns My Week Redesign into a week template with protected focus time, then sets up one automation.
 
 Stay in the same chat and paste the prompt below.
 
 ```
-Look at the AI hand-offs in my Week Plan. For each one, use what you know about me and my tools, and propose:
-1. The form of help: a prompt I reuse, a skill, a scheduled job, a monday automation or agent, or a draft I review
-2. What it reads and what it produces
-3. What I still own and check
-4. The first step I can take this week
+Turn My Week Redesign in this chat into a week template. Use my calendar from earlier in this chat; ask for fixed meetings you could not see.
 
-Ask me which hand-off to start with, then help me set it up now. If we build a skill, remind me to close and reopen my AI tool so it finds the skill.
+1. Place anchor blocks and leave the rest open, unless I ask for a full grid: deep-work blocks in my best hours, meetings grouped into the windows from my rules, short blocks for mail and Slack, a daily slot to review captured to-dos, recovery time after back-to-back meetings, and a hard stop at the end of my working day. Show a table: day, time, block. Ask whether my focus blocks should be private or visible to my team. After my approval, add the blocks to my calendar if you can; otherwise give me a list.
 
-Finally, name the biggest risk that I ignore this plan, and one move that makes it easy to keep.
+2. For each automation on the page, propose the form of help (a reusable prompt, a skill, a scheduled task, a monday automation or agent, a draft I review), what it reads and produces, and what I still check. A skill is saved instructions an AI tool follows whenever I ask for that task. Ask which to start with, check my tool's current documentation, and build it. Anything scheduled starts as a skill I run by hand until it is right. Tell me how to add it, and to close and reopen my tool.
 ```
 
-Put the Week Plan on a monday board you open every day: one item per decision, with a status and the date of each first action. You are done when one AI hand-off has run on real work.
+## Step 5: Make it a habit
+
+### Prompt: Your two routines
+
+**What this does:** the AI writes two skills that keep the new week alive: a **weekly review** (a Getting Things Done term) on the day you choose, and an **end-of-day shutdown** (Cal Newport's shutdown ritual) for whenever your last work session ends, so you can let go of open loops.
+
+Stay in the same chat and paste the prompt below. Answer its questions in writing, or by voice if your tool has dictation or you use a dictation tool.
+
+```
+Build two skills from My Week Redesign in this chat. If I already answered a question earlier in this chat, don't ask it again.
+
+Weekly review: read My Week Redesign and last week's calendar. Prepare a draft: the baseline numbers from this chat measured again, and the focus blocks I kept or broke. Then ask what felt good and what to tweak, and suggest one change for the next experiment.
+
+Shutdown, whenever my last work session ends: read my capture place if it is connected, for example my monday board. Check that every open item from today has a place and a next step, show tomorrow's first block, and end with "Shutdown complete."
+
+Ask me which day the weekly review runs. Check my tool's current skill format and write each skill in its own block: a short lowercase name with hyphens, when to use it, the steps, the output. Tell me how to add them, and to close and reopen my tool.
+```
+
+Add the skills (**In Claude:** Customize → Skills), then close and reopen your tool. Run both by hand this week, with specific feedback, until the output is right.
+
+**Then schedule the weekly review.** **In Claude:** in the Week Redesign project, ask Claude to run the skill as a scheduled task on your review day, and check that it appears under Scheduled. Each run prepares the draft; you answer its questions in that chat.
+
+You are done when your new week is in your calendar, one automation has run on real work, and you have run your weekly review once.
 
 ## Go further
 
-**Run the other way in.** Do this for more evidence: if you mapped by conversation, run observation on a short reading list, or the reverse, and add what is new to your Week Plan.
-
-**Add a weekly check-in.** Do this so the plan stays alive after the first week.
-
-**What this does:** a short Friday review of the Week Plan on your board.
-
-Each Friday, open a new chat and paste the prompt below.
-
-```
-Check in on my Week Plan, which is on my monday board. Ask me three short questions: which stops held, which hand-off ran, and what crept back in. Then suggest one change for next week. If nothing moved, ask one question about what got in the way. Keep it brief.
-```
-
-**In Claude Cowork:** in the Week Redesign project, ask Claude to run this every Friday and check that it appears under Scheduled.
-
-**Find new work for the room you made.** Do this once your stops have freed time. Paste your trusted Load Map into the first prompt of Use-Case Discovery; its suggestions will build on your real week.
+**Plan the quarter too.** Do this each quarter, because Cal Newport plans at three levels: the quarter, the week and the day. In a new chat in the Week Redesign project, paste My Week Redesign and ask the AI to check it against your goals for the quarter.
 
 ## Proof of work
 
-In "what I built", name your top stop, the AI hand-off you started, and one correction you made between the first map and the trusted map.
+In "what I built", name your top stop, your protected deep-work block, and one number from Step 1 that moved.
 
-For example: "Stopped the Thursday status sync and handed the weekly renewals summary to a scheduled job on my Renewals board. The first map missed the two hours I spend each week answering partner questions in Slack."
+For example: "Stopped the Thursday status sync and moved deep work to Tuesday and Wednesday mornings. My longest focus block went from one hour to three."
 
 ## Related adventures
 
-- **Use-Case Discovery**: find new work for AI once your plan has made room.
-- **Your Own Chief of Staff**: hand your recurring preparation to an assistant that runs on a schedule.
-- **Your Team's AI Blueprint**: for managers, the same critical eye on the team's shared work.
+- **Planning with AI**: give your plan a home that stays fresh.
+- **Your Own Chief of Staff**: an assistant for your to-dos and priorities.
+- **Your Team's AI Blueprint**: for managers, your team's work with AI.
