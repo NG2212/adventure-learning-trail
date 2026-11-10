@@ -37,6 +37,10 @@ export interface StoreState {
   completions: Completion[];
   proofEntries: ProofOfWork[];
   announcementDismissed: boolean;
+  /** Per-adventure opening dates set by L&D (ISO); missing slugs follow their wave date. */
+  opensOn: Record<string, string>;
+  /** Wave dates (ISO); they only seed adventure defaults. */
+  waveDates: Record<number, string>;
 }
 
 export interface CompletionResult {
@@ -77,6 +81,13 @@ export interface AdventureStore extends AdminReadsWrites {
   saveProofOfWork(slug: string, input: ProofInput): CompletionResult;
   getCompletions(): Completion[];
   getTitle(): TitleName | null;
+  /** Effective opening date for an adventure (ISO). */
+  getOpensOn(slug: string): string;
+  setOpensOn(slug: string, date: string): void;
+  /** Save a wave date; optionally apply it to every adventure in that wave. */
+  saveWaveDate(wave: number, date: string, applyToAdventures: boolean): void;
+  /** Clear per-adventure dates and wave dates back to the placeholder seeds. */
+  resetOpeningDates(): void;
   isAnnouncementDismissed(): boolean;
   dismissAnnouncement(): void;
   // For React: subscribe to changes and read an immutable snapshot.
