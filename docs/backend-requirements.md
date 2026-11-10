@@ -7,8 +7,8 @@ Current-state data and behavior contract for the Big Brain Studio port. The curr
 | Entity | Fields | Notes |
 | --- | --- | --- |
 | Person | id, name, firstName, role, isAdmin, onboardingAnswers?, welcomeSeen? | Mock person now; company SSO identity in production. Answers are private to the owner and recommendation logic. |
-| Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, time?, video?, outcome, wave, slot, next[], body, review?, iconAsset? | Markdown/frontmatter content. time is optional free text; video is an optional preview URL (file or hosted YouTube/Vimeo/Loom page) shown beside the trail panel and editable in the Admin adventure editor; review is demo-only, not production status. iconAsset is derived badge-art path. Extra author fields and design comments are never displayed. |
-| Wave | number, opensOn | Wave data defines schedule. W1 open; W2 23 Nov, W3 7 Dec, W4 4 Jan in the demo. Production uses actual dates. |
+| Adventure | slug, icon, title, walkaway, category, levels[], professions[], audience[], tool, effort, time?, video?, outcome, wave, slot, opens_on, next[], body, review?, iconAsset? | Markdown/frontmatter content, except opens_on. opens_on (ISO date) is schedule data, not content: never in Markdown; the demo stores it through AdventureStore (persisted in browser storage) seeded from the wave date. Production: an opens_on column on adventures, editable by L&D in the admin area, with server-side date gating (open when today is on or after opens_on). time is optional free text; video is an optional preview URL (file or hosted YouTube/Vimeo/Loom page) shown beside the trail panel and editable in the Admin adventure editor; review is demo-only, not production status. iconAsset is derived badge-art path. Extra author fields and design comments are never displayed. |
+| Wave | number, date | Wave dates only seed adventure opens_on defaults. Placeholders until launch is confirmed: W1 2026-11-09, W2 2026-11-23, W3 2026-12-07, W4 2027-01-04. Saving a wave date can optionally apply it to every adventure in the wave; moving an adventure keeps its own date unless it still held its old wave's date. |
 | ItineraryItem | personId, adventureSlug, position | Internal ordered model behind employee-facing My journey. |
 | Completion | personId, adventureSlug, completedAt | Unique person/adventure; one earned badge per completion. |
 | ProofOfWork | personId, adventureSlug, built, learned, rating, completed_at | Built nonblank, learned optional, integer rating 1–5. Atomic entry/completion write; edits retain original date and badge. |
@@ -51,7 +51,7 @@ weeklyTools, goal and learningStyle are arrays (multi-select). Reads and saves m
 | time | Optional free text, e.g. ~1 h; overrides the effort duration default |
 | review | Optional demo-only frontmatter; exact ready shows Ready, other/missing values show Draft while showReviewState is true |
 | outcome | Build something, Learn something, Work differently |
-| wave | W1 (open), W2 (23 Nov), W3 (7 Dec), W4 (4 Jan) |
+| wave | W1–W4; seeds opens_on (placeholders 2026-11-09, 2026-11-23, 2026-12-07, 2027-01-04) |
 | icon | sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance |
 
 Filter semantics: "Everyone" matches every profession filter; the "Managers" filter reads `audience`.
@@ -106,7 +106,7 @@ Welcome line, then the three choice cards, then the L&D video placeholder and in
 
 ## My journey presentation contract
 
-Sections: In progress, Completed, Your title, Your badges, share card. `/itinerary` and `/progress` redirect to `/my-journey`; there is no standalone Progress or Opens soon section. In progress contains only saved ordered stops, retaining completed stops/checks. Scheduled added stops stay faded in place with actual wave date and no Start action until open, regardless of demoOpenAll. Unadded scheduled destinations belong only in All adventures. Empty state links there with “Add destinations from All adventures”.
+Sections: In progress, Completed, Your title, Your badges, share card. `/itinerary` and `/progress` redirect to `/my-journey`; there is no standalone Progress or Opens soon section. In progress contains only saved ordered stops, retaining completed stops/checks. Scheduled added stops stay faded in place with its own opens_on date and no Start action until open, regardless of demoOpenAll. Unadded scheduled destinations belong only in All adventures. Empty state links there with “Add destinations from All adventures”.
 
 Completed entries retain dates and passport stamps. Title ladder uses shared thresholds 1/3/11/20, current purple highlight and next title/threshold/count remaining. Shared grouped badge grid is also on Profile and Home. Share preview uses person's name/title/count; no external transmission. Connector footprints use current 160°/190° angles, alternating left/right feet and mirrored connectors over the unchanged winding dotted path. Onboarding has no connector today; future previews must match. No new store fields for these visuals.
 
@@ -219,7 +219,7 @@ No per-person scores or levels, onboarding comfort, employee rankings, leaderboa
 
 ## Scheduled adventure access and Admin Preview
 
-Current demoOpenAll permits scheduled body inspection; schedule hints and reward states still follow waves. Admin Preview action explicitly renders full body read-only with disabled completion. With demo access removed, production readers receive only scheduled title/promise/labels/date until opening. Authorized L&D previews may receive the body; verify server-side caller permissions before serving it. Client-side person.isAdmin is only mock gating.
+Current demoOpenAll permits scheduled body inspection; schedule hints and reward states still follow each adventure's opens_on. Admin Preview action explicitly renders full body read-only with disabled completion. With demo access removed, production readers receive only scheduled title/promise/labels/date until opening. Authorized L&D previews may receive the body; verify server-side caller permissions before serving it. Client-side person.isAdmin is only mock gating.
 
 ## Head tags, icons and manifest
 

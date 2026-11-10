@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { canOpenAdventure, WAVES, type Adventure } from "@/content/adventures";
+import { canOpenAdventure, opensLabel, type Adventure } from "@/content/adventures";
 import { store, useStoreState } from "@/store";
 import { AdventureIcon } from "./AdventureIcon";
 import { Chip, LabelChips } from "./LabelChips";
@@ -27,7 +27,7 @@ export function AdventureCard({ adventure, highlightAdd = false }: { adventure: 
         ) : adventure.isOpen ? (
           <Chip tone="neutral">Content coming</Chip>
         ) : (
-          <LabelHint text={WAVES[adventure.wave]?.label ?? "Opens later"}><span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">{WAVES[adventure.wave]?.label}</span></LabelHint>
+          <LabelHint text={opensLabel(adventure)}><span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">{opensLabel(adventure)}</span></LabelHint>
         )}
       </div>
       <AdventureIcon adventure={adventure} size="lg" className="mx-auto -mt-2" />

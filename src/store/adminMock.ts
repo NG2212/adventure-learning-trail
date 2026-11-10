@@ -153,7 +153,7 @@ export function generateAdminDataset(seed = 20261022) {
   });
   const events: ActivityEvent[] = [],
     sessions: AdminSession[] = [];
-  const open = ADVENTURES.filter((a) => a.isOpen);
+  const open = ADVENTURES.filter((a) => a.wave === 1);
   const addEvent = (personId: string, slug: string, kind: ActivityEvent["kind"], at: string) =>
     events.push({ id: `event-${events.length}`, personId, slug, kind, at });
   people.forEach((person, i) => {
@@ -169,7 +169,7 @@ export function generateAdminDataset(seed = 20261022) {
     ).filter((a) => a !== undefined);
     // At most one completion per employee/adventure; rare 12th completion is an early-access later-wave adventure.
     if (count > open.length) {
-      const later = ADVENTURES.find((a) => !a.isOpen);
+      const later = ADVENTURES.find((a) => a.wave !== 1);
       if (later) completed.push(later);
     }
     const unique = [...new Map(completed.map((a) => [a.slug, a])).values()];

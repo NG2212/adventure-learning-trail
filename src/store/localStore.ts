@@ -3,6 +3,7 @@ import type { AdventureStore, DemoSettings, StoreState } from "./types";
 import { createAdminMock } from "./adminMock";
 import { seedProof } from "./proofSeed";
 import { ADVENTURES } from "@/content/adventures";
+import { WAVE_DEFAULT_DATES } from "@/content/schedule";
 import { normaliseAnswers, recommend } from "@/lib/recommend";
 
 const STORAGE_KEY = "ai-adventure-state-v2";
@@ -28,6 +29,8 @@ export const SEED_STATE: StoreState = {
   completions: [{ slug: "de-slop", completedAt: "2026-10-15" }],
   proofEntries: [seedProof("noa-levi", "de-slop", "2026-10-15")],
   announcementDismissed: false,
+  opensOn: {},
+  waveDates: { ...WAVE_DEFAULT_DATES },
 };
 
 export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTINGS): AdventureStore {
@@ -72,9 +75,39 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
       listeners.forEach((listener) => listener());
     });
 
+  const waveOf = (slug: string) =>
+    admin.listAdminAdventures().find((a) => a.slug === slug)?.wave ?? ADVENTURES.find((a) => a.slug === slug)?.wave ?? 1;
+  const waveDate = (s: StoreState, wave: number) => s.waveDates[wave] ?? WAVE_DEFAULT_DATES[wave] ?? WAVE_DEFAULT_DATES[4]!;
+  const opensOn = (slug: string) => {
+    const s = read();
+    return s.opensOn[slug] ?? waveDate(s, waveOf(slug));
+  };
+  function saveWaveDate(wave: number, date: string, apply: boolean) {
+    const s = read();
+    const next = { ...s.opensOn };
+    if (apply) admin.listAdminAdventures().filter((a) => a.wave === wave).forEach((a) => { next[a.slug] = date; });
+    write({ ...s, waveDates: { ...s.waveDates, [wave]: date }, opensOn: next });
+  }
+
   return {
     getDemoSettings: () => settings,
     ...admin,
+    getAdminWaves: () => Object.keys(WAVE_DEFAULT_DATES).map(Number).map((n) => ({ number: n, date: waveDate(read(), n) })),
+    saveAdminWave: (w) => saveWaveDate(w.number, w.date, false),
+    setAdventureWave(slug, wave) {
+      const s = read();
+      const oldWave = waveOf(slug);
+      const keepsDefault = opensOn(slug) === waveDate(s, oldWave);
+      admin.setAdventureWave(slug, wave);
+      if (keepsDefault) write({ ...read(), opensOn: { ...read().opensOn, [slug]: waveDate(read(), wave) } });
+    },
+    getOpensOn: opensOn,
+    setOpensOn(slug, date) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Choose a valid date.");
+      write({ ...read(), opensOn: { ...read().opensOn, [slug]: date } });
+    },
+    saveWaveDate,
+    resetOpeningDates: () => write({ ...read(), opensOn: {}, waveDates: { ...WAVE_DEFAULT_DATES } }),
     getAdventureRating(slug) {
       const summary = admin.getRatingSummaries({ slug })[0];
       if (!summary || summary.ratingCount === 0 || summary.ratingCount < settings.ratingDisplayMinimum) return undefined;
