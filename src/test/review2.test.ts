@@ -42,6 +42,7 @@ describe("second L&D review rules", () => {
       ["voice-of-customers-and-employees", "/videos/voice-of-customers-and-employees.mp4"],
       ["your-ai-taste-test", "/videos/your-ai-taste-test.mp4"],
       ["token-smartness", "/videos/token-smartness.mp4"],
+      ["designing-with-ai-results-you-actually-like", "/videos/designing-with-ai-results-you-actually-like.mp4"],
       ["planning-with-ai", "/videos/planning-with-ai.mp4"],
       ["advanced-skill-patterns", "/videos/advanced-skill-patterns.mp4"],
       ["audit-and-improve-your-ai-system", "/videos/audit-and-improve-your-ai-system.mp4"],
