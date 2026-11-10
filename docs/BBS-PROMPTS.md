@@ -21,7 +21,7 @@ Shared rules for every feature:
 - Works with: Any AI tool, Claude, Agentic coding tool.
 - Effort: 30 minutes, 1 hour, Longer. The chip shows the value as written, and the same derived effortLabel is used on cards and page heads.
 - Outcomes: Build something, Learn something, Work differently.
-- Waves: W1 open, W2 opens 23 Nov, W3 opens 7 Dec, W4 opens 4 Jan; actual schedule comes from wave data.
+- Opening dates: each adventure has its own `opensOn` (ISO date, stored through AdventureStore, not Markdown), seeded from its wave as placeholders: W1 2026-11-09, W2 2026-11-23, W3 2026-12-07, W4 2027-01-04. An adventure is open when today (local date) is on or after its opensOn. Every schedule surface (card chip/hint, scheduled styling, badge state/tooltip, journey Next up, recommendations, the “This adventure opens on …” page, admin preview) reads that date and shows it as “Opens 23 Nov”, adding the year only outside the current year. demoOpenAll still lets anyone read every page.
 - Icons: sponge, masks, robot, scale, compass, book, toolbox, magnifier, document, chat, palette, calendar, id-card, map-pin, brain, briefcase, gauge, layers, shield, clock, terminal, newspaper, chart, loop, network, people, balance. Unknown icons fall back by category: compass, palette, toolbox, robot, people respectively.
 
 All 30 bodies are loaded and contain their authored head sections, core steps, optional Go further, proof and related links. Current demoOpenAll allows every body to be inspected, while dates and schedule styling remain wave-derived. With that switch off, scheduled readers see title/promise/date until opening. Admin Preview (`/adventures/<slug>?preview=1`) renders the full body read-only for the demo admin. Empty open bodies retain Content coming fallback. Review marks follow frontmatter, not wave or body presence.
@@ -159,7 +159,7 @@ Activity is a timestamped event ledger: id, personId, slug, kind (opened / added
 
 ## 10e. Admin Waves & announcements (`/admin/waves`)
 
-**Build:** four wave sections, dates and each assigned adventure with a wave dropdown. Save date edits in the mock store. Announcement text, show-from and show-until controls; validate date order. Saving updates the global banner when the reference date is within the interval (existing dismissal still applies). No drag operation required.
+**Build:** note at top: “Dates are placeholders until the launch date is confirmed. Each adventure opens on its own date.” plus a “Reset all to wave defaults” action with confirm. Four wave sections with date inputs; saving a wave date asks once whether to apply it to all adventures in the wave. Each assigned adventure shows its own opening date input, Save (toast “Opening date saved”) and a wave dropdown; moving wave keeps its own date unless it still had the old wave's date, then it takes the new wave's. Opening dates persist through AdventureStore. Announcement text, show-from and show-until controls; validate date order. Saving updates the global banner when the reference date is within the interval (existing dismissal still applies). No drag operation required.
 
 ## 10f. Admin Settings (`/admin/settings`)
 
