@@ -9,6 +9,8 @@ export interface Person {
   role: string;
   isAdmin: boolean;
   onboardingAnswers?: OnboardingAnswers;
+  /** True once the first-run opening video screen has been shown. */
+  welcomeSeen?: boolean;
 }
 
 export interface Completion {
@@ -65,6 +67,7 @@ export interface AdventureStore extends AdminReadsWrites {
   isSignedIn(): boolean;
   signIn(): void;
   saveOnboardingAnswers(answers: OnboardingAnswers): void;
+  markWelcomeSeen(): void;
   getItinerary(): string[];
   addToItinerary(slug: string): void;
   removeFromItinerary(slug: string): void;

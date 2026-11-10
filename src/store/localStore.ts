@@ -83,6 +83,10 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     getPerson: () => read().person,
     isSignedIn: () => read().signedIn,
     signIn: () => write({ ...read(), signedIn: true }),
+    markWelcomeSeen() {
+      const s = read();
+      write({ ...s, person: { ...s.person, welcomeSeen: true } });
+    },
     saveOnboardingAnswers(answers) {
       const s = read();
       const saved = { ...normaliseAnswers(answers), team: answers.team?.trim(), aspirations: [...(answers.aspirations ?? [])], aspirationText: answers.aspirationText?.trim() };

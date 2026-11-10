@@ -49,3 +49,12 @@ describe("approved L&D review rules", () => {
     expect(effortLabel({ effort })).toBe(effort);
   });
 });
+
+describe("opening video welcome", () => {
+  it("welcome-seen flag starts unset and round-trips through the store", () => {
+    const store = createLocalStore();
+    expect(store.getPerson().welcomeSeen).toBeFalsy();
+    store.markWelcomeSeen();
+    expect(createLocalStore().getPerson().welcomeSeen).toBe(true);
+  });
+});

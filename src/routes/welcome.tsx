@@ -5,6 +5,7 @@ import { useStoreState } from "@/store";
 import { WelcomeChoices } from "@/components/WelcomeChoices";
 import { BadgeGrid } from "@/components/BadgeGrid";
 import { JourneyPanel } from "@/components/JourneyPanel";
+import { OpeningVideoLink } from "@/components/OpeningVideo";
 
 export const Route = createFileRoute("/welcome")({
   head: () => ({
@@ -32,7 +33,7 @@ function Welcome() {
         <div className="min-w-0">
           <p className="eyebrow mb-2">AI Adventure · Home</p>
           <h1 className="text-3xl sm:text-4xl">Welcome, {person.firstName}</h1>
-          <p className="mt-2 mb-6 text-muted-foreground">How would you like to start?</p>
+          <div className="mt-2 mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"><p className="text-muted-foreground">How would you like to start?</p><OpeningVideoLink /></div>
           <WelcomeChoices />
           <JourneyPanel className="mt-6 lg:hidden" />
           <div className="mt-8 flex aspect-video w-full flex-col items-center justify-center gap-4 ui-card">

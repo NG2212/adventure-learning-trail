@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { OPENING_VIDEO, OPENING_POSTER } from "@/components/OpeningVideo";
+import { PreviewVideo } from "@/components/PreviewVideo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { useHydrated } from "@tanstack/react-router";
@@ -26,7 +28,14 @@ const MULTI_KEYS: readonly string[] = ["weeklyTools", "goal", "aspirations", "le
 
 function Onboarding() {
   const hydrated = useHydrated();
-  return hydrated ? <Questions /> : null;
+  const [showWelcome, setShowWelcome] = useState(() => { const p = store.getPerson(); return !p.onboardingAnswers && !p.welcomeSeen; });
+  if (!hydrated) return null;
+  if (showWelcome) return <div className="mx-auto max-w-3xl px-5 py-12">
+    <h1 className="text-3xl sm:text-4xl">Welcome to the AI Adventure</h1>
+    <PreviewVideo url={OPENING_VIDEO} poster={OPENING_POSTER} title="Welcome to the AI Adventure" caption={null} className="mt-6 w-full" />
+    <div className="mt-6 flex justify-end"><Button onClick={() => { store.markWelcomeSeen(); setShowWelcome(false); }}>Continue</Button></div>
+  </div>;
+  return <Questions />;
 }
 function Questions() {
   const [step, setStep] = useState(0);
