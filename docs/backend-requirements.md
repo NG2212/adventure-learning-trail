@@ -189,7 +189,7 @@ Directory/editor, waves/announcements, settings and client CSV use the shared st
 
 ## Admin analytics and mock contract
 
-Admin currently uses deterministic seeded in-memory analytics: 140 employees and 60 days of activity, fixed reference date 2026-10-22. Admin edits, drafts, waves, announcements and added admins last only for the browser session; they never mutate source Markdown or a backend. Real authorization remains a rebuild requirement, not the client-side demo flag.
+Admin currently uses deterministic seeded in-memory analytics: 140 employees and 60 days of activity, fixed reference date 2026-10-22. Admin edits, drafts, announcements and added admins last only for the browser session; per-adventure opening dates, wave dates and wave reassignments persist in browser storage through AdventureStore; they never mutate source Markdown or a backend. Real authorization remains a rebuild requirement, not the client-side demo flag.
 
 ### Identity fields from Monday's identity source
 

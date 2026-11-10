@@ -31,6 +31,7 @@ export const SEED_STATE: StoreState = {
   announcementDismissed: false,
   opensOn: {},
   waveDates: { ...WAVE_DEFAULT_DATES },
+  waves: {},
 };
 
 export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTINGS): AdventureStore {
@@ -76,7 +77,7 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
     });
 
   const waveOf = (slug: string) =>
-    admin.listAdminAdventures().find((a) => a.slug === slug)?.wave ?? ADVENTURES.find((a) => a.slug === slug)?.wave ?? 1;
+    read().waves[slug] ?? admin.listAdminAdventures().find((a) => a.slug === slug)?.wave ?? ADVENTURES.find((a) => a.slug === slug)?.wave ?? 1;
   const waveDate = (s: StoreState, wave: number) => s.waveDates[wave] ?? WAVE_DEFAULT_DATES[wave] ?? WAVE_DEFAULT_DATES[4]!;
   const opensOn = (slug: string) => {
     const s = read();
@@ -85,13 +86,21 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
   function saveWaveDate(wave: number, date: string, apply: boolean) {
     const s = read();
     const next = { ...s.opensOn };
-    if (apply) admin.listAdminAdventures().filter((a) => a.wave === wave).forEach((a) => { next[a.slug] = date; });
+    if (apply) admin.listAdminAdventures().filter((a) => waveOf(a.slug) === wave).forEach((a) => { next[a.slug] = date; });
     write({ ...s, waveDates: { ...s.waveDates, [wave]: date }, opensOn: next });
   }
 
   return {
     getDemoSettings: () => settings,
     ...admin,
+    listAdminAdventures: () => {
+      const moved = read().waves;
+      return admin.listAdminAdventures().map((a) => {
+        const wave = moved[a.slug];
+        if (wave === undefined || wave === a.wave) return a;
+        return { ...a, wave, status: a.status === "Draft" ? "Draft" : wave === 1 ? "Open" : "Scheduled" };
+      });
+    },
     getAdminWaves: () => Object.keys(WAVE_DEFAULT_DATES).map(Number).map((n) => ({ number: n, date: waveDate(read(), n) })),
     saveAdminWave: (w) => saveWaveDate(w.number, w.date, false),
     setAdventureWave(slug, wave) {
@@ -99,7 +108,12 @@ export function createLocalStore(settings: Readonly<DemoSettings> = MOCK_SETTING
       const oldWave = waveOf(slug);
       const keepsDefault = opensOn(slug) === waveDate(s, oldWave);
       admin.setAdventureWave(slug, wave);
-      if (keepsDefault) write({ ...read(), opensOn: { ...read().opensOn, [slug]: waveDate(read(), wave) } });
+      const next = read();
+      write({
+        ...next,
+        waves: { ...next.waves, [slug]: wave },
+        opensOn: keepsDefault ? { ...next.opensOn, [slug]: waveDate(next, wave) } : next.opensOn,
+      });
     },
     getOpensOn: opensOn,
     setOpensOn(slug, date) {

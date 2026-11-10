@@ -53,4 +53,12 @@ describe("per-adventure opening dates", () => {
     expect(store.getOpensOn(a!.slug)).toBe("2027-01-04");
     expect(store.getOpensOn(b!.slug)).toBe("2026-11-30");
   });
+
+  it("persists a wave move across a reload", () => {
+    const slug = ADVENTURES.find((x) => x.wave === 2)!.slug;
+    createLocalStore().setAdventureWave(slug, 3);
+    const reloaded = createLocalStore();
+    expect(reloaded.listAdminAdventures().find((a) => a.slug === slug)?.wave).toBe(3);
+    expect(reloaded.getOpensOn(slug)).toBe("2026-12-07");
+  });
 });
