@@ -1,0 +1,1550 @@
+{
+ "generated": "by build_bundle.py",
+ "count": 30,
+ "adventures": [
+  {
+   "wave": "W1",
+   "slot": 2,
+   "slug": "your-ai-identity",
+   "title": "Your AI Identity",
+   "emoji": "🪪",
+   "icon": "id-card",
+   "category": "Set up your AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "30 minutes",
+   "outcome": "Build something",
+   "next": [
+    "build-a-personal-brain-for-your-ai",
+    "your-own-chief-of-staff"
+   ],
+   "walkaway": "Standing instructions and a voice profile, so your AI works the way you like",
+   "review": "ready",
+   "video_url_on_platform": "/videos/your-ai-identity.mp4",
+   "content_file": "upload/content/adventures/your-ai-identity.md",
+   "content_bytes": 12161,
+   "content_md5": "726de111b1ae20ebf620ec164d97d72e",
+   "body_words_approx": 1531,
+   "video": {
+    "file": "upload/videos/your-ai-identity.mp4",
+    "bytes": 4925423,
+    "md5": "cde23e5837dc6a386beaaa65c8dd2396"
+   },
+   "poster": {
+    "file": "upload/videos/your-ai-identity.jpg",
+    "bytes": 147226,
+    "md5": "ac0e18488d6df146fe79fc26356d3ef7"
+   },
+   "captions": {
+    "file": "upload/videos/your-ai-identity.vtt",
+    "bytes": 1186,
+    "md5": "88a8e28fbb66c73de843b9f2bf560852"
+   },
+   "video_seconds": 54.9,
+   "video_script": "videos/your-ai-identity/script.md",
+   "video_notes": "videos/your-ai-identity/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 4,
+   "slug": "understanding-ai-agents",
+   "title": "Understanding AI Agents",
+   "emoji": "🤖",
+   "icon": "robot",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Learn something",
+   "next": [
+    "your-own-chief-of-staff",
+    "automation-done-right"
+   ],
+   "walkaway": "A working understanding of how agents think, and your own rules for setting goals and deciding what to delegate",
+   "review": "ready",
+   "video_url_on_platform": "/videos/understanding-ai-agents.mp4",
+   "content_file": "upload/content/adventures/understanding-ai-agents.md",
+   "content_bytes": 12833,
+   "content_md5": "4e0ff0116fafa11cd24886a5d0e435ba",
+   "body_words_approx": 1793,
+   "video": {
+    "file": "upload/videos/understanding-ai-agents.mp4",
+    "bytes": 3767402,
+    "md5": "c3f89396a09ffee9b9e20625d494b938"
+   },
+   "poster": {
+    "file": "upload/videos/understanding-ai-agents.jpg",
+    "bytes": 153714,
+    "md5": "64a3890561eb7cceb2eb145d45270d3d"
+   },
+   "captions": {
+    "file": "upload/videos/understanding-ai-agents.vtt",
+    "bytes": 999,
+    "md5": "25333234449e444bff019d192ed0a741"
+   },
+   "video_seconds": 49.7,
+   "video_script": "videos/understanding-ai-agents/script.md",
+   "video_notes": "videos/understanding-ai-agents/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 5,
+   "slug": "de-slop",
+   "title": "Stay Original with AI",
+   "emoji": "🧽",
+   "icon": "sponge",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Work differently",
+   "next": [
+    "board-of-advisors",
+    "skills-when-how-and-how-well"
+   ],
+   "walkaway": "Original, creative work with AI: one real piece remade with your thinking in it, and your standards saved where your AI reads them",
+   "review": "ready",
+   "video_url_on_platform": "/videos/de-slop.mp4",
+   "content_file": "upload/content/adventures/de-slop.md",
+   "content_bytes": 18655,
+   "content_md5": "7c053f1d8140d305a2cea18f25f895eb",
+   "body_words_approx": 2837,
+   "video": {
+    "file": "upload/videos/de-slop.mp4",
+    "bytes": 6268642,
+    "md5": "bdc3753d78dbf0f17a5434d58ace873e"
+   },
+   "poster": {
+    "file": "upload/videos/de-slop.jpg",
+    "bytes": 130468,
+    "md5": "9196cb3677328d3e7895bc206ac7aa53"
+   },
+   "captions": {
+    "file": "upload/videos/de-slop.vtt",
+    "bytes": 1124,
+    "md5": "16fffca5309eda8ee280aed157958080"
+   },
+   "video_seconds": 59.9,
+   "video_script": "videos/de-slop/script.md",
+   "video_notes": "videos/de-slop/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 6,
+   "slug": "use-case-discovery",
+   "title": "Use-Case Discovery",
+   "emoji": "🧭",
+   "icon": "map-pin",
+   "category": "Set up your AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Learn something",
+   "next": [
+    "skills-when-how-and-how-well",
+    "creating-apps-with-ai-done-right"
+   ],
+   "walkaway": "More AI ideas across your day-to-day and growth opportunities, ranked with FVI (Feasibility, Value, Investment), with a plan for each core one",
+   "review": "ready",
+   "video_url_on_platform": "/videos/use-case-discovery.mp4",
+   "content_file": "upload/content/adventures/use-case-discovery.md",
+   "content_bytes": 13116,
+   "content_md5": "392dc8067cc9851bcade63eb7394eec0",
+   "body_words_approx": 1460,
+   "video": {
+    "file": "upload/videos/use-case-discovery.mp4",
+    "bytes": 4868856,
+    "md5": "cc5e120042cd3846d4b3ad07e0484b19"
+   },
+   "poster": {
+    "file": "upload/videos/use-case-discovery.jpg",
+    "bytes": 100590,
+    "md5": "b0bbd3fbc322de632992efc4fb3152ab"
+   },
+   "captions": {
+    "file": "upload/videos/use-case-discovery.vtt",
+    "bytes": 1156,
+    "md5": "e1d2efcc6b674a24cb759df6a6663c96"
+   },
+   "video_seconds": 59.9,
+   "video_script": "videos/use-case-discovery/script.md",
+   "video_notes": "videos/use-case-discovery/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 11,
+   "slug": "board-of-advisors",
+   "title": "Build Your Board of Advisors",
+   "emoji": "🎭",
+   "icon": "masks",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Customer Facing",
+    "Product"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "de-slop",
+    "hard-conversations"
+   ],
+   "walkaway": "A reusable board chosen for your work, and a decision or deliverable that has already survived its critics",
+   "review": "ready",
+   "video_url_on_platform": "/videos/board-of-advisors.mp4",
+   "content_file": "upload/content/adventures/board-of-advisors.md",
+   "content_bytes": 14146,
+   "content_md5": "63d0a1f1e4c1ff3f5ceb84ea16905eb3",
+   "body_words_approx": 1810,
+   "video": {
+    "file": "upload/videos/board-of-advisors.mp4",
+    "bytes": 4109596,
+    "md5": "acdf1e60cc027baf8a4909b881416663"
+   },
+   "poster": {
+    "file": "upload/videos/board-of-advisors.jpg",
+    "bytes": 121718,
+    "md5": "0b23baafdacee8e5f23d69b2d9424499"
+   },
+   "captions": {
+    "file": "upload/videos/board-of-advisors.vtt",
+    "bytes": 993,
+    "md5": "05208c45ccf549752caf523498e51c26"
+   },
+   "video_seconds": 46.9,
+   "video_script": "videos/board-of-advisors/script.md",
+   "video_notes": "videos/board-of-advisors/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 12,
+   "slug": "hard-conversations",
+   "title": "Hard Conversations",
+   "emoji": "💬",
+   "icon": "chat",
+   "category": "Lead with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone",
+    "Customer Facing",
+    "HR"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Work differently",
+   "next": [
+    "board-of-advisors",
+    "managing-with-ai"
+   ],
+   "walkaway": "Your prep brief, your core message, a simulated conversation with coaching, and a plan for before and after",
+   "review": "ready",
+   "video_url_on_platform": "/videos/hard-conversations.mp4",
+   "content_file": "upload/content/adventures/hard-conversations.md",
+   "content_bytes": 15109,
+   "content_md5": "6e8b9f70c15e26bd2ec6aaf0da5ce725",
+   "body_words_approx": 1813,
+   "video": {
+    "file": "upload/videos/hard-conversations.mp4",
+    "bytes": 4512786,
+    "md5": "e65d74dd8941631a5b58b87b0f405a74"
+   },
+   "poster": {
+    "file": "upload/videos/hard-conversations.jpg",
+    "bytes": 109818,
+    "md5": "14060432ae1168feb283b2e3890a4dfe"
+   },
+   "captions": {
+    "file": "upload/videos/hard-conversations.vtt",
+    "bytes": 1029,
+    "md5": "1cc8acc2c3090adc40596f4c4defc268"
+   },
+   "video_seconds": 50.7,
+   "video_script": "videos/hard-conversations/script.md",
+   "video_notes": "videos/hard-conversations/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 13,
+   "slug": "claude-in-your-docs-sheets-and-slides",
+   "title": "Claude in Your Docs, Sheets and Slides",
+   "emoji": "📄",
+   "icon": "document",
+   "category": "Create with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone",
+    "Finance"
+   ],
+   "audience": [],
+   "tool": "Claude",
+   "effort": "1 hour",
+   "outcome": "Learn something",
+   "next": [
+    "creating-apps-with-ai-done-right",
+    "de-slop"
+   ],
+   "walkaway": "Three pieces of real work done inside your Google files, and a clear rule for when to stay in the file and when to move to a Claude chat",
+   "review": "ready",
+   "video_url_on_platform": "/videos/claude-in-your-docs-sheets-and-slides.mp4",
+   "content_file": "upload/content/adventures/claude-in-your-docs-sheets-and-slides.md",
+   "content_bytes": 17891,
+   "content_md5": "bd3fe4c047f76569d2523bc022d1d4d2",
+   "body_words_approx": 2006,
+   "video": {
+    "file": "upload/videos/claude-in-your-docs-sheets-and-slides.mp4",
+    "bytes": 6006551,
+    "md5": "e513ba4b2ad3b91d03a5374e5ddbe135"
+   },
+   "poster": {
+    "file": "upload/videos/claude-in-your-docs-sheets-and-slides.jpg",
+    "bytes": 167260,
+    "md5": "a571506907d60cbac0488db11125661b"
+   },
+   "captions": {
+    "file": "upload/videos/claude-in-your-docs-sheets-and-slides.vtt",
+    "bytes": 1085,
+    "md5": "56c0ce80a734d68da914fb3aefa8f797"
+   },
+   "video_seconds": 57.0,
+   "video_script": "videos/claude-in-your-docs-sheets-and-slides/script.md",
+   "video_notes": "videos/claude-in-your-docs-sheets-and-slides/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 17,
+   "slug": "skills-when-how-and-how-well",
+   "title": "Skills: When, How and How Well",
+   "emoji": "🧰",
+   "icon": "toolbox",
+   "category": "Set up your AI",
+   "levels": [
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "advanced-skill-patterns",
+    "de-slop"
+   ],
+   "walkaway": "One skill tested on real work, a prompt that builds every skill you need next, and the judgment to know when a task deserves one",
+   "review": "ready",
+   "video_url_on_platform": "/videos/skills-when-how-and-how-well.mp4",
+   "content_file": "upload/content/adventures/skills-when-how-and-how-well.md",
+   "content_bytes": 14648,
+   "content_md5": "d45ac7911e4a8f3b7498aa3127cd9fc5",
+   "body_words_approx": 1794,
+   "video": {
+    "file": "upload/videos/skills-when-how-and-how-well.mp4",
+    "bytes": 4652431,
+    "md5": "4f3bbab0b98e8614cedc7f8d0d565257"
+   },
+   "poster": {
+    "file": "upload/videos/skills-when-how-and-how-well.jpg",
+    "bytes": 125051,
+    "md5": "adfcc263b304ee705b53a54a9707879f"
+   },
+   "captions": {
+    "file": "upload/videos/skills-when-how-and-how-well.vtt",
+    "bytes": 1030,
+    "md5": "e0d99a647ad9a169266cfe6225d98b28"
+   },
+   "video_seconds": 54.8,
+   "video_script": "videos/skills-when-how-and-how-well/script.md",
+   "video_notes": "videos/skills-when-how-and-how-well/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 19,
+   "slug": "your-own-chief-of-staff",
+   "title": "Your Own Chief of Staff",
+   "emoji": "🗓️",
+   "icon": "calendar",
+   "category": "Automate and delegate",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Customer Facing"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "automation-done-right",
+    "the-daily-dispatch"
+   ],
+   "walkaway": "An AI chief of staff built for you: it organizes your workload, runs your to-do list, helps you prioritize and moves your work forward",
+   "review": "ready",
+   "video_url_on_platform": "/videos/your-own-chief-of-staff.mp4",
+   "content_file": "upload/content/adventures/your-own-chief-of-staff.md",
+   "content_bytes": 15734,
+   "content_md5": "e64b022f8076453017d95d4dc9ebf622",
+   "body_words_approx": 1794,
+   "video": {
+    "file": "upload/videos/your-own-chief-of-staff.mp4",
+    "bytes": 4806791,
+    "md5": "fa8d305ac43944dd05df4302159d14cc"
+   },
+   "poster": {
+    "file": "upload/videos/your-own-chief-of-staff.jpg",
+    "bytes": 109196,
+    "md5": "c9c967a1ed7ff859b52acd1842170305"
+   },
+   "captions": {
+    "file": "upload/videos/your-own-chief-of-staff.vtt",
+    "bytes": 1074,
+    "md5": "8ef0f575301fb798f69cb1aae9318485"
+   },
+   "video_seconds": 47.7,
+   "video_script": "videos/your-own-chief-of-staff/script.md",
+   "video_notes": "videos/your-own-chief-of-staff/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 20,
+   "slug": "managing-with-ai",
+   "title": "Managing with AI",
+   "emoji": "👥",
+   "icon": "people",
+   "category": "Lead with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "your-team-s-ai-blueprint",
+    "hard-conversations"
+   ],
+   "walkaway": "A management companion that knows how you manage, two or three skills for your managerial tasks, one scheduled task, and a bias check you can run on anything you prepare about people",
+   "review": "ready",
+   "video_url_on_platform": "/videos/managing-with-ai.mp4",
+   "content_file": "upload/content/adventures/managing-with-ai.md",
+   "content_bytes": 17653,
+   "content_md5": "dcd0b81b5ad8bae891dbd0ce022426da",
+   "body_words_approx": 2127,
+   "video": {
+    "file": "upload/videos/managing-with-ai.mp4",
+    "bytes": 4347774,
+    "md5": "9fc5b63bbe8c82020f6d188e54350b62"
+   },
+   "poster": {
+    "file": "upload/videos/managing-with-ai.jpg",
+    "bytes": 120759,
+    "md5": "aa7d8652ca06667c32fd1cb3cd9654d9"
+   },
+   "captions": {
+    "file": "upload/videos/managing-with-ai.vtt",
+    "bytes": 1299,
+    "md5": "f4ddfd74331a274599d96f5249e35abd"
+   },
+   "video_seconds": 58.6,
+   "video_script": "videos/managing-with-ai/script.md",
+   "video_notes": "videos/managing-with-ai/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W1",
+   "slot": 22,
+   "slug": "creating-apps-with-ai-done-right",
+   "title": "Creating Apps with AI, Done Right",
+   "emoji": "🧰",
+   "icon": "toolbox",
+   "category": "Create with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "designing-with-ai-results-you-actually-like",
+    "automation-done-right"
+   ],
+   "walkaway": "A working app, dashboard or interactive artifact that people can trust, built with a method you reuse for every future build",
+   "review": "ready",
+   "video_url_on_platform": "/videos/creating-apps-with-ai-done-right.mp4",
+   "content_file": "upload/content/adventures/creating-apps-with-ai-done-right.md",
+   "content_bytes": 17819,
+   "content_md5": "94b308ba2893324dc556f0102d1a98a9",
+   "body_words_approx": 1812,
+   "video": {
+    "file": "upload/videos/creating-apps-with-ai-done-right.mp4",
+    "bytes": 7210959,
+    "md5": "6485f327089411e8068ff72f979e6c04"
+   },
+   "poster": {
+    "file": "upload/videos/creating-apps-with-ai-done-right.jpg",
+    "bytes": 128175,
+    "md5": "a90907d66d6110d47221dc40cf42407b"
+   },
+   "captions": {
+    "file": "upload/videos/creating-apps-with-ai-done-right.vtt",
+    "bytes": 1128,
+    "md5": "810d79d66841c57d24018fc90d83b3fa"
+   },
+   "video_seconds": 53.6,
+   "video_script": "videos/creating-apps-with-ai-done-right/script.md",
+   "video_notes": "videos/creating-apps-with-ai-done-right/notes.md",
+   "opens_on_placeholder": "2026-11-09"
+  },
+  {
+   "wave": "W2",
+   "slot": 3,
+   "slug": "making-decisions-with-ai",
+   "title": "Making Decisions with AI",
+   "emoji": "⚖️",
+   "icon": "scale",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Work differently",
+   "next": [
+    "board-of-advisors",
+    "your-ai-identity"
+   ],
+   "walkaway": "Personal rules of engagement, tested on a live decision and saved for next time",
+   "review": "ready",
+   "video_url_on_platform": "/videos/making-decisions-with-ai.mp4",
+   "content_file": "upload/content/adventures/making-decisions-with-ai.md",
+   "content_bytes": 16700,
+   "content_md5": "fab0ab564b7ce0fed73289839258bd78",
+   "body_words_approx": 1772,
+   "video": {
+    "file": "upload/videos/making-decisions-with-ai.mp4",
+    "bytes": 5033611,
+    "md5": "efa41bb2cafb314e89015d5318f08ea9"
+   },
+   "poster": {
+    "file": "upload/videos/making-decisions-with-ai.jpg",
+    "bytes": 125580,
+    "md5": "cd0e9d18b23812125a0c968c1cbae066"
+   },
+   "captions": {
+    "file": "upload/videos/making-decisions-with-ai.vtt",
+    "bytes": 1202,
+    "md5": "d58b5846819ccd75f0e8af5dec7cf2a9"
+   },
+   "video_seconds": 58.7,
+   "video_script": "videos/making-decisions-with-ai/script.md",
+   "video_notes": "videos/making-decisions-with-ai/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W2",
+   "slot": 7,
+   "slug": "research-done-right",
+   "title": "Research Done Right",
+   "emoji": "🔎",
+   "icon": "magnifier",
+   "category": "Create with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Marketing",
+    "Product",
+    "Customer Facing",
+    "Finance"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Learn something",
+   "next": [
+    "making-decisions-with-ai",
+    "board-of-advisors"
+   ],
+   "walkaway": "A research brief on a question you actually needed answered, and a research skill for the next one",
+   "review": "ready",
+   "video_url_on_platform": "/videos/research-done-right.mp4",
+   "content_file": "upload/content/adventures/research-done-right.md",
+   "content_bytes": 14760,
+   "content_md5": "34c276fc363dbdec245679b1dd6447cd",
+   "body_words_approx": 1829,
+   "video": {
+    "file": "upload/videos/research-done-right.mp4",
+    "bytes": 4348915,
+    "md5": "6972cfe5fbe9c15b6cd7ab65f15b2e78"
+   },
+   "poster": {
+    "file": "upload/videos/research-done-right.jpg",
+    "bytes": 116584,
+    "md5": "dbddb1efb961379639317e6d9575b4c8"
+   },
+   "captions": {
+    "file": "upload/videos/research-done-right.vtt",
+    "bytes": 1136,
+    "md5": "0ed50d1e445b181f740a66516f945c4e"
+   },
+   "video_seconds": 52.3,
+   "video_script": "videos/research-done-right/script.md",
+   "video_notes": "videos/research-done-right/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W2",
+   "slot": 8,
+   "slug": "build-a-personal-brain-for-your-ai",
+   "title": "Build a Personal Brain for Your AI",
+   "emoji": "🧠",
+   "icon": "brain",
+   "category": "Set up your AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "your-own-chief-of-staff",
+    "your-team-s-ai-blueprint"
+   ],
+   "walkaway": "A personal brain in a folder or Obsidian, fed by the sources you choose and kept current by your own brain skills and a scheduled task",
+   "review": "ready",
+   "video_url_on_platform": "/videos/build-a-personal-brain-for-your-ai.mp4",
+   "content_file": "upload/content/adventures/build-a-personal-brain-for-your-ai.md",
+   "content_bytes": 20339,
+   "content_md5": "e710d0f5416b19b198ef24e581347c5e",
+   "body_words_approx": 2281,
+   "video": {
+    "file": "upload/videos/build-a-personal-brain-for-your-ai.mp4",
+    "bytes": 7369332,
+    "md5": "5f5dea72a093f05cb38f46452593a13b"
+   },
+   "poster": {
+    "file": "upload/videos/build-a-personal-brain-for-your-ai.jpg",
+    "bytes": 140254,
+    "md5": "130a943778f2b13f57ea8dd476e0e200"
+   },
+   "captions": {
+    "file": "upload/videos/build-a-personal-brain-for-your-ai.vtt",
+    "bytes": 1179,
+    "md5": "62ed67fc76d4d3754b09b834b49fc3b1"
+   },
+   "video_seconds": 55.5,
+   "video_script": "videos/build-a-personal-brain-for-your-ai/script.md",
+   "video_notes": "videos/build-a-personal-brain-for-your-ai/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W2",
+   "slot": 14,
+   "slug": "automation-done-right",
+   "title": "Automation Done Right",
+   "emoji": "⏰",
+   "icon": "clock",
+   "category": "Automate and delegate",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "your-own-chief-of-staff",
+    "the-daily-dispatch"
+   ],
+   "walkaway": "One automation built or rebuilt properly, and a checklist for every future one",
+   "review": "ready",
+   "video_url_on_platform": "/videos/automation-done-right.mp4",
+   "content_file": "upload/content/adventures/automation-done-right.md",
+   "content_bytes": 21313,
+   "content_md5": "79e489c65ea88f575c5d094ea1fda5a1",
+   "body_words_approx": 2196,
+   "video": {
+    "file": "upload/videos/automation-done-right.mp4",
+    "bytes": 5926649,
+    "md5": "a3e65337ece5d1173ab06036528d851d"
+   },
+   "poster": {
+    "file": "upload/videos/automation-done-right.jpg",
+    "bytes": 157011,
+    "md5": "115fe58217be8709f50a77d7bf8c8976"
+   },
+   "captions": {
+    "file": "upload/videos/automation-done-right.vtt",
+    "bytes": 1185,
+    "md5": "76fc741e201974a5cf4643cd25e31902"
+   },
+   "video_seconds": 59.4,
+   "video_script": "videos/automation-done-right/script.md",
+   "video_notes": "videos/automation-done-right/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W2",
+   "slot": 29,
+   "slug": "personalising-claude-code",
+   "title": "Personalizing Claude Code",
+   "emoji": "🎛️",
+   "icon": "terminal",
+   "category": "Automate and delegate",
+   "levels": [
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Agentic coding tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "advanced-skill-patterns",
+    "audit-and-improve-your-ai-system"
+   ],
+   "walkaway": "A lean Claude Code setup for your project folder: a short instructions file, a consolidated skill set, guarantees in hooks and permission rules, and specialist sub-agents, with before-and-after numbers from one real task",
+   "review": "ready",
+   "video_url_on_platform": "/videos/personalising-claude-code.mp4",
+   "content_file": "upload/content/adventures/personalising-claude-code.md",
+   "content_bytes": 20507,
+   "content_md5": "802a394aeda56313c2091d5b39d6cf8e",
+   "body_words_approx": 2288,
+   "video": {
+    "file": "upload/videos/personalising-claude-code.mp4",
+    "bytes": 5263970,
+    "md5": "184a9e9075c6c3c3be37ed79eb704dfc"
+   },
+   "poster": {
+    "file": "upload/videos/personalising-claude-code.jpg",
+    "bytes": 145654,
+    "md5": "acbd8703c1be32700db8c7d2cb76a777"
+   },
+   "captions": {
+    "file": "upload/videos/personalising-claude-code.vtt",
+    "bytes": 1129,
+    "md5": "be647ed79f50d7cc78704f143a637512"
+   },
+   "video_seconds": 59.7,
+   "video_script": "videos/personalising-claude-code/script.md",
+   "video_notes": "videos/personalising-claude-code/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W2",
+   "slot": 30,
+   "slug": "voice-of-customers-and-employees",
+   "title": "Voice of Customers and Employees",
+   "emoji": "💬",
+   "icon": "chat",
+   "category": "Create with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Product",
+    "HR",
+    "Customer Facing",
+    "Marketing"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "research-done-right",
+    "creating-apps-with-ai-done-right"
+   ],
+   "walkaway": "A real feedback question answered honestly: patterns with real quotes, charts that show the numbers behind them, and actions with confirmed owners",
+   "review": "ready",
+   "video_url_on_platform": "/videos/voice-of-customers-and-employees.mp4",
+   "content_file": "upload/content/adventures/voice-of-customers-and-employees.md",
+   "content_bytes": 19672,
+   "content_md5": "6d7747991ba2ae0d8dc55013de0688dc",
+   "body_words_approx": 2245,
+   "video": {
+    "file": "upload/videos/voice-of-customers-and-employees.mp4",
+    "bytes": 3692557,
+    "md5": "a57bd7b95d3227aa4115fcb60ff94efa"
+   },
+   "poster": {
+    "file": "upload/videos/voice-of-customers-and-employees.jpg",
+    "bytes": 130292,
+    "md5": "d2267cec6d4c8d30ed055ee9a3c6f6b7"
+   },
+   "captions": {
+    "file": "upload/videos/voice-of-customers-and-employees.vtt",
+    "bytes": 1245,
+    "md5": "b7aee25c6f981853ecdb6d37dac65b0d"
+   },
+   "video_seconds": 54.3,
+   "video_script": "videos/voice-of-customers-and-employees/script.md",
+   "video_notes": "videos/voice-of-customers-and-employees/notes.md",
+   "opens_on_placeholder": "2026-11-23"
+  },
+  {
+   "wave": "W3",
+   "slot": 1,
+   "slug": "your-ai-taste-test",
+   "title": "Your AI Taste Test",
+   "emoji": "🧭",
+   "icon": "compass",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Learn something",
+   "next": [
+    "de-slop",
+    "token-smartness"
+   ],
+   "walkaway": "Your representative task set, a blind comparison of alternatives (models, tools, features) on those tasks, a routing card, and a retest ritual for every new release",
+   "review": "ready",
+   "video_url_on_platform": "/videos/your-ai-taste-test.mp4",
+   "content_file": "upload/content/adventures/your-ai-taste-test.md",
+   "content_bytes": 17539,
+   "content_md5": "8b6446737341e70eaff63f6a6e460905",
+   "body_words_approx": 1844,
+   "video": {
+    "file": "upload/videos/your-ai-taste-test.mp4",
+    "bytes": 3729120,
+    "md5": "6408dc79d8adad1397bd434c38c01748"
+   },
+   "poster": {
+    "file": "upload/videos/your-ai-taste-test.jpg",
+    "bytes": 131608,
+    "md5": "858a21caeb22c8c7e9024d21e5530e0a"
+   },
+   "captions": {
+    "file": "upload/videos/your-ai-taste-test.vtt",
+    "bytes": 1265,
+    "md5": "6085d6d2f831a8c8c934637a519e557e"
+   },
+   "video_seconds": 59.3,
+   "video_script": "videos/your-ai-taste-test/script.md",
+   "video_notes": "videos/your-ai-taste-test/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 9,
+   "slug": "token-smartness",
+   "title": "Token Smartness",
+   "emoji": "🪙",
+   "icon": "gauge",
+   "category": "Set up your AI",
+   "levels": [
+    "Foundations",
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Work differently",
+   "next": [
+    "automation-done-right",
+    "your-ai-taste-test"
+   ],
+   "walkaway": "A feel for what your AI work costs in tokens, and one real task that gets more value from them",
+   "review": "ready",
+   "video_url_on_platform": "/videos/token-smartness.mp4",
+   "content_file": "upload/content/adventures/token-smartness.md",
+   "content_bytes": 19580,
+   "content_md5": "73b8df998adaea1210f9ab8fd57cc3ae",
+   "body_words_approx": 2188,
+   "video": {
+    "file": "upload/videos/token-smartness.mp4",
+    "bytes": 3685030,
+    "md5": "91741fc872882bd580303a7d57fa1d16"
+   },
+   "poster": {
+    "file": "upload/videos/token-smartness.jpg",
+    "bytes": 84817,
+    "md5": "dea2364a89c822598960a0e5c1bfca75"
+   },
+   "captions": {
+    "file": "upload/videos/token-smartness.vtt",
+    "bytes": 1119,
+    "md5": "882d1cdc5885f9582959d4130cf8b262"
+   },
+   "video_seconds": 54.3,
+   "video_script": "videos/token-smartness/script.md",
+   "video_notes": "videos/token-smartness/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 15,
+   "slug": "designing-with-ai-results-you-actually-like",
+   "title": "Claude Design: Results You Actually Like",
+   "emoji": "🎨",
+   "icon": "palette",
+   "category": "Create with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Design",
+    "Marketing",
+    "Product",
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Claude",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "creating-apps-with-ai-done-right",
+    "de-slop"
+   ],
+   "walkaway": "A visual language Claude follows on top of Monday's design system, a new-look skill that sets the look for each piece whenever you change your mind, and one finished deck or visual you would show with your name on it",
+   "review": "ready",
+   "video_url_on_platform": "/videos/designing-with-ai-results-you-actually-like.mp4",
+   "content_file": "upload/content/adventures/designing-with-ai-results-you-actually-like.md",
+   "content_bytes": 22324,
+   "content_md5": "55f85c1554d17ebedb90506de716fc5e",
+   "body_words_approx": 2286,
+   "video": {
+    "file": "upload/videos/designing-with-ai-results-you-actually-like.mp4",
+    "bytes": 4039505,
+    "md5": "c0807b9ed3fe47f82d677fd63f5888f4"
+   },
+   "poster": {
+    "file": "upload/videos/designing-with-ai-results-you-actually-like.jpg",
+    "bytes": 138413,
+    "md5": "81e2197a21ec28dfb6eba13849aa903b"
+   },
+   "captions": {
+    "file": "upload/videos/designing-with-ai-results-you-actually-like.vtt",
+    "bytes": 1118,
+    "md5": "e3cb2ab9ed5e3db5887324185a397735"
+   },
+   "video_seconds": 52.5,
+   "video_script": "videos/designing-with-ai-results-you-actually-like/script.md",
+   "video_notes": "videos/designing-with-ai-results-you-actually-like/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 16,
+   "slug": "planning-with-ai",
+   "title": "Planning with AI",
+   "emoji": "🧭",
+   "icon": "calendar",
+   "category": "Create with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "your-own-chief-of-staff",
+    "automation-done-right"
+   ],
+   "walkaway": "A plan built from what is really on your plate, with a living home that stays fresh",
+   "review": "ready",
+   "video_url_on_platform": "/videos/planning-with-ai.mp4",
+   "content_file": "upload/content/adventures/planning-with-ai.md",
+   "content_bytes": 20328,
+   "content_md5": "b6b7cd5a09f58ae2887a79586406e120",
+   "body_words_approx": 2296,
+   "video": {
+    "file": "upload/videos/planning-with-ai.mp4",
+    "bytes": 4543106,
+    "md5": "f7f2c169ea212ee5b0214b8f0b166f9e"
+   },
+   "poster": {
+    "file": "upload/videos/planning-with-ai.jpg",
+    "bytes": 105365,
+    "md5": "8dfa7baab9b887e44ff6c8bad4b6a587"
+   },
+   "captions": {
+    "file": "upload/videos/planning-with-ai.vtt",
+    "bytes": 1123,
+    "md5": "3e5d99c28a5a84fd71a0784ff0e4fa81"
+   },
+   "video_seconds": 49.5,
+   "video_script": "videos/planning-with-ai/script.md",
+   "video_notes": "videos/planning-with-ai/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 18,
+   "slug": "advanced-skill-patterns",
+   "title": "Advanced Skill Patterns",
+   "emoji": "🧩",
+   "icon": "layers",
+   "category": "Set up your AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Engineering"
+   ],
+   "audience": [],
+   "tool": "Claude",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "personalising-claude-code",
+    "audit-and-improve-your-ai-system"
+   ],
+   "walkaway": "An audited skill set, with a fix or a new advanced skill tested on real work",
+   "review": "ready",
+   "video_url_on_platform": "/videos/advanced-skill-patterns.mp4",
+   "content_file": "upload/content/adventures/advanced-skill-patterns.md",
+   "content_bytes": 21051,
+   "content_md5": "1263948ce4fe42948c98bb82cea38593",
+   "body_words_approx": 2292,
+   "video": {
+    "file": "upload/videos/advanced-skill-patterns.mp4",
+    "bytes": 3798911,
+    "md5": "3297ef43290011f919d08429f21eb208"
+   },
+   "poster": {
+    "file": "upload/videos/advanced-skill-patterns.jpg",
+    "bytes": 105625,
+    "md5": "6733543a12d5cd849153e1a3c2acd3c4"
+   },
+   "captions": {
+    "file": "upload/videos/advanced-skill-patterns.vtt",
+    "bytes": 1336,
+    "md5": "1540219a80c26c5b1d929020138101cf"
+   },
+   "video_seconds": 58.1,
+   "video_script": "videos/advanced-skill-patterns/script.md",
+   "video_notes": "videos/advanced-skill-patterns/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 21,
+   "slug": "audit-and-improve-your-ai-system",
+   "title": "Audit and Improve Your AI System",
+   "emoji": "🔍",
+   "icon": "shield",
+   "category": "Set up your AI",
+   "levels": [
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Work differently",
+   "next": [
+    "advanced-skill-patterns",
+    "personalising-claude-code"
+   ],
+   "walkaway": "A map of how much of your recurring work your AI system carries, the frictions fixed in the files that caused them, one or two gaps closed, and a retrospective skill that offers the next review on its own",
+   "review": "ready",
+   "video_url_on_platform": "/videos/audit-and-improve-your-ai-system.mp4",
+   "content_file": "upload/content/adventures/audit-and-improve-your-ai-system.md",
+   "content_bytes": 18605,
+   "content_md5": "a25f708054d21a33497904afa21d1d54",
+   "body_words_approx": 2244,
+   "video": {
+    "file": "upload/videos/audit-and-improve-your-ai-system.mp4",
+    "bytes": 4015105,
+    "md5": "92ca6bca9a3fbacea386ec3ed5d691ad"
+   },
+   "poster": {
+    "file": "upload/videos/audit-and-improve-your-ai-system.jpg",
+    "bytes": 92928,
+    "md5": "3886c854301fcdba8de547618be44719"
+   },
+   "captions": {
+    "file": "upload/videos/audit-and-improve-your-ai-system.vtt",
+    "bytes": 1255,
+    "md5": "10a2a830830d1bb7e9daed853ca392d5"
+   },
+   "video_seconds": 56.3,
+   "video_script": "videos/audit-and-improve-your-ai-system/script.md",
+   "video_notes": "videos/audit-and-improve-your-ai-system/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 24,
+   "slug": "your-team-s-ai-blueprint",
+   "title": "Your Team's AI Blueprint",
+   "emoji": "📐",
+   "icon": "chart",
+   "category": "Lead with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "managing-with-ai",
+    "skills-when-how-and-how-well"
+   ],
+   "walkaway": "A Team AI Blueprint: a map of what the team has built with a decision on every duplicate, a shared knowledge plan, use cases scored with FVI, a roadmap with owners, your expectations, team routines, and a plan to bring everyone along",
+   "review": "ready",
+   "video_url_on_platform": "/videos/your-team-s-ai-blueprint.mp4",
+   "content_file": "upload/content/adventures/your-team-s-ai-blueprint.md",
+   "content_bytes": 25591,
+   "content_md5": "d8ef3502e840ac89079cb003ca948378",
+   "body_words_approx": 2278,
+   "video": {
+    "file": "upload/videos/your-team-s-ai-blueprint.mp4",
+    "bytes": 6848030,
+    "md5": "ce210a1fe7477a92c9e627d1233bb030"
+   },
+   "poster": {
+    "file": "upload/videos/your-team-s-ai-blueprint.jpg",
+    "bytes": 127843,
+    "md5": "0c73e8f1ba4fe3562159743fc69c13e1"
+   },
+   "captions": {
+    "file": "upload/videos/your-team-s-ai-blueprint.vtt",
+    "bytes": 1253,
+    "md5": "77dcef3704f9ce5462ec677b8052a7bc"
+   },
+   "video_seconds": 58.4,
+   "video_script": "videos/your-team-s-ai-blueprint/script.md",
+   "video_notes": "videos/your-team-s-ai-blueprint/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W3",
+   "slot": 27,
+   "slug": "the-daily-dispatch",
+   "title": "Your Personal Newsletter",
+   "emoji": "📰",
+   "icon": "newspaper",
+   "category": "Automate and delegate",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "automation-done-right",
+    "your-own-chief-of-staff"
+   ],
+   "walkaway": "Your own personal newsletter on the topics you care about, built as a skill and arriving on a schedule where you read",
+   "review": "ready",
+   "video_url_on_platform": "/videos/the-daily-dispatch.mp4",
+   "content_file": "upload/content/adventures/the-daily-dispatch.md",
+   "content_bytes": 18360,
+   "content_md5": "763a345d16e5cb51f789ae7383861a9d",
+   "body_words_approx": 2168,
+   "video": {
+    "file": "upload/videos/the-daily-dispatch.mp4",
+    "bytes": 3422451,
+    "md5": "2d8ae7d32aabfb2a123451a72ada507c"
+   },
+   "poster": {
+    "file": "upload/videos/the-daily-dispatch.jpg",
+    "bytes": 116293,
+    "md5": "e42425a4e523dc466b8e96104c07aee6"
+   },
+   "captions": {
+    "file": "upload/videos/the-daily-dispatch.vtt",
+    "bytes": 1167,
+    "md5": "59ec0632ef1def6680031c1c1e5a4eff"
+   },
+   "video_seconds": 53.8,
+   "video_script": "videos/the-daily-dispatch/script.md",
+   "video_notes": "videos/the-daily-dispatch/notes.md",
+   "opens_on_placeholder": "2026-12-07"
+  },
+  {
+   "wave": "W4",
+   "slot": 10,
+   "slug": "ai-as-your-tutor",
+   "title": "AI as Your Tutor",
+   "emoji": "📚",
+   "icon": "book",
+   "category": "Work smarter with AI",
+   "levels": [
+    "Foundations",
+    "Intermediate"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "1 hour",
+   "outcome": "Build something",
+   "next": [
+    "your-ai-identity",
+    "the-daily-dispatch"
+   ],
+   "walkaway": "One personal AI tutor you reopen for any professional topic, one full lesson on a topic you chose, and a review plan with dates for that topic",
+   "review": "ready",
+   "video_url_on_platform": "/videos/ai-as-your-tutor.mp4",
+   "content_file": "upload/content/adventures/ai-as-your-tutor.md",
+   "content_bytes": 12455,
+   "content_md5": "18291f051e15d117143eeb528b628156",
+   "body_words_approx": 1501,
+   "video": {
+    "file": "upload/videos/ai-as-your-tutor.mp4",
+    "bytes": 4125837,
+    "md5": "7c414fb73c63587cdc406831896abf13"
+   },
+   "poster": {
+    "file": "upload/videos/ai-as-your-tutor.jpg",
+    "bytes": 119483,
+    "md5": "a0e9812571dc1ab06ef38fb3925275de"
+   },
+   "captions": {
+    "file": "upload/videos/ai-as-your-tutor.vtt",
+    "bytes": 1324,
+    "md5": "49be1e07e8d19322e564b8ba48504614"
+   },
+   "video_seconds": 59.1,
+   "video_script": "videos/ai-as-your-tutor/script.md",
+   "video_notes": null,
+   "opens_on_placeholder": "2027-01-04"
+  },
+  {
+   "wave": "W4",
+   "slot": 23,
+   "slug": "redesign-your-week-with-ai",
+   "title": "Redesign Your Week with AI",
+   "emoji": "⚖️",
+   "icon": "balance",
+   "category": "Lead with AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [
+    "Managers"
+   ],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Work differently",
+   "next": [
+    "planning-with-ai",
+    "your-own-chief-of-staff"
+   ],
+   "walkaway": "A true picture of your week, methods you chose with an AI coach, and a redesigned week: protected deep-work blocks, clear working rules, two routines, and AI already doing one task for you",
+   "review": "ready",
+   "video_url_on_platform": "/videos/redesign-your-week-with-ai.mp4",
+   "content_file": "upload/content/adventures/redesign-your-week-with-ai.md",
+   "content_bytes": 29361,
+   "content_md5": "c2f450897b48c887342792a1b3693034",
+   "body_words_approx": 2283,
+   "video": {
+    "file": "upload/videos/redesign-your-week-with-ai.mp4",
+    "bytes": 4859657,
+    "md5": "e331c050d14fa9edd417d39a0811808f"
+   },
+   "poster": {
+    "file": "upload/videos/redesign-your-week-with-ai.jpg",
+    "bytes": 125001,
+    "md5": "e6a55a633c6d6a9cd2b67f6efdd7364e"
+   },
+   "captions": {
+    "file": "upload/videos/redesign-your-week-with-ai.vtt",
+    "bytes": 1202,
+    "md5": "1c4d752004fe470096125caab45071d5"
+   },
+   "video_seconds": 57.9,
+   "video_script": "videos/redesign-your-week-with-ai/script.md",
+   "video_notes": "videos/redesign-your-week-with-ai/notes.md",
+   "opens_on_placeholder": "2027-01-04"
+  },
+  {
+   "wave": "W4",
+   "slot": 25,
+   "slug": "the-loop",
+   "title": "The Loop",
+   "emoji": "🔁",
+   "icon": "loop",
+   "category": "Automate and delegate",
+   "levels": [
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone",
+    "Engineering"
+   ],
+   "audience": [],
+   "tool": "Agentic coding tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "agent-teams-and-orchestration",
+    "token-smartness"
+   ],
+   "walkaway": "A multi-step assignment completed by an agent end to end, verified against your definition of done, and a goal card for the next one",
+   "review": "ready",
+   "video_url_on_platform": "/videos/the-loop.mp4",
+   "content_file": "upload/content/adventures/the-loop.md",
+   "content_bytes": 16997,
+   "content_md5": "19a1cd34c79a3b992ea01f73cbca5561",
+   "body_words_approx": 2283,
+   "video": {
+    "file": "upload/videos/the-loop.mp4",
+    "bytes": 3394878,
+    "md5": "46d3d29cb36977131ec823a777b5a9e5"
+   },
+   "poster": {
+    "file": "upload/videos/the-loop.jpg",
+    "bytes": 83636,
+    "md5": "2e12ee88a9d76023b18ca03ae64e1c51"
+   },
+   "captions": {
+    "file": "upload/videos/the-loop.vtt",
+    "bytes": 1184,
+    "md5": "a3631cfeb52407fd3fce51afed8d9894"
+   },
+   "video_seconds": 53.4,
+   "video_script": "videos/the-loop/script.md",
+   "video_notes": "videos/the-loop/notes.md",
+   "opens_on_placeholder": "2027-01-04"
+  },
+  {
+   "wave": "W4",
+   "slot": 26,
+   "slug": "agent-teams-and-orchestration",
+   "title": "Multi-Agent Workflows",
+   "emoji": "🎼",
+   "icon": "network",
+   "category": "Automate and delegate",
+   "levels": [
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Agentic coding tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "personalising-claude-code",
+    "audit-and-improve-your-ai-system"
+   ],
+   "walkaway": "One large piece of recurring work designed as a graph and running on real work: written handoffs, a capped reviewer, one approval point and a run log in the backend you chose",
+   "review": "ready",
+   "video_url_on_platform": "/videos/agent-teams-and-orchestration.mp4",
+   "content_file": "upload/content/adventures/agent-teams-and-orchestration.md",
+   "content_bytes": 19268,
+   "content_md5": "a3cad11fd57209d0be24f92455420168",
+   "body_words_approx": 2296,
+   "video": {
+    "file": "upload/videos/agent-teams-and-orchestration.mp4",
+    "bytes": 5278428,
+    "md5": "6ec65e55c981535964101d56755a60b1"
+   },
+   "poster": {
+    "file": "upload/videos/agent-teams-and-orchestration.jpg",
+    "bytes": 117092,
+    "md5": "555d67c25b5e3d83e61a01bfc1a7d86f"
+   },
+   "captions": {
+    "file": "upload/videos/agent-teams-and-orchestration.vtt",
+    "bytes": 1220,
+    "md5": "2773b065e32970aad48dfacb1a46c490"
+   },
+   "video_seconds": 55.6,
+   "video_script": "videos/agent-teams-and-orchestration/script.md",
+   "video_notes": "videos/agent-teams-and-orchestration/notes.md",
+   "opens_on_placeholder": "2027-01-04"
+  },
+  {
+   "wave": "W4",
+   "slot": 28,
+   "slug": "build-your-professional-partner",
+   "title": "Build Your Professional Partner",
+   "emoji": "💼",
+   "icon": "briefcase",
+   "category": "Set up your AI",
+   "levels": [
+    "Intermediate",
+    "Advanced"
+   ],
+   "professions": [
+    "Everyone"
+   ],
+   "audience": [],
+   "tool": "Any AI tool",
+   "effort": "Longer",
+   "outcome": "Build something",
+   "next": [
+    "advanced-skill-patterns",
+    "your-team-s-ai-blueprint"
+   ],
+   "walkaway": "An AI partner with the expertise of your own field or a field you lean on: an expertise pack of your company's way and current field practice, three ways of working, skills for your main tasks, and a lessons file that keeps it learning",
+   "review": "ready",
+   "video_url_on_platform": "/videos/build-your-professional-partner.mp4",
+   "content_file": "upload/content/adventures/build-your-professional-partner.md",
+   "content_bytes": 20656,
+   "content_md5": "0662917abf6dd4e3812db14e86676893",
+   "body_words_approx": 2299,
+   "video": {
+    "file": "upload/videos/build-your-professional-partner.mp4",
+    "bytes": 4467629,
+    "md5": "32b731289fee8353ea189a1d050c0074"
+   },
+   "poster": {
+    "file": "upload/videos/build-your-professional-partner.jpg",
+    "bytes": 125603,
+    "md5": "0b7ed641ef8672ecce4734eb46244de5"
+   },
+   "captions": {
+    "file": "upload/videos/build-your-professional-partner.vtt",
+    "bytes": 1284,
+    "md5": "ee508fce9dc6a08fde73b22282801dd0"
+   },
+   "video_seconds": 57.3,
+   "video_script": "videos/build-your-professional-partner/script.md",
+   "video_notes": "videos/build-your-professional-partner/notes.md",
+   "opens_on_placeholder": "2027-01-04"
+  }
+ ],
+ "opening_video": {
+  "mp4": {
+   "file": "upload/videos/ai-adventure-opening.mp4",
+   "bytes": 5503752,
+   "md5": "329e43e261de77008319f88f1810059b"
+  },
+  "jpg": {
+   "file": "upload/videos/ai-adventure-opening.jpg",
+   "bytes": 112224,
+   "md5": "f23ab489c4958d53675f6a858ee08594"
+  },
+  "seconds": 92.2
+ }
+}

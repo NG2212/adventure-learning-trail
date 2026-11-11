@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.200 --> 00:00:03.070
+Which piece of your work has the most roles?
+
+00:00:03.460 --> 00:00:05.810
+For example, a release or a launch brief.
+
+00:00:06.520 --> 00:00:14.730
+Now, in this adventure, you turn it into a multi-agent workflow, for code or documents: several AI agents, each with one job.
+
+00:00:15.260 --> 00:00:18.590
+And a lead agent hands out the work, several parts at once,
+
+00:00:18.830 --> 00:00:21.180
+then decides what's next as results arrive.
+
+00:00:21.570 --> 00:00:24.420
+So the plan changes with what each agent finds,
+
+00:00:24.420 --> 00:00:26.630
+and a reviewer can send work back.
+
+00:00:27.080 --> 00:00:33.090
+Then you approve once, on the monday board, Slack channel or folder where the work already lives.
+
+00:00:33.760 --> 00:00:39.490
+It's like a newsroom: an editor assigns several reporters, a fact-checker sends a draft back,
+
+00:00:39.980 --> 00:00:42.110
+and you, the editor-in-chief, sign off.
+
+00:00:42.460 --> 00:00:47.070
+But often, one agent is enough, so each extra one must earn its place.
+
+00:00:47.780 --> 00:00:50.750
+So in this adventure, you build your multi-agent workflow,
+
+00:00:50.900 --> 00:00:54.070
+until a second real run needs only small edits.

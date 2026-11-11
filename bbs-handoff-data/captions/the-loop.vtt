@@ -1,0 +1,46 @@
+WEBVTT
+
+00:00:00.200 --> 00:00:04.530
+Some jobs are too big for one prompt, however good it is.
+
+00:00:04.720 --> 00:00:10.470
+That's where loops come in: an agent works on one goal, turn after turn, until it's done.
+
+00:00:11.200 --> 00:00:13.610
+But a loop has to know what done means.
+
+00:00:14.280 --> 00:00:18.030
+Ask for better code or a clearer report, and it goes in circles,
+
+00:00:18.330 --> 00:00:20.440
+or stops early and calls it finished.
+
+00:00:20.750 --> 00:00:23.220
+It's like a revolving door with no exit:
+
+00:00:23.900 --> 00:00:26.030
+lots of motion, nobody gets out.
+
+00:00:26.300 --> 00:00:28.450
+So loops fit three kinds of work.
+
+00:00:28.380 --> 00:00:32.230
+A quota one pass can't reach, like 50 test cases.
+
+00:00:32.920 --> 00:00:35.690
+Every item in a set, like a note for every account.
+
+00:00:36.160 --> 00:00:39.710
+Or check, fix, recheck, until every test passes.
+
+00:00:40.240 --> 00:00:41.630
+And if it fits in one pass?
+
+00:00:42.540 --> 00:00:43.130
+Skip the loop.
+
+00:00:43.760 --> 00:00:48.650
+So in this adventure, you give a task a finish line a script can check, and a cap.
+
+00:00:49.240 --> 00:00:51.370
+Then a fresh agent checks the work.
